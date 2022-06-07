@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
@@ -12,16 +11,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private string name;
         private List<Game> gameSavedList;
 
-        public int UserId {get; private set;}
-        public string Name {get; private set;}
-        public List<Game> GameSavedList{get; private set;}
+        public int UserId { get; private set; }
+        public string Name { get; private set; }
+        public List<Game> GameSavedList { get; private set; }
 
         public User(int userId, string name)
         {
-            this.UserId=userId;
-            this.Name=name;
+            this.UserId = userId;
+            this.Name = name;
         }
-        
+
 
     }
 }

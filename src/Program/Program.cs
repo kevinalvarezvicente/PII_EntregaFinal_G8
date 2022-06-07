@@ -4,9 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
-using ClassLibrary;
-
 namespace ConsoleApplication
 {
     /// <summary>
@@ -19,9 +16,7 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            var train = new Train();
-            train.StartEngines();
-            Console.WriteLine("Hello World!");
+
         }
     }
 }

@@ -6,50 +6,47 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class Board
     {
         
-            private int[,] matriz;
+        private int[,] gameBoard;
 
-            public Board(int x, int y){
-                
-                this.Matriz = new int[x,y];
-                
-            }
-
-        public int[,] Matriz
+        public int[,] GameBoard
         {
             get
             {
-                return this.matriz;
+                return this.gameBoard;
             }
             private set
             {
-                this.matriz = value;
+                this.gameBoard = value;
             }
         }
 
 
-           public void ArregloInicial(){
-                 //declaro la matriz
-                //for anidado para llenar la matriz de un valor
-                for (int i = 0; i < this.matriz.GetLength(0); i++)
+           public void InitializeBoard(int x)
+           {
+               gameBoard = new int [x,x];
+
+                for (int i = 0; i < this.gameBoard.GetLength(0); i++)
                 {
-                    for (int j = 0; j < this.matriz.GetLength(0); j++)
+                    for (int j = 0; j < this.gameBoard.GetLength(1); j++)
                     {
-                        this.matriz[i, j] = 1;
+                        this.gameBoard[i, j] = 0;
                     }
                 }
            }
+
+           
                
 
 
                 //for anidado para imprimir la matriz
             public void imprimirTablero(Board board1)
                 {
-                    for (int i = 0; i < matriz.GetLength(0); i++)
+                    for (int i = 0; i < gameBoard.GetLength(0); i++)
                     {
                          Console.Write(i + " [");
-                        for (int j = 0; j < matriz.GetLength(1); j++)
+                        for (int j = 0; j < gameBoard.GetLength(1); j++)
                         {
-                            Console.Write(matriz[i, j] + " ");
+                            Console.Write(gameBoard[i, j] + " ");
                         }
                         Console.WriteLine();
                     }

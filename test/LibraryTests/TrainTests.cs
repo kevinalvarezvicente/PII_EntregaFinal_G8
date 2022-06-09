@@ -26,6 +26,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
+            
             this.train = new Train();
         }
 

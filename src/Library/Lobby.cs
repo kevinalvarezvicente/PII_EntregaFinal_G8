@@ -26,7 +26,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             catch
             {
-                throw new LibraryException("Error al  el usuario a Lobby de espera");
+                throw new LibraryException("Error al remover el usuario de Lobby de espera");
             }
         }
 

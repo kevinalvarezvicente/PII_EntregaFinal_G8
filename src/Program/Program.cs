@@ -3,8 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+using PII_ENTREGAFINAL_G8.src.Library;
+using System;
 
-namespace ConsoleApplication
+namespace PII_ENTREGAFINAL_G8.src.Program
 {
     /// <summary>
     /// Programa de consola de demostración.
@@ -16,7 +18,8 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-
+            Board board1 = new Board();
+            board1.InitializeBoard(3);
         }
     }
 }

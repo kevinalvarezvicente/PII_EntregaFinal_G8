@@ -22,14 +22,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Board player1Ship = new ShipBoard();
             Board player2Shot = new ShotBoard();
             Board player2Ship = new ShipBoard();
-            Player1Board = player1Shot;
-            Player1Board = player1Ship;
-            Player2Board = player2Shot;
-            Player2Board = player2Ship;
         }
 
-        public void Shoot(User whoReceive, int[x, y])
+        public void Shoot(User whoShoots, int x, int y)
         {
+            if (whoShoots.UserId == playersList[0].UserId)
+            {
+                player2Shot.AddShot(x, y);
+            }
+            else if (whoShoots.UserId == playersList[1].UserId)
+            {
+                player1Shot.AddShot(x, y);
+            }
         }
 
         public DateTime DateTime

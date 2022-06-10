@@ -1,14 +1,18 @@
 using System;
-using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     public class Board
     {
-        
-        private int[,] gameBoard;
 
-        public int[,] GameBoard
+        private string[,] gameBoard;
+
+        public Board(int x)
+        {
+            this.InitializeBoard(x);
+        }
+
+        public string[,] GameBoard
         {
             get
             {
@@ -20,52 +24,66 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+        public void InitializeBoard(int x)
+        {
+            gameBoard = new string[x, x];
 
-           public void InitializeBoard(int x)
-           {
-               gameBoard = new int [x,x];
-
-                for (int i = 0; i < this.gameBoard.GetLength(0); i++)
+            for (int i = 0; i < this.gameBoard.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.gameBoard.GetLength(1); j++)
                 {
-                    for (int j = 0; j < this.gameBoard.GetLength(1); j++)
-                    {
-                        this.gameBoard[i, j] = 0;
-                    }
+                    this.gameBoard[i, j] = "-";
                 }
-           }
-
-           
-               
+            }
+        }
 
 
-                //for anidado para imprimir la matriz
-            public void imprimirTablero(Board board1)
+        public bool VerifyShot(int x, int y)
+        {
+            try
+            {
+                if (this.GameBoard[x, y].Equals("o"))
                 {
-                    for (int i = 0; i < gameBoard.GetLength(0); i++)
-                    {
-                         Console.Write(i + " [");
-                        for (int j = 0; j < gameBoard.GetLength(1); j++)
-                        {
-                            Console.Write(gameBoard[i, j] + " ");
-                        }
-                        Console.WriteLine();
-                    }
+                    this.GameBoard[x, y] = "x";
+                    return true;
                 }
+                return false;
+            }
+            catch
+            {
+                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
+            }
+        }
 
 
-                //leer el arreglo
-                static int[,] LeerArregloBidimensionalPantalla(int[,] arreglo)
+        //for anidado para imprimir la matriz
+        public void imprimirTablero(Board board1)
+        {
+            for (int i = 0; i < gameBoard.GetLength(0); i++)
+            {
+                Console.Write(i + " [");
+                for (int j = 0; j < gameBoard.GetLength(1); j++)
                 {
-                    for (int i = 0; i < arreglo.GetLength(0); i++)
-                    {
-                        for (int j = 0; j < arreglo.GetLength(1); j++)
-                        {
-                            Console.Write("Ingrese el valor de la posicion [" + i + "," + j + "]: ");
-                            arreglo[i, j] = int.Parse(Console.ReadLine());
-                        }
-                    }
-                    return  arreglo;
+                    Console.Write(gameBoard[i, j] + " ");
                 }
+                Console.WriteLine();
+            }
+        }
+
+
+        //leer el arreglo
+        static int[,] LeerArregloBidimensionalPantalla(int[,] arreglo)
+        {
+            for (int i = 0; i < arreglo.GetLength(0); i++)
+            {
+                for (int j = 0; j < arreglo.GetLength(1); j++)
+                {
+                    Console.Write("Ingrese el valor de la posicion [" + i + "," + j + "]: ");
+                    arreglo[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+            return arreglo;
+        }
 
 
     }

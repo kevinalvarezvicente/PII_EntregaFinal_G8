@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using PII_ENTREGAFINAL_G8.src.Library;
-using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -18,8 +17,8 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            Board board1 = new Board();
-            board1.InitializeBoard(3);
+            Player player1 = new Player();
+            player1.ReceiveShot(2, 1);
         }
     }
 }

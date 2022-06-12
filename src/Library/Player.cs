@@ -13,7 +13,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         public void ReceiveShot(int x, int y)
         {
-            playerShipBoard.VerifyShot();
             try
             {
 

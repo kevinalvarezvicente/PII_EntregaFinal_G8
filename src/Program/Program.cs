@@ -17,8 +17,20 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
+            //inicializo el board
+            Board board1  = new Board(4);
+
+            //PRINT
+            board1.imprimirTablero(board1);
+
             Player player1 = new Player();
+             
+
             player1.ReceiveShot(2, 1);
+
+            board1.imprimirTablero(board1);
+            
+
         }
     }
 }

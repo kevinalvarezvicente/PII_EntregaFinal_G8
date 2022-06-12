@@ -27,7 +27,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void InitializeBoard(int x)
         {
             gameBoard = new string[x, x];
-
+        
             for (int i = 0; i < this.gameBoard.GetLength(0); i++)
             {
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)
@@ -42,9 +42,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             try
             {
-                if (this.GameBoard[x, y].Equals("o"))
+                if (this.GameBoard[x, y].Equals("o")) //si hay un barco
                 {
-                    this.GameBoard[x, y] = "x";
+                    this.GameBoard[x, y] = "x"; //si le pega lo pone como x 
                     return true;
                 }
                 return false;
@@ -61,11 +61,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             for (int i = 0; i < gameBoard.GetLength(0); i++)
             {
-                Console.Write(i + " [");
+                Console.Write(i + " ");
                 for (int j = 0; j < gameBoard.GetLength(1); j++)
                 {
                     Console.Write(gameBoard[i, j] + " ");
                 }
+                //saltodelinea
                 Console.WriteLine();
             }
         }

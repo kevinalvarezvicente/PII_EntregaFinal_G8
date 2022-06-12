@@ -2,15 +2,23 @@
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    ///  ...
+    /// </summary>
     public class Player : LibraryException
     {
         Board playerShipBoard = new ShipBoard(5);
         Board playerShotBoard = new ShotBoard(5);
-
+        /// <summary>
+        ///  ...
+        /// </summary>
         public void MakeShot(int x, int y)
         {
             playerShotBoard.GameBoard[x, y] = "1";
         }
+        /// <summary>
+        ///  ...
+        /// </summary>
         public void ReceiveShot(int x, int y)
         {
             try
@@ -33,6 +41,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         }
         //se tiene que ver como agregar el barco
+        /// <summary>
+        ///  ...
+        /// </summary>
         public void PlaceShip(int length, int x, int y, string direction)
         {
             int boardX = x-1;
@@ -40,7 +51,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Ship ship = new Ship(length);
             playerShipBoard.GameBoard[x,y]=ship.ToString();
 
-            /*if (direction.ToUpper()=="V")
+            if (direction.ToUpper()=="V")
             {
                 for (int i=boardX; i<boardX+length; i++)
                 {
@@ -54,7 +65,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 {
                     playerShipBoard.GameBoard[boardX,i]=length.ToString();
                 }                
-            }*/
+            }
 
         }
         

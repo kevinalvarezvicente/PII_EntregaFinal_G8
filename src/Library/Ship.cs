@@ -2,10 +2,15 @@
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    ///  
+    /// </summary>
     public class Ship
     {
         List<int[,]> coordList = new List<int[,]>();
-
+    /// <summary>
+    ///  
+    /// </summary>
         public Ship(int length)
         { 
             int[] ship1 = new int[length];

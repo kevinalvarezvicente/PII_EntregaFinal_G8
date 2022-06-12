@@ -4,9 +4,154 @@
         <name>Library</name>
     </assembly>
     <members>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Board">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.#ctor(System.Int32)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Board.GameBoard">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.InitializeBoard(System.Int32)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.VerifyShot(System.Int32,System.Int32)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.imprimirTablero(PII_ENTREGAFINAL_G8.src.Library.Board)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Lobby">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.AddUserToList(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.RemoveUserFromList(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Player">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.MakeShot(System.Int32,System.Int32)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.Int32,System.Int32)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.PlaceShip(System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+             ...
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Ship">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.#ctor(System.Int32)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShipBoard">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipBoard.#ctor(System.Int32)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShotBoard">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotBoard.#ctor(System.Int32)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Singleton`1">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Singleton`1.Instance">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Swap">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Swap.Swaping``1(``0@,``0@)">
+            <summary>
+             
+            </summary>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>
             Class User saves and work with the user information
+            </summary>
+        </member>
+        <member name="T:LibraryException">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:LibraryException.#ctor">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:LibraryException.#ctor(System.String)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:LibraryException.#ctor(System.String,System.Exception)">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="M:LibraryException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+             
             </summary>
         </member>
     </members>

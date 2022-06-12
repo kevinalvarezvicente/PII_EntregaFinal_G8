@@ -2,16 +2,23 @@ using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    ///  ...
+    /// </summary>
     public class Board
     {
 
         private string[,] gameBoard;
-
+        /// <summary>
+        ///  ...
+        /// </summary>
         public Board(int x)
         {
             this.InitializeBoard(x);
         }
-
+        /// <summary>
+        ///  ...
+        /// </summary>
         public string[,] GameBoard
         {
             get
@@ -23,7 +30,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 this.gameBoard = value;
             }
         }
-
+        /// <summary>
+        ///  ...
+        /// </summary>
         public void InitializeBoard(int x)
         {
             gameBoard = new string[x, x];
@@ -37,7 +46,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
-
+        /// <summary>
+        ///  ...
+        /// </summary>
         public bool VerifyShot(int x, int y)
         {
             try
@@ -57,7 +68,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
 
 
-
+        /// <summary>
+        ///  
+        /// </summary>
         //for anidado para imprimir la matriz
         public void imprimirTablero(Board board1)
         {

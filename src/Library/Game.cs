@@ -1,5 +1,8 @@
 ﻿namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    ///  
+    /// </summary>
     public class Game
     {/*
         private DateTime date;

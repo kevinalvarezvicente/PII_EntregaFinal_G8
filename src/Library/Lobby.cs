@@ -2,9 +2,15 @@ using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    ///  
+    /// </summary>
     public class Lobby : Singleton<Lobby>
     {
         private List<User> usersSearchingGame;
+        /// <summary>
+        ///  
+        /// </summary>
         public void AddUserToList(User user)
         {
             try
@@ -17,8 +23,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
-
+        /// <summary>
+        ///  
+        /// </summary>
         public void RemoveUserFromList(User user)
+        
         {
             try
             {

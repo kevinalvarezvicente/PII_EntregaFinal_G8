@@ -1,6 +1,8 @@
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
-
+    /// <summary>
+    ///  
+    /// </summary>
     public class Singleton<T> where T : new()
         //Se hace para poder utilizar singleton con diferentes clases
         //Al generar la clase se instancia T de manera unica
@@ -10,6 +12,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         private static T instance;      //Constructor siempre privado, es el unico que sabe que esta instanciado
 
+        /// <summary>
+        ///  
+        /// </summary>
         public static T Instance        //Metodo, si no se instancia lo instancia. Siempre devuelve la misma instancia
 
         /*Al acceder por primera vez a la propiedad de clase Instance 

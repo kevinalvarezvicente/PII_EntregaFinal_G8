@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using PII_ENTREGAFINAL_G8.src.Library;
+using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -18,17 +19,20 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         public static void Main()
         {
             //inicializo el board
-            Board board1  = new Board(4);
+            //Board board1  = new Board(4);
 
             //PRINT
-            board1.imprimirTablero(board1);
+            //board1.imprimirTablero(board1);
 
             Player player1 = new Player();
-             
 
-            player1.ReceiveShot(2, 1);
+            player1.PlaceShip(3,2,1,"v");
 
-            board1.imprimirTablero(board1);
+            
+            
+            //player1.ReceiveShot(2, 1);
+
+            //boardPlayer.imprimirTablero(player1.gameBoard);
             
 
         }

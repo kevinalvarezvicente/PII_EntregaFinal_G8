@@ -4,7 +4,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     public class Player : LibraryException
     {
-        Board playerShipBoard = new ShipBoard(4);
+        Board playerShipBoard = new ShipBoard(5);
         Board playerShotBoard = new ShotBoard(5);
 
         public void MakeShot(int x, int y)
@@ -32,5 +32,31 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
 
         }
+        //se tiene que ver como agregar el barco
+        public void PlaceShip(int length, int x, int y, string direction)
+        {
+            int boardX = x-1;
+            int boardY = y-1;
+            Ship ship = new Ship(length);
+            playerShipBoard.GameBoard[x,y]=ship.ToString();
+
+            /*if (direction.ToUpper()=="V")
+            {
+                for (int i=boardX; i<boardX+length; i++)
+                {
+                    playerShipBoard.GameBoard[i,boardY]=length.ToString();
+                }
+
+            }
+            else if (direction.ToUpper()=="H")
+            {
+                for (int i=boardY; i<boardY+length; i++)
+                {
+                    playerShipBoard.GameBoard[boardX,i]=length.ToString();
+                }                
+            }*/
+
+        }
+        
     }
 }

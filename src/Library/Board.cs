@@ -56,6 +56,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
 
 
+
+
         //for anidado para imprimir la matriz
         public void imprimirTablero(Board board1)
         {

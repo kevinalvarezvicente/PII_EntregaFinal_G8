@@ -19,18 +19,21 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         public static void Main()
         {
             //inicializo el board
-            //Board board1  = new Board(4);
+            
+            Player player = new Player();
+            Board board1  = new Board(4);
+            board1.PlaceShip(3,1,1,"v");
 
-            //PRINT
-            //board1.imprimirTablero(board1);
 
-            Player player1 = new Player();
-
-            player1.PlaceShip(3,2,1,"v");
-
+            board1.imprimirTablero(board1);
             
             
-            //player1.ReceiveShot(2, 1);
+            board1.ReceiveShot(1, 1);
+            board1.ReceiveShot(0, 1);
+            board1.ReceiveShot(2, 1);
+            board1.imprimirTablero(board1);
+
+
 
             //boardPlayer.imprimirTablero(player1.gameBoard);
             

@@ -45,27 +45,59 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
         }
+        public void PlaceShip(int length, int x, int y, string direction)
+        {
+            int boardX = x-1;
+            int boardY = y-1;
+            Ship ship = new Ship(length);
 
+            if(boardX < 0 || boardX >= this.gameBoard.GetLength(0) || boardY < 0 || boardY >= this.gameBoard.GetLength(1))
+            {
+                throw new LibraryException("La coordenada no es valida");
+            }        
+            if(boardY + length > this.gameBoard.GetLength(1))
+                {
+                    throw new LibraryException("El barco no puede estar fuera del tablero");
+                }
+            if (direction.ToUpper()=="H")
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    this.gameBoard[boardX, boardY] = length.ToString();
+                    boardX++;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < length; i++)
+                {
+                    this.gameBoard[boardX, boardY] = length.ToString();
+                    boardY++;
+                }
+            }
+        }
         /// <summary>
         ///  ...
         /// </summary>
-        public bool VerifyShot(int x, int y)
+          public void ReceiveShot(int x, int y)
         {
             try
             {
-                if (this.GameBoard[x, y].Equals("o")) //si hay un barco
+                if (GameBoard[x, y].Equals("1") || GameBoard[x, y].Equals("2") || GameBoard[x, y].Equals("3"))
                 {
-                    this.GameBoard[x, y] = "x"; //si le pega lo pone como x 
-                    return true;
+                    GameBoard[x, y] = "x";
                 }
-                return false;
+                else if (GameBoard[x, y].Equals("-"))
+                {
+                    Console.WriteLine("Oceano");
+                }
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
         }
-
+        
 
 
         /// <summary>

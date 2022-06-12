@@ -24,7 +24,7 @@
              ...
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.VerifyShot(System.Int32,System.Int32)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.ReceiveShot(System.Int32,System.Int32)">
             <summary>
              ...
             </summary>

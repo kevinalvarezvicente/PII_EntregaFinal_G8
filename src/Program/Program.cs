@@ -18,23 +18,36 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            //inicializo el board
-            //Board board1  = new Board(4);
 
-            //PRINT
-            //board1.imprimirTablero(board1);
+            Player player1 = new Player(2);
 
-            Player player1 = new Player();
+            player1.PlaceShip(2,1,1,"h");
 
-            player1.PlaceShip(3,2,1,"v");
+
+            for (int i = 0; i < player1.PlayerShipBoard.GameBoard.GetLength(0); i++)
+            {
+            for (int j = 0; j < player1.PlayerShipBoard.GameBoard.GetLength(1); j++)
+                {
+                Console.Write(player1.PlayerShipBoard.GameBoard[i,j]+" ");
+                }
+            Console.WriteLine();
+            }
+
+            /*player1.ReceiveShot(1,1);
+
+            for (int i = 0; i < player1.PlayerShipBoard.GameBoard.GetLength(0); i++)
+            {
+            for (int j = 0; j < player1.PlayerShipBoard.GameBoard.GetLength(1); j++)
+                {
+                Console.Write(player1.PlayerShipBoard.GameBoard[i,j]+" ");
+                }
+            Console.WriteLine();
+            }*/
 
             
             
-            //player1.ReceiveShot(2, 1);
-
-            //boardPlayer.imprimirTablero(player1.gameBoard);
             
 
-        }
     }
+}
 }

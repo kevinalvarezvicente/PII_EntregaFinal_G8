@@ -6,10 +6,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     {
 
         private string[,] gameBoard;
+        private int maxShipsQuantity;
+        /// <summary>
+        /// Metodo que crea el tablero
+        /// Como funcionalidad extra del equipo se pone un maximo de barcos a agregar segun el tamaño del tablero
+        /// La cantidad de barcos será la mitad del tamaño del lado del tablero
+        /// </summary>
+        /// <param name="x"></param>
 
         public Board(int x)
         {
             this.InitializeBoard(x);
+            this.maxShipsQuantity = x/2;
         }
 
         public string[,] GameBoard
@@ -21,6 +29,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             private set
             {
                 this.gameBoard = value;
+            }
+        }
+
+        public int MaxShipsQuantity
+        {
+            get 
+            {
+                return this.maxShipsQuantity;
             }
         }
 
@@ -37,8 +53,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+        
 
-        public bool VerifyShot(int x, int y)
+
+        /*public bool VerifyShot(int x, int y)
         {
             try
             {
@@ -53,13 +71,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
-        }
+        }*/
 
 
 
 
         //for anidado para imprimir la matriz
-        public void imprimirTablero(Board board1)
+        /*public void imprimirTablero(Board board1)
         {
             for (int i = 0; i < gameBoard.GetLength(0); i++)
             {
@@ -86,7 +104,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
             return arreglo;
-        }
+        }*/
 
 
     }

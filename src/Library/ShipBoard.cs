@@ -2,9 +2,11 @@
 {
     public class ShipBoard : Board
     {
+        
         public ShipBoard(int x) : base(x)
         {
             this.InitializeBoard(x);
+
         }
         
 

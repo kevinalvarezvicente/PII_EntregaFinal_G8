@@ -40,10 +40,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+    
         public void InitializeBoard(int x)
         {
+            if (x >= 20){
+                //como hago pa llamar de nuevo a la funcion y que siga andando y pida de nuevo
+                throw new LibraryException("tablero muy grande");
+            }
+
             gameBoard = new string[x, x];
-        
             for (int i = 0; i < this.gameBoard.GetLength(0); i++)
             {
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)

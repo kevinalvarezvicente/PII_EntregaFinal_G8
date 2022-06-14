@@ -6,12 +6,7 @@
         {
             this.InitializeBoard(x);
         }
-        /*private List<Ship> shipList = new List<Ship>;
-
-        public void AddShip(Ship shipToAdd)
-        {
-
-        }*/
+        
 
     }
 }

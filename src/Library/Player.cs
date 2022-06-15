@@ -7,9 +7,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;
-
-        public object column { get; private set; }
-
+                
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
@@ -41,7 +39,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y] = "|";
+            playerShotBoard.GameBoard[x, y-2] = "|";
         }
 
         /// <summary>
@@ -58,16 +56,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
 
-                if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
+                if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
                 {
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "x";
                     Console.WriteLine("Barco disparado");
 
                 }
-                else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
+                else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
                 {
                     Console.WriteLine("Oceano");
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "|";
                 }
 
 
@@ -139,6 +137,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+    
         
     }
 }

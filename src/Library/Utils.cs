@@ -32,5 +32,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             return (columnNum+1, row+1);
         }
+
+        public static void Swap<T>(ref T param1, ref T param2)
+        {
+            T temporal;
+            temporal = param1;
+            param1 = param2;
+            param2 = temporal;
+        }
     }
 }

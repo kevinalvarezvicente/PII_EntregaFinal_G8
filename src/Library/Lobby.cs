@@ -44,5 +44,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+        public List<User> GetUsersSearchingForGameList()
+        {
+            return this.usersSearchingGame;
+        }
+
+
     }
 }

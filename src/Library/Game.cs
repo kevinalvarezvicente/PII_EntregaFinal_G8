@@ -64,25 +64,24 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 {
                     Console.WriteLine("Indique nuevamente las coordenadas a disparar");
                     string newCoord = Console.Read().ToString();
-                    ShotMade(newCoord);  
+                    AskForShotAgain(newCoord);  
+                }
+                else
+                {
+                    Active_Player.PrintPlayerShotBoard();
+                    Inactive_Player.PrintPlayerShipBoard();
+                    Utils.Swap(ref Active_Player, ref Inactive_Player);
+                    Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
                 }
             }
-            Active_Player.PrintPlayerShotBoard();
-            Inactive_Player.PrintPlayerShipBoard();
-            Swap.Swaping(ref Active_Player, ref Inactive_Player);
-            Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
         }
 
-        /*public void ShotMade(string coord)
+        public void AskForShotAgain(string newCoord)
         {
-            Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
-            Active_Player.MakeShot(coord);
-            Inactive_Player.ReceiveShot(coord);
-            Active_Player.PrintPlayerShotBoard();
-            Inactive_Player.PrintPlayerShipBoard();
-            Swap.Swaping(ref Active_Player, ref Inactive_Player);
-            Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
-        }*/
+            Active_Player.MakeShot(newCoord);
+            Inactive_Player.ReceiveShot(newCoord);
+        }
+
 
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
@@ -160,7 +159,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
             }
             Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-            Swap.Swaping(ref Active_Player, ref Inactive_Player);
+            Utils.Swap(ref Active_Player, ref Inactive_Player);
         }
 
         public string AskPlayerForShipCoord()

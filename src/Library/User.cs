@@ -24,7 +24,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public void WantToPlay()
         {
-            this.wantToPlay=true;
+            Lobby lobby = new Lobby();
+            lobby.AddUserToList(this);
         }
 
     }

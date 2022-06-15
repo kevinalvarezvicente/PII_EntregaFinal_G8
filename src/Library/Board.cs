@@ -47,7 +47,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             char [] lettersArray = letters.ToCharArray(); 
             gameBoard = new string[x, x];
 
-
             for (int i = 0; i < (Math.Sqrt(gameBoard.Length)); i++)
             {
                 for (int j = 0; j < (Math.Sqrt(gameBoard.Length)); j++)
@@ -72,15 +71,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
         
-            /*for (int i = 0; i < this.gameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < this.gameBoard.GetLength(1); j++)
-                {
-                    this.gameBoard[i, j] = "-";
-                }
-            }*/
         }
-
-
     }
 }

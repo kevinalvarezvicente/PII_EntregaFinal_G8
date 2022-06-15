@@ -26,11 +26,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public bool IsShipSinked()
         {
-            if (Array.TrueForAll(ship,element => element.StartsWith("x")))
-            {
-                return true;
+            for (int i = 0; i < ship.GetLength(0); i++){
+              if (ship[i] != "x") {
+                  return false;
+                }
             }
-            return false;
+            return true;
         }
         
 

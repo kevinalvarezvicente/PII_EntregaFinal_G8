@@ -63,10 +63,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 {
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
                     Console.WriteLine("Barco disparado");
+                    
+                }
+                else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("x"))
+                {
+                    //dispara a la misma posicion
+                    Console.WriteLine("ya disparaste a esta posicion");
                 }
                 else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
                 {
                     Console.WriteLine("Oceano");
+                    //ya se uso el lugar
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
                 }
             }

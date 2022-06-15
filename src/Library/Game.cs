@@ -45,6 +45,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
             Active_Player.MakeShot(coord);
             Inactive_Player.ReceiveShot(coord);
+            
             Active_Player.PrintPlayerShotBoard();
             Inactive_Player.PrintPlayerShipBoard();
             Swap.Swaping(ref Active_Player, ref Inactive_Player);

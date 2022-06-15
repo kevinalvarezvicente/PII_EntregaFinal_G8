@@ -10,6 +10,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private int userId;
         private string name;
         private List<Game> gameSavedList;
+        private bool wantToPlay;
 
         public int UserId { get; private set; }
         public string Name { get; private set; }
@@ -21,6 +22,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.Name = name;
         }
 
+        public void WantToPlay()
+        {
+            this.wantToPlay=true;
+        }
 
     }
 }

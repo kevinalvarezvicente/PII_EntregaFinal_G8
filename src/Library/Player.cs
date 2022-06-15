@@ -53,71 +53,61 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="y"></param>
         public void ReceiveShot(string coord)
         {
+           
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            try
-            {
 
                 if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
                 {
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
                     Console.WriteLine("Barco disparado");
+
                 }
                 else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
                 {
                     Console.WriteLine("Oceano");
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
                 }
-            }
-            catch
-            {
-                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
-            }
+
 
 
         }
-        /// <summary>
-        /// Este método agrega el barco en el Tablero de barcos
-        /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
-        /// </summary>
-        /// <param name="length"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="direction"></param>
-        /*public void PlaceShip(int length, string coord, string direction)
+        /*public void ReceiveShot(string coord)
         {
+            bool trySuperated = false;
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x-1;
-            int boardY = y-1;
-            Ship ship = new Ship(length);
-            
             try
             {
-
-                if (direction.ToUpper()=="V")
+                if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
                 {
-                    for (int i=boardX; i<boardX+length; i++)
-                    {
-                        GetPlayerShipBoard().GameBoard[i,boardY]=ship.GetShip()[0];
-                    }
+                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
+                    Console.WriteLine("Barco disparado");
 
                 }
-                else if (direction.ToUpper()=="H")
+                else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
                 {
-                    for (int i=boardY; i<boardY+length; i++)
-                    {
-                        GetPlayerShipBoard().GameBoard[boardX,i]=ship.GetShip()[0];
-                    }                
+                    Console.WriteLine("Oceano");
+                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
                 }
+                trySuperated = true;
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
-            PrintPlayerShipBoard();
+            finally
+            {
+                if (!trySuperated)
+                {
+                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
+                    string newCoord = Console.Read().ToString();
+                    ReceiveShot(newCoord);               
+                }
+            }
+
 
         }*/
 

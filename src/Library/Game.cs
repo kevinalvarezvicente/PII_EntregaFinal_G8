@@ -12,8 +12,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private DateTime Date;
         private Player Active_Player;
         private Player Inactive_Player;
-        private List<Board> Player1Boards;
-        private List<Board> Player2Boards;
+        private List<Board> player1Boards;
+        private List<Board> player2Boards;
+        private List<User> usersList;
 
         //Se crea el constructor para cuando se inicia un juego
 
@@ -22,6 +23,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.Date=DateTime.Now;
             this.Active_Player= new Player(player1, boardLength);
             this.Inactive_Player=new Player(player2, boardLength);
+            this.usersList= new List<User>();
+            this.usersList.Add(player1);
+            this.usersList.Add(player2);
             Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
             Active_Player.PrintPlayerShipBoard();
 
@@ -42,6 +46,35 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public void ShotMade(string coord)
         {
+            bool trySuperated = false;
+            Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
+            try
+            {
+                Active_Player.MakeShot(coord);
+                Inactive_Player.ReceiveShot(coord);
+                trySuperated=true;
+            }
+            catch
+            {
+                throw new LibraryException("Las coordenadas estan fuera de rango.");
+            }
+            finally
+            {
+                if (!trySuperated)
+                {
+                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
+                    string newCoord = Console.Read().ToString();
+                    ShotMade(newCoord);  
+                }
+            }
+            Active_Player.PrintPlayerShotBoard();
+            Inactive_Player.PrintPlayerShipBoard();
+            Swap.Swaping(ref Active_Player, ref Inactive_Player);
+            Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
+        }
+
+        /*public void ShotMade(string coord)
+        {
             Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
             Active_Player.MakeShot(coord);
             Inactive_Player.ReceiveShot(coord);
@@ -49,7 +82,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Inactive_Player.PrintPlayerShipBoard();
             Swap.Swaping(ref Active_Player, ref Inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
-        }
+        }*/
 
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
@@ -61,6 +94,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="direction"></param>
         public void PlaceShip(int length, string coord, string direction)
         {
+            bool trySuperated = false;
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
@@ -76,7 +110,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     for (int i=boardX; i<boardX+length; i++)
                     {
                         this.Active_Player.GetPlayerShipBoard().GameBoard[boardY,i]=ship.GetShip()[0];
-                        //this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardY]=ship.GetShip()[0];
+                        
                     }
 
                 }
@@ -87,11 +121,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                         this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardX]=ship.GetShip()[0];
                     }                
                 }
+                trySuperated=true;
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
+
+            finally
+            {
+                if (!trySuperated)
+                {
+                    AskPlayerForShipCoord();
+                }
+            }
+            
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.GetPlayerName()} y se imprime tablero");
             this.Active_Player.PrintPlayerShipBoard();
 
@@ -108,6 +152,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 int shipLength = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
                 string coord = Console.ReadLine();
+                //string coord = AskPlayerForShipCoord();
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
                 string direction = Console.ReadLine();
                 PlaceShip(shipLength,coord,direction);
@@ -118,120 +163,23 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Swap.Swaping(ref Active_Player, ref Inactive_Player);
         }
 
-        
-        /*public void PrintActivePlayerShotBoard()
+        public string AskPlayerForShipCoord()
         {
-            Console.WriteLine($"Se imprime el tablero de tiros de {Active_Player.GetPlayerName()}");
-            for (int i = 0; i < Active_Player.GetPlayerShotBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < Active_Player.GetPlayerShotBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(Active_Player.GetPlayerShotBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
+            Console.WriteLine("Indique la coordenada en donde desea ubicarlo: ");
+            string coord = Console.Read().ToString();
+            return coord;
         }
 
-        public void PrintInactivePlayerShotBoard()
-        {
-            Console.WriteLine($"Se imprime el tablero de tiros de {Inactive_Player.GetPlayerName()}");
-            for (int i = 0; i < Inactive_Player.GetPlayerShotBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < Inactive_Player.GetPlayerShotBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(Inactive_Player.GetPlayerShotBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
-        }
-
-        public void PrintInactivePlayerShipBoard()
-        {
-            Console.WriteLine($"Se imprime el tablero de tiros de {Inactive_Player.GetPlayerName()}");
-            for (int i = 0; i < Inactive_Player.GetPlayerShipBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < Inactive_Player.GetPlayerShipBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(Inactive_Player.GetPlayerShipBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
-        }
-
-        public void PrintActivePlayerShipBoard()
-        {
-            Console.WriteLine($"Se imprime el tablero de tiros de {Active_Player.GetPlayerName()}");
-            for (int i = 0; i < Active_Player.GetPlayerShipBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < Active_Player.GetPlayerShipBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(Active_Player.GetPlayerShipBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
-        }*/
-
-        /*private DateTime date;
-        Player Active_Player = new Player(this);
-        Player Inactive_Player = new Player(this);
-
-        public Game(User player1, User player2)
-        {
-            this.DateTime = DateTime.Now;
-        }
-
-
-        public DateTime DateTime
+        public List<User> UsersPlayingList
         {
             get
             {
-                return this.date;
-            }
-
-            private set
-            {
-                this.date = value;
-            }
-        }
-        public List<User> PlayersList
-        {
-            get
-            {
-                return this.playersList;
+                return this.usersList;
             }
 
         }
-        public List<Board> Player1Board
-        {
-            get
-            {
-                return this.player1Board;
-            }
-            private set
-            {
-                Board value1 = value;
-                this.player1Board.Add(value1);
-            }
 
-        }
-        public List<Board> Player1Board
-        {
-            get
-            {
-                return this.player2Board;
-            }
-            private set
-            {
-                Board value1 = value;
-                this.player2Board.Add(value1);
-            }
-        }
 
-        public void ShotMade(int x, int y)
-        {
-            Active_Player.MakeShot(x, y);
-            Inactive_Player.ReceiveShot(x, y);
-            Swap.Swaping(ref Active_Player, ref Inactive_Player);
-        }*/
+
     }
 }

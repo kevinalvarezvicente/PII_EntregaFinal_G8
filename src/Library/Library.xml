@@ -31,16 +31,6 @@
             <param name="x"></param>
             <param name="y"></param>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.PrintPlayerShotBoard">
-            <summary>
-            Este método agrega el barco en el Tablero de barcos
-            Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
-            </summary>
-            <param name="length"></param>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="direction"></param>
-        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>
             Class User saves and work with the user information

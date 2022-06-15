@@ -14,9 +14,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public static (int row, int column) SplitCoordIntoRowAndColumn(string coord)
         {
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            //string row = "";
+            string column = "";
             int row = 0;
-            int column = 0;
             
 
             if (coord.Length != 2)
@@ -26,13 +25,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             char[] coordArray = coord.ToArray();
 
-            //row = coordArray[0].ToString();
+            column = coordArray[1].ToString().ToUpper();
             row = int.Parse(coordArray[0].ToString());
-            column = int.Parse(coordArray[1].ToString());
 
-            //nt rowNum = letters.IndexOf(row)+1;
+            int columnNum = letters.IndexOf(column)+1;
 
-            return (row, column);
+            return (columnNum+1, row+1);
         }
     }
 }

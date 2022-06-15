@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
@@ -30,7 +31,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
-
+        public bool AreUsersToStartGame()
+        {
+            if (this.usersSearchingGame.Count>=2)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+                Console.WriteLine("No hay aún otro usuario esperando para jugar");
+            }
+        }
 
     }
 }

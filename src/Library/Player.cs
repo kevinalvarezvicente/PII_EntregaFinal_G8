@@ -7,9 +7,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;
-
-        public object column { get; private set; }
-
+                
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
@@ -41,7 +39,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y] = "|";
+            playerShotBoard.GameBoard[x, y-2] = "|";
         }
 
         /// <summary>
@@ -53,71 +51,61 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="y"></param>
         public void ReceiveShot(string coord)
         {
+           
+            int x;
+            int y;
+            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
+
+                if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
+                {
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "x";
+                    Console.WriteLine("Barco disparado");
+
+                }
+                else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
+                {
+                    Console.WriteLine("Oceano");
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "|";
+                }
+
+
+
+        }
+        /*public void ReceiveShot(string coord)
+        {
+            bool trySuperated = false;
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
             try
             {
-
                 if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
                 {
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
                     Console.WriteLine("Barco disparado");
+
                 }
                 else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
                 {
                     Console.WriteLine("Oceano");
                     GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
                 }
+                trySuperated = true;
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
-
-
-        }
-        /// <summary>
-        /// Este método agrega el barco en el Tablero de barcos
-        /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
-        /// </summary>
-        /// <param name="length"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="direction"></param>
-        /*public void PlaceShip(int length, string coord, string direction)
-        {
-            int x;
-            int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x-1;
-            int boardY = y-1;
-            Ship ship = new Ship(length);
-            
-            try
+            finally
             {
-
-                if (direction.ToUpper()=="V")
+                if (!trySuperated)
                 {
-                    for (int i=boardX; i<boardX+length; i++)
-                    {
-                        GetPlayerShipBoard().GameBoard[i,boardY]=ship.GetShip()[0];
-                    }
-
-                }
-                else if (direction.ToUpper()=="H")
-                {
-                    for (int i=boardY; i<boardY+length; i++)
-                    {
-                        GetPlayerShipBoard().GameBoard[boardX,i]=ship.GetShip()[0];
-                    }                
+                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
+                    string newCoord = Console.Read().ToString();
+                    ReceiveShot(newCoord);               
                 }
             }
-            catch
-            {
-                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
-            }
-            PrintPlayerShipBoard();
+
 
         }*/
 
@@ -149,6 +137,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
+    
         
     }
 }

@@ -182,7 +182,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
             }
             Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-            Swap.Swaping(ref Active_Player, ref Inactive_Player);
+            Utils.Swap(ref Active_Player, ref Inactive_Player);
         }
 
         public string AskPlayerForShipCoord()

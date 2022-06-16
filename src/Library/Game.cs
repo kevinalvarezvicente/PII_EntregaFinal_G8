@@ -6,7 +6,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class Game
     {
         /*
-        Agregado por Carol 
+        Agregado por Carol
         */
 
         private DateTime Date;
@@ -45,9 +45,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
             Active_Player.MakeShot(coord);
             Inactive_Player.ReceiveShot(coord);
-            
             Active_Player.PrintPlayerShotBoard();
             Inactive_Player.PrintPlayerShipBoard();
+            //aca iria el si esta hundido para ver  si realmente se hunde
             Swap.Swaping(ref Active_Player, ref Inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
         }
@@ -68,7 +68,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int boardX = x-1;
             int boardY = y-1;
             Ship ship = new Ship(length);
-            
+
             try
             {
 
@@ -86,7 +86,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     for (int i=boardY; i<boardY+length; i++)
                     {
                         this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardX]=ship.GetShip()[0];
-                    }                
+                    }
                 }
             }
             catch
@@ -105,21 +105,44 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
             while (shipsLeft>0)
             {
-                Console.WriteLine($"{Active_Player.GetPlayerName()} indique el tamaño del barco: ");
-                int shipLength = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"{Active_Player.GetPlayerName()} indique el tipo del barco: ");
+                Console.WriteLine($"{Active_Player.GetPlayerName()}los tamaños de los tres tipos son  1 tamanio 2, 2 tamanio 4, 3 tamanio 5");
+
+            int shipLength = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
                 string coord = Console.ReadLine();
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
                 string direction = Console.ReadLine();
-                PlaceShip(shipLength,coord,direction);
-                shipsLeft--;
+            switch (shipLength)
+                {
+                  case 1:
+                        PlaceShip(2, coord,direction);
+                        shipsLeft--;
+                  break;
+
+                  case 2:
+                        PlaceShip(4, coord,direction);
+                        shipsLeft--;
+                  break;
+
+                  case 3:
+                        PlaceShip(5, coord,direction);
+                        shipsLeft--;
+                  break;
+
+                  default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
+                  break;
+                }
+                Console.ForegroundColor = ConsoleColor.Gray;
                 Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
             }
             Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
             Swap.Swaping(ref Active_Player, ref Inactive_Player);
         }
 
-        
+
         /*public void PrintActivePlayerShotBoard()
         {
             Console.WriteLine($"Se imprime el tablero de tiros de {Active_Player.GetPlayerName()}");

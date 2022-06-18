@@ -1,5 +1,3 @@
-using System;
-
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     public class Board
@@ -17,7 +15,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public Board(int x)
         {
             this.InitializeBoard(x);
-            this.maxShipsQuantity = x/2;
+            this.maxShipsQuantity = x / 2;
         }
 
         public string[,] GameBoard
@@ -34,7 +32,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public int MaxShipsQuantity
         {
-            get 
+            get
             {
                 return this.maxShipsQuantity;
             }
@@ -43,7 +41,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void InitializeBoard(int x)
         {
             gameBoard = new string[x, x];
-        
+
             for (int i = 0; i < this.gameBoard.GetLength(0); i++)
             {
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)
@@ -53,7 +51,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
-        
+
 
 
         /*public bool VerifyShot(int x, int y)

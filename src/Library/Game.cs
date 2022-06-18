@@ -19,9 +19,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public Game(User player1, User player2, int boardLength)
         {
-            this.Date=DateTime.Now;
-            this.Active_Player= new Player(player1, boardLength);
-            this.Inactive_Player=new Player(player2, boardLength);
+            this.Date = DateTime.Now;
+            this.Active_Player = new Player(player1, boardLength);
+            this.Inactive_Player = new Player(player2, boardLength);
             Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
             Active_Player.PrintPlayerShipBoard();
 
@@ -63,29 +63,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             int x;
             int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x-1;
-            int boardY = y-1;
+            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
+            int boardX = x - 1;
+            int boardY = y - 1;
             Ship ship = new Ship(length);
-            
+
             try
             {
 
-                if (direction.ToUpper()=="H")
+                if (direction.ToUpper() == "H")
                 {
-                    for (int i=boardX; i<boardX+length; i++)
+                    for (int i = boardX; i < boardX + length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY,i]=ship.GetShip()[0];
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY, i] = ship.GetShip()[0];
                         //this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardY]=ship.GetShip()[0];
                     }
 
                 }
-                else if (direction.ToUpper()=="V")
+                else if (direction.ToUpper() == "V")
                 {
-                    for (int i=boardY; i<boardY+length; i++)
+                    for (int i = boardY; i < boardY + length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardX]=ship.GetShip()[0];
-                    }                
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[i, boardX] = ship.GetShip()[0];
+                    }
                 }
             }
             catch
@@ -102,7 +102,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
             int shipsLeft = maxShipsQuantity;
             Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
-            while (shipsLeft>0)
+            while (shipsLeft > 0)
             {
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique el tamaño del barco: ");
                 int shipLength = Convert.ToInt32(Console.ReadLine());
@@ -110,7 +110,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 string coord = Console.ReadLine();
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
                 string direction = Console.ReadLine();
-                PlaceShip(shipLength,coord,direction);
+                PlaceShip(shipLength, coord, direction);
                 shipsLeft--;
                 Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
             }
@@ -118,7 +118,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Swap.Swaping(ref Active_Player, ref Inactive_Player);
         }
 
-        
+
         /*public void PrintActivePlayerShotBoard()
         {
             Console.WriteLine($"Se imprime el tablero de tiros de {Active_Player.GetPlayerName()}");

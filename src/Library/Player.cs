@@ -52,10 +52,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y - 2] = "|";
+            playerShotBoard.GameBoard[x, y] = "X";
         }
 
         /// <summary>
+
         /// Este método hace que el jugador reciba el disparo ubicandolo en el tablero de disparos
         /// Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
         /// Si hay "x" es porque habia un barco y se disparo
@@ -64,20 +65,23 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="y"></param>
         public void ReceiveShot(string coord)
         {
-
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
 
-            if (GetPlayerShipBoard().GameBoard[x, y - 2].Equals("o"))
+            if (GetPlayerShipBoard().GameBoard[x, y].Equals("o"))
             {
-                GetPlayerShipBoard().GameBoard[x, y - 2] = "x";
+                GetPlayerShipBoard().GameBoard[x, y] = "x";
                 Console.WriteLine("Barco disparado");
             }
-            else if (GetPlayerShipBoard().GameBoard[x, y - 2].Equals("-"))
+            else if (GetPlayerShipBoard().GameBoard[x, y].Equals("-"))
             {
                 Console.WriteLine("Oceano");
-                GetPlayerShipBoard().GameBoard[x, y - 2] = "|";
+                GetPlayerShipBoard().GameBoard[x, y] = "|";
+            }else if (GetPlayerShipBoard().GameBoard[x, y].Equals("x"))
+            {
+                Console.WriteLine("Ya fue disparado");
+                //algun comando handler 
             }
 
 

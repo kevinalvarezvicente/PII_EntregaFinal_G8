@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -24,11 +25,12 @@ namespace PII_ENTREGAFINAL_G8.src.Program
             Console.WriteLine("El tamaño de su tablero será " + boardLength);
             Game game1 = new Game(player1, player2, boardLength);
 
-            game1.AskPlayerToPlaceShips();
-            game1.AskPlayerToPlaceShips();
-            Console.WriteLine("Debe indicar la coordenada a atacar");
-            string ShotCoord = Console.ReadLine();
-            game1.ShotMade(ShotCoord);
+
+            //game1.AskPlayerToPlaceShips();
+            //game1.AskPlayerToPlaceShips();
+            //Console.WriteLine("Debe indicar la coordenada a atacar");
+            //string ShotCoord = Console.ReadLine();
+            //game1.ShotMade(ShotCoord);
             /*int counter = 1;
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char [] lettersArray = letters.ToCharArray(); 

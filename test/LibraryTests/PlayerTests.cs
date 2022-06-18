@@ -5,7 +5,7 @@ namespace LibraryTests
 {
     public class PlayerTests
     {
-        static User Juan = new User("0", "Juan");
+        static User Juan = new User(0, "Juan");
         static Player player = new Player(Juan, 5);
         [SetUp]
         public void Setup()
@@ -14,6 +14,7 @@ namespace LibraryTests
 
         [Test]
         [TestCase("1C", true)]
+        [TestCase("1c", true)]
         public void MakeShotTest(string data, bool pass)
         {
             player.MakeShot(data);
@@ -21,5 +22,10 @@ namespace LibraryTests
             (int x, int y) = Utils.SplitCoordIntoRowAndColumn(data);
             shotBoard.GameBoard[x, y] = "|";
         }
+
+        
+
+    
+    
     }
 }

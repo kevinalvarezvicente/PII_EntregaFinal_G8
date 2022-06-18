@@ -12,6 +12,14 @@
             </summary>
             <param name="x"></param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="player1"></param>
+            <param name="player2"></param>
+            <param name="boardLength"></param>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.PlaceShip(System.Int32,System.String,System.String)">
             <summary>
             Este método agrega el barco en el Tablero de barcos
@@ -22,6 +30,16 @@
             <param name="y"></param>
             <param name="direction"></param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AskPlayerToPlaceShips">
+            <summary>
+            Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Lobby.usersSearchingGame">
+            <summary>
+             bshjh 
+            </summary>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)">
             <summary>
             Este método hace que el jugador reciba el disparo ubicandolo en el tablero de disparos
@@ -30,6 +48,26 @@
             </summary>
             <param name="x"></param>
             <param name="y"></param>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Ship">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.AddCoord(System.Int32,System.Int32)">
+            <summary>
+            Este método agrega la clave tupla con una coordanda del barco en el Tablero con el valor false
+            cuando se realice el disparo el valor de esta tupla sera true
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.IsShipSinked">
+            <summary>
+            Este método recorre todos los valores de las claves del barco.
+            Si estan todos los valores en true entonces el barco esta hundido.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>

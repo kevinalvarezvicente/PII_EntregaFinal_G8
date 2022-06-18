@@ -7,8 +7,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class User
     {
-        private int userId;
-        private string name;
         private List<Game> gameHistory;
         private bool wantToPlay;
 
@@ -17,8 +15,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public User(int userId, string name)
         {
-            this.userId = userId;
-            this.name = name;
+            this.UserId = userId;
+            this.Name = name;
             this.gameHistory = new List<Game>();
         }
 

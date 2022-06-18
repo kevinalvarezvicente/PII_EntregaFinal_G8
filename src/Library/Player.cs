@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -7,12 +8,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;
+        private List<Dictionary<(int,int), bool>> shipsList;
                 
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
+            this.shipsList = new List<Dictionary<(int,int), bool>>();
+
         }
         public Board GetPlayerShipBoard()
         {
@@ -32,6 +36,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private void SetPlayerName(string NewName)
         {
             this.playerName=NewName;
+        }
+
+        public List<Dictionary<(int,int), bool>> ShipsList
+        {
+            get
+            {
+                return this.shipsList;
+            }
+            
         }
 
         public void MakeShot(string coord)
@@ -56,88 +69,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
 
-                if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
-                {
-                    GetPlayerShipBoard().GameBoard[x, y-2] = "x";
-                    Console.WriteLine("Barco disparado");
-
-                }
-                else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
-                {
-                    Console.WriteLine("Oceano");
-                    GetPlayerShipBoard().GameBoard[x, y-2] = "|";
-                }
-
+            if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
+            {
+                GetPlayerShipBoard().GameBoard[x, y-2] = "x";
+                Console.WriteLine("Barco disparado");    
+            }
+            else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
+            {
+                Console.WriteLine("Oceano");
+                GetPlayerShipBoard().GameBoard[x, y-2] = "|";
+             }
 
 
         }
-        /*public void ReceiveShot(string coord)
-        {
-            bool trySuperated = false;
-            int x;
-            int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            try
-            {
-                if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
-                {
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
-                    Console.WriteLine("Barco disparado");
-
-                }
-                else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
-                {
-                    Console.WriteLine("Oceano");
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
-                }
-                trySuperated = true;
-            }
-            catch
-            {
-                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
-            }
-            finally
-            {
-                if (!trySuperated)
-                {
-                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
-                    string newCoord = Console.Read().ToString();
-                    ReceiveShot(newCoord);               
-                }
-            }
-
-
-        }*/
-
-        public void PrintPlayerShotBoard()
-        {
-
-            Console.WriteLine($"Se imprime el tablero de tiros de {this.GetPlayerName()}");
-            
-            for (int i = 0; i < this.GetPlayerShotBoard().GameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < this.GetPlayerShotBoard().GameBoard.GetLength(1); j++)
-                    {
-                    Console.Write(this.GetPlayerShotBoard().GameBoard[i,j]+" ");
-                    }
-                Console.WriteLine();
-            }
-        }
-
-        public void PrintPlayerShipBoard()
-        {
-            Console.WriteLine($"Se imprime el tablero de barcos de {this.GetPlayerName()}");
-            for (int i = 0; i < this.GetPlayerShipBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < this.GetPlayerShipBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(this.GetPlayerShipBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
-        }
-
-    
         
     }
 }

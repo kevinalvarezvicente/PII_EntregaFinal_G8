@@ -5,6 +5,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     public class Lobby : Singleton<Lobby>
     {
+        /// <summary>
+        ///  bshjh 
+        /// </summary>
         private List<User> usersSearchingGame;
         public void AddUserToList(User user)
         {

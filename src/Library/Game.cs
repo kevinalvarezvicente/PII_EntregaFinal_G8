@@ -50,6 +50,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
             BoardPrinter.PrintPlayerShipBoard(Active_Player);
         }
+        /// <summary>
+        /// Todas las partidas tienen su fecha de inicio
+        /// </summary>
+        /// <value>Son los getters y setters de la fecha de la partida</value>
         public DateTime DateTime
         {
             get
@@ -101,6 +105,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="length">Es el largo del barco el cual solo tiene 3 opciones</param>
         /// <param name="x">Luego de dividir la coordenada en fila y columna, la fila se guarda en x</param>
         /// <param name="y">Luego de dividir la coordenada en fila y columna, la columna se guarda en y</param>
+        /// <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
         /// <param name="direction">Las opciones son vertical u horizontal</param>
         public Ship PlaceShip(int length, string coord, string direction)
         {

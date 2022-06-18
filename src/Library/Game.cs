@@ -26,10 +26,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="boardLength"></param>
         public Game(User player1, User player2, int boardLength)
         {
-            this.Date=DateTime.Now;
-            this.Active_Player= new Player(player1, boardLength);
-            this.Inactive_Player=new Player(player2, boardLength);
-            this.usersList= new List<User>();
+            this.Date = DateTime.Now;
+            this.Active_Player = new Player(player1, boardLength);
+            this.Inactive_Player = new Player(player2, boardLength);
+            this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
             Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
@@ -54,7 +54,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             try
             {
                 Active_Player.MakeShot(coord);
-                Inactive_Player.ReceiveShot(coord);   
+                Inactive_Player.ReceiveShot(coord);
             }
             catch
             {
@@ -64,7 +64,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
             Utils.Swap(ref Active_Player, ref Inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
-                       
+
         }
 
         public void AskForShotAgain(string newCoord)
@@ -82,42 +82,42 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="direction"></param>
         public Ship PlaceShip(int length, string coord, string direction)
         {
-           
+
             int x;
             int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x-1;
-            int boardY = y-1;
+            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
+            int boardX = x - 1;
+            int boardY = y - 1;
             Ship ship = new Ship(length, coord, direction);
-            
+
             try
             {
 
-                if (direction.ToUpper()=="H")
+                if (direction.ToUpper() == "H")
                 {
-                    for (int i=boardX; i<boardX+length; i++)
+                    for (int i = boardX; i < boardX + length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY,i]="o";
-                        ship.CoordsDict.Add((boardY,i),false);
-                        
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY, i] = "o";
+                        ship.CoordsDict.Add((boardY, i), false);
+
                     }
 
                 }
-                else if (direction.ToUpper()=="V")
+                else if (direction.ToUpper() == "V")
                 {
-                    for (int i=boardY; i<boardY+length; i++)
+                    for (int i = boardY; i < boardY + length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardX]="o";
-                        ship.CoordsDict.Add((i,boardX),false);
-                        
-                    }                
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[i, boardX] = "o";
+                        ship.CoordsDict.Add((i, boardX), false);
+
+                    }
                 }
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
-            
+
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.GetPlayerName()} y se imprime tablero");
             BoardPrinter.PrintPlayerShipBoard(Active_Player);
             return ship;
@@ -141,37 +141,37 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 string coord = Console.ReadLine();
                 Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
                 string direction = Console.ReadLine();*/
-                /*switch (shipLength)
-                    {
-                    case 1:
-                            AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
-                            shipsLeft--;
-                    break;
+        /*switch (shipLength)
+            {
+            case 1:
+                    AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
+                    shipsLeft--;
+            break;
 
-                    case 2:
-                            AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
-                            shipsLeft--;
-                    break;
+            case 2:
+                    AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
+                    shipsLeft--;
+            break;
 
-                    case 3:
-                            AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
-                            PlaceShip(4, coord,direction);
-                            shipsLeft--;
-                    break;
+            case 3:
+                    AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
+                    PlaceShip(4, coord,direction);
+                    shipsLeft--;
+            break;
 
-                    default:
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
-                    break;
-                    }
-                Console.ForegroundColor = ConsoleColor.Gray;
-                Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
-                
+            default:
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
+            break;
             }
-            Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-            Console.WriteLine("---------------------------");
-            Utils.Swap(ref Active_Player, ref Inactive_Player);
-        }*/
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
+
+    }
+    Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
+    Console.WriteLine("---------------------------");
+    Utils.Swap(ref Active_Player, ref Inactive_Player);
+}*/
 
         public List<User> UsersPlayingList
         {
@@ -181,7 +181,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
-        
+
         public void AddShipToPlayerShipList(Player player, Ship ship)
         {
             player.ShipsList.Add(ship.CoordsDict);

@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
-    public class Player: LibraryException 
+    public class Player : LibraryException
     {
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;
-        private List<Dictionary<(int,int), bool>> shipsList;
-                
+        private List<Dictionary<(int, int), bool>> shipsList;
+
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
-            this.shipsList = new List<Dictionary<(int,int), bool>>();
+            this.shipsList = new List<Dictionary<(int, int), bool>>();
 
         }
         public Board GetPlayerShipBoard()
@@ -35,24 +35,24 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         private void SetPlayerName(string NewName)
         {
-            this.playerName=NewName;
+            this.playerName = NewName;
         }
 
-        public List<Dictionary<(int,int), bool>> ShipsList
+        public List<Dictionary<(int, int), bool>> ShipsList
         {
             get
             {
                 return this.shipsList;
             }
-            
+
         }
 
         public void MakeShot(string coord)
         {
             int x;
             int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y-2] = "|";
+            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
+            playerShotBoard.GameBoard[x, y - 2] = "|";
         }
 
         /// <summary>
@@ -64,24 +64,24 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="y"></param>
         public void ReceiveShot(string coord)
         {
-           
+
             int x;
             int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
+            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
 
-            if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
+            if (GetPlayerShipBoard().GameBoard[x, y - 2].Equals("o"))
             {
-                GetPlayerShipBoard().GameBoard[x, y-2] = "x";
-                Console.WriteLine("Barco disparado");    
+                GetPlayerShipBoard().GameBoard[x, y - 2] = "x";
+                Console.WriteLine("Barco disparado");
             }
-            else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
+            else if (GetPlayerShipBoard().GameBoard[x, y - 2].Equals("-"))
             {
                 Console.WriteLine("Oceano");
-                GetPlayerShipBoard().GameBoard[x, y-2] = "|";
-             }
+                GetPlayerShipBoard().GameBoard[x, y - 2] = "|";
+            }
 
 
         }
-        
+
     }
 }

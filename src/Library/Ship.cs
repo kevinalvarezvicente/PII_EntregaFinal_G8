@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -11,12 +10,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         //List<int[,]> coordList = new List<int[,]>();
         //private string [] ship;
         //List<Tuple<int, int>> _coords = new List<Tuple<int, int>>();
-        Dictionary<(int,int), bool> coordsDic;
+        Dictionary<(int, int), bool> coordsDic;
 
         public Ship(int shipSize, string coords, string direction)
         {
-            this.coordsDic = new Dictionary<(int,int), bool>();
-            
+            this.coordsDic = new Dictionary<(int, int), bool>();
+
         }
         /// <summary>
         /// Este método agrega la clave tupla con una coordanda del barco en el Tablero con el valor false
@@ -27,10 +26,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public void AddCoord(int x, int y)
         {
-            coordsDic.Add((x,y),false);
+            coordsDic.Add((x, y), false);
         }
 
-        public Dictionary<(int,int), bool> CoordsDict
+        public Dictionary<(int, int), bool> CoordsDict
         {
             get
             {
@@ -38,7 +37,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             private set
             {
-                this.coordsDic=value;
+                this.coordsDic = value;
             }
         }
         /// <summary>

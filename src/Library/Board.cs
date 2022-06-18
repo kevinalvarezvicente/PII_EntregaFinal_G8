@@ -17,7 +17,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public Board(int x)
         {
             this.InitializeBoard(x);
-            this.maxShipsQuantity = x/2;
+            this.maxShipsQuantity = x / 2;
         }
 
         public string[,] GameBoard
@@ -34,7 +34,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public int MaxShipsQuantity
         {
-            get 
+            get
             {
                 return this.maxShipsQuantity;
             }
@@ -44,25 +44,25 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             int counter = 1;
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            char [] lettersArray = letters.ToCharArray(); 
+            char[] lettersArray = letters.ToCharArray();
             gameBoard = new string[x, x];
 
             for (int i = 0; i < (Math.Sqrt(gameBoard.Length)); i++)
             {
                 for (int j = 0; j < (Math.Sqrt(gameBoard.Length)); j++)
                 {
-                    if (i==0 && j==0)
+                    if (i == 0 && j == 0)
                     {
-                        gameBoard[0,0]=" ";
+                        gameBoard[0, 0] = " ";
                     }
-                    else if (i==0 && j!=0)
+                    else if (i == 0 && j != 0)
                     {
-                        gameBoard[0,j]=lettersArray[j-1].ToString();
+                        gameBoard[0, j] = lettersArray[j - 1].ToString();
                     }
-                    else if (j==0 && i!=0)
+                    else if (j == 0 && i != 0)
                     {
-                        gameBoard[i,0]=counter.ToString();
-                        counter ++;
+                        gameBoard[i, 0] = counter.ToString();
+                        counter++;
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     }
                 }
             }
-        
+
         }
     }
 }

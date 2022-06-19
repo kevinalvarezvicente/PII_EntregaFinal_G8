@@ -58,8 +58,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">El parámetro es de tipo user</param>
         public void RemoveUserFromList(User user)
         {
-            lobby.UsersSearchingForGameList.Add(user);
+            lobby.UsersSearchingForGameList.Remove(user);
         }
+
 
     }
 }

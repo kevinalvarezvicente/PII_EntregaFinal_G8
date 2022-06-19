@@ -28,6 +28,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
 
         public abstract bool IsShipSinked();
+        public abstract int GetLength();
     }
 }
 

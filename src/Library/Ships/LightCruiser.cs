@@ -7,7 +7,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class LightCruiser: AbstractShip
     {
-        public LightCruiser(string coord, string direction):base(4)
+        public LightCruiser(string coord, string direction):base(3)
         {
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             if (direction.ToUpper()=="H")
@@ -15,15 +15,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 CoordsDict.Add((x,y),false);
                 CoordsDict.Add((x,y+1),false);
                 CoordsDict.Add((x,y+2),false);
-                CoordsDict.Add((x,y+3),false);
             }
             else if (direction.ToUpper()=="V")
             {
                 CoordsDict.Add((x,y),false);
                 CoordsDict.Add((x+1,y),false);
                 CoordsDict.Add((x+2,y),false);
-                CoordsDict.Add((x+3,y),false);
             }
+        }
+        public override int GetLength()
+        {
+            return 3;
         }
 
         /// <summary>

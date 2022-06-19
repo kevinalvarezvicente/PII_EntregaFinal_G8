@@ -7,18 +7,36 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Frigate: AbstractShip
     {
+        private Dictionary<(int, int), bool> coordsDic;
+
         public Frigate(string coord, string direction):base(2)
         {
+            this.coordsDic = new Dictionary<(int, int), bool>();
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             if (direction.ToUpper()=="H")
             {
-                CoordsDict.Add((x,y),false);
-                CoordsDict.Add((x,y+1),false);
+                this.coordsDic.Add((x,y),false);
+                this.coordsDic.Add((x,y+1),false);
             }
             else if (direction.ToUpper()=="V")
             {
-                CoordsDict.Add((x,y),false);
-                CoordsDict.Add((x+1,y),false);
+                this.coordsDic.Add((x,y),false);
+                this.coordsDic.Add((x+1,y),false);
+            }
+        }
+        public override int GetLength()
+        {
+            return 2;
+        }
+        public Dictionary<(int, int), bool> CoordsDict
+        {
+            get
+            {
+                return this.coordsDic;
+            }
+            private set
+            {
+                this.coordsDic = value;
             }
         }
 

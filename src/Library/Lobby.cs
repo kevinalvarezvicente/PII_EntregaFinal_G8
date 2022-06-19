@@ -3,43 +3,50 @@ using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
-    /// <summary>
-    /// La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
-    /// </summary>
     public class Lobby : Singleton<Lobby>
     {
-        /// <summary>
-        /// La lista de usuarios esperando para jugar
-        /// Es estatica para poder acceder a ella desde todos lados
-        /// </summary>
         private List<User> usersSearchingGame;
-        /// <summary>
-        /// Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
-        /// </summary>
-        /// <returns> Retorna un booleano tal que si hay mas de 2 usuarios retornará true </returns>
-        public bool AreUsersToStartGame() 
+        public void AddUserToList(User user)
         {
-            if (usersSearchingGame.Count>=2)
+            try
+            {
+                this.usersSearchingGame.Add(user);
+            }
+            catch
+            {
+                throw new LibraryException("Error al añadir el usuario a Lobby de espera");
+            }
+
+        }
+
+        public void RemoveUserFromList(User user)
+        {
+            try
+            {
+                this.usersSearchingGame.Remove(user);
+            }
+            catch
+            {
+                throw new LibraryException("Error al remover el usuario de Lobby de espera");
+            }
+        }
+
+        public bool AreUsersToStartGame()
+        {
+            if (this.usersSearchingGame.Count>=2)
             {
                 return true;
             }
             else
             {
                 return false;
-                
+                Console.WriteLine("No hay aún otro usuario esperando para jugar");
             }
         }
-        /// <summary>
-        /// Va a permitir que el acceso a la lista de usuarios esperando por otor jugador
-        /// </summary>
-        /// <returns>Devuelve la lista</returns>
-        public List<User> UsersSearchingForGameList
+
+        public List<User> GetUsersSearchingForGameList()
         {
-            get 
-            {
-                return this.usersSearchingGame;
-            }
-            
+            return this.usersSearchingGame;
         }
 
 

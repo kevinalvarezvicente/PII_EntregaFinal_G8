@@ -3,57 +3,34 @@ using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
-    /// <summary>
-    /// Aca se encuentran todos los métodos relacionados con el juego en general
-    /// </summary>
     public class Game
     {
-        /// <summary>
-        /// Cada partida se guarda con la fecha de comienzo
-        /// </summary>
+        /*
+        Agregado por Carol 
+        */
+
         private DateTime Date;
-        /// <summary>
-        /// El Active_Player es el jugador con el turno, comienza él siempre
-        /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
-        /// </summary>
         private Player Active_Player;
-        /// <summary>
-        /// El Inactive_Player es el jugador que espera a que sea su turno
-        /// </summary>
         private Player Inactive_Player;
-        /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
         private List<Board> player1Boards;
-        /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
         private List<Board> player2Boards;
-        /// <summary>
-        /// Para guardar la partida se guardará una lista con los usuarios que la jugaron
-        /// </summary>
         private List<User> usersList;
-        /// <summary>
-        /// Se inicia el juego con el constructor de la clase
-        /// </summary>
-        /// <param name="player1">Será el jugador que inicia todo</param>
-        /// <param name="player2"></param>
-        /// <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
+
+        //Se crea el constructor para cuando se inicia un juego
+
         public Game(User player1, User player2, int boardLength)
         {
-            this.Date = DateTime.Now;
-            this.Active_Player = new Player(player1, boardLength);
-            this.Inactive_Player = new Player(player2, boardLength);
-            this.usersList = new List<User>();
+            this.Date=DateTime.Now;
+            this.Active_Player= new Player(player1, boardLength);
+            this.Inactive_Player=new Player(player2, boardLength);
+            this.usersList= new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
             Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
-            BoardPrinter.PrintPlayerShipBoard(Active_Player);
+            Active_Player.PrintPlayerShipBoard();
+
+
         }
-        /// <summary>
-        /// Todas las partidas tienen su fecha de inicio
-        /// </summary>
-        /// <value>Son los getters y setters de la fecha de la partida</value>
         public DateTime DateTime
         {
             get
@@ -66,158 +43,165 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 this.Date = value;
             }
         }
-        /// <summary>
-        /// Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
-        /// No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
-        /// </summary>
-        /// <param name="coord"></param>
+
         public void ShotMade(string coord)
         {
+            bool trySuperated = false;
             Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
             try
             {
                 Active_Player.MakeShot(coord);
                 Inactive_Player.ReceiveShot(coord);
+                trySuperated=true;
             }
             catch
             {
                 throw new LibraryException("Las coordenadas estan fuera de rango.");
             }
-            BoardPrinter.PrintPlayerShotBoard(Active_Player);
-            BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
-            Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
-
+            finally
+            {
+                if (!trySuperated)
+                {
+                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
+                    string newCoord = Console.Read().ToString();
+                    AskForShotAgain(newCoord);  
+                }
+                else
+                {
+                    Active_Player.PrintPlayerShotBoard();
+                    Inactive_Player.PrintPlayerShipBoard();
+                    Utils.Swap(ref Active_Player, ref Inactive_Player);
+                    Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
+                }
+            }
         }
-        /// <summary>
-        /// Este método se utilizó para probar unas excepciones
-        /// </summary>
-        /// <param name="newCoord">Es la nueva coordenada</param>
+
         public void AskForShotAgain(string newCoord)
         {
             Active_Player.MakeShot(newCoord);
             Inactive_Player.ReceiveShot(newCoord);
         }
+
+
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
         /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
         /// </summary>
-        /// <param name="length">Es el largo del barco el cual solo tiene 3 opciones</param>
-        /// <param name="x">Luego de dividir la coordenada en fila y columna, la fila se guarda en x</param>
-        /// <param name="y">Luego de dividir la coordenada en fila y columna, la columna se guarda en y</param>
-        /// <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
-        /// <param name="direction">Las opciones son vertical u horizontal</param>
-        public Ship PlaceShip(int length, string coord, string direction)
+        /// <param name="length"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="direction"></param>
+        public void PlaceShip(int length, string coord, string direction)
         {
-
+            bool trySuperated = false;
             int x;
             int y;
-            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x - 1;
-            int boardY = y - 1;
-            Ship ship = new Ship(length, coord, direction);
-
+            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
+            int boardX = x-1;
+            int boardY = y-1;
+            Ship ship = new Ship(length);
+            
             try
             {
 
-                if (direction.ToUpper() == "H")
+                if (direction.ToUpper()=="H")
                 {
-                    for (int i = boardX; i < boardX + length; i++)
+                    for (int i=boardX; i<boardX+length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY, i] = "o";
-                        ship.CoordsDict.Add((boardY, i), false);
-
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[boardY,i]=ship.GetShip()[0];
+                        
                     }
 
                 }
-                else if (direction.ToUpper() == "V")
+                else if (direction.ToUpper()=="V")
                 {
-                    for (int i = boardY; i < boardY + length; i++)
+                    for (int i=boardY; i<boardY+length; i++)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i, boardX] = "o";
-                        ship.CoordsDict.Add((i, boardX), false);
-
-                    }
+                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,boardX]=ship.GetShip()[0];
+                    }                
                 }
+                trySuperated=true;
             }
             catch
             {
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
 
-            Console.WriteLine($"Se ubican los barcos de {this.Active_Player.GetPlayerName()} y se imprime tablero");
-            BoardPrinter.PrintPlayerShipBoard(Active_Player);
-            return ship;
-        }
-
-            // <summary>
-            // Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
-            // Sirve al comienzo para chequear que el tablero se imprima bien sin realizar test
-
-
-            /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)
+            finally
             {
-                int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
-                int shipsLeft = maxShipsQuantity;
-                Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
-                while (shipsLeft>0)
+                if (!trySuperated)
                 {
-                    /*Console.WriteLine($"{Active_Player.GetPlayerName()} Indique el tipo del barco: ");
-                    Console.WriteLine($"Opciones a elegir:\n1) 2 Coordenadas \n2) 3 Coordenadas \n3) 4 coordendas");
-                    int shipLength = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
-                    string coord = Console.ReadLine();
-                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
-                    string direction = Console.ReadLine();*/
-            /*switch (shipLength)
+                    AskPlayerForShipCoord();
+                }
+            }
+            
+            Console.WriteLine($"Se ubican los barcos de {this.Active_Player.GetPlayerName()} y se imprime tablero");
+            this.Active_Player.PrintPlayerShipBoard();
+
+        }
+        
+
+        public void AskPlayerToPlaceShips()
+        {
+            int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
+            int shipsLeft = maxShipsQuantity;
+            Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
+            while (shipsLeft>0)
+            {
+                Console.WriteLine($"{Active_Player.GetPlayerName()} indique el tipo del barco: ");
+                Console.WriteLine($"{Active_Player.GetPlayerName()}los tamaños de los tres tipos son  1 tamanio 2, 2 tamanio 4, 3 tamanio 5");
+
+            int shipLength = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
+                string coord = Console.ReadLine();
+                Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
+                string direction = Console.ReadLine();
+            switch (shipLength)
                 {
-                case 1:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
+                  case 1:
+                        PlaceShip(2, coord,direction);
                         shipsLeft--;
-                break;
+                  break;
 
-                case 2:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
-                        shipsLeft--;
-                break;
-
-                case 3:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
+                  case 2:
                         PlaceShip(4, coord,direction);
                         shipsLeft--;
-                break;
+                  break;
 
-                default:
+                  case 3:
+                        PlaceShip(5, coord,direction);
+                        shipsLeft--;
+                  break;
+
+                  default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
-                break;
+                  break;
                 }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
-
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
+            }
+            Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
+            Utils.Swap(ref Active_Player, ref Inactive_Player);
         }
-        Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-        Console.WriteLine("---------------------------");
-        Utils.Swap(ref Active_Player, ref Inactive_Player);
-        }*/
-        /// <summary>
-        /// Usuarios que jugarán la partida
-        /// </summary>
-        /// <value>Es una lista de tipo User</value>
+
+        public string AskPlayerForShipCoord()
+        {
+            Console.WriteLine("Indique la coordenada en donde desea ubicarlo: ");
+            string coord = Console.Read().ToString();
+            return coord;
+        }
+
         public List<User> UsersPlayingList
         {
             get
             {
                 return this.usersList;
             }
+
         }
-        /// <summary>
-        /// Este método agrega el barco creado en la posición a una lista de barcos del jugador
-        /// </summary>
-        /// <param name="player">El dueño de la lista de barcos</param>
-        /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
-        public void AddShipToPlayerShipList(Player player, Ship ship)
-        {
-            player.ShipsList.Add(ship.CoordsDict);
-        }
+
+
+
     }
 }

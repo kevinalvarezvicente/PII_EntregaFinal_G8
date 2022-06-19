@@ -4,208 +4,32 @@
         <name>Library</name>
     </assembly>
     <members>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Administrator">
-            <summary>
-            Esta clase cumple el rol de administrador al unir dos usuarios esperando para jugar
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Administrator._administrator">
-            <summary>
-            Se crea una instancia de clase
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Administrator.lobby">
-            <summary>
-            Se crea Lobby donde los usuarios aguardan para comenzar a jugar, el cual será Singleton
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.JoinUsersToPlay(PII_ENTREGAFINAL_G8.src.Library.User,PII_ENTREGAFINAL_G8.src.Library.User)">
-            <summary>
-            El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
-            Como ya ambos usuarios comenzaron a jugar y se transformaron en jugadores los quita del lobby de espera
-            </summary>
-            <param name="user1">Usuario que comenzará el juego</param>
-            <param name="user2">Uusario contrario</param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.ReceiveUsersSearchingGameList">
-            <summary>
-            Este método une a los usuarios usando JoinUsersToPlay
-            toma los dos primeros usuarios en el lobby una vez que se comprueba que hay mas de un usuario esperando por una partida
-            </summary>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Board">
-            <summary>
-            Clase donde comienza el tablero
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Board.gameBoard">
-            <summary>
-            Se crea atributo privado de la matriz
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Board.maxShipsQuantity">
-            <summary>
-            Atributo que permite tener una cantidad maxima de barcos segun el tamaño del tablero
-            </summary>
-        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.#ctor(System.Int32)">
             <summary>
-            Constructor del tablero
+            Metodo que crea el tablero
             Como funcionalidad extra del equipo se pone un maximo de barcos a agregar segun el tamaño del tablero
             La cantidad de barcos será la mitad del tamaño del lado del tablero
             </summary>
-            <param name="x">Es un entero que representa el largo del lado del tablero</param>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Board.GameBoard">
-            <summary>
-            Es una matriz de strings
-            </summary>
-            <value>Matriz del tablero general</value>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Board.MaxShipsQuantity">
-            <summary>
-            Permite acceder a la cantidad maxima de barcos
-            </summary>
-            <value>Es de tipo entero</value>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.InitializeBoard(System.Int32)">
-            <summary>
-            Metodo que inicializa el tablero 
-            </summary>
-            <param name="x">Largo del lado del tablero</param>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter">
-            <summary>
-            Esta clase servira para imprimir los tableros
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerShotBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
-            <summary>
-            Permite imprimir el tablero de tiros del jugador pasado por parámetro
-            Es estático porque permite ser implementado sin crear el objeto BoardPrinter
-            </summary>
-            <param name="player">Jugador dueño del tablero que se desea imprimir por pantalla</param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerShipBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
-            <summary>
-            Permite imprimir el tablero de barcos del jugador pasado por parámetro
-            Es estático porque permite ser implementado sin crear el objeto BoardPrinter
-            </summary>
-            <param name="player">Jugador dueño del tablero que deseo imprimir por pantalla</param>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
-            <summary>
-            Aca se encuentran todos los métodos relacionados con el juego en general
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Date">
-            <summary>
-            Cada partida se guarda con la fecha de comienzo
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Active_Player">
-            <summary>
-            El Active_Player es el jugador con el turno, comienza él siempre
-            Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Inactive_Player">
-            <summary>
-            El Inactive_Player es el jugador que espera a que sea su turno
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.player1Boards">
-            <summary>
-            Se crea una lista con ambos tableros del jugador
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.player2Boards">
-            <summary>
-            Se crea una lista con ambos tableros del jugador
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.usersList">
-            <summary>
-            Para guardar la partida se guardará una lista con los usuarios que la jugaron
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
-            <summary>
-            Se inicia el juego con el constructor de la clase
-            </summary>
-            <param name="player1">Será el jugador que inicia todo</param>
-            <param name="player2"></param>
-            <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.DateTime">
-            <summary>
-            Todas las partidas tienen su fecha de inicio
-            </summary>
-            <value>Son los getters y setters de la fecha de la partida</value>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.ShotMade(System.String)">
-            <summary>
-            Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
-            No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
-            </summary>
-            <param name="coord"></param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AskForShotAgain(System.String)">
-            <summary>
-            Este método se utilizó para probar unas excepciones
-            </summary>
-            <param name="newCoord">Es la nueva coordenada</param>
+            <param name="x"></param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.PlaceShip(System.Int32,System.String,System.String)">
             <summary>
             Este método agrega el barco en el Tablero de barcos
             Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
             </summary>
-            <param name="length">Es el largo del barco el cual solo tiene 3 opciones</param>
-            <param name="x">Luego de dividir la coordenada en fila y columna, la fila se guarda en x</param>
-            <param name="y">Luego de dividir la coordenada en fila y columna, la columna se guarda en y</param>
-            <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
-            <param name="direction">Las opciones son vertical u horizontal</param>
+            <param name="length"></param>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="direction"></param>
         </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.UsersPlayingList">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)">
             <summary>
-            Uusarios que jugarán la partida
-            </summary>
-            <value>Es una lista de tipo User</value>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AddShipToPlayerShipList(PII_ENTREGAFINAL_G8.src.Library.Player,PII_ENTREGAFINAL_G8.src.Library.Ship)">
-            <summary>
-            Este método agrega el barco creado en la posición a una lista de barcos del jugador
-            </summary>
-            <param name="player">El dueño de la lista de barcos</param>
-            <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Lobby.usersSearchingGame">
-            <summary>
-             bshjh 
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)" -->
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Ship">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.AddCoord(System.Int32,System.Int32)">
-            <summary>
-            Este método agrega la clave tupla con una coordanda del barco en el Tablero con el valor false
-            cuando se realice el disparo el valor de esta tupla sera true
+            Este método hace que el jugador reciba el disparo ubicandolo en el tablero de disparos
+            Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
+            Si hay "x" es porque habia un barco y se disparo
             </summary>
             <param name="x"></param>
             <param name="y"></param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.IsShipSinked">
-            <summary>
-            Este método recorre todos los valores de las claves del barco.
-            Si estan todos los valores en true entonces el barco esta hundido.
-            </summary>
-            <returns></returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>

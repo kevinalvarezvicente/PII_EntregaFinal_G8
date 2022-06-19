@@ -39,12 +39,13 @@ namespace LibraryTests
         [TestCase("11")]
         public void userloby(string data)
         {   
+            Administrator admin = new Administrator();
             Lobby lobby = new Lobby();
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
             Game game1   = new Game(player1, player2, 10);
-            lobby.AddUserToList(player1);
-            lobby.AddUserToList(player2);
+            admin.AddUserToList(player1);
+            admin.AddUserToList(player2);
             lobby.CountUsersSearchingForGame();
             Assert.AreEqual(2, lobby.CountUsersSearchingForGame());
         }

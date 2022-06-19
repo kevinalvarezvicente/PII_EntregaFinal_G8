@@ -194,6 +194,13 @@
             <param name="player">El dueño de la lista de barcos</param>
             <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AreAllShipsSinked(PII_ENTREGAFINAL_G8.src.Library.Player)">
+            <summary>
+            Este método permite saber si un jugador tiene todos sus barcos hundidos.
+            Retorna true si todos los valores son true
+            </summary>
+            <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Lobby">
             <summary>
             La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
@@ -224,10 +231,90 @@
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShipBoard">
             <summary>
-            Cada jugador tiene un tablero donde insertará 
+            Cada jugador tiene un tablero donde insertará sus barcos
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)" -->
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShotBoard">
+            <summary>
+            Cada jugador tiene un tablero donde irán los tiros
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerName">
+            <summary>
+            El jugador se pone un nombre
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.shipsList">
+            <summary>
+            Cada jugador tiene una lista de diccionarios
+            cada diccionario es un barco
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
+            <summary>
+            Constructor de player
+            </summary>
+            <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
+            <param name="BoardLength">Elige el tamaño del tablero</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShipBoard">
+            <summary>
+            Permite obtener el tablero de barcos
+            </summary>
+            <returns>Retorna una matriz con los barcos agregados</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShotBoard">
+            <summary>
+            Permite obtener el tablero de tiros
+            </summary>
+            <returns>Retorna una matriz con los tiros realizados </returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerName">
+            <summary>
+            Para obtener el nombre del usuario
+            </summary>
+            <returns>Retorna el nombre del usuario</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.SetPlayerName(System.String)">
+            <summary>
+            Permite al jugador cambiar su nombre
+            </summary>
+            <param name="NewName">Recibe un nuevo nombre para el jugador</param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Player.ShipsList">
+            <summary>
+            Es la lista de barcos formada por diccionarios
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.SearchForCoordInShipsList(System.String)">
+            <summary>
+            Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
+            </summary>
+            <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.MakeShot(System.String)">
+            <summary>
+            Realiza el shot
+            </summary>
+            <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)">
+            <summary>
+            Este método hace que el jugador reciba el disparo ubicandolo en el tablero de disparos
+            Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
+            Si hay "x" es porque habia un barco y se disparo
+            </summary>
+            <param name="x"> X Es la coordenada x de la posición del disparo en el tablero</param>
+            <param name="y"> Y Es la coordenada y de la posición del disparo en el tablero</param>
+            <param name="coord">Es la coordenada que se pasa por parámetro</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AreAllShipsSinked">
+            <summary>
+            Este método permite saber si un jugador tiene todos sus barcos hundidos.
+            Retorna true si todos los valores son true
+            </summary>
+            <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AbstractShip">
             <summary>
             Clase agregada por OCP
@@ -268,6 +355,27 @@
             Si estan todos los valores en true entonces el barco esta hundido.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Singleton`1">
+            <summary>
+            Se hace para poder utilizar singleton con diferentes clases
+            Al generar la clase se instancia T de manera unica
+            Clase que permite controlar que solo se instancie una vez
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Singleton`1.instance">
+            <summary>
+            Constructor privado, es el unico que sabe que esta instanciado
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Singleton`1.Instance">
+             <summary>
+             Al acceder por primera vez a la propiedad de clase Instance 
+             se crea la única instancia y se guarda en la variable de clase privada instance
+            Luego cada vez que se accede a la propiedad de clase Instance se retorna esa única instancia.*/
+             </summary>
+             <value></value>      
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>

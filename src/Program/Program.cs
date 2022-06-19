@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 using System;
+using System.Linq;
 using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
@@ -24,14 +25,22 @@ namespace PII_ENTREGAFINAL_G8.src.Program
 
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
+            Game game1   = new Game(player1, player2, 10);
+            game1.PlaceShip(1, "11", "V");
+            
+
+            //Singleton<Administrator>.Instance.AddUserToList(player1);
+            //Singleton<Administrator>.Instance.AddUserToList(player2);
+            //Console.WriteLine(Singleton<Lobby>.Instance.GetUsersSearchingGame().Count());
+
             //Console.WriteLine($"{player1.Name} indique el tamaño del tablero: ");
             //int boardLength = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine("El tamaño de su tablero será " + boardLength);
-            Game game1 = new Game(player1, player2, 8);
-            game1.PlaceShip(1,"11","v");
-            player1.AddGameToGameHistory(game1);
-            int cant1=player1.GameHistory.Count;
-            Console.WriteLine(cant1);
+            //Game game1 = new Game(player1, player2, 8);
+            //game1.PlaceShip(1,"11","v");
+            //player1.AddGameToGameHistory(game1);
+            //int cant1=player1.GameHistory.Count;
+            //Console.WriteLine(cant1);
 
             //Singleton<Administrator>.Instance.RegisterUser(5,"Carolina");
 

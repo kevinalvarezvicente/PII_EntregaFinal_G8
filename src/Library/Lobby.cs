@@ -8,30 +8,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Lobby 
     {
+        
         //private static Lobby _instance;
         private List<User> UsersSearchingGame = new List<User>();
-        /*public static Lobby Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new Lobby();
-                }
-                return _instance;
-            }
-        }
-        private Lobby()
-        {
-        }*/
-
-        /// <summary>
-        /// La lista de usuarios esperando para jugar
-        /// </summary>
-
-        /*public Lobby()
-        {
-        }*/
+        
         /// <summary>
         /// Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
         /// </summary>
@@ -63,10 +43,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public List<User> GetUsersSearchingGame()
         {
             return UsersSearchingGame;
-        }
-        public int CountUsersSearchingForGame()
-        {
-            return UsersSearchingGame.Count;
         }
 
     }

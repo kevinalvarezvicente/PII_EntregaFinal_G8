@@ -1,34 +1,33 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Ship
+    public class Frigate: AbstractShip
     {
-        //List<int[,]> coordList = new List<int[,]>();
-        //private string [] ship;
-        //List<Tuple<int, int>> _coords = new List<Tuple<int, int>>();
-        Dictionary<(int, int), bool> coordsDic;
+        private Dictionary<(int, int), bool> coordsDic;
 
-        public Ship(int shipSize, string coords, string direction)
+        public Frigate(string coord, string direction):base(2)
         {
             this.coordsDic = new Dictionary<(int, int), bool>();
-
+            (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
+            if (direction.ToUpper()=="H")
+            {
+                this.coordsDic.Add((x,y),false);
+                this.coordsDic.Add((x,y+1),false);
+            }
+            else if (direction.ToUpper()=="V")
+            {
+                this.coordsDic.Add((x,y),false);
+                this.coordsDic.Add((x+1,y),false);
+            }
         }
-        /// <summary>
-        /// Este método agrega la clave tupla con una coordanda del barco en el Tablero con el valor false
-        /// cuando se realice el disparo el valor de esta tupla sera true
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-
-        public void AddCoord(int x, int y)
+        public override int GetLength()
         {
-            coordsDic.Add((x, y), false);
+            return 2;
         }
-
         public Dictionary<(int, int), bool> CoordsDict
         {
             get
@@ -40,15 +39,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 this.coordsDic = value;
             }
         }
+
         /// <summary>
         /// Este método recorre todos los valores de las claves del barco.
         /// Si estan todos los valores en true entonces el barco esta hundido.
         /// </summary>
         /// <returns></returns>
-
-        public bool IsShipSinked()
+        public override bool IsShipSinked()
         {
-            foreach (bool value in coordsDic.Values)
+            foreach (bool value in CoordsDict.Values)
             {
                 if (value is false)
                 {
@@ -59,5 +58,4 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
     }
 }
-
 

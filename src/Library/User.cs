@@ -22,8 +22,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public void WantToPlay()
         {
-            Lobby lobby = new Lobby();
-            lobby.AddUserToList(this);
+            Administrator administrator = new Administrator();
+            administrator.AddUserToList(this);
         }
 
         public void AddGameToGameHistory(Game game)

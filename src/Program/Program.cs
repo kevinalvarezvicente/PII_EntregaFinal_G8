@@ -25,7 +25,6 @@ namespace PII_ENTREGAFINAL_G8.src.Program
             //Console.WriteLine("El tamaño de su tablero será " + boardLength);
             Game game1 = new Game(player1, player2, 10);
             Lobby lobby = new Lobby();
-            lobby.AddUserToList(player1);
             lobby.CountUsersSearchingForGame();
             
 

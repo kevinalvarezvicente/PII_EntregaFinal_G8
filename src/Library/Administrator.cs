@@ -3,9 +3,10 @@ using System;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Esta clase cumple el rol de administrador al unir dos usuarios esperando para jugar
+    /// Esta clase cumple el rol de administrador al unir dos usuarios esperando para jugar.
+    /// Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases
     /// </summary>
-    public class Administrator
+    public class Administrator: Singleton<Administrator>
     {
         /// <summary>
         /// Se crea una instancia de clase
@@ -28,8 +29,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{user1.Name} indique el tamaño del tablero");
             int boardLength = Console.Read();
             Game game = new Game(user1, user2, boardLength);
-            lobby.RemoveUserFromList(user1);
-            lobby.RemoveUserFromList(user2);
+            RemoveUserFromList(user1);
+            RemoveUserFromList(user2);
         }
         /// <summary>
         /// Este método une a los usuarios usando JoinUsersToPlay
@@ -39,9 +40,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             if (lobby.AreUsersToStartGame())
             {
-                JoinUsersToPlay(lobby.GetUsersSearchingForGameList()[0], lobby.GetUsersSearchingForGameList()[1]);
+                JoinUsersToPlay(lobby.UsersSearchingForGameList[0], lobby.UsersSearchingForGameList[1]);
             }
         }
+        /// <summary>
+        /// Se agrega el usuario a la lista de usuarios esperando para jugar
+        /// </summary>
+        /// <param name="user">El parámetro es de tipo user</param>
+        public void AddUserToList(User user)
+        {
+            lobby.UsersSearchingForGameList.Add(user);
+
+        }
+        /// <summary>
+        /// Se quita el usuario de la lista una vez que se arma una partida
+        /// </summary>
+        /// <param name="user">El parámetro es de tipo user</param>
+        public void RemoveUserFromList(User user)
+        {
+            lobby.UsersSearchingForGameList.Remove(user);
+        }
+
 
     }
 }

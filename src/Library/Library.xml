@@ -29,6 +29,12 @@
             toma los dos primeros usuarios en el lobby una vez que se comprueba que hay mas de un usuario esperando por una partida
             </summary>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.AddUserToList(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Se agrega el usuario a la lista de usuarios esperando para jugar
+            </summary>
+            <param name="user">El parámetro es de tipo user</param>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RemoveUserFromList(PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
             Se quita el usuario de la lista una vez que se arma una partida
@@ -127,7 +133,12 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
             <summary>
-            Aca se encuentran todos los métodos relacionados con el juego en general
+            Aca se encuentran todos los métodos relacionados con el juego en general.
+            La clase Game cumle con Expert siendo ésta  la clase que tiene 
+            la información necesaria para poder cumplir con la lógica del programa. 
+            Hacer los tiros
+            Ubicar barcos
+            Indicar si finalizó la partida
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Date">
@@ -193,18 +204,20 @@
             <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
             <param name="direction">Las opciones son vertical u horizontal</param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.ChooseShipOption(System.Int32,System.String,System.String)">
+            <summary>
+            Es un método que al recibir la posicion del barco la pone en el board.
+            utiliza patron creator para instanciar el barco según opcion
+            </summary>
+            <param name="option">Es un entero, hay solo 3 opciones de barco </param>
+            <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
+            <param name="direction">Es una cadena que recive v o h</param>
+        </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.UsersPlayingList">
             <summary>
             Usuarios que jugarán la partida
             </summary>
             <value>Es una lista de tipo User</value>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AddShipToPlayerShipList(PII_ENTREGAFINAL_G8.src.Library.Player,PII_ENTREGAFINAL_G8.src.Library.Ship)">
-            <summary>
-            Este método agrega el barco creado en la posición a una lista de barcos del jugador
-            </summary>
-            <param name="player">El dueño de la lista de barcos</param>
-            <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AreAllShipsSinked(PII_ENTREGAFINAL_G8.src.Library.Player)">
             <summary>
@@ -212,6 +225,12 @@
             Retorna true si todos los valores son true
             </summary>
             <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.GameFinished">
+            <summary>
+            Método que chequea que todos los barcos de alguno de los jugadores estén hundidos
+            </summary>
+            <returns>Retorna true o false para finalizar el juego</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Lobby">
             <summary>
@@ -231,7 +250,7 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Player">
             <summary>
-            Esta clase es la que crea al jugador
+            Esta clase es la que crea al jugador. 
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShipBoard">
@@ -319,9 +338,24 @@
             </summary>
             <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.PlaceShipOnBoard(PII_ENTREGAFINAL_G8.src.Library.Ship)">
+            <summary>
+            Operación polimórifca que ubica el barco en el tablero.
+            </summary>
+            <param name="ship">Es de tipo Ship pero se pasa por parpametro cualquier subtipo de Ship</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AddShipToPlayerShipList(PII_ENTREGAFINAL_G8.src.Library.Ship)">
+            <summary>
+            Este método agrega el barco creado en la posición a una lista de barcos del jugador
+            </summary>
+            <param name="player">El dueño de la lista de barcos</param>
+            <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Frigate">
             <summary>
-            Es el barco mas pequeño
+            Es el barco mas pequeño, hereda de Ship
+            Es una subclase de Ship ya que  atributos y métodos de otra clase y 
+            habitualmente se puede agregar nuevos atributos y nuevos métodos 
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Frigate.#ctor(System.String,System.String)">
@@ -334,7 +368,9 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.LightCruiser">
             <summary>
-            Es un tipo de barco
+            Es el barco tamaño mediano
+            Es una subclase de Ship ya que  atributos y métodos de otra clase y 
+            habitualmente se puede agregar nuevos atributos y nuevos métodos 
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.LightCruiser.#ctor(System.String,System.String)">
@@ -347,7 +383,13 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Ship">
             <summary>
-            Clase agregada por herencia
+            Clase base de barcos pues es la clase a partir de la cual se hereda
+            Permite que si el día de mañana se desea agregar otro tamaño de barco se pueda sin problema, sin necesidad de modificar tanto el código.
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.vulnerableCoord">
+            <summary>
+            Cada barco tiene su coordenada de vulnerabilidad.
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.coordsDic">
@@ -355,24 +397,55 @@
             Cada barco tendrá su diccionario cuyas claves son las coordenadas donde se ubica cada parte del mismo
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.#ctor(System.Int32)">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.shipSize">
+            <summary>
+            Cada barco tiene un tamaño especifico de cada uno que es la cantidad de clave-valor que tiene dicho barco
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.#ctor(System.Int32,System.String,System.String)">
             <summary>
             Constructor que recibe por parámetro el tamaño
             </summary>
             <param name="shipSize">Es un entero que da el tamaño del barco</param>
+            <param name="coord">Es una cadena donde comienza la primer posición del barco</param>
+            <param name="direction">Es una cadena la dirección del barco, vertical u horizontal</param>
         </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.CoordsDict">
             <summary>
             Permite obtener el diccionario para el barco
             </summary>
         </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.ShipSize">
+            <summary>
+            Permite obtener el largo del diccionario
+            </summary>
+            <value></value>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.IsShipSinked">
             <summary>
             Este método recorre todos los valores de las claves del barco.
             Si estan todos los valores en true entonces el barco esta hundido.
-            Método común a todas las subclases de Ship, o sea a las clases que heredan de ship.
+            Método que será heredado las subclases de Ship, o sea a las clases que heredan de ship.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.ShotInVulnerableCoord(System.String)">
+            <summary>
+            Método que chequea si la coordenada donde se disparo fue la vulnerable
+            </summary>
+            <param name="coord">Es de tipo string que liuego se dividira en (x,y) </param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.IsSinked">
+            <summary>
+            Método booleano que instancia al método.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.VulnerableCoord">
+            <summary>
+            Se crea una coordenada vulnerable, si se dispara ahí, el barco se hundirá completamente
+            </summary>
+            <value></value>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Submarine">
             <summary>

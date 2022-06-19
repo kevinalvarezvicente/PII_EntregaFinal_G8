@@ -17,7 +17,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             if (coord.Length != 2)
             {
-                throw new LibraryException($"{coord} es una coordenada inválida ");
+                throw new CoordException($"{coord} es una coordenada inválida");
             }
             char[] coordArray = coord.ToArray();
             int row= (int)Char.GetNumericValue(coordArray[0]);

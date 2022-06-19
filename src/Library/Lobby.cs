@@ -6,7 +6,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
     /// </summary>
-    public class Lobby : Singleton<Lobby>
+    public class Lobby 
     {
         //private static Lobby _instance;
         private List<User> UsersSearchingGame = new List<User>();

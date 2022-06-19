@@ -7,34 +7,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Esta clase cumple el rol de administrador.
     /// Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases
     /// </summary>
-    public class Administrator: Singleton<Administrator>
+    public class Administrator
     {
         /// <summary>
         /// Crea un diccionario cuya clave es el id y el valor es el nombre
         /// </summary>
         
         private Dictionary<int,string> allUsers = new Dictionary<int, string>();
-        /*private static Administrator _instance; 
-        public static Administrator Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new Administrator();
-                }
-                return _instance;
-            }
-        }*/
-        /// <summary>
-        /// Se crea una instancia de clase
-        /// </summary>
-        //public Administrator _administrator;
-        /// <summary>
-        /// Se crea Lobby donde los usuarios aguardan para comenzar a jugar, el cual será Singleton
-        /// </summary>
-        /// <returns></returns>
-        //Lobby lobby = new Lobby();
 
         /// <summary>
         /// El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
@@ -59,19 +38,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             if (Singleton<Lobby>.Instance.AreUsersToStartGame())
             {
-                JoinUsersToPlay(Singleton<Lobby>.Instance.GetUsersSearchingGame()[0], Lobby.Instance.GetUsersSearchingGame()[1]);
+                JoinUsersToPlay(Singleton<Lobby>.Instance.GetUsersSearchingGame()[0], Singleton<Lobby>.Instance.GetUsersSearchingGame()[1]);
             }
         }
-
         /// <summary>
         /// Se agrega el usuario a la lista de usuarios esperando para jugar
         /// </summary>
         /// <param name="user">El parámetro es de tipo user</param>
-        /*public void AddUserToList(User user)
+        public void AddUserToList(User user)
         {
-            Lobby.Instance.AddUserToSearchingGameList(user);
+            Singleton<Lobby>.Instance.AddUserToSearchingGameList(user);
 
-        }*/
+        }
 
         /// <summary>
         /// Se quita el usuario de la lista una vez que se arma una partida
@@ -79,7 +57,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">El parámetro es de tipo user</param>
         public void RemoveUserFromList(User user)
         {
-            Lobby.Instance.RemoveUserFromSearchingGameList(user);
+            Singleton<Lobby>.Instance.RemoveUserFromSearchingGameList(user);
         }
 
         public void EndGame(Game game)

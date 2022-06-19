@@ -37,7 +37,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         public void WantToPlay()
         {
-            Lobby.Instance.AddUserToSearchingGameList(this);
+            Singleton<Lobby>.Instance.AddUserToSearchingGameList(this);
         }
         /// <summary>
         /// Añade el juego al historial de juegos del usuario

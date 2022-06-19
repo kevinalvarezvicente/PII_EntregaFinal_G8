@@ -15,22 +15,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Es la coordenada inicial y a partir de esta ya se guardan las siguientes como claves</param>
         /// <param name="direction">El usuario puede elegir si lo quiere ubicar vertical u horizontal</param>
         /// <returns></returns>
-        public Frigate(string coord, string direction):base(2)
-        {
-            (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            if (direction.ToUpper()=="H")
-            {
-                CoordsDict.Add((x,y),false);
-                CoordsDict.Add((x,y+1),false);
-                this.VulnerableCoord=(x,y);
-            }
-            else if (direction.ToUpper()=="V")
-            {
-                CoordsDict.Add((x,y),false);
-                CoordsDict.Add((x+1,y),false);
-                this.VulnerableCoord=(x,y);
-            }
-            
+        public Frigate(string coord, string direction):base(2, coord, direction)
+        {      
         }
 
 

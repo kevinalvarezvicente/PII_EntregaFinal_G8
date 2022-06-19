@@ -18,9 +18,9 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            Board board= new Board(10);
+            /*Board board= new Board(10);
             int cant = board.MaxShipsQuantity;
-            Console.WriteLine(cant);
+            Console.WriteLine(cant);*/
 
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
@@ -28,7 +28,7 @@ namespace PII_ENTREGAFINAL_G8.src.Program
             //int boardLength = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine("El tamaño de su tablero será " + boardLength);
             Game game1 = new Game(player1, player2, 8);
-            game1.PlaceShip(2,"21","v");
+            game1.PlaceShip(1,"11","v");
             player1.AddGameToGameHistory(game1);
             int cant1=player1.GameHistory.Count;
             Console.WriteLine(cant1);

@@ -86,7 +86,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             catch
             {
-                throw new LibraryException("Las coordenadas estan fuera de rango.");
+                throw new CoordException("Las coordenadas estan fuera de rango.");
             }
             BoardPrinter.PrintPlayerShotBoard(Active_Player);
             BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
@@ -103,6 +103,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Active_Player.MakeShot(newCoord);
             Inactive_Player.ReceiveShot(newCoord);
         }*/
+
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
         /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
@@ -114,57 +115,50 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="direction">Las opciones son vertical u horizontal</param>
         public void PlaceShip(int shipOption, string coord, string direction)
         {
-            int length;
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x - 1;
-            int boardY = y - 1;
-            try
-            {
-            
-                if (shipOption==1)
-                {
-                    Ship ship= new Frigate(coord,direction);
-                    length=ship.ShipSize;
-                    foreach ((int i,int j) in  ship.CoordsDict.Keys)
-                    {
-                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
-                    }
-                    AddShipToPlayerShipList(Active_Player, ship);
-                   
-                }
-                
-                else if (shipOption==2)
-                {   
-                    Ship ship= new LightCruiser(coord,direction);
-                    length= ship.ShipSize;
-                    foreach ((int i,int j) in  ship.CoordsDict.Keys)
-                    {
-                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
-                    }
-                    AddShipToPlayerShipList(Active_Player, ship);
-                }
-                else if (shipOption==3)
-                {
-                    Ship ship= new Submarine(coord,direction);
-                    length=ship.ShipSize;
-                    foreach ((int i,int j) in  ship.CoordsDict.Keys)
-                    {
-                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
-                    }
-                    AddShipToPlayerShipList(Active_Player, ship);
-                }
-            }
-                catch
-            {
-                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
-            }
-
+            ChooseShipOption(shipOption, coord, direction);
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
             BoardPrinter.PrintPlayerShipBoard(Active_Player);
             
-            }
+        }
+        /// <summary>
+        /// Es un método que al recibir la posicion del barco la pone en el board.
+        /// utiliza patron creator para instanciar el barco según opcion
+        /// </summary>
+        /// <param name="option">Es un entero, hay solo 3 opciones de barco </param>
+        /// <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
+        /// <param name="direction">Es una cadena que recive v o h</param>
+        public void ChooseShipOption(int option, string coord, string direction)
+        {
+                switch (option)
+                {
+                case 1:
+                    Ship shipFrigate= new Frigate(coord,direction);
+                    this.Active_Player.PlaceShipOnBoard(shipFrigate);
+                    this.Active_Player.AddShipToPlayerShipList(shipFrigate);
+                break;
+
+                case 2:
+                    Ship shipLightCruiser= new LightCruiser(coord,direction);
+                    this.Active_Player.PlaceShipOnBoard(shipLightCruiser);
+                    this.Active_Player.AddShipToPlayerShipList(shipLightCruiser);
+                break;
+
+                case 3:
+                    Ship shipSubmarine= new LightCruiser(coord,direction);
+                    this.Active_Player.PlaceShipOnBoard(shipSubmarine);
+                    this.Active_Player.AddShipToPlayerShipList(shipSubmarine);
+                break;
+
+                default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        throw new OptionException("Solo tiene 3 opciones de nave.");
+                break;
+
+                }
+        }
 
         /// <summary>
         /// Usuarios que jugarán la partida
@@ -177,15 +171,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return this.usersList;
             }
         }
-        /// <summary>
-        /// Este método agrega el barco creado en la posición a una lista de barcos del jugador
-        /// </summary>
-        /// <param name="player">El dueño de la lista de barcos</param>
-        /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
-        public void AddShipToPlayerShipList(Player player, Ship ship)
-        {
-            player.ShipsList.Add(ship.CoordsDict);
-        }
+
 
         /// <summary>
         /// Este método permite saber si un jugador tiene todos sus barcos hundidos.

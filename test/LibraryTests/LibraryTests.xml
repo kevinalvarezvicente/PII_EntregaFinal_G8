@@ -19,5 +19,17 @@
             Primer test probando con una coordenada
             </summary>
         </member>
+        <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK3">
+            <summary>
+            Este test chequearía que si se manda una coordenada mas larga que 2 entonces salta error
+            Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK1">
+            <summary>
+            Este test chequearía que si se manda una coordenada menor que 2 entonces salta error
+            Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
+            </summary>
+        </member>
     </members>
 </doc>

@@ -58,7 +58,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Metodo que inicializa el tablero 
         /// </summary>
         /// <param name="x">Largo del lado del tablero</param>
-        public void InitializeBoard(int x)
+        protected void InitializeBoard(int x)
         {
             gameBoard = new string[x, x];
 
@@ -71,6 +71,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
         }
+
             /*int counter = 1;
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char[] lettersArray = letters.ToCharArray();

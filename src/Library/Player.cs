@@ -4,9 +4,9 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Esta clase es la que crea al jugador
+    /// Esta clase es la que crea al jugador. 
     /// </summary>
-    public class Player : LibraryException
+    public class Player 
     {
         /// <summary>
         /// Cada jugador tiene un tablero donde insertará sus barcos
@@ -169,6 +169,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
             return true; 
+        }
+        /// <summary>
+        /// Operación polimórifca que ubica el barco en el tablero.
+        /// </summary>
+        /// <param name="ship">Es de tipo Ship pero se pasa por parpametro cualquier subtipo de Ship</param>
+        public void PlaceShipOnBoard(Ship ship)
+        {
+                int length=ship.ShipSize;
+                foreach ((int i,int j) in  ship.CoordsDict.Keys)
+                {
+                    this.PlayerShipBoard.GameBoard[i,j] = "o";
+                    
+                }
+        }
+
+        /// <summary>
+        /// Este método agrega el barco creado en la posición a una lista de barcos del jugador
+        /// </summary>
+        /// <param name="player">El dueño de la lista de barcos</param>
+        /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
+        public void AddShipToPlayerShipList(Ship ship)
+        {
+            ShipsList.Add(ship.CoordsDict);
         }
     }
 }

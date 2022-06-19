@@ -3,17 +3,18 @@ using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    /// Esta clase permite usar ciertas propiedades sin instanciar la clase
+    /// </summary>
     public class Utils
     {
         /// <summary>
         /// Este método devuelve la fila y la columna en numeros enteros
         /// </summary>
-        /// <param name="row"></param>
-        /// <param name="coord"></param>
+        /// <param name="coord">Es la coordenada de la matriz del tablero</param>
         /// <returns></returns>
         public static (int row, int column) SplitCoordIntoRowAndColumn(string coord)
         {
-        
             if (coord.Length != 2)
             {
                 throw new LibraryException($"{coord} es una coordenada inválida ");
@@ -22,6 +23,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int row= (int)Char.GetNumericValue(coordArray[0]);
             int column = (int)Char.GetNumericValue(coordArray[1]);
             return (row, column);
+
+            //Esta parte es porque tal vez en un futuro podamos hacer que diga letra y numero pero por el momento haremos solo numeros
             
             /*string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string column = "";
@@ -43,6 +46,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return (columnNum+1, row+1);*/
         }
 
+        /// <summary>
+        /// El método Swap permite ir variando el turno del jugador
+        /// </summary>
+        /// <param name="param1"></param>
+        /// <param name="param2"></param>
+        /// <typeparam name="T">Es el tipo, tal que sea genérico</typeparam>
         public static void Swap<T>(ref T param1, ref T param2)
         {
             T temporal;

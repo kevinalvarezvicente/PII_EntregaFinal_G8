@@ -5,14 +5,11 @@ namespace LibraryTests
 {
     public class PlayerTests
     {
-        static User Juan = new User(0, "Juan");
+        /*static User Juan = new User(0, "Juan");
         static Player player = new Player(Juan, 5);
         [SetUp]
         public void Setup()
         {
-
-
-
         }
 
         [Test]

@@ -8,18 +8,37 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Lobby : Singleton<Lobby>
     {
+        //private static Lobby _instance;
+        private List<User> UsersSearchingGame = new List<User>();
+        /*public static Lobby Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Lobby();
+                }
+                return _instance;
+            }
+        }
+        private Lobby()
+        {
+        }*/
+
         /// <summary>
         /// La lista de usuarios esperando para jugar
-        /// Es estatica para poder acceder a ella desde todos lados
         /// </summary>
-        private List<User> usersSearchingGame;
+
+        /*public Lobby()
+        {
+        }*/
         /// <summary>
         /// Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
         /// </summary>
         /// <returns> Retorna un booleano tal que si hay mas de 2 usuarios retornará true </returns>
         public bool AreUsersToStartGame() 
         {
-            if (usersSearchingGame.Count>=2)
+            if (UsersSearchingGame.Count>=2)
             {
                 return true;
             }
@@ -30,21 +49,24 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Va a permitir que el acceso a la lista de usuarios esperando por otor jugador
+        /// Va a permitir que el acceso a la lista de usuarios esperando por otros jugador
         /// </summary>
-        /// <returns>Devuelve la lista</returns>
-        public List<User> UsersSearchingForGameList
-        {
-            get 
-            {
-                return this.usersSearchingGame;
-            }
-            
-        }
 
+        public void AddUserToSearchingGameList(User user)
+        {
+            UsersSearchingGame.Add(user);
+        }
+        public void RemoveUserFromSearchingGameList(User user)
+        {
+            UsersSearchingGame.Remove(user);
+        }
+        public List<User> GetUsersSearchingGame()
+        {
+            return UsersSearchingGame;
+        }
         public int CountUsersSearchingForGame()
         {
-            return this.usersSearchingGame.Count;
+            return UsersSearchingGame.Count;
         }
 
     }

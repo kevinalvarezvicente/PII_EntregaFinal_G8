@@ -4,5 +4,20 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:LibraryTests.BoardTests">
+            <summary>
+            Se hace test para el método que divide la coordenada
+            </summary>
+        </member>
+        <member name="T:LibraryTests.UtilsTests">
+            <summary>
+            Se hace test para el método que divide la coordenada
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnOK">
+            <summary>
+            Primer test probando con una coordenada
+            </summary>
+        </member>
     </members>
 </doc>

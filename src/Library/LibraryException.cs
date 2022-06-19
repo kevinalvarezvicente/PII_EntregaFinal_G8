@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 
 [Serializable]
 public class LibraryException : Exception
+//Esta clase se va a re modificar pero aún no hemos tenido tiempo. La idea es crear clases según las posibles excepciones
 //Se define la clase de la nueva excepcion a levantar. 
 //No es absolutamente necesario definir nuevas clases de excepcion si las que ya existen son adecuadas.
 //Todas las excepciones son instancias de una clase sucesora de la clase base Exception

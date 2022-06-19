@@ -13,7 +13,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns></returns>
         public static (int row, int column) SplitCoordIntoRowAndColumn(string coord)
         {
-            string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        
+            if (coord.Length != 2)
+            {
+                throw new LibraryException($"{coord} es una coordenada inválida ");
+            }
+            char[] coordArray = coord.ToArray();
+            int row= (int)Char.GetNumericValue(coordArray[0]);
+            int column = (int)Char.GetNumericValue(coordArray[1]);
+            return (row, column);
+            
+            /*string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string column = "";
             int row = 0;
             
@@ -30,7 +40,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             int columnNum = letters.IndexOf(column)+1;
 
-            return (columnNum+1, row+1);
+            return (columnNum+1, row+1);*/
         }
 
         public static void Swap<T>(ref T param1, ref T param2)

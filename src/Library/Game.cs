@@ -4,7 +4,12 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Aca se encuentran todos los métodos relacionados con el juego en general
+    /// Aca se encuentran todos los métodos relacionados con el juego en general.
+    /// La clase Game cumle con Expert siendo ésta  la clase que tiene 
+    /// la información necesaria para poder cumplir con la lógica del programa. 
+    /// Hacer los tiros
+    /// Ubicar barcos
+    /// Indicar si finalizó la partida
     /// </summary>
     public class Game
     {
@@ -47,7 +52,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
-            Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
+            Console.WriteLine($"Comenzará {Active_Player.PlayerName} \nSu tablero se ve asi");
             BoardPrinter.PrintPlayerShipBoard(Active_Player);
         }
         /// <summary>
@@ -73,7 +78,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">coordenada string que luego se transformará en (x,y)</param>
         public void ShotMade(string coord)
         {
-            Console.WriteLine($"{Active_Player.GetPlayerName()} hace el disparo a {Inactive_Player.GetPlayerName()}");
+            Console.WriteLine($"{Active_Player.PlayerName} hace el disparo a {Inactive_Player.PlayerName}");
             try
             {
                 Active_Player.MakeShot(coord);
@@ -85,18 +90,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             BoardPrinter.PrintPlayerShotBoard(Active_Player);
             BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
-            Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
+            Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
 
         }
+        /*
         /// <summary>
         /// Este método se utilizó para probar unas excepciones
         /// </summary>
-        /// <param name="newCoord">Es la nueva coordenada</param>
-        public void AskForShotAgain(string newCoord)
+        /// <param name="newCoord">Es la nueva coordenada</param>*/
+        /*public void AskForShotAgain(string newCoord)
         {
             Active_Player.MakeShot(newCoord);
             Inactive_Player.ReceiveShot(newCoord);
-        }
+        }*/
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
         /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
@@ -119,11 +125,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             
                 if (shipOption==1)
                 {
-                    Frigate ship= new Frigate(coord,direction);
-                    length=ship.GetLength();
+                    Ship ship= new Frigate(coord,direction);
+                    length=ship.ShipSize;
                     foreach ((int i,int j) in  ship.CoordsDict.Keys)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,j] = "o";
+                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
                     }
                     AddShipToPlayerShipList(Active_Player, ship);
                    
@@ -131,21 +137,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 
                 else if (shipOption==2)
                 {   
-                    LightCruiser ship= new LightCruiser(coord,direction);
-                    length= ship.GetLength();
+                    Ship ship= new LightCruiser(coord,direction);
+                    length= ship.ShipSize;
                     foreach ((int i,int j) in  ship.CoordsDict.Keys)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,j] = "o";
+                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
                     }
                     AddShipToPlayerShipList(Active_Player, ship);
                 }
                 else if (shipOption==3)
                 {
-                    Submarine ship= new Submarine(coord,direction);
-                    length=ship.GetLength();
+                    Ship ship= new Submarine(coord,direction);
+                    length=ship.ShipSize;
                     foreach ((int i,int j) in  ship.CoordsDict.Keys)
                     {
-                        this.Active_Player.GetPlayerShipBoard().GameBoard[i,j] = "o";
+                        this.Active_Player.PlayerShipBoard.GameBoard[i,j] = "o";
                     }
                     AddShipToPlayerShipList(Active_Player, ship);
                 }
@@ -155,7 +161,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
             }
 
-            Console.WriteLine($"Se ubican los barcos de {this.Active_Player.GetPlayerName()} y se imprime tablero");
+            Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
             BoardPrinter.PrintPlayerShipBoard(Active_Player);
             
             }
@@ -176,7 +182,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <param name="player">El dueño de la lista de barcos</param>
         /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
-        public void AddShipToPlayerShipList(Player player, AbstractShip ship)
+        public void AddShipToPlayerShipList(Player player, Ship ship)
         {
             player.ShipsList.Add(ship.CoordsDict);
         }
@@ -201,6 +207,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return true; 
         }
+        /// <summary>
+        /// Método que chequea que todos los barcos de alguno de los jugadores estén hundidos
+        /// </summary>
+        /// <returns>Retorna true o false para finalizar el juego</returns>
         public bool GameFinished()
         {
             if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))

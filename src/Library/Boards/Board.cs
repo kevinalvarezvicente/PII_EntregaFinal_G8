@@ -3,7 +3,8 @@ using System;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Clase donde comienza el tablero
+    /// Clase donde comienza el tablero.
+    /// Es supertipo de los tableros de tiros y de barcos.
     /// </summary>
     public class Board
     {

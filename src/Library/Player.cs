@@ -24,9 +24,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene una lista de diccionarios
         /// cada diccionario es un barco
         /// </summary>
-        private List<Dictionary<(int, int), bool>> shipsList;
+        private List<Dictionary<(int, int), bool>> shipsList = new List<Dictionary<(int, int), bool>>();
         /// <summary>
-        /// Constructor de player
+        /// Constructor de player. Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
+        /// Cada jugador tiene su propio tablero.
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
         /// <param name="BoardLength">Elige el tamaño del tablero</param>
@@ -35,38 +36,49 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
-            this.shipsList = new List<Dictionary<(int, int), bool>>();
 
         }
         /// <summary>
-        /// Permite obtener el tablero de barcos
+        /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard 
         /// </summary>
         /// <returns>Retorna una matriz con los barcos agregados</returns>
-        public Board GetPlayerShipBoard()
+        public Board PlayerShipBoard
         {
-            return this.playerShipBoard;
+            get
+            {
+                return this.playerShipBoard;
+            }
+            
         }
         /// <summary>
-        /// Permite obtener el tablero de tiros
+        /// Se obtiene el tablero de tiros a través de la propiedad PlayerShotBoard
         /// </summary>
         /// <returns>Retorna una matriz con los tiros realizados </returns>
-        public Board GetPlayerShotBoard()
+        public Board PlayerShotBoard
         {
-            return this.playerShotBoard;
+            get
+            {
+                return this.playerShotBoard;
+            }
+            
         }
         /// <summary>
-        /// Para obtener el nombre del usuario
+        /// Se obtiene el nombre del jugador a través de la propiedad PlayerName
         /// </summary>
         /// <returns>Retorna el nombre del usuario</returns>
-        public string GetPlayerName()
+        public string PlayerName
         {
-            return this.playerName;
+            get
+            {
+                return this.playerName;
+            }
+            
         }
         /// <summary>
         /// Permite al jugador cambiar su nombre
         /// </summary>
         /// <param name="NewName">Recibe un nuevo nombre para el jugador</param>
-        private void SetPlayerName(string NewName)
+        private void ChangePlayerName(string NewName)
         {
             this.playerName = NewName;
         }
@@ -122,19 +134,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
             SearchForCoordInShipsList(coord);
 
-            if (GetPlayerShipBoard().GameBoard[x, y].Equals("o"))
+            if (this.playerShipBoard.GameBoard[x, y].Equals("o"))
             {
-                GetPlayerShipBoard().GameBoard[x, y] = "x";
-                Console.WriteLine("Barco disparado");
+                this.playerShipBoard.GameBoard[x, y] = "x";
+                Console.WriteLine("Tocado");
             }
-            else if (GetPlayerShipBoard().GameBoard[x, y].Equals("-"))
+            else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
             {
-                Console.WriteLine("Oceano");
-                GetPlayerShipBoard().GameBoard[x, y] = "|";
+                Console.WriteLine("Agua");
+                this.playerShipBoard.GameBoard[x, y] = "|";
             }
-            else if (GetPlayerShipBoard().GameBoard[x, y].Equals("x"))
+            else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {
-                Console.WriteLine("Ya fue disparado");
+                Console.WriteLine("Ya fue tocado");
                 //algun comando handler 
             }
 

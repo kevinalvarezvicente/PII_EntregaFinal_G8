@@ -3,9 +3,11 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Es el barco mas pequeño
+    /// Es el barco mas pequeño, hereda de Ship
+    /// Es una subclase de Ship ya que  atributos y métodos de otra clase y 
+    /// habitualmente se puede agregar nuevos atributos y nuevos métodos 
     /// </summary>
-    public class Frigate: AbstractShip
+    public class Frigate: Ship
     {
         /// <summary>
         /// Tiene tamaño 2
@@ -20,38 +22,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 CoordsDict.Add((x,y),false);
                 CoordsDict.Add((x,y+1),false);
+                this.VulnerableCoord=(x,y);
             }
             else if (direction.ToUpper()=="V")
             {
                 CoordsDict.Add((x,y),false);
                 CoordsDict.Add((x+1,y),false);
+                this.VulnerableCoord=(x,y);
             }
-        }
-        /// <summary>
-        /// Permite acceder al largo del barco
-        /// </summary>
-        /// <returns>Retorna un entero</returns>
-        public override int GetLength()
-        {
-            return 2;
+            
         }
 
-        /// <summary>
-        /// Este método recorre todos los valores de las claves del barco.
-        /// Si estan todos los valores en true entonces el barco esta hundido.
-        /// </summary>
-        /// <returns></returns>
-        public override bool IsShipSinked()
-        {
-            foreach (bool value in CoordsDict.Values)
-            {
-                if (value is false)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+
+
     }
 }
 

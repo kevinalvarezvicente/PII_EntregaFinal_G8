@@ -21,11 +21,11 @@ namespace LibraryTests
         /// Este test chequea que si se manda una coordenada mas larga que 2 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>
-        [Test]
+        /*[Test]
         public void TestSplitCoordIntoRowAndColumnNotOK()
         {
             string coord ="123";
             Assert.AreEqual((1,2),Utils.SplitCoordIntoRowAndColumn(coord));
-        }
+        }*/
     }
 }

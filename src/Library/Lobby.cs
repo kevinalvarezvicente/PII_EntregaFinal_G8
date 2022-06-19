@@ -6,12 +6,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
     /// </summary>
-    public class Lobby 
-    //: Singleton<Lobby>
+    public class Lobby : Singleton<Lobby>
     {
-        private static Lobby _instance;
-        private List<User> UsersSearchingGame;
-        public static Lobby Instance
+        //private static Lobby _instance;
+        private List<User> UsersSearchingGame = new List<User>();
+        /*public static Lobby Instance
         {
             get
             {
@@ -24,7 +23,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         private Lobby()
         {
-        }
+        }*/
+
         /// <summary>
         /// La lista de usuarios esperando para jugar
         /// </summary>
@@ -49,17 +49,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Va a permitir que el acceso a la lista de usuarios esperando por otor jugador
+        /// Va a permitir que el acceso a la lista de usuarios esperando por otros jugador
         /// </summary>
-        /// <returns>Devuelve la lista</returns>
-        /*public List<User> UsersSearchingGame{get; set;}
-        public List<User> UsersSearchingGameList
-        {
-            get
-            {
-            return this.UsersSearchingGame;
-            }
-        }*/
 
         public void AddUserToSearchingGameList(User user)
         {

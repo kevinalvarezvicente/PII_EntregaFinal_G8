@@ -12,10 +12,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         private List<Game> gameHistory;
         /// <summary>
-        /// Es una variable booleana para saber si el usuario esta pronto y quiere jugar
-        /// </summary>
-        private bool wantToPlay;
-        /// <summary>
         /// Es el ID de usuario
         /// </summary>
         /// <value>Cada usuario tiene el suyo</value>
@@ -41,7 +37,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         public void WantToPlay()
         {
-            Administrator.Instance.AddUserToList(this);
+            Lobby.Instance.AddUserToSearchingGameList(this);
         }
         /// <summary>
         /// Añade el juego al historial de juegos del usuario
@@ -52,12 +48,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.gameHistory.Add(game);
         }
         /// <summary>
-        /// Método que pemite acceder a la lista de partidas del usuario
+        /// Se obtiene el historial de partidas del usuario con la propiedad GameHistory
         /// </summary>
         /// <returns>Devuelve una lista de Game que son partidos jugados por el usuario</returns>
-        public List<Game> GetUserGameHistory()
+        public List<Game> GameHistory
         {
-            return this.gameHistory;
+            get
+            {
+                return this.gameHistory;
+            }
+            
         }
 
     }

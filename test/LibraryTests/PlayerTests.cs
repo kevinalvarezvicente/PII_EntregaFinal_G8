@@ -5,7 +5,7 @@ namespace LibraryTests
 {
     public class PlayerTests
     {
-        static User Juan = new User(0, "Juan");
+        /*static User Juan = new User(0, "Juan");
         static Player player = new Player(Juan, 5);
         [SetUp]
         public void Setup()
@@ -47,7 +47,7 @@ namespace LibraryTests
         //si hace un tiro en una posicion no tocada
         //si hace un tiro en una posicion fuera del tablero
         
-
+        */
 
 
     }

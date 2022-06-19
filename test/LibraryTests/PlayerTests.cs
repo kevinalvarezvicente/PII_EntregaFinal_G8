@@ -35,9 +35,8 @@ namespace LibraryTests
              Assert.AreEqual(shotBoard.GameBoard[1, 1], shotBoard.GameBoard[x, y]);
         }    
         
-        [Test]
-        [TestCase("11")]
-        public void userloby(string data)
+        /*[Test]
+        public void userloby()
         {   
             Administrator admin = new Administrator();
             Lobby lobby = new Lobby();
@@ -48,37 +47,44 @@ namespace LibraryTests
             admin.AddUserToList(player2);
             lobby.CountUsersSearchingForGame();
             Assert.AreEqual(2, lobby.CountUsersSearchingForGame());
-        }
-        /*
+        }*/
+
         [Test]
-        [TestCase("11")]
-        public void placeship(string data)
+        public void MaxShipsQuantity()
+        {   
+            Board board1 = new Board(10);
+            int maximo = board1.MaxShipsQuantity;
+            Assert.AreEqual(5, maximo);
+        }
+        
+        
+        [Test]
+        public void placeship()
         {
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
             Player carol = new Player(player1, 10);
             Player Tony  = new Player(player2, 10);
+            Board board1 = new Board(10);
             Game game1   = new Game(player1, player2, 10);
-            game1.PlaceShip(3, "11", "V");
-            (int x, int y) = Utils.SplitCoordIntoRowAndColumn(data);
-             Assert.AreEqual("o", carol.GetPlayerShipBoard().GameBoard[x, y]);
+            game1.PlaceShip(1, "11", "V");
+            carol.GetPlayerShipBoard();
+            Assert.AreEqual("o", carol.GetPlayerShipBoard().GameBoard[1, 1]);
         }
-          */
-        /*
+          
+        
         [Test]
-        [TestCase("56")]
-        public void ShotOcean(string data)
+        public void ShotOcean()
         {
-            player.ReceiveShot(data);
+            player.ReceiveShot("21");
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
             Game game1 = new Game(player1, player2, 10);
-            game1.PlaceShip(3, "11", "H");
+            game1.PlaceShip(2, "11", "H");
             Board shotBoard = player.GetPlayerShotBoard();
-            (int x, int y) = Utils.SplitCoordIntoRowAndColumn(data);
-            Assert.AreEqual("O", shotBoard.GameBoard[x, y]);
+            Assert.AreEqual("-", shotBoard.GameBoard[0, 0]);
         }
-        */
+        
 
         //si se ubico el barco
         //si hace un tiro al oceano

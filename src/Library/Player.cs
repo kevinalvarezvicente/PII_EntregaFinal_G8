@@ -3,8 +3,14 @@ using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    /// Esta clase es la que crea al jugador
+    /// </summary>
     public class Player : LibraryException
     {
+        /// <summary>
+        /// Cada jugador tiene un tablero donde insertará 
+        /// </summary>
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;

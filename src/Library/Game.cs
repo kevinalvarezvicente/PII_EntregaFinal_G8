@@ -150,59 +150,58 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return ship;
         }
 
-        /// <summary>
-        /// Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
-        /// Sirve al comienzo para chequear que el tablero se imprima bien sin realizar test
-        /// Pero esto lo hará el bot
-        /// </summary>
+            // <summary>
+            // Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
+            // Sirve al comienzo para chequear que el tablero se imprima bien sin realizar test
 
-        /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)
-        {
-            int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
-            int shipsLeft = maxShipsQuantity;
-            Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
-            while (shipsLeft>0)
+
+            /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)
             {
-                /*Console.WriteLine($"{Active_Player.GetPlayerName()} Indique el tipo del barco: ");
-                Console.WriteLine($"Opciones a elegir:\n1) 2 Coordenadas \n2) 3 Coordenadas \n3) 4 coordendas");
-                int shipLength = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
-                string coord = Console.ReadLine();
-                Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
-                string direction = Console.ReadLine();*/
-        /*switch (shipLength)
-            {
-            case 1:
-                    AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
-                    shipsLeft--;
-            break;
+                int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
+                int shipsLeft = maxShipsQuantity;
+                Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
+                while (shipsLeft>0)
+                {
+                    /*Console.WriteLine($"{Active_Player.GetPlayerName()} Indique el tipo del barco: ");
+                    Console.WriteLine($"Opciones a elegir:\n1) 2 Coordenadas \n2) 3 Coordenadas \n3) 4 coordendas");
+                    int shipLength = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
+                    string coord = Console.ReadLine();
+                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
+                    string direction = Console.ReadLine();*/
+            /*switch (shipLength)
+                {
+                case 1:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
+                        shipsLeft--;
+                break;
 
-            case 2:
-                    AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
-                    shipsLeft--;
-            break;
+                case 2:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
+                        shipsLeft--;
+                break;
 
-            case 3:
-                    AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
-                    PlaceShip(4, coord,direction);
-                    shipsLeft--;
-            break;
+                case 3:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
+                        PlaceShip(4, coord,direction);
+                        shipsLeft--;
+                break;
 
-            default:
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
-            break;
-            }
-        Console.ForegroundColor = ConsoleColor.Gray;
-        Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
+                default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
+                break;
+                }
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
 
-    }
-    Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-    Console.WriteLine("---------------------------");
-    Utils.Swap(ref Active_Player, ref Inactive_Player);
-}*/
+        }
+        Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
+        Console.WriteLine("---------------------------");
+        Utils.Swap(ref Active_Player, ref Inactive_Player);
+        }*/
         /// <summary>
-        /// Uusarios que jugarán la partida
+        /// Usuarios que jugarán la partida
         /// </summary>
         /// <value>Es una lista de tipo User</value>
         public List<User> UsersPlayingList

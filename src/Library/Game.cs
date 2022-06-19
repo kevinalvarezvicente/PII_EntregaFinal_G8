@@ -112,8 +112,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            int boardX = x - 1;
-            int boardY = y - 1;
+            int boardX = x;
+            int boardY = y;
             Ship ship = new Ship(length, coord, direction);
 
             try

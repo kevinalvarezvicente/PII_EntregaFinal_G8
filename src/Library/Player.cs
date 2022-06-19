@@ -16,7 +16,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
             this.shipsList = new List<Dictionary<(int, int), bool>>();
-
         }
         public Board GetPlayerShipBoard()
         {
@@ -52,7 +51,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y] = "X";
+            playerShotBoard.GameBoard[x, y] = "|";
         }
 
         /// <summary>

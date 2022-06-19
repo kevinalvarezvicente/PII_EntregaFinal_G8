@@ -9,17 +9,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         ///  bshjh 
         /// </summary>
         private List<User> usersSearchingGame;
+        public  List<User> UsersSearchingGame
+        {
+            get
+            {
+                return this.usersSearchingGame;
+            }
+        }
         public void AddUserToList(User user)
         {
-            try
-            {
-                this.usersSearchingGame.Add(user);
-            }
-            catch
-            {
-                throw new LibraryException("Error al añadir el usuario a Lobby de espera");
-            }
-
+            
+            
+                UsersSearchingGame.Add(user);                 
         }
 
         public void RemoveUserFromList(User user)
@@ -33,6 +34,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new LibraryException("Error al remover el usuario de Lobby de espera");
             }
         }
+
 
         public bool AreUsersToStartGame()
         {
@@ -52,6 +54,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return this.usersSearchingGame;
         }
 
+        public int CountUsersSearchingForGame()
+        {
+            return this.usersSearchingGame.Count;
+        }
 
     }
 }

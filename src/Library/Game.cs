@@ -201,7 +201,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return true; 
         }
-
+        public bool GameFinished()
+        {
+            if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))
+            {
+                return true;
+            }
+            return false;
+        }
         
         //El siguiente método es solo una referencia a futuro
             // Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero

@@ -3,41 +3,37 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// 
+    /// Es el barco mas pequeño
     /// </summary>
     public class Frigate: AbstractShip
     {
-        private Dictionary<(int, int), bool> coordsDic;
-
+        /// <summary>
+        /// Tiene tamaño 2
+        /// </summary>
+        /// <param name="coord">Es la coordenada inicial y a partir de esta ya se guardan las siguientes como claves</param>
+        /// <param name="direction">El usuario puede elegir si lo quiere ubicar vertical u horizontal</param>
+        /// <returns></returns>
         public Frigate(string coord, string direction):base(2)
         {
-            this.coordsDic = new Dictionary<(int, int), bool>();
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             if (direction.ToUpper()=="H")
             {
-                this.coordsDic.Add((x,y),false);
-                this.coordsDic.Add((x,y+1),false);
+                CoordsDict.Add((x,y),false);
+                CoordsDict.Add((x,y+1),false);
             }
             else if (direction.ToUpper()=="V")
             {
-                this.coordsDic.Add((x,y),false);
-                this.coordsDic.Add((x+1,y),false);
+                CoordsDict.Add((x,y),false);
+                CoordsDict.Add((x+1,y),false);
             }
         }
+        /// <summary>
+        /// Permite acceder al largo del barco
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
         public override int GetLength()
         {
             return 2;
-        }
-        public Dictionary<(int, int), bool> CoordsDict
-        {
-            get
-            {
-                return this.coordsDic;
-            }
-            private set
-            {
-                this.coordsDic = value;
-            }
         }
 
         /// <summary>

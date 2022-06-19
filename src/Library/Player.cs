@@ -114,8 +114,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
         /// Si hay "x" es porque habia un barco y se disparo
         /// </summary>
-        /// <param name="x"> X Es la coordenada x de la posición del disparo en el tablero</param>
-        /// <param name="y"> Y Es la coordenada y de la posición del disparo en el tablero</param>
         /// <param name="coord">Es la coordenada que se pasa por parámetro</param>
         public void ReceiveShot(string coord)
         {
@@ -146,7 +144,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Retorna true si todos los valores son true
         /// </summary>
         /// <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
-
         public bool AreAllShipsSinked()
         {
            foreach (Dictionary<(int, int), bool> dict in ShipsList)

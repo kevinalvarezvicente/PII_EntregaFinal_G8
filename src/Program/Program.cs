@@ -20,12 +20,18 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
-            Console.WriteLine($"{player1.Name} indique el tamaño del tablero: ");
-            int boardLength = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine($"{player1.Name} indique el tamaño del tablero: ");
+            //int boardLength = Convert.ToInt32(Console.ReadLine());
             //Console.WriteLine("El tamaño de su tablero será " + boardLength);
-            Game game1 = new Game(player1, player2, boardLength);
-            game1.PlaceShip(1,"00","h");
-
+            Game game1 = new Game(player1, player2, 10);
+            game1.PlaceShip(2,"11","v");
+            player1.AddGameToGameHistory(game1);
+            int cant1=player1.GetUserGameHistory().Count;
+            Console.WriteLine(cant1);
+            //game1.PlaceShip(1,"00","h");
+            //player1.WantToPlay();
+            //int cant = Lobby.Instance.GetUsersSearchingGame().Count;
+            //Console.WriteLine(cant);
 
             //game1.AskPlayerToPlaceShips();
             //game1.AskPlayerToPlaceShips();

@@ -10,9 +10,6 @@ namespace LibraryTests
         [SetUp]
         public void Setup()
         {
-
-
-
         }
 
         [Test]
@@ -49,6 +46,8 @@ namespace LibraryTests
         //si hace un tiro en una posicion ya tocada
         //si hace un tiro en una posicion no tocada
         //si hace un tiro en una posicion fuera del tablero
+        
+
 
 
     }

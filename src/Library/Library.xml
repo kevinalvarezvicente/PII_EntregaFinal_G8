@@ -10,17 +10,6 @@
             Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Administrator._administrator">
-            <summary>
-            Se crea una instancia de clase
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Administrator.lobby">
-            <summary>
-            Se crea Lobby donde los usuarios aguardan para comenzar a jugar, el cual será Singleton
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.JoinUsersToPlay(PII_ENTREGAFINAL_G8.src.Library.User,PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
             El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
@@ -106,6 +95,30 @@
             Es estático porque permite ser implementado sin crear el objeto BoardPrinter
             </summary>
             <param name="player">Jugador dueño del tablero que deseo imprimir por pantalla</param>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShipBoard">
+            <summary>
+            Es el tablero de barcos
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipBoard.#ctor(System.Int32)">
+            <summary>
+            El tablero de barcos se inicializa
+            </summary>
+            <param name="x">Es el tamaño del tablero</param>
+            <returns></returns>    
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShotBoard">
+            <summary>
+            Clase para el tablero de tiros del jugador
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotBoard.#ctor(System.Int32)">
+            <summary>
+            El tablero de tiros se inicializa
+            </summary>
+            <param name="x">Es el tamaño del tablero</param>
+            <returns></returns>    
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
             <summary>
@@ -194,15 +207,16 @@
             <param name="player">El dueño de la lista de barcos</param>
             <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AreAllShipsSinked(PII_ENTREGAFINAL_G8.src.Library.Player)">
+            <summary>
+            Este método permite saber si un jugador tiene todos sus barcos hundidos.
+            Retorna true si todos los valores son true
+            </summary>
+            <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Lobby">
             <summary>
             La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
-            </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Lobby.usersSearchingGame">
-            <summary>
-            La lista de usuarios esperando para jugar
-            Es estatica para poder acceder a ella desde todos lados
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.AreUsersToStartGame">
@@ -211,7 +225,7 @@
             </summary>
             <returns> Retorna un booleano tal que si hay mas de 2 usuarios retornará true </returns>
         </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Lobby.UsersSearchingForGameList">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.AddUserToSearchingGameList(PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
             Va a permitir que el acceso a la lista de usuarios esperando por otor jugador
             </summary>
@@ -224,19 +238,139 @@
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShipBoard">
             <summary>
-            Cada jugador tiene un tablero donde insertará 
+            Cada jugador tiene un tablero donde insertará sus barcos
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)" -->
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShotBoard">
+            <summary>
+            Cada jugador tiene un tablero donde irán los tiros
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerName">
+            <summary>
+            El jugador se pone un nombre
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.shipsList">
+            <summary>
+            Cada jugador tiene una lista de diccionarios
+            cada diccionario es un barco
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
+            <summary>
+            Constructor de player
+            </summary>
+            <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
+            <param name="BoardLength">Elige el tamaño del tablero</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShipBoard">
+            <summary>
+            Permite obtener el tablero de barcos
+            </summary>
+            <returns>Retorna una matriz con los barcos agregados</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShotBoard">
+            <summary>
+            Permite obtener el tablero de tiros
+            </summary>
+            <returns>Retorna una matriz con los tiros realizados </returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerName">
+            <summary>
+            Para obtener el nombre del usuario
+            </summary>
+            <returns>Retorna el nombre del usuario</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.SetPlayerName(System.String)">
+            <summary>
+            Permite al jugador cambiar su nombre
+            </summary>
+            <param name="NewName">Recibe un nuevo nombre para el jugador</param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Player.ShipsList">
+            <summary>
+            Es la lista de barcos formada por diccionarios
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.SearchForCoordInShipsList(System.String)">
+            <summary>
+            Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
+            </summary>
+            <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.MakeShot(System.String)">
+            <summary>
+            Realiza el shot
+            </summary>
+            <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)">
+            <summary>
+            Este método hace que el jugador reciba el disparo ubicandolo en el tablero de disparos
+            Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
+            Si hay "x" es porque habia un barco y se disparo
+            </summary>
+            <param name="coord">Es la coordenada que se pasa por parámetro</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AreAllShipsSinked">
+            <summary>
+            Este método permite saber si un jugador tiene todos sus barcos hundidos.
+            Retorna true si todos los valores son true
+            </summary>
+            <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AbstractShip">
             <summary>
             Clase agregada por OCP
             </summary>
         </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.AbstractShip.coordsDic">
+            <summary>
+            Cada barco tendrá su diccionario cuyas claves son las coordenadas donde se ubica cada parte del mismo
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.AbstractShip.#ctor(System.Int32)">
+            <summary>
+            Constructor que recibe por parámetro el tamaño
+            </summary>
+            <param name="shipSize">Es un entero que da el tamaño del barco</param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.AbstractShip.CoordsDict">
+            <summary>
+            Permite obtener el diccionario para el barco
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.AbstractShip.IsShipSinked">
+            <summary>
+            Método de clase abstracta
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.AbstractShip.GetLength">
+            <summary>
+            Método de clase
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Frigate">
             <summary>
-            
+            Es el barco mas pequeño
             </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Frigate.#ctor(System.String,System.String)">
+            <summary>
+            Tiene tamaño 2
+            </summary>
+            <param name="coord">Es la coordenada inicial y a partir de esta ya se guardan las siguientes como claves</param>
+            <param name="direction">El usuario puede elegir si lo quiere ubicar vertical u horizontal</param>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Frigate.GetLength">
+            <summary>
+            Permite acceder al largo del barco
+            </summary>
+            <returns>Retorna un entero</returns>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Frigate.IsShipSinked">
             <summary>
@@ -247,8 +381,22 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.LightCruiser">
             <summary>
-            
+            Es un tipo de barco
             </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LightCruiser.#ctor(System.String,System.String)">
+            <summary>
+            Tiene tamaño 3 es la opción numero 2
+            </summary>
+            <param name="coord">Es una cadena</param>
+            <param name="direction">Indica si el jugador quiere poner barcos horizontal o vertical</param>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LightCruiser.GetLength">
+            <summary>
+            Permite acceder al largo del barco
+            </summary>
+            <returns>Retorna un entero</returns>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.LightCruiser.IsShipSinked">
             <summary>
@@ -259,8 +407,22 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Submarine">
             <summary>
-            
+            Es el tipo de barco mas grande. Opción numero 3
             </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Submarine.#ctor(System.String,System.String)">
+            <summary>
+            Tiene tamaño 4
+            </summary>
+            <param name="coord">Cadena donde ubicar la primer coordenada del barco</param>
+            <param name="direction">Direccion que desea si vertical u horizontal</param>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Submarine.GetLength">
+            <summary>
+            Permite acceder al tamaño del barco
+            </summary>
+            <returns>Devuelve un entero</returns>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Submarine.IsShipSinked">
             <summary>
@@ -269,18 +431,97 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Singleton`1">
+            <summary>
+            Se hace para poder utilizar singleton con diferentes clases
+            Al generar la clase se instancia T de manera unica
+            Clase que permite controlar que solo se instancie una vez
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Singleton`1.instance">
+            <summary>
+            Constructor privado, es el unico que sabe que esta instanciado
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Singleton`1.Instance">
+             <summary>
+             Al acceder por primera vez a la propiedad de clase Instance 
+             se crea la única instancia y se guarda en la variable de clase privada instance
+            Luego cada vez que se accede a la propiedad de clase Instance se retorna esa única instancia.*/
+             </summary>
+             <value></value>      
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.User">
             <summary>
-            Class User saves and work with the user information
+            Class User guarda y trabaja con la información del usuario
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.gameHistory">
+            <summary>
+            Es una lista donde se guardarán los juegos del jugador
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.wantToPlay">
+            <summary>
+            Es una variable booleana para saber si el usuario esta pronto y quiere jugar
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.UserId">
+            <summary>
+            Es el ID de usuario
+            </summary>
+            <value>Cada usuario tiene el suyo</value>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Name">
+            <summary>
+            Nombre del usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.Int32,System.String)">
+            <summary>
+            El constructor de Usuario crea una Lista de juegos del usuario
+            </summary>
+            <param name="userId">Es de tipo int</param>
+            <param name="name">Es de tipo int</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.WantToPlay">
+            <summary>
+            El método dice si el usuario quiere jugar llama al administrador para que lo agregue a la lista
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.AddGameToGameHistory(PII_ENTREGAFINAL_G8.src.Library.Game)">
+            <summary>
+            Añade el juego al historial de juegos del usuario
+            </summary>
+            <param name="game">Es un parámetro de tipo Game</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.GetUserGameHistory">
+            <summary>
+            Método que pemite acceder a la lista de partidas del usuario
+            </summary>
+            <returns>Devuelve una lista de Game que son partidos jugados por el usuario</returns>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Utils">
+            <summary>
+            Esta clase permite usar ciertas propiedades sin instanciar la clase
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.SplitCoordIntoRowAndColumn(System.String)">
             <summary>
             Este método devuelve la fila y la columna en numeros enteros
             </summary>
-            <param name="row"></param>
-            <param name="coord"></param>
+            <param name="coord">Es la coordenada de la matriz del tablero</param>
             <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.Swap``1(``0@,``0@)">
+            <summary>
+            El método Swap permite ir variando el turno del jugador
+            </summary>
+            <param name="param1"></param>
+            <param name="param2"></param>
+            <typeparam name="T">Es el tipo, tal que sea genérico</typeparam>
         </member>
     </members>
 </doc>

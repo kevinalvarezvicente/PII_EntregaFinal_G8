@@ -6,17 +6,30 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Esta clase cumple el rol de administrador al unir dos usuarios esperando para jugar.
     /// Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases
     /// </summary>
-    public class Administrator: Singleton<Administrator>
+    public class Administrator
+    //: Singleton<Administrator>
     {
+        private static Administrator _instance; 
+        public static Administrator Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new Administrator();
+                }
+                return _instance;
+            }
+        }
         /// <summary>
         /// Se crea una instancia de clase
         /// </summary>
-        private Administrator _administrator;
+        //public Administrator _administrator;
         /// <summary>
         /// Se crea Lobby donde los usuarios aguardan para comenzar a jugar, el cual será Singleton
         /// </summary>
         /// <returns></returns>
-        Lobby lobby = new Lobby();
+        //Lobby lobby = new Lobby();
         /// <summary>
         /// El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
         /// Como ya ambos usuarios comenzaron a jugar y se transformaron en jugadores los quita del lobby de espera
@@ -38,9 +51,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         public void ReceiveUsersSearchingGameList()
         {
-            if (lobby.AreUsersToStartGame())
+            if (Lobby.Instance.AreUsersToStartGame())
             {
-                JoinUsersToPlay(lobby.UsersSearchingForGameList[0], lobby.UsersSearchingForGameList[1]);
+                JoinUsersToPlay(Lobby.Instance.GetUsersSearchingGame()[0], Lobby.Instance.GetUsersSearchingGame()[1]);
             }
         }
         /// <summary>
@@ -49,7 +62,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">El parámetro es de tipo user</param>
         public void AddUserToList(User user)
         {
-            lobby.UsersSearchingForGameList.Add(user);
+            Lobby.Instance.AddUserToSearchingGameList(user);
 
         }
         /// <summary>
@@ -58,9 +71,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">El parámetro es de tipo user</param>
         public void RemoveUserFromList(User user)
         {
-            lobby.UsersSearchingForGameList.Remove(user);
+            Lobby.Instance.RemoveUserFromSearchingGameList(user);
         }
 
+        public void EndGame(Game game)
+        {
+            if (game.GameFinished())
+            {
+                Console.Write("La partida ha finalizado");
+            }
+        }
 
     }
 }

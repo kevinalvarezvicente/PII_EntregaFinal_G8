@@ -28,9 +28,9 @@ namespace PII_ENTREGAFINAL_G8.src.Program
 
             //game1.AskPlayerToPlaceShips();
             //game1.AskPlayerToPlaceShips();
-            //Console.WriteLine("Debe indicar la coordenada a atacar");
-            //string ShotCoord = Console.ReadLine();
-            //game1.ShotMade(ShotCoord);
+            Console.WriteLine("Debe indicar la coordenada a atacar");
+            string ShotCoord = Console.ReadLine();
+            game1.ShotMade(ShotCoord);
             /*int counter = 1;
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char [] lettersArray = letters.ToCharArray(); 

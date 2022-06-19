@@ -85,7 +85,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             BoardPrinter.PrintPlayerShotBoard(Active_Player);
             BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
-            Utils.Swap(ref Active_Player, ref Inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.GetPlayerName()} de realizar el tiro");
 
         }

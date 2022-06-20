@@ -46,7 +46,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
                 else if (direction.ToUpper()=="V")
                 {
-                    CoordsList.Add(new Spot (x,y+i));
+                    CoordsList.Add(new Spot (x+i,y));
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Método que será heredado las subclases de Ship, o sea a las clases que heredan de ship.
         /// </summary>
         /// <returns></returns>
-        protected bool IsShipSinked()
+        public bool IsShipSinked()
         {
             foreach (Spot spot in CoordsList)
             {

@@ -10,46 +10,61 @@ namespace LibraryTests
     /// </summary>
     public class ContainerTests
     {
-        private User player1;
-        private User player2;
 
         [SetUp]
         public void SetUp()
         {
-            User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
         }
+        /// <summary>
+        /// Se realiza Test1
+        /// </summary>
         [Test]
         public void TestAddUserToLobby()
-        {   
+        {
+            User player1 = new User(1, "Carol");
+            User player2 = new User(2, "Tony");
             int expected = 2;
-            Singleton<LobbyContainer>.Instance.AddItem(player1);
-            Singleton<LobbyContainer>.Instance.AddItem(player2);
-            Assert.AreEqual(expected,Singleton<LobbyContainer>.Instance.ContainerList.Count);
+            LobbyContainer lobby = new LobbyContainer();
+            lobby.AddItem(player1);
+            lobby.AddItem(player2);
+            Assert.AreEqual(expected,lobby.ContainerList.Count);
         }
-
+        /// <summary>
+        /// Test2
+        /// </summary>
         [Test]
         public void TestRemoveUserFromLobby()
         {   
-            int expected = 0;
-            Singleton<LobbyContainer>.Instance.RemoveItem(player1);
-            Singleton<LobbyContainer>.Instance.RemoveItem(player2);
-            Assert.AreEqual(0,Singleton<LobbyContainer>.Instance.ContainerList.Count);
+            User player1 = new User(1, "Carol");
+            User player2 = new User(2, "Tony");
+            int expected = 1;
+            LobbyContainer lobby = new LobbyContainer();
+            lobby.AddItem(player1);
+            lobby.AddItem(player2);
+            lobby.RemoveItem(player1);
+            Assert.AreEqual(expected,lobby.ContainerList.Count);
         }
+        /// <summary>
+        /// Test para ver que no es posible iniciar una partida solo con un jugador
+        /// </summary>
         [Test]
         public void TestAreNOTUsersToStartGame()
         {
+            LobbyContainer lobby = new LobbyContainer();
             bool expected = false;
-            Assert.AreEqual(expected,Singleton<LobbyContainer>.Instance.AreUsersToStartGame());
+            Assert.AreEqual(expected,lobby.AreUsersToStartGame());
+        }
+        /// <summary>
+        /// Test para chequear que queda un usuario registrado
+        /// </summary>
+        [Test]
+        public void TestRegisterUser()
+        {
+            Singleton<Administrator>.Instance.RegisterUser(1,"Carol");
+            int expected = 1;
+            Assert.AreEqual(expected,Singleton<UserContainer>.Instance.ContainerList.Count);
         }
         
-        /*[Test]
-        public void TestAreNOTUsersToStartGame()
-        {
-            bool expected = false;
-            Singleton<Administrator>.Instance.AddUserToList(player1);
-            Assert.AreEqual(expected,Singleton<Lobby>.Instance.AreUsersToStartGame());
-        }*/
         
     }
 }   

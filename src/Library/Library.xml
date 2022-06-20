@@ -119,6 +119,11 @@
             <param name="x">Es el tamaño del tablero</param>
             <returns></returns>    
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.AbstractContainer`1.ClearContainer">
+            <summary>
+            Se vacia el contenedor para poder usarlo en los test 
+            </summary>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AreUsersToStartGame">
             <summary>
             Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
@@ -128,7 +133,7 @@
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
             <summary>
             Aca se encuentran todos los métodos relacionados con el juego en general.
-            La clase Game cumle con Expert siendo ésta  la clase que tiene 
+            La clase Game cumple con Expert siendo ésta  la clase que tiene 
             la información necesaria para poder cumplir con la lógica del programa. 
             Hacer los tiros
             Ubicar barcos
@@ -290,6 +295,8 @@
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.SearchForCoordInShipsList(System.String)">
             <summary>
             Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
+            Devuelve true una vez que cambio el valor del Spot
+            No funciona este método aún falta arreglarlo
             </summary>
             <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
         </member>

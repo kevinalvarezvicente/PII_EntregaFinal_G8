@@ -24,7 +24,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene una lista de diccionarios
         /// cada diccionario es un barco
         /// </summary>
-        private List<List<Spot>> shipsList = new List<List<Spot>>();
+        private List<Ship> shipsList = new List<Ship>();
         /// <summary>
         /// Constructor de player. Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
         /// Cada jugador tiene su propio tablero.
@@ -85,7 +85,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Es la lista de barcos formada por diccionarios
         /// </summary>
-        public List<List<Spot>> ShipsList
+        public List<Ship> ShipsList
         {
             get
             {
@@ -95,20 +95,24 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         /// <summary>
         /// Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
+        /// Devuelve true una vez que cambio el valor del Spot
+        /// No funciona este método aún falta arreglarlo
         /// </summary>
         /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
-        public void SearchForCoordInShipsList(string coord)
+        public bool SearchForCoordInShipsList(string coord)
         {
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             Spot spot = new Spot(x,y);
-            foreach (List<Spot> list in ShipsList)
+            foreach (Ship ship in ShipsList)
             {
-                if (list.Contains(spot))
+                if (ship.CoordsList.Contains(spot))
                 {
-                    spot.wasHit=true;
+                    int index = ship.CoordsList.IndexOf(spot);
+                    ship.CoordsList[index].wasHit=true;
+                    return true;
                 }
-                break;
             }
+            return false;
         }
         /// <summary>
         /// Realiza el shot
@@ -158,9 +162,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
         public bool AreAllShipsSinked()
         {
-           foreach (List<Spot> list in ShipsList)
+           foreach (Ship ship in ShipsList)
             {
-                foreach(Spot spot in list)
+                foreach(Spot spot in ship.CoordsList)
                 {
                     if (spot.wasHit==false)
                     {
@@ -181,6 +185,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     this.PlayerShipBoard.GameBoard[spot.X,spot.Y] = "o";
                     
                 }
+                ShipsList.Add(ship);
         }
 
         /// <summary>
@@ -190,7 +195,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         public void AddShipToPlayerShipList(Ship ship)
         {
-            ShipsList.Add(ship.CoordsList);
+            ShipsList.Add(ship);
         }
     }
 }

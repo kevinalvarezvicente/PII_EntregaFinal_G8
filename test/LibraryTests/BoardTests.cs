@@ -23,6 +23,7 @@ namespace LibraryTests
         }
 
         /// <summary>
+        /// Test4
         /// Se testea el disparo dos veces a la misma coordenada
         /// </summary>
         [Test]
@@ -35,7 +36,9 @@ namespace LibraryTests
             player.ReceiveShot("11");  
             Assert.Throws<ReceiveShotException>(() =>player.ReceiveShot("11"));
         }
-        
+        /// <summary>
+        /// Test5
+        /// </summary>
 
         [Test]
         public void TestMaxShipQuantity()
@@ -44,6 +47,9 @@ namespace LibraryTests
             int max = board.MaxShipsQuantity;
             Assert.AreEqual(5, max);
         }
+        /// <summary>
+        /// Test 6
+        /// </summary>
         [Test]
         public void AddFrigateToBoardVertical()
         {
@@ -52,18 +58,24 @@ namespace LibraryTests
             Ship frigate = new Frigate("11","v");
             player.PlaceShipOnBoard(frigate);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
-            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 2]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
         }
-                [Test]
+        /// <summary>
+        /// Test6
+        /// </summary>
+        [Test]
         public void AddFrigateToBoardHorizontal()
         {
             User player1 = new User(1, "Carol");
             Player player = new Player(player1, 10);
-            Ship frigate = new Frigate("11","h");
+            Ship frigate = new Frigate("11","H");
             player.PlaceShipOnBoard(frigate);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
-            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 2]);
         }
+        /// <summary>
+        /// Test7
+        /// </summary>
         [Test]
         public void AddAllPositionsOfFrigate()
         {
@@ -78,6 +90,9 @@ namespace LibraryTests
             }
             Assert.AreEqual(2, count);
         }
+        /// <summary>
+        /// Test8
+        /// </summary>
         public void AddLightCruiserToBoardVertical()
         {
             User player1 = new User(1, "Carol");
@@ -88,6 +103,9 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[3, 3]);
         }
+        /// <summary>
+        /// Test9
+        /// </summary>
         public void AddLightCruiserToBoardHorizontal()
         {
             User player1 = new User(1, "Carol");
@@ -98,6 +116,9 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
         }
+        /// <summary>
+        /// Test10
+        /// </summary>
         [Test]
         public void AddAllPositionsOfLightCruiser()
         {
@@ -112,7 +133,9 @@ namespace LibraryTests
             }
             Assert.AreEqual(3, count);
         }
-        
+        /// <summary>
+        /// Test11
+        /// </summary>
         public void AddSubmarineToBoardVertical()
         {
             User player1 = new User(1, "Carol");
@@ -120,11 +143,14 @@ namespace LibraryTests
             Ship submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
-            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 2]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[3, 1]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[4, 1]);
         }
-        public void AddSubmatineToBoardHorizontal()
+        /// <summary>
+        /// Test12
+        /// </summary>
+        public void AddSubmarineToBoardHorizontal()
         {
             User player1 = new User(1, "Carol");
             Player player = new Player(player1, 10);
@@ -135,6 +161,9 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
         }
+        /// <summary>
+        /// Test 13
+        /// </summary>
         [Test]
         public void AddAllPositionsOfSubmarine()
         {
@@ -149,24 +178,45 @@ namespace LibraryTests
             }
             Assert.AreEqual(4, count);
         }
-        
-        
-
-        /*[Test]
-        public void AddLightCruiserToBoard()
-        {
-            int counter = 0;
-            Game game1   = new Game(player1, player2, 10);
-            game1.PlaceShip(2, "11", "V");
-            Assert.AreEqual("o", carol.PlayerShipBoard.GameBoard[2, 1]);
-        }
+        /// <summary>
+        /// Se testea cuando un jugador recibe un shot 
+        /// Se testea que el barco que se agregó se agrega a la lista de barcos del jugador
+        /// Se testea que al recibir el shot cambie el valor de la coordenada del barco
+        /// </summary>
         [Test]
-        public void AddSubmarineToBoard()
+        public void PlayerReceivesShotTest()
         {
-            int counter = 0;
-            Game game1   = new Game(player1, player2, 10);
-            game1.PlaceShip(3, "11", "V");
-            Assert.AreEqual("o", carol.PlayerShipBoard.GameBoard[2, 1]);
-        }*/
+            User juan = new User(1,"Juan");
+            Player player = new Player(juan,10);
+            Submarine submarine = new Submarine("11","v");
+            player.PlaceShipOnBoard(submarine);
+            player.ReceiveShot("11");
+            //ool isTrue= player.SearchForCoordInShipsList("11");
+            Assert.AreEqual("x", player.PlayerShipBoard.GameBoard[1, 1]);
+            Assert.AreEqual(1,player.ShipsList.Count);
+            //Assert.AreEqual(true,isTrue);   Método aún sin funcionar
+            
+        }
+        /// <summary>
+        /// Test sin funcionar aún 
+        /// </summary>    
+        [Test]
+        public void PlayerShipSinkedTest()
+        {
+            User juan = new User(1,"Juan");
+            Player player = new Player(juan,10);
+            Submarine submarine = new Submarine("11","v");
+            player.PlaceShipOnBoard(submarine);
+            //Se agrega el submarino en las coordenadas 
+            player.ReceiveShot("11");
+            player.ReceiveShot("21");
+            player.ReceiveShot("31");
+            player.ReceiveShot("41");
+            bool expected = true;
+            Assert.AreEqual(expected,submarine.IsSinked);
+            
+            
+        }  
+
     }
 }

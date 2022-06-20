@@ -19,12 +19,17 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
-            int expected = 2;
-            Singleton<LobbyContainer>.Instance.AddItem(player1);
-            Singleton<LobbyContainer>.Instance.AddItem(player2);
-            Console.WriteLine(Singleton<LobbyContainer>.Instance.ContainerList.Count);
+            bool s;
+            User juan = new User(1,"Juan");
+            Player player = new Player(juan,10);
+            Submarine submarine = new Submarine("11","v");
+            player.PlaceShipOnBoard(submarine);
+            player.ReceiveShot("11");
+            player.ReceiveShot("21");
+            player.ReceiveShot("31");
+            player.ReceiveShot("41");
+            s = submarine.IsSinked;
+            Console.WriteLine(submarine.IsShipSinked());
             
 
             /*Board board= new Board(10);

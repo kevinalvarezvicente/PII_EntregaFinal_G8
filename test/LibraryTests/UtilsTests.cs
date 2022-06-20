@@ -9,6 +9,7 @@ namespace LibraryTests
     public class UtilsTests
     {
         /// <summary>
+        /// Test 15
         /// Primer test probando con una coordenada
         /// </summary>
         [Test]
@@ -18,6 +19,7 @@ namespace LibraryTests
             Assert.AreEqual((1,1), Utils.SplitCoordIntoRowAndColumn(coord));
         }
         /// <summary>
+        /// Test 16
         /// Este test chequearía que si se manda una coordenada mas larga que 2 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>
@@ -29,6 +31,7 @@ namespace LibraryTests
         }
 
         /// <summary>
+        /// Test17
         /// Este test chequearía que si se manda una coordenada menor que 2 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>

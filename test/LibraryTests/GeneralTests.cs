@@ -21,7 +21,7 @@ namespace LibraryTests
             Assert.AreEqual("|", shotBoard.GameBoard[x, y]);
         }  */  
     
-        [Test]
+        /*[Test]
         [TestCase("11")]
         public void CorrectPositionShot(string data)
         {
@@ -29,7 +29,7 @@ namespace LibraryTests
             Board shotBoard = player.PlayerShotBoard;
             (int x, int y) = Utils.SplitCoordIntoRowAndColumn(data);
              Assert.AreEqual(shotBoard.GameBoard[1, 1], shotBoard.GameBoard[x, y]);
-        }    
+        }*/    
         
         
         /*[Test]
@@ -46,7 +46,7 @@ namespace LibraryTests
         }*/
           
         
-        [Test]
+        /*[Test]
         public void TestShotOcean()
         {
             player.ReceiveShot("21");
@@ -56,7 +56,7 @@ namespace LibraryTests
             game1.PlaceShip(2, "11", "H");
             Board shotBoard = player.PlayerShotBoard;
             Assert.AreEqual("-", shotBoard.GameBoard[0, 0]);
-        }
+        }*/
 
         
     }

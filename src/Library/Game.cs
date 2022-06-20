@@ -5,7 +5,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Aca se encuentran todos los métodos relacionados con el juego en general.
-    /// La clase Game cumle con Expert siendo ésta  la clase que tiene 
+    /// La clase Game cumple con Expert siendo ésta  la clase que tiene 
     /// la información necesaria para poder cumplir con la lógica del programa. 
     /// Hacer los tiros
     /// Ubicar barcos
@@ -52,7 +52,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
-            Console.WriteLine($"Comenzará {Active_Player.PlayerName} \nSu tablero se ve asi");
+            //Console.WriteLine($"Comenzará {Active_Player.PlayerName} \nSu tablero se ve asi");
             //BoardPrinter.PrintPlayerShipBoard(Active_Player);
         }
         /// <summary>
@@ -88,8 +88,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new CoordException("Las coordenadas estan fuera de rango.");
             }
-            BoardPrinter.PrintPlayerShotBoard(Active_Player);
-            BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
+            //BoardPrinter.PrintPlayerShotBoard(Active_Player);
+            //BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
 
         }
@@ -142,7 +142,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
                 default:                        
                         throw new OptionException("Solo tiene 3 opciones de nave.");
-                break;
 
                 }
         }
@@ -168,9 +167,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public bool AreAllShipsSinked(Player player)
         {
-           foreach (List<Spot> list in player.ShipsList)
+           foreach (Ship ship in player.ShipsList)
             {
-                foreach(Spot spot in list)
+                foreach(Spot spot in ship.CoordsList)
                 {
                     if (spot.wasHit==false)
                     {

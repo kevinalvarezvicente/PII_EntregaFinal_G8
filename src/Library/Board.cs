@@ -14,7 +14,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public Board(int x)
         {
-            this.InitializeBoard(x);
+                    this.InitializeBoard(x);
             this.maxShipsQuantity = x / 2;
         }
 

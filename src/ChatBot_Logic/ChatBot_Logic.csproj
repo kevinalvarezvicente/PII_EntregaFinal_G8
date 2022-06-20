@@ -26,8 +26,4 @@
 	  <ProjectReference Include="..\APIs\APIs.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="src\Handlers_Concatenation\" />
-	</ItemGroup>
-
 </Project>

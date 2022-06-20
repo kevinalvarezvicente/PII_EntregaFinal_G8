@@ -8,7 +8,7 @@ namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
     {
         private static string token;
 
-        private static void StartTokenConfig()
+        public static void StartTokenConfig()
         {
             // Lee una variable de entorno NETCORE_ENVIRONMENT que si no existe o tiene el valor 'development' indica
             // que estamos en un ambiente de desarrollo.
@@ -40,6 +40,11 @@ namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
             var serviceProvider = services.BuildServiceProvider();
             var revealer = serviceProvider.GetService<ISecretService>();
             token = revealer.Token;
+        }
+
+        public static string Token
+        {
+            get { return token; }
         }
     }
 }

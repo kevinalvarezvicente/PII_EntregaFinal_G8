@@ -8,7 +8,7 @@ namespace LibraryTests
     /// Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
     /// IMPORTANTE: Para correr cada uno se debe descomentar, pues dado que es un singleton, al agregar usuarios a la lista se mentienen alli
     /// </summary>
-    public class LobbyAndAdministratorTests
+    public class ContainerTests
     {
         private User player1;
         private User player2;
@@ -20,14 +20,29 @@ namespace LibraryTests
             User player2 = new User(2, "Tony");
         }
         [Test]
-        public void TestLobby()
+        public void TestAddUserToLobby()
         {   
             int expected = 2;
-            Singleton<Administrator>.Instance.AddUserToList(player1);
-            Singleton<Administrator>.Instance.AddUserToList(player2);
-            Assert.AreEqual(expected, Singleton<Lobby>.Instance.GetUsersSearchingGame().Count());
+            Singleton<LobbyContainer>.Instance.AddItem(player1);
+            Singleton<LobbyContainer>.Instance.AddItem(player2);
+            Assert.AreEqual(expected,Singleton<LobbyContainer>.Instance.ContainerList.Count);
         }
 
+        [Test]
+        public void TestRemoveUserFromLobby()
+        {   
+            int expected = 0;
+            Singleton<LobbyContainer>.Instance.RemoveItem(player1);
+            Singleton<LobbyContainer>.Instance.RemoveItem(player2);
+            Assert.AreEqual(0,Singleton<LobbyContainer>.Instance.ContainerList.Count);
+        }
+        [Test]
+        public void TestAreNOTUsersToStartGame()
+        {
+            bool expected = false;
+            Assert.AreEqual(expected,Singleton<LobbyContainer>.Instance.AreUsersToStartGame());
+        }
+        
         /*[Test]
         public void TestAreNOTUsersToStartGame()
         {

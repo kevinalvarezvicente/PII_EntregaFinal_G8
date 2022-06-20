@@ -26,7 +26,7 @@ namespace LibraryTests
         /// Se testea el disparo dos veces a la misma coordenada
         /// </summary>
         [Test]
-        public void TestReceiveShot()
+        public void TestReceiveShotException()
         {
             User player1 = new User(1, "Carol");
             Player player = new Player(player1, 10);
@@ -45,7 +45,7 @@ namespace LibraryTests
             Assert.AreEqual(5, max);
         }
         [Test]
-        public void AddFrigateToBoard()
+        public void AddFrigateToBoardVertical()
         {
             User player1 = new User(1, "Carol");
             Player player = new Player(player1, 10);
@@ -53,6 +53,16 @@ namespace LibraryTests
             player.PlaceShipOnBoard(frigate);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 2]);
+        }
+                [Test]
+        public void AddFrigateToBoardHorizontal()
+        {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship frigate = new Frigate("11","h");
+            player.PlaceShipOnBoard(frigate);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
         }
         [Test]
         public void AddAllPositionsOfFrigate()
@@ -68,6 +78,78 @@ namespace LibraryTests
             }
             Assert.AreEqual(2, count);
         }
+        public void AddLightCruiserToBoardVertical()
+        {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship lightCruiser= new LightCruiser("13","V");
+            player.PlaceShipOnBoard(lightCruiser);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 3]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[3, 3]);
+        }
+        public void AddLightCruiserToBoardHorizontal()
+        {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship lightCruiser= new LightCruiser("22","h");
+            player.PlaceShipOnBoard(lightCruiser);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 2]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
+        }
+        [Test]
+        public void AddAllPositionsOfLightCruiser()
+        {
+            int count=0;
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship lightCruiser= new LightCruiser("22","V");
+            player.PlaceShipOnBoard(lightCruiser);
+            foreach (Spot spot in lightCruiser.CoordsList)
+            {
+                count++;
+            }
+            Assert.AreEqual(3, count);
+        }
+        
+        public void AddSubmarineToBoardVertical()
+        {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship submarine = new Submarine("11","v");
+            player.PlaceShipOnBoard(submarine);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 1]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 2]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[3, 1]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[4, 1]);
+        }
+        public void AddSubmatineToBoardHorizontal()
+        {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship submarine = new Submarine("21","H");
+            player.PlaceShipOnBoard(submarine);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 2]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 3]);
+            Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
+        }
+        [Test]
+        public void AddAllPositionsOfSubmarine()
+        {
+            int count=0;
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship submarine = new Submarine("11","v");
+            player.PlaceShipOnBoard(submarine);
+            foreach (Spot spot in submarine.CoordsList)
+            {
+                count++;
+            }
+            Assert.AreEqual(4, count);
+        }
+        
         
 
         /*[Test]

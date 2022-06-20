@@ -27,8 +27,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{user1.Name} indique el tamaño del tablero");
             int boardLength = Console.Read();
             Game game = new Game(user1, user2, boardLength);
-            RemoveUserFromList(user1);
-            RemoveUserFromList(user2);
+            Singleton<LobbyContainer>.Instance.RemoveItem(user1);
+            Singleton<LobbyContainer>.Instance.RemoveItem(user2);
         }
         /// <summary>
         /// Este método une a los usuarios usando JoinUsersToPlay
@@ -36,28 +36,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         public void StartGame()
         {
-            if (Singleton<Lobby>.Instance.AreUsersToStartGame())
+            if (Singleton<LobbyContainer>.Instance.AreUsersToStartGame())
             {
-                JoinUsersToPlay(Singleton<Lobby>.Instance.GetUsersSearchingGame()[0], Singleton<Lobby>.Instance.GetUsersSearchingGame()[1]);
+                JoinUsersToPlay(Singleton<LobbyContainer>.Instance.ContainerList[0], Singleton<LobbyContainer>.Instance.ContainerList[1]);
             }
-        }
-        /// <summary>
-        /// Se agrega el usuario a la lista de usuarios esperando para jugar
-        /// </summary>
-        /// <param name="user">El parámetro es de tipo user</param>
-        public void AddUserToList(User user)
-        {
-            Singleton<Lobby>.Instance.AddUserToSearchingGameList(user);
-
-        }
-
-        /// <summary>
-        /// Se quita el usuario de la lista una vez que se arma una partida
-        /// </summary>
-        /// <param name="user">El parámetro es de tipo user</param>
-        public void RemoveUserFromList(User user)
-        {
-            Singleton<Lobby>.Instance.RemoveUserFromSearchingGameList(user);
         }
 
         public void EndGame(Game game)
@@ -70,15 +52,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public void RegisterUser(int id, string name)
         {
-            foreach (int identificator in allUsers.Keys)
-            {
-                if (identificator!=id)
-                {
-                    User user= new User(id,name);
-                    this.allUsers.Add(user.UserId,user.Name);
-                }
-
-            }
+            User user = new User(id,name);
+            Singleton<UserContainer>.Instance.AddItem(user);
         }
 
 

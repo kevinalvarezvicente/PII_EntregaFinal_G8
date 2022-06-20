@@ -33,11 +33,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.gameHistory = new List<Game>();
         }
         /// <summary>
-        /// El método dice si el usuario quiere jugar llama al administrador para que lo agregue a la lista
+        /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
         /// </summary>
         public void WantToPlay()
         {
-            Singleton<Lobby>.Instance.AddUserToSearchingGameList(this);
+            Singleton<LobbyContainer>.Instance.AddItem(this);
         }
         /// <summary>
         /// Añade el juego al historial de juegos del usuario

@@ -20,12 +20,12 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         public static void Main()
         {
             User player1 = new User(1, "Carol");
-            Player player = new Player(player1, 10);
-            Ship frigate = new Frigate("11","v");
-            bool superated = true;
-            player.PlaceShipOnBoard(frigate);
-            player.ReceiveShot("11");
-            player.ReceiveShot("11");
+            User player2 = new User(2, "Tony");
+            int expected = 2;
+            Singleton<LobbyContainer>.Instance.AddItem(player1);
+            Singleton<LobbyContainer>.Instance.AddItem(player2);
+            Console.WriteLine(Singleton<LobbyContainer>.Instance.ContainerList.Count);
+            
 
             /*Board board= new Board(10);
             int cant = board.MaxShipsQuantity;

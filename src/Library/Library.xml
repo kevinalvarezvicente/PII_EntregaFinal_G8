@@ -29,18 +29,6 @@
             toma los dos primeros usuarios en el lobby una vez que se comprueba que hay mas de un usuario esperando por una partida
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.AddUserToList(PII_ENTREGAFINAL_G8.src.Library.User)">
-            <summary>
-            Se agrega el usuario a la lista de usuarios esperando para jugar
-            </summary>
-            <param name="user">El parámetro es de tipo user</param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RemoveUserFromList(PII_ENTREGAFINAL_G8.src.Library.User)">
-            <summary>
-            Se quita el usuario de la lista una vez que se arma una partida
-            </summary>
-            <param name="user">El parámetro es de tipo user</param>
-        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Board">
             <summary>
             Clase donde comienza el tablero.
@@ -130,6 +118,12 @@
             </summary>
             <param name="x">Es el tamaño del tablero</param>
             <returns></returns>    
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AreUsersToStartGame">
+            <summary>
+            Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
+            </summary>
+            <returns> Retorna un booleano tal que si hay mas de 2 usuarios retornará true </returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
             <summary>
@@ -229,22 +223,6 @@
             Método que chequea que todos los barcos de alguno de los jugadores estén hundidos
             </summary>
             <returns>Retorna true o false para finalizar el juego</returns>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Lobby">
-            <summary>
-            La clase Lobby es donde se guardarán los datos de los usuarios que quieren jugar
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.AreUsersToStartGame">
-            <summary>
-            Este método chequea que hayan suficiente cantidad de usuarios esperando para jugar
-            </summary>
-            <returns> Retorna un booleano tal que si hay mas de 2 usuarios retornará true </returns>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Lobby.AddUserToSearchingGameList(PII_ENTREGAFINAL_G8.src.Library.User)">
-            <summary>
-            Va a permitir que el acceso a la lista de usuarios esperando por otros jugador
-            </summary>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Player">
             <summary>
@@ -510,7 +488,7 @@
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.WantToPlay">
             <summary>
-            El método dice si el usuario quiere jugar llama al administrador para que lo agregue a la lista
+            El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.AddGameToGameHistory(PII_ENTREGAFINAL_G8.src.Library.Game)">

@@ -1,10 +1,11 @@
-﻿using ChatBot_Logic.src.SecretToken;
+﻿using ChatBot_Logic.src;
+using ChatBot_Logic.src.SecretToken;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
 {
-    public class TokenConfiguration
+    public static class TokenConfiguration
     {
         private static string token;
 
@@ -25,7 +26,7 @@ namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
             // En el ambiente de desarrollo el token secreto del bot se toma de la configuración secreta
             if (isDevelopment)
             {
-                builder.AddUserSecrets<Program>(true);
+                builder.AddUserSecrets<ChatBot>(true);
             }
 
             var configuration = builder.Build();

@@ -3,14 +3,14 @@ using Telegram.Bot;
 
 namespace ChatBot_Logic.src
 {
-    public class ChatBot
+    public class ChatBot : ISecretService
     {
-
-        private static ChatBot instance;
-        private ITelegramBotClient bot;
-
+        public string Token => throw new NotImplementedException();
+        private static ChatBot _instance;
+        private static TelegramBotClient Bot;
         private ChatBot()
         {
+<<<<<<< Updated upstream
             var cts = new CancellationTokenSource();
             TokenConfiguration.StartTokenConfig();
             this.bot = new TelegramBotClient(TokenConfiguration.Token);
@@ -99,6 +99,21 @@ namespace ChatBot_Logic.src
         {
             Console.WriteLine(exception.Message);
             return Task.CompletedTask;
+=======
+            Bot = new TelegramBotClient(Token);
+        }
+
+        public static ChatBot GetInstance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ChatBot();
+                }
+                return _instance;
+            }
+>>>>>>> Stashed changes
         }
     }
 }

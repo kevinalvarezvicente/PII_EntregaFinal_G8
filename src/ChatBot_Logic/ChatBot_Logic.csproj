@@ -8,6 +8,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="src\Handlers_Concatenation\**" />
+	  <EmbeddedResource Remove="src\Handlers_Concatenation\**" />
+	  <None Remove="src\Handlers_Concatenation\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="src\SecretToken\TokenConfiguration.cs~RF6f6d83.TMP" />
 	</ItemGroup>
 

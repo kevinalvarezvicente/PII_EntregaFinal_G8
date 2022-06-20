@@ -199,8 +199,6 @@
             Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
             </summary>
             <param name="shipOption">Es la opción prederminada del barco a elegir</param>
-            <param name="x">Luego de dividir la coordenada en fila y columna, la fila se guarda en x</param>
-            <param name="y">Luego de dividir la coordenada en fila y columna, la columna se guarda en y</param>
             <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
             <param name="direction">Las opciones son vertical u horizontal</param>
         </member>
@@ -392,9 +390,9 @@
             Cada barco tiene su coordenada de vulnerabilidad.
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.coordsDic">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.coordsList">
             <summary>
-            Cada barco tendrá su diccionario cuyas claves son las coordenadas donde se ubica cada parte del mismo
+            
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Ship.shipSize">
@@ -410,7 +408,7 @@
             <param name="coord">Es una cadena donde comienza la primer posición del barco</param>
             <param name="direction">Es una cadena la dirección del barco, vertical u horizontal</param>
         </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.CoordsDict">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Ship.CoordsList">
             <summary>
             Permite obtener el diccionario para el barco
             </summary>
@@ -424,7 +422,7 @@
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Ship.IsShipSinked">
             <summary>
             Este método recorre todos los valores de las claves del barco.
-            Si estan todos los valores en true entonces el barco esta hundido.
+            Si estan todos los elementos entonces el barco esta hundido.
             Método que será heredado las subclases de Ship, o sea a las clases que heredan de ship.
             </summary>
             <returns></returns>

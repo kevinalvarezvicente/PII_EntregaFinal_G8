@@ -9,6 +9,11 @@
             Se hace test para el método que divide la coordenada
             </summary>
         </member>
+        <member name="M:LibraryTests.BoardTests.TestReceiveShot">
+            <summary>
+            Se testea el disparo dos veces a la misma coordenada
+            </summary>
+        </member>
         <member name="T:LibraryTests.LobbyAndAdministratorTests">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton

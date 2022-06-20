@@ -24,7 +24,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene una lista de diccionarios
         /// cada diccionario es un barco
         /// </summary>
-        private List<Dictionary<(int, int), bool>> shipsList = new List<Dictionary<(int, int), bool>>();
+        private List<List<Spot>> shipsList = new List<List<Spot>>();
         /// <summary>
         /// Constructor de player. Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
         /// Cada jugador tiene su propio tablero.
@@ -85,7 +85,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Es la lista de barcos formada por diccionarios
         /// </summary>
-        public List<Dictionary<(int, int), bool>> ShipsList
+        public List<List<Spot>> ShipsList
         {
             get
             {
@@ -100,11 +100,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void SearchForCoordInShipsList(string coord)
         {
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            foreach (Dictionary<(int, int), bool> dict in ShipsList)
+            Spot spot = new Spot(x,y);
+            foreach (List<Spot> list in ShipsList)
             {
-                if (dict.ContainsKey((x,y)))
+                if (list.Contains(spot))
                 {
-                    dict[(x,y)]=true;
+                    spot.wasHit=true;
                 }
                 break;
             }
@@ -146,8 +147,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {
-                Console.WriteLine("Ya fue tocado");
-                //algun comando handler 
+                throw new ReceiveShotException("Ya disparo a esta coordenada");
             }
 
         }
@@ -158,11 +158,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
         public bool AreAllShipsSinked()
         {
-           foreach (Dictionary<(int, int), bool> dict in ShipsList)
+           foreach (List<Spot> list in ShipsList)
             {
-                foreach(bool value in dict.Values)
+                foreach(Spot spot in list)
                 {
-                    if (!value)
+                    if (spot.wasHit==false)
                     {
                         return false;
                     }
@@ -176,10 +176,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">Es de tipo Ship pero se pasa por parpametro cualquier subtipo de Ship</param>
         public void PlaceShipOnBoard(Ship ship)
         {
-                int length=ship.ShipSize;
-                foreach ((int i,int j) in  ship.CoordsDict.Keys)
+                foreach (Spot spot in  ship.CoordsList)
                 {
-                    this.PlayerShipBoard.GameBoard[i,j] = "o";
+                    this.PlayerShipBoard.GameBoard[spot.X,spot.Y] = "o";
                     
                 }
         }
@@ -191,7 +190,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         public void AddShipToPlayerShipList(Ship ship)
         {
-            ShipsList.Add(ship.CoordsDict);
+            ShipsList.Add(ship.CoordsList);
         }
     }
 }

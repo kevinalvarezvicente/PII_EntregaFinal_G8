@@ -19,14 +19,22 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
+            User player1 = new User(1, "Carol");
+            Player player = new Player(player1, 10);
+            Ship frigate = new Frigate("11","v");
+            bool superated = true;
+            player.PlaceShipOnBoard(frigate);
+            player.ReceiveShot("11");
+            player.ReceiveShot("11");
+
             /*Board board= new Board(10);
             int cant = board.MaxShipsQuantity;
             Console.WriteLine(cant);*/
 
-            User player1 = new User(1, "Carol");
+            /*User player1 = new User(1, "Carol");
             User player2 = new User(2, "Tony");
             Game game1   = new Game(player1, player2, 10);
-            game1.PlaceShip(1, "11", "V");
+            game1.PlaceShip(3, "11", "V");*/
             
 
             //Singleton<Administrator>.Instance.AddUserToList(player1);

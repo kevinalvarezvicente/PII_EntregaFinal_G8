@@ -8,14 +8,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Ship
     {
+        private bool isSinked {get;}
         /// <summary>
         /// Cada barco tiene su coordenada de vulnerabilidad.
         /// </summary>
         private (int x,int y) vulnerableCoord;
         /// <summary>
-        /// Cada barco tendrá su diccionario cuyas claves son las coordenadas donde se ubica cada parte del mismo
+        /// 
         /// </summary>
-        private Dictionary<(int, int), bool> coordsDic;
+        private List <Spot> coordsList;
         /// <summary>
         /// Cada barco tiene un tamaño especifico de cada uno que es la cantidad de clave-valor que tiene dicho barco
         /// </summary>
@@ -32,7 +33,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new OptionException("Las opciones para la direccion del barco son V(vertical) o H(Horizontal");
             }
-            this.coordsDic = new Dictionary<(int, int), bool>();
+            this.coordsList = new List<Spot>();
             this.shipSize=shipSize;
             (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             this.vulnerableCoord=(x,y);
@@ -40,27 +41,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 if (direction.ToUpper()=="H")
                 {
-                    CoordsDict.Add((x,y+i),false);
+                    CoordsList.Add(new Spot (x,y+i));
                     
                 }
                 else if (direction.ToUpper()=="V")
                 {
-                    CoordsDict.Add((x+i,y),false);
+                    CoordsList.Add(new Spot (x,y+i));
                 }
             }
         }
         /// <summary>
         /// Permite obtener el diccionario para el barco
         /// </summary>
-        public Dictionary<(int, int), bool> CoordsDict
+        public List <Spot> CoordsList
         {
             get
             {
-                return this.coordsDic;
+                return this.coordsList;
             }
             private set
             {
-                this.coordsDic = value;
+                this.coordsList = value;
             }
         }
         /// <summary>
@@ -76,15 +77,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         /// <summary>
         /// Este método recorre todos los valores de las claves del barco.
-        /// Si estan todos los valores en true entonces el barco esta hundido.
+        /// Si estan todos los elementos entonces el barco esta hundido.
         /// Método que será heredado las subclases de Ship, o sea a las clases que heredan de ship.
         /// </summary>
         /// <returns></returns>
         protected bool IsShipSinked()
         {
-            foreach (bool value in CoordsDict.Values)
+            foreach (Spot spot in CoordsList)
             {
-                if (value is false)
+                if (spot.wasHit is false)
                 {
                     return false;
                 }
@@ -98,13 +99,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Es de tipo string que liuego se dividira en (x,y) </param>
         public void ShotInVulnerableCoord(string coord)
         {
-
             (int x,int y)=Utils.SplitCoordIntoRowAndColumn(coord);
             if (this.vulnerableCoord==(x,y))
             {
-                foreach ((int x, int y) key in CoordsDict.Keys)
+                foreach (Spot spot in CoordsList)
                 {
-                    CoordsDict[(x,y)]=true;
+                    spot.wasHit=true;
                 }
             }
         }

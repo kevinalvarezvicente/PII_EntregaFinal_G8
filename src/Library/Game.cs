@@ -53,7 +53,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.usersList.Add(player1);
             this.usersList.Add(player2);
             Console.WriteLine($"Comenzará {Active_Player.PlayerName} \nSu tablero se ve asi");
-            BoardPrinter.PrintPlayerShipBoard(Active_Player);
+            //BoardPrinter.PrintPlayerShipBoard(Active_Player);
         }
         /// <summary>
         /// Todas las partidas tienen su fecha de inicio
@@ -93,24 +93,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
 
         }
-        /*
-        /// <summary>
-        /// Este método se utilizó para probar unas excepciones
-        /// </summary>
-        /// <param name="newCoord">Es la nueva coordenada</param>*/
-        /*public void AskForShotAgain(string newCoord)
-        {
-            Active_Player.MakeShot(newCoord);
-            Inactive_Player.ReceiveShot(newCoord);
-        }*/
 
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
         /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
         /// </summary>
         /// <param name="shipOption">Es la opción prederminada del barco a elegir</param>
-        /// <param name="x">Luego de dividir la coordenada en fila y columna, la fila se guarda en x</param>
-        /// <param name="y">Luego de dividir la coordenada en fila y columna, la columna se guarda en y</param>
         /// <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
         /// <param name="direction">Las opciones son vertical u horizontal</param>
         public void PlaceShip(int shipOption, string coord, string direction)
@@ -120,7 +108,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
             ChooseShipOption(shipOption, coord, direction);
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
-            BoardPrinter.PrintPlayerShipBoard(Active_Player);
+            //BoardPrinter.PrintPlayerShipBoard(Active_Player);
             
         }
         /// <summary>
@@ -152,8 +140,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     this.Active_Player.AddShipToPlayerShipList(shipSubmarine);
                 break;
 
-                default:
-                        Console.ForegroundColor = ConsoleColor.Red;
+                default:                        
                         throw new OptionException("Solo tiene 3 opciones de nave.");
                 break;
 
@@ -181,11 +168,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public bool AreAllShipsSinked(Player player)
         {
-           foreach (Dictionary<(int, int), bool> dict in player.ShipsList)
+           foreach (List<Spot> list in player.ShipsList)
             {
-                foreach(bool value in dict.Values)
+                foreach(Spot spot in list)
                 {
-                    if (!value)
+                    if (spot.wasHit==false)
                     {
                         return false;
                     }

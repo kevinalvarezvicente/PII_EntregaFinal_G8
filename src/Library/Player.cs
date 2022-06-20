@@ -5,6 +5,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Esta clase es la que crea al jugador. 
+    /// Cumple patron expert ya que es la que contiene la información de:
+    /// Los tableros
+    /// Usuario
+    /// Barcos y sus posiciones
+    /// Hace tiro
+    /// recibe tiro como jugador inactivo
+    /// Ubica los barcos
     /// </summary>
     public class Player 
     {
@@ -21,12 +28,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         private string playerName;
         /// <summary>
-        /// Cada jugador tiene una lista de diccionarios
-        /// cada diccionario es un barco
+        /// Cada jugador tiene una lista de listas. Cada lista interna representa las posiciones del barco.
+        /// Polimórfica, puede contener Submarine, LightCruiser, Frigate
         /// </summary>
         private List<Ship> shipsList = new List<Ship>();
         /// <summary>
-        /// Constructor de player. Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
+        /// Constructor de player. 
+        /// Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
         /// Cada jugador tiene su propio tablero.
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
@@ -83,7 +91,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.playerName = NewName;
         }
         /// <summary>
-        /// Es la lista de barcos formada por diccionarios
+        /// Es la lista de barcos formada por diccionarios.
+        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
+        /// tratados como objetos de la clase base Ship
         /// </summary>
         public List<Ship> ShipsList
         {
@@ -176,8 +186,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         /// <summary>
         /// Operación polimórifca que ubica el barco en el tablero.
+        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
+        /// tratados como objetos de la clase base Ship
         /// </summary>
-        /// <param name="ship">Es de tipo Ship pero se pasa por parpametro cualquier subtipo de Ship</param>
+        /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
         public void PlaceShipOnBoard(Ship ship)
         {
                 foreach (Spot spot in  ship.CoordsList)
@@ -190,8 +202,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         /// <summary>
         /// Este método agrega el barco creado en la posición a una lista de barcos del jugador
+        /// Operación polimórfica 
+        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
+        /// tratados como objetos de la clase base Ship
         /// </summary>
-        /// <param name="player">El dueño de la lista de barcos</param>
         /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         public void AddShipToPlayerShipList(Ship ship)
         {

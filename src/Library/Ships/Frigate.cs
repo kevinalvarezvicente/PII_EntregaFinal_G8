@@ -5,8 +5,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// Es el barco mas pequeño, hereda de Ship
     /// Es una subclase de Ship ya que  atributos y métodos de otra clase y 
-    /// habitualmente se puede agregar nuevos atributos y nuevos métodos 
-    /// </summary>
+    /// habitualmente se puede agregar nuevos atributos y nuevos métodos.
+    /// Lo que se modifica es el tamaño del barco esté predeterminado según el tipo. 
+    /// /// </summary>
     public class Frigate: Ship
     {
         /// <summary>

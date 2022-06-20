@@ -5,11 +5,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Aca se encuentran todos los métodos relacionados con el juego en general.
-    /// La clase Game cumple con Expert siendo ésta  la clase que tiene 
+    /// La clase Game cumple con Expert siendo ésta  la clase que tiene toda la información para iniciar una partida
     /// la información necesaria para poder cumplir con la lógica del programa. 
-    /// Hacer los tiros
-    /// Ubicar barcos
-    /// Indicar si finalizó la partida
+    /// - Hacer los tiros en los tableros de ambos jugadores
+    /// - Ubicar barcos
+    /// - Indicar si finalizó la partida
+    /// Cumple Creator ya que tiene responsabilidad de crear instancias de:
+    /// - Player
+    /// - Ship (Cualquier subtipo)
     /// </summary>
     public class Game
     {
@@ -40,6 +43,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         private List<User> usersList;
         /// <summary>
         /// Se inicia el juego con el constructor de la clase
+        /// Recibe como argumento todos los datos necesarios para crear instancia de Player transformando a un usuario en player
         /// </summary>
         /// <param name="player1">Será el jugador que inicia todo</param>
         /// <param name="player2"></param>
@@ -52,8 +56,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
-            //Console.WriteLine($"Comenzará {Active_Player.PlayerName} \nSu tablero se ve asi");
-            //BoardPrinter.PrintPlayerShipBoard(Active_Player);
         }
         /// <summary>
         /// Todas las partidas tienen su fecha de inicio
@@ -88,8 +90,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new CoordException("Las coordenadas estan fuera de rango.");
             }
-            //BoardPrinter.PrintPlayerShotBoard(Active_Player);
-            //BoardPrinter.PrintPlayerShipBoard(Inactive_Player);
+
             Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
 
         }
@@ -108,12 +109,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
             ChooseShipOption(shipOption, coord, direction);
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
-            //BoardPrinter.PrintPlayerShipBoard(Active_Player);
-            
+                        
         }
         /// <summary>
         /// Es un método que al recibir la posicion del barco la pone en el board.
-        /// utiliza patron creator para instanciar el barco según opcion
+        /// Recibe como argumento todos los datos necesarios para crear instancia de los subtipos de Ship
         /// </summary>
         /// <param name="option">Es un entero, hay solo 3 opciones de barco </param>
         /// <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
@@ -147,7 +147,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
 
         /// <summary>
-        /// Usuarios que jugarán la partida
+        /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
         /// </summary>
         /// <value>Es una lista de tipo User</value>
         public List<User> UsersPlayingList
@@ -157,7 +157,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return this.usersList;
             }
         }
-
 
         /// <summary>
         /// Este método permite saber si un jugador tiene todos sus barcos hundidos.

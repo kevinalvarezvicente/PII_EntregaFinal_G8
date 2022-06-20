@@ -5,19 +5,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Esta clase cumple el rol de administrador.
-    /// Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases
+    /// Es Expert.
+    /// Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases.
+    /// Cumple Creator ya que tiene responsabilidad de crear instancias de:
+    /// - Game: cuando une a dos jugadores que quieren jugar.
+    /// - User: Para registrar el usuario y agregalo al UserContainer
+    /// Cumple (LCHC) Low Coupling and High Cohesion
+    /// Hace lo mínimo necesario como para realizar tareas de administrador
+    /// Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
     /// </summary>
     public class Administrator
     {
         /// <summary>
-        /// Crea un diccionario cuya clave es el id y el valor es el nombre
-        /// </summary>
-        
-        private Dictionary<int,string> allUsers = new Dictionary<int, string>();
-
-        /// <summary>
         /// El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
         /// Como ya ambos usuarios comenzaron a jugar y se transformaron en jugadores los quita del lobby de espera
+        /// Recibe como argumento todos los datos necesarios para crear instancia de Game
         /// </summary>
         /// <param name="user1">Usuario que comenzará el juego</param>
         /// <param name="user2">Uusario contrario</param>
@@ -41,6 +43,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 JoinUsersToPlay(Singleton<LobbyContainer>.Instance.ContainerList[0], Singleton<LobbyContainer>.Instance.ContainerList[1]);
             }
         }
+        /// <summary>
+        /// Finaliza la partida si es indicado
+        /// Hace que la clase use Game
+        /// </summary>
+        /// <param name="game">Recibe como parámetro la partida</param>
 
         public void EndGame(Game game)
         {
@@ -48,12 +55,31 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 Console.Write("La partida ha finalizado");
             }
+            else
+            {
+                throw new GameNotFinishedException("El juego aún no finaliza");
+            }
         }
-
+        /// <summary>
+        /// Registra el usuario
+        /// Hace que la clase use User
+        /// Recibe como argumento todos los datos necesarios para crear instancias de User
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
         public void RegisterUser(int id, string name)
         {
             User user = new User(id,name);
             Singleton<UserContainer>.Instance.AddItem(user);
+        }
+        /// <summary>
+        /// Método que guarda la partida del usuario en el Container
+        /// </summary>
+        /// <param name="game">Recibe como argumento un Game</param>
+        /// <param name="user">Recibe como argumento un User</param>
+        public void AddGameToUserGamesContainer(Game game, User user)
+        {
+            user.Container.AddItem(game);
         }
 
 

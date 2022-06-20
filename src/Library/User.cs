@@ -4,13 +4,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Class User guarda y trabaja con la información del usuario
+    /// Es experta en la información del usuario
+    /// Cumple (LCHC) Low Coupling and High Cohesion
+    /// Hace lo mínimo necesario como almacenar la información del usuario y delega todo lo demás 
+    /// Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
     /// </summary>
     public class User
     {
         /// <summary>
-        /// Es una lista donde se guardarán los juegos del jugador
+        /// Atributo de User, cada User tiene un Container donde se guardarán las partidas
         /// </summary>
-        private List<Game> gameHistory;
+        private UserGamesContainer container;
+        /// <summary>
+        /// Solo get ya que se quiere acceder de afuera al contenedor 
+        /// </summary>
+        /// <value>En el caso de que se quiera agregar o remover una partida el método es de la clase UserGamesContainer</value>
+        
+        public UserGamesContainer Container
+        {
+            get 
+            {
+                return this.container;
+            }
+        }
         /// <summary>
         /// Es el ID de usuario
         /// </summary>
@@ -30,7 +46,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.UserId = userId;
             this.Name = name;
-            this.gameHistory = new List<Game>();
         }
         /// <summary>
         /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
@@ -38,26 +53,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void WantToPlay()
         {
             Singleton<LobbyContainer>.Instance.AddItem(this);
-        }
-        /// <summary>
-        /// Añade el juego al historial de juegos del usuario
-        /// </summary>
-        /// <param name="game">Es un parámetro de tipo Game</param>
-        public void AddGameToGameHistory(Game game)
-        {
-            this.gameHistory.Add(game);
-        }
-        /// <summary>
-        /// Se obtiene el historial de partidas del usuario con la propiedad GameHistory
-        /// </summary>
-        /// <returns>Devuelve una lista de Game que son partidos jugados por el usuario</returns>
-        public List<Game> GameHistory
-        {
-            get
-            {
-                return this.gameHistory;
-            }
-            
         }
 
     }

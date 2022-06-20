@@ -4,6 +4,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Es el tipo de barco mas grande. Opción numero 3
+    /// Lo que se modifica es el tamaño del barco esté predeterminado según el tipo. 
+    /// Es subclase de Ship, lo que significa que heredará todos los métodos y se puede agregar otros
     /// </summary>
     public class Submarine: Ship
     {

@@ -9,7 +9,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class Utils
     {
         /// <summary>
-        /// Este método devuelve la fila y la columna en numeros enteros
+        /// Este método devuelve la fila y la columna en numeros enteros.
+        /// Cumple SRP ya que su única responsabilidad es brindar propiedades para facilitar la interaccion con el usuario
         /// </summary>
         /// <param name="coord">Es la coordenada de la matriz del tablero</param>
         /// <returns></returns>

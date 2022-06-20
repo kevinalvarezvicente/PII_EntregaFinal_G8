@@ -3,12 +3,18 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Clase base de barcos pues es la clase a partir de la cual se hereda
+    /// Clase base de barcos pues es la clase a partir de la cual heredan los 3 tipos de barcos.
     /// Permite que si el día de mañana se desea agregar otro tamaño de barco se pueda sin problema, sin necesidad de modificar tanto el código.
+    /// Cumple LSP (Liskov Substitution Principle)
+    /// - En todas las operaciones donde se requiera de un tipo Ship,
+    /// este puede ser reemplazables con objetos de sus subclases (Submarine, LightCruiser, Frigate) sin interrumpir la aplicación.
+    /// - No se romperá ya que los objetos de las subclases se comportan de la misma manera que los objetos de la superclase Ship.
+    /// Cumple (LCHC) Low Coupling and High Cohesion
+    /// - Hace lo mínimo necesario como almacenar la información del barco y delega todo lo demás 
+    /// - Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
     /// </summary>
     public class Ship
     {
-        private bool isSinked {get;}
         /// <summary>
         /// Cada barco tiene su coordenada de vulnerabilidad.
         /// </summary>
@@ -51,7 +57,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Permite obtener el diccionario para el barco
+        /// Permite obtener las coordenadas para el barco
         /// </summary>
         public List <Spot> CoordsList
         {
@@ -76,8 +82,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Este método recorre todos los valores de las claves del barco.
-        /// Si estan todos los elementos entonces el barco esta hundido.
+        /// Este método se fija en los atributos washIT de las coordenadas del barco.
+        /// Si estan todos con true entonces el barco esta hundido.
         /// Método que será heredado las subclases de Ship, o sea a las clases que heredan de ship.
         /// </summary>
         /// <returns></returns>

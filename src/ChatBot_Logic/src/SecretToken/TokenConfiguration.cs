@@ -28,7 +28,7 @@ namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
 
             var builder = new ConfigurationBuilder();
             builder
-                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory) //Modificacion realizada para facilitar el uso durante el desarollo
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             // En el ambiente de desarrollo el token secreto del bot se toma de la configuración secreta

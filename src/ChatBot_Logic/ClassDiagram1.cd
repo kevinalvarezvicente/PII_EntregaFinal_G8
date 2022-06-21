@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChatBot_Logic.src.Handlers.GoodByeHandler">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Handlers\GoodByeHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatBot_Logic.src.Handlers.HelloHandler">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Handlers\HelloHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatBot_Logic.src.Handlers.RegisterUserHandler">
+    <Position X="8.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Handlers\RegisterUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatBot_Logic.src.HandlersConfiguration.BaseHandler">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAQAgAAAAAAAAAAAICAAAAAAIAAAAAAAAAgAA=</HashCode>
+      <FileName>src\Handlers_Configuration\BaseHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ChatBot_Logic.src.Handlers_Configuration.HandlersConcadenation">
+    <Position X="4" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgEAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Handlers_Configuration\HandlersConcadenation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.SecretService">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>src\SecretToken\SecretService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.TokenConfiguration">
+    <Position X="7.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>src\SecretToken\TokenConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChatBot_Logic.src.ChatBot">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAEAAAAQgAEAQAAAAAAAAAAIAIAAAAAYAAAAAABACQ=</HashCode>
+      <FileName>src\ChatBot.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="ChatBot_Logic.src.HandlersConfiguration.IHandler">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAQAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Handlers_Configuration\IHandler.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.ISecretService">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>src\SecretToken\ISecretService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

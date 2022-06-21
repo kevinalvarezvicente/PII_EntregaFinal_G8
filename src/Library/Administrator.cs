@@ -16,6 +16,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Administrator
     {
+        Singleton<Administrator> _administrator;
         /// <summary>
         /// El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
         /// Como ya ambos usuarios comenzaron a jugar y se transformaron en jugadores los quita del lobby de espera

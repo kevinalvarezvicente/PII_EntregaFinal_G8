@@ -6,23 +6,22 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// Esta clase es la que crea al jugador. 
     /// Cumple patron expert ya que es la que contiene la información de:
-    /// Los tableros
-    /// Usuario
-    /// Barcos y sus posiciones
-    /// Hace tiro
-    /// recibe tiro como jugador inactivo
-    /// Ubica los barcos
+    /// - Los tableros
+    /// - Usuario
+    /// - Barcos y sus posiciones
+    /// - Hace tiro como jugador activo
+    /// - Recibe tiro como jugador inactctivo
     /// </summary>
     public class Player 
     {
         /// <summary>
         /// Cada jugador tiene un tablero donde insertará sus barcos
         /// </summary>
-        private Board playerShipBoard;
+        private ShipBoard playerShipBoard;
         /// <summary>
         /// Cada jugador tiene un tablero donde irán los tiros
         /// </summary>
-        private Board playerShotBoard;
+        private ShotBoard playerShotBoard;
         /// <summary>
         /// El jugador se pone un nombre
         /// </summary>
@@ -50,7 +49,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard 
         /// </summary>
         /// <returns>Retorna una matriz con los barcos agregados</returns>
-        public Board PlayerShipBoard
+        public ShipBoard PlayerShipBoard
         {
             get
             {
@@ -62,7 +61,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se obtiene el tablero de tiros a través de la propiedad PlayerShotBoard
         /// </summary>
         /// <returns>Retorna una matriz con los tiros realizados </returns>
-        public Board PlayerShotBoard
+        public ShotBoard PlayerShotBoard
         {
             get
             {

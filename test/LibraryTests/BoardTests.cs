@@ -213,7 +213,7 @@ namespace LibraryTests
             player.ReceiveShot("31");
             player.ReceiveShot("41");
             bool expected = true;
-            Assert.AreEqual(expected,submarine.IsSinked);
+            Assert.AreEqual(expected,submarine.IsShipSinked());
             
             
         }  

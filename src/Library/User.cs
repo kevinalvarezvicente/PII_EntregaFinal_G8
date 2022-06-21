@@ -12,7 +12,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class User
     {
         /// <summary>
-        /// Atributo de User, cada User tiene un Container donde se guardarán las partidas
+        ///  Se registra con la instancia de UserGamesContainer en el constructor,
         /// </summary>
         private UserGamesContainer container;
         /// <summary>

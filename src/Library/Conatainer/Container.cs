@@ -13,7 +13,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// No tiene un constructor de por sí pero creando el Container se crea una lista de tipo genérico.
         /// </summary>
-        public List<T> ContainerList =  new List<T>();
+        private List<T> containerList = new List<T>();
         /// <summary>
         /// Operación genérica.
         /// </summary>
@@ -48,9 +48,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es una operación genérica
         /// </summary>
         /// <returns>Retorna la lista de objetos que estén en el contenedor</returns>
-        public List<T> GetContainer()
+        public List<T> ContainerList
         {
-            return ContainerList;
+            get
+            {
+                return containerList;
+            }
         }
     }
 }

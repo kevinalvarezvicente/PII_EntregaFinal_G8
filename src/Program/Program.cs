@@ -19,54 +19,9 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            bool s;
-            User juan = new User(1,"Juan");
-            Player player = new Player(juan,10);
-            Submarine submarine = new Submarine("11","v");
-            player.PlaceShipOnBoard(submarine);
-            player.ReceiveShot("11");
-            player.ReceiveShot("21");
-            player.ReceiveShot("31");
-            player.ReceiveShot("41");
-            s = submarine.IsSinked;
-            Console.WriteLine(submarine.IsShipSinked());
+           
+
             
-
-            /*Board board= new Board(10);
-            int cant = board.MaxShipsQuantity;
-            Console.WriteLine(cant);*/
-
-            /*User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
-            Game game1   = new Game(player1, player2, 10);
-            game1.PlaceShip(3, "11", "V");*/
-            
-
-            //Singleton<Administrator>.Instance.AddUserToList(player1);
-            //Singleton<Administrator>.Instance.AddUserToList(player2);
-            //Console.WriteLine(Singleton<Lobby>.Instance.GetUsersSearchingGame().Count());
-
-            //Console.WriteLine($"{player1.Name} indique el tamaño del tablero: ");
-            //int boardLength = Convert.ToInt32(Console.ReadLine());
-            //Console.WriteLine("El tamaño de su tablero será " + boardLength);
-            //Game game1 = new Game(player1, player2, 8);
-            //game1.PlaceShip(1,"11","v");
-            //player1.AddGameToGameHistory(game1);
-            //int cant1=player1.GameHistory.Count;
-            //Console.WriteLine(cant1);
-
-            //Singleton<Administrator>.Instance.RegisterUser(5,"Carolina");
-
-            //game1.PlaceShip(1,"00","h");
-            //player1.WantToPlay();
-            //int cant = Lobby.Instance.GetUsersSearchingGame().Count;
-            //Console.WriteLine(cant);
-
-            //game1.AskPlayerToPlaceShips();
-            //game1.AskPlayerToPlaceShips();
-            //Console.WriteLine("Debe indicar la coordenada a atacar");
-            //string ShotCoord = Console.ReadLine();
-            //game1.ShotMade(ShotCoord);
             /*int counter = 1;
             string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             char [] lettersArray = letters.ToCharArray(); 

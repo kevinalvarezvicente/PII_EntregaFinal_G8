@@ -62,6 +62,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="x">Largo del lado del tablero</param>
         protected void InitializeBoard(int x)
         {
+            if (x>12)
+            {
+                throw new SizeException("El lado del tablero no puede superar el tamaño 12");
+            }
             gameBoard = new string[x, x];
 
             for (int i = 0; i < this.gameBoard.GetLength(0); i++)

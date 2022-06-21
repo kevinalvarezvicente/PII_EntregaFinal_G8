@@ -115,17 +115,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Método booleano que instancia al método.
-        /// </summary>
-        /// <value></value>
-        public bool IsSinked
-        {
-            get
-            {
-                return IsShipSinked();
-            }
-        }
-        /// <summary>
         /// Se crea una coordenada vulnerable, si se dispara ahí, el barco se hundirá completamente
         /// </summary>
         /// <value></value>

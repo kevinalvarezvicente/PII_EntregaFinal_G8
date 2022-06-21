@@ -7,8 +7,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public static class UsersContainer
     {
+        /// <summary>
+        /// Contenedor de todos los usuarios registrados
+        /// </summary>
+        /// <returns></returns>
         private static List<User> userscontainer = new List<User>();
-
+        /// <summary>
+        /// Añade al usuario luego de registrarlo. Método utilizado por Administrator
+        /// </summary>
+        /// <param name="user"></param>
         public static void AddUser(User user)
         {
             if(!userscontainer.Contains(user))
@@ -22,6 +29,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             
         }
+        /// <summary>
+        /// Permite tener acceso al contenedor de usuarios
+        /// </summary>
+        /// <value></value>
         public static List<User> usersContainer
         {
             get
@@ -29,6 +40,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return userscontainer;
             }
         }
+        /// <summary>
+        /// Hay opcion de eliminar usuario si éste lo desea
+        /// </summary>
+        /// <param name="user"></param>
         public static void RemoveUser(User user)
         {
             

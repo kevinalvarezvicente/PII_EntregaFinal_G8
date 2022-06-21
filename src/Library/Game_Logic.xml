@@ -176,9 +176,7 @@
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.gamescontainer">
             <summary>
             Una lista de juegos en general 
-            </summary>
-            <typeparam name="Game"> La lista es de elementos de tipo Game</typeparam>
-            <returns></returns>
+            </summary>    
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.AddGame(PII_ENTREGAFINAL_G8.src.Library.Game)">
             <summary>
@@ -208,13 +206,60 @@
             <summary>
             Se instancia una lista para usuarios que quieren esperar para jugar
             </summary>
-            <typeparam name="User"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AddUser(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Método para agregar usuario al contenedor
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.lobbyContainer">
+            <summary>
+            Para tener acceso al container de espera
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.RemoveUser(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AreUsersToStartGame">
+            <summary>
+            Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
+            </summary>
             <returns></returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.UsersContainer">
             <summary>
             Clase estatica para no tener que instanciar en cada momento
             </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.userscontainer">
+            <summary>
+            Contenedor de todos los usuarios registrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.AddUser(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Añade al usuario luego de registrarlo. Método utilizado por Administrator
+            </summary>
+            <param name="user"></param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.usersContainer">
+            <summary>
+            Permite tener acceso al contenedor de usuarios
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.RemoveUser(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Hay opcion de eliminar usuario si éste lo desea
+            </summary>
+            <param name="user"></param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
             <summary>
@@ -736,6 +781,12 @@
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Surename">
             <summary>
             Apellido del usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.UserGamesList">
+            <summary>
+            Es la lista de juegos del usuario propio
             </summary>
             <value></value>
         </member>

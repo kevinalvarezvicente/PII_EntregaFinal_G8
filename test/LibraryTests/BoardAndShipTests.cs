@@ -202,10 +202,15 @@ namespace LibraryTests
             player.ReceiveShot("31");
             player.ReceiveShot("41");
             bool expected = true;
-            Assert.AreEqual(expected,submarine.IsShipSinked());
-            
-            
+            Assert.AreEqual(expected,submarine.IsShipSinked()); 
         }  
+        [Test]
+        public void TestVulnerableCoord()
+        {   
+            LightCruiser cruiser = new LightCruiser("00","h");
+            cruiser.ShotInVulnerableCoord("00");
+            Assert.AreEqual(true, cruiser.IsShipSinked());
+        }
 
     }
 }

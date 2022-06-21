@@ -114,11 +114,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Spot spot = new Spot(x,y);
             foreach (Ship ship in ShipsList)
             {
-                if (ship.CoordsList.Contains(spot))
+                foreach (Spot SpotToCompare in ship.CoordsList)
                 {
-                    int index = ship.CoordsList.IndexOf(spot);
-                    ship.CoordsList[index].wasHit=true;
-                    return true;
+                    if (spot.X==SpotToCompare.X && spot.Y==SpotToCompare.Y)
+                    {
+                        int index = ship.CoordsList.IndexOf(SpotToCompare);
+                        ship.CoordsList[index].wasHit=true;
+                        return true;
+                    }
                 }
             }
             return false;
@@ -193,8 +196,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
                 foreach (Spot spot in  ship.CoordsList)
                 {
+                    foreach (Ship ShipToCompare in this.ShipsList)
+                    {
+                        foreach (Spot SpotToCompare in ShipToCompare.CoordsList)
+                        {
+                            if (spot.X==SpotToCompare.X && spot.Y==SpotToCompare.Y)
+                            {
+                                throw new CoordException("Ya hay un barco ubicado en esa coordenada");
+                            }
+                        }
+                    }
+                        
+                }
+                foreach (Spot spot in  ship.CoordsList)
+                {
                     this.PlayerShipBoard.GameBoard[spot.X,spot.Y] = "o";
-                    
                 }
                 ShipsList.Add(ship);
         }

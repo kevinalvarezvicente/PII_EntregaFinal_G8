@@ -232,6 +232,19 @@ namespace LibraryTests
         {
             Assert.Throws<BoardException>(() =>new Board(0));
         }
+
+        [Test]
+        public void TestPlaceShipInTakenPosition()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 10);
+            Submarine submarine = new Submarine("00","h");
+            //Ubica el submarino en (0,0), (0,1), (0,2) y (0,3)
+            player.PlaceShipOnBoard(submarine);
+            Frigate frigate = new Frigate("01","h");
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
+
+        }
     
 
     }

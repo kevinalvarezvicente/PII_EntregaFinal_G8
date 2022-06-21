@@ -11,7 +11,7 @@ namespace LibraryTests
     public class ContainerTests
     {
 
-        [SetUp]
+        /*[SetUp]
         public void SetUp()
         {
         }

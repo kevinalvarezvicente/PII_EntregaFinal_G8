@@ -28,12 +28,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Cada partida se guarda con la fecha de comienzo
         /// </summary>
-        private DateTime Date;
+        public DateTime Date {get; private set;}
         /// <summary>
         /// El Active_Player es el jugador con el turno, comienza él siempre
         /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
         /// </summary>
-        private Player Active_Player;
+        public Player Active_Player {get; private set;}
         /// <summary>
         /// El Inactive_Player es el jugador que espera a que sea su turno
         /// </summary>
@@ -50,6 +50,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Para guardar la partida se guardará una lista con los usuarios que la jugaron
         /// </summary>
         private List<User> usersList;
+        
         /// <summary>
         /// Se inicia el juego con el constructor de la clase
         /// Recibe como argumento todos los datos necesarios para crear instancia de Player transformando a un usuario en player

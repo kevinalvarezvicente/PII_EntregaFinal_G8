@@ -15,7 +15,7 @@ namespace ChatBot_Logic.src.Handlers_Configuration
         /// </summary>
         public static void InitializeHandlers()
         {
-            firstHandler = new HelloHandler(new GoodByeHandler(null));
+            firstHandler = new HelloHandler(new RegisterUserHandler(new GoodByeHandler(null)));
         }
 
         /// <summary>

@@ -3,8 +3,9 @@ using System;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Se crea una clase Abstracta para el tablero. Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
-    /// La clase Board heredará de esta e implementará el método inicializeBoard en su constructor.
+    /// Se crea una clase Abstracta para el tablero. 
+    /// Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
+    /// La clase Board heredará de esta e implementará el método initializeBoard en su constructor.
     /// </summary>
     public abstract class AbstractBoard
     {

@@ -89,7 +89,7 @@
             Clase donde comienza el tablero.
             Es una clase base de los tableros de tiros y de barcos.
             Cumple con SRP (Single Responsibility Principle)
-            Tiene la única responsabilidad de inicializar el barco y única razón de cambio es si el dia de mañana se quiere permitir que se elija un tablero de tamaño mayor que 12 o que la cantidad de barcos a agregar sea mayor.
+            Tiene la única responsabilidad de inicializar el tablero y única razón de cambio es si el dia de mañana se quiere permitir que se elija un tablero de tamaño mayor que 12 o que la cantidad de barcos a agregar sea mayor.
             Rompe LSP (Liskov Substitution Principle) ya que hay operaciones en el programa donde se requiere un objeto de tipo Board e importa si es de ShipBoard o ShotBoard ya que el juego está hecho para que cada jugador vea el ShotBoard y el ShipBoard por separado.
             </summary>
         </member>
@@ -201,12 +201,34 @@
             Es subclase de Container pues hereda métodos y atributos y puede agregar otro
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AreUsersToStartGame">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.containerList">
             <summary>
             CLASE SIN FUNCIONAR AUN
             Este método es agregado de la clase chequea que hayan suficiente cantidad de usuarios esperando para jugar
             </summary>
             <returns>Retorna un booleano tal que si hay mas de 2 usuarios retornará true</returns>
+            
+                    /// <summary>
+            No tiene un constructor de por sí pero creando el Container se crea una lista de tipo genérico.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AddItem(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Operación genérica.
+            </summary>
+            <param name="item">Demuestra que se puede poner como argumento cualquier elemento </param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.RemoveItem(PII_ENTREGAFINAL_G8.src.Library.User)">
+            <summary>
+            Operación genérica
+            </summary>
+            <param name="item">Acepta cualquier tipo</param>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.ContainerList">
+            <summary>
+            Es una operación genérica
+            </summary>
+            <returns>Retorna la lista de objetos que estén en el contenedor</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.UserContainer">
             <summary>
@@ -548,7 +570,7 @@
             Cada clase de tipo IPrinter tiene la responsabilidad de imprimir el tablero con un diseño diferente.
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.IPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.IPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
             <summary>
             En este método se refleja que la interfaz depende de Player 
             La declaración de la operación recibe una instancia de Player como parámetro y para que cumpla patrones se pondrá también el tablero como parámetro.
@@ -566,7 +588,7 @@
             Se esta trabajando para que haga lo mismo pero pasandole por parámetro si va a ser tablero de tiros o de barcos
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipBoardPrinter.PrintPlayerShipBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipBoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
             <summary>
             CLASE SIN FUNCIONAR AUN
             Permite imprimir el tablero de tiros del jugador pasado por parámetro.
@@ -584,7 +606,7 @@
             Se esta trabajando para que haga lo mismo pero pasandole por parámetro si va a ser tablero de tiros o de barcos.
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotBoardPrinter.PrintPlayerShotBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotBoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
             <summary>
             CLASE SIN FUNCIONAR AUN
             Permite imprimir el tablero de tiros del jugador pasado por parámetro.

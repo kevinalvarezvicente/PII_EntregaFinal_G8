@@ -31,8 +31,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Console.WriteLine($"{user1.Name} indique el tamaño del tablero");
             int boardLength = Console.Read();
             Game game = new Game(user1, user2, boardLength);
-            Singleton<LobbyContainer>.Instance.RemoveItem(user1);
-            Singleton<LobbyContainer>.Instance.RemoveItem(user2);
+            LobbyContainer.RemoveUser(user1);
+            LobbyContainer.RemoveUser(user2);
+
         }
         /// <summary>
         /// Este método une a los usuarios usando JoinUsersToPlay
@@ -40,9 +41,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         public void StartGame()
         {
-            if (Singleton<LobbyContainer>.Instance.AreUsersToStartGame())
+            if (LobbyContainer.AreUsersToStartGame())
             {
-                JoinUsersToPlay(Singleton<LobbyContainer>.Instance.ContainerList[0], Singleton<LobbyContainer>.Instance.ContainerList[1]);
+                JoinUsersToPlay(LobbyContainer.lobbyContainer[0], LobbyContainer.lobbyContainer[1]);
             }
         }
         /// <summary>
@@ -72,7 +73,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void RegisterUser(string name, string surename)
         {
             User user = new User(name, surename);
-            Singleton<UserContainer>.Instance.AddItem(user);
+            UsersContainer.AddUser(user);
         }
         /// <summary>
         /// Método que guarda la partida del usuario en el Container
@@ -81,7 +82,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">Recibe como argumento un User</param>
         public void AddGameToUserGamesContainer(Game game, User user)
         {
-            user.Container.AddItem(game);
+            user.UserGamesList.Add(game);
         }
 
 

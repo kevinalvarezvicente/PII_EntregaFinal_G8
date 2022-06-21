@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-/*namespace PII_ENTREGAFINAL_G8.src.Library
+namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Subclase de Container donde se almacenarán todas las partidas
     /// Cumple SRP (Single Responsibility Principle) cuya única responsabilidad es almacenar todas las partidas jugadas
     /// </summary>
-    public class GamesContainer
+    /*public class GamesContainer
     {
         List<Game> GamesContainerList =Singleton<List<Game>>.Instance;
         public void AddGame(Game game)
@@ -27,14 +27,29 @@ using System.Collections.Generic;
             {
                 if (ID==GamesContainerList[i].GameId)
                 {
-                    Player p1 = GamesContainerList[i].
+                    return GamesContainerList[i];
+                }
+                else
+                {
+                    throw new ContainerException("No se ha encontrado a la partida");
                 }
             }
 
         }
         public Game SearchGameByDate(DateTime date)
         {
-
-        }
-    }
-}*/
+            for (int i = 0; i<GamesContainerList.Count; i++)
+            {
+                if (date.Equals(GamesContainerList[i].Date))
+                {
+                    return GamesContainerList[i];
+                }
+                else
+                {
+                    throw new ContainerException("No se ha encontrado a la partida");
+                }
+            }
+        }            
+        
+    }*/
+}

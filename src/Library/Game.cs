@@ -21,7 +21,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         private static int currentGameID;
         /// <summary>
-        /// Es el ID de usuario
+        /// Es el ID del juago y es unico
         /// </summary>
         /// <value>Cada usuario tiene el suyo</value>
         public int GameId { get; private set; }
@@ -37,20 +37,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// El Inactive_Player es el jugador que espera a que sea su turno
         /// </summary>
-        private Player Inactive_Player;
-        /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
-        private List<Board> player1Boards;
-        /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
-        private List<Board> player2Boards;
-        /// <summary>
-        /// Para guardar la partida se guardará una lista con los usuarios que la jugaron
-        /// </summary>
-        private List<User> usersList;
+        public Player Inactive_Player{get; private set;}
         
+        /// <summary>
+        /// Se crea una lista con ambos tableros del jugador
+        /// </summary>
+        public List<Board> Player1Boards = new List<Board>();
+
+        /// <summary>
+        /// Se crea una lista con ambos tableros del jugador
+        /// </summary>
+        public List<Board> Player2Boards = new List<Board>();
+        /// <summary>
+        /// Para guardar la partida se guardará una lista con los usuarios que la jugaron.
+        /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
+        /// </summary>
+        public List<User> usersList = new List<User>();
+        /// <summary>
+        /// Este atributo dice si el juego finalizó o no
+        /// </summary>
+        /// <value>Es un valor booleano</value>
+        public bool GameStatus {get; set;}        
         /// <summary>
         /// Se inicia el juego con el constructor de la clase
         /// Recibe como argumento todos los datos necesarios para crear instancia de Player transformando a un usuario en player
@@ -61,13 +68,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public Game(User player1, User player2, int boardLength)
         {
             GetNextGameID();
+            this.GameStatus = default;
             this.GameId= currentGameID;
             this.Date = DateTime.Now;
             this.Active_Player = new Player(player1, boardLength);
             this.Inactive_Player = new Player(player2, boardLength);
-            this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
+            this.Player1Boards.Add(this.Active_Player.PlayerShipBoard);
+            this.Player1Boards.Add(this.Active_Player.PlayerShotBoard);
+            this.Player2Boards.Add(this.Inactive_Player.PlayerShipBoard);
+            this.Player2Boards.Add(this.Inactive_Player.PlayerShotBoard);
+
         }
 
             /// <summary>
@@ -82,22 +94,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
 
         protected int GetNextGameID() => ++currentGameID;
-        /// <summary>
-        /// Todas las partidas tienen su fecha de inicio
-        /// </summary>
-        /// <value>Son los getters y setters de la fecha de la partida</value>
-        public DateTime DateTime
-        {
-            get
-            {
-                return this.Date;
-            }
-
-            private set
-            {
-                this.Date = value;
-            }
-        }
+        
         /// <summary>
         /// Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
         /// No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
@@ -173,18 +170,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
 
         /// <summary>
-        /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
-        /// </summary>
-        /// <value>Es una lista de tipo User</value>
-        public List<User> UsersPlayingList
-        {
-            get
-            {
-                return this.usersList;
-            }
-        }
-
-        /// <summary>
         /// Este método permite saber si un jugador tiene todos sus barcos hundidos.
         /// Retorna true si todos los valores son true
         /// </summary>
@@ -213,58 +198,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))
             {
-                return true;
+                this.GameStatus=true;
+                return this.GameStatus;
             }
-            return false;
+            return this.GameStatus;
         }
-
-
-
-            /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)
-            {
-                int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
-                int shipsLeft = maxShipsQuantity;
-                Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
-                while (shipsLeft>0)
-                {
-                    /*Console.WriteLine($"{Active_Player.GetPlayerName()} Indique el tipo del barco: ");
-                    Console.WriteLine($"Opciones a elegir:\n1) 2 Coordenadas \n2) 3 Coordenadas \n3) 4 coordendas");
-                    int shipLength = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
-                    string coord = Console.ReadLine();
-                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
-                    string direction = Console.ReadLine();*/
-                /*switch (shipLength)
-                {
-                case 1:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
-                        shipsLeft--;
-                break;
-
-                case 2:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
-                        shipsLeft--;
-                break;
-
-                case 3:
-                        AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
-                        PlaceShip(4, coord,direction);
-                        shipsLeft--;
-                break;
-
-                default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
-                break;
-                }
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
-
-        }
-        Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
-        Console.WriteLine("---------------------------");
-        Utils.Swap(ref Active_Player, ref Inactive_Player);
-        }*/
 
     }
 }

@@ -203,14 +203,63 @@ namespace LibraryTests
             player.ReceiveShot("41");
             bool expected = true;
             Assert.AreEqual(expected,submarine.IsShipSinked()); 
-        }  
+        }
+        /// <summary>
+        /// Testea que si se dispara a la coordenada vulnerable de cualquier barco se hunde.
+        /// Testea que al jugador se le hundieron todos sus barcos
+        /// </summary>  
         [Test]
         public void TestVulnerableCoord()
-        {   
+        {
+            User user = new User("player","player");
+            Player player = new Player(user,11);   
             LightCruiser cruiser = new LightCruiser("00","h");
+            Submarine submarine = new Submarine("40","v");
+            Frigate frigate = new Frigate("20","h");
+            player.AddShipToPlayerShipList(cruiser);
+            player.AddShipToPlayerShipList(submarine);
+            player.AddShipToPlayerShipList(frigate);
             cruiser.ShotInVulnerableCoord("00");
+            submarine.ShotInVulnerableCoord("40");
+            frigate.ShotInVulnerableCoord("20");
             Assert.AreEqual(true, cruiser.IsShipSinked());
+            Assert.AreEqual(true, submarine.IsShipSinked());
+            Assert.AreEqual(true,frigate.IsShipSinked());
+            Assert.AreEqual(true, player.AreAllShipsSinked());
         }
+        /// <summary>
+        /// Testea que cuando se agregan barcos a la lista de barcos del jugador
+        /// </summary>
+        [Test]
+        public void TestPlayerShipsList()
+        {
+            User user = new User("player","player");
+            Player player = new Player(user,11);   
+            LightCruiser cruiser = new LightCruiser("00","h");
+            Submarine submarine = new Submarine("40","v");
+            Frigate frigate = new Frigate("20","h");
+            player.AddShipToPlayerShipList(cruiser);
+            player.AddShipToPlayerShipList(submarine);
+            player.AddShipToPlayerShipList(frigate);
+            Assert.AreEqual(3,player.ShipsList.Count);
+        }
+        /// <summary>
+        /// Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
+        /// </summary>
+        [Test]
+        public void TestPlayerAddingManyShipsList()
+        {
+            User user = new User("player","player");
+            Player player = new Player(user,11);   
+            LightCruiser cruiser = new LightCruiser("00","h");
+            Submarine submarine = new Submarine("40","v");
+            Frigate frigate = new Frigate("20","h");
+            player.PlaceShipOnBoard(cruiser);
+            player.PlaceShipOnBoard(submarine);
+            player.PlaceShipOnBoard(frigate);
+            Assert.AreEqual(3,player.ShipsList.Count);
+        }
+        
         /// <summary>
         /// El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
         /// </summary>
@@ -222,19 +271,27 @@ namespace LibraryTests
                 carol.MakeShot("12");
                 Assert.AreEqual("X",carol.PlayerShotBoard.GameBoard[1,2]);  
         }
+        /// <summary>
+        /// Testea excepcion del tamaño del tablero
+        /// </summary>
         [Test]
         public void TestBigBoardException()
         {
             Assert.Throws<BoardException>(() =>new Board(15));
         }
+        /// <summary>
+        /// Testea excepcion de que el tamaño del tablero se elige 0
+        /// </summary>
         [Test]
         public void TestSmallBoardException()
         {
             Assert.Throws<BoardException>(() =>new Board(0));
         }
-
+        /// <summary>
+        /// Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
+        /// </summary>
         [Test]
-        public void TestPlaceShipInTakenPosition()
+        public void TestPlaceSubmarineInTakenPosition()
         {
             User matias = new User("Matias","Olave");
             Player player = new Player(matias, 10);
@@ -243,9 +300,32 @@ namespace LibraryTests
             player.PlaceShipOnBoard(submarine);
             Frigate frigate = new Frigate("01","h");
             Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
-
         }
-    
-
+        /// <summary>
+        /// Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
+        /// </summary>
+        [Test]
+        public void TestPlaceFrigateInTakenPosition()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 10);
+            Frigate frigate = new Frigate("01","h");
+            Submarine submarine = new Submarine("00","h");
+            player.PlaceShipOnBoard(frigate);     
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(submarine));
+        }
+        /// <summary>
+        /// Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
+        /// </summary>
+        [Test]
+        public void TestPlaceCruiserInTakenPosition()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 10);
+            Frigate frigate = new Frigate("01","h");
+            LightCruiser cruiser = new LightCruiser("00","h");
+            player.PlaceShipOnBoard(frigate);     
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
+        }
     }
 }

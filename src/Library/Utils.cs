@@ -16,18 +16,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns></returns>
         public static (int row, int column) SplitCoordIntoRowAndColumn(string coord)
         {
-            if (coord.Length != 2)
-            {
-                throw new CoordException($"{coord} es una coordenada inválida");
-            }
-            char[] coordArray = coord.ToArray();
-            int row= (int)Char.GetNumericValue(coordArray[0]);
-            int column = (int)Char.GetNumericValue(coordArray[1]);
-            return (row, column);
-
-            //Esta parte es porque tal vez en un futuro podamos hacer que diga letra y numero pero por el momento haremos solo numeros
-            
-            /*string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string column = "";
             int row = 0;
             
@@ -44,7 +33,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             int columnNum = letters.IndexOf(column)+1;
 
-            return (columnNum+1, row+1);*/
+            return (columnNum+1, row+1);
         }
 
         /// <summary>

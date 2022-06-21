@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -38,12 +37,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
         /// <param name="BoardLength">Elige el tamaño del tablero</param>
+    
+    public class Player
+    {
+        private Board playerShipBoard;
+        private Board playerShotBoard;
+        private string playerName;
+ 
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
-
         }
         /// <summary>
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard 
@@ -100,7 +105,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 return this.shipsList;
             }
-
         }
         /// <summary>
         /// Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
@@ -131,8 +135,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             int x;
             int y;
-            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y] = "X";
+            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
+            playerShotBoard.GameBoard[x, y-2] = "|";
         }
 
         /// <summary>
@@ -145,70 +149,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             int x;
             int y;
-            (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            SearchForCoordInShipsList(coord);
+            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
 
-            if (this.playerShipBoard.GameBoard[x, y].Equals("o"))
-            {
-                this.playerShipBoard.GameBoard[x, y] = "x";
-                Console.WriteLine("Tocado");
-            }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
-            {
-                Console.WriteLine("Agua");
-                this.playerShipBoard.GameBoard[x, y] = "|";
-            }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
-            {
-                throw new ReceiveShotException("Ya disparo a esta coordenada");
-            }
-
-        }
-        /// <summary>
-        /// Este método permite saber si un jugador tiene todos sus barcos hundidos.
-        /// Retorna true si todos los valores son true
-        /// </summary>
-        /// <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
-        public bool AreAllShipsSinked()
-        {
-           foreach (Ship ship in ShipsList)
-            {
-                foreach(Spot spot in ship.CoordsList)
+                if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("o"))
                 {
-                    if (spot.wasHit==false)
-                    {
-                        return false;
-                    }
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "x";
+                    Console.WriteLine("Barco disparado");
+
                 }
-            }
-            return true; 
-        }
-        /// <summary>
-        /// Operación polimórifca que ubica el barco en el tablero.
-        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
-        /// tratados como objetos de la clase base Ship
-        /// </summary>
-        /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
-        public void PlaceShipOnBoard(Ship ship)
-        {
-                foreach (Spot spot in  ship.CoordsList)
+                else if (GetPlayerShipBoard().GameBoard[x, y-2].Equals("-"))
                 {
-                    this.PlayerShipBoard.GameBoard[spot.X,spot.Y] = "o";
-                    
+                    Console.WriteLine("Oceano");
+                    GetPlayerShipBoard().GameBoard[x, y-2] = "|";
                 }
-                ShipsList.Add(ship);
+
         }
 
-        /// <summary>
-        /// Este método agrega el barco creado en la posición a una lista de barcos del jugador
-        /// Operación polimórfica 
-        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
-        /// tratados como objetos de la clase base Ship
-        /// </summary>
-        /// <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
-        public void AddShipToPlayerShipList(Ship ship)
-        {
-            ShipsList.Add(ship);
-        }
     }
 }

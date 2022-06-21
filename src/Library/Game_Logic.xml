@@ -215,18 +215,6 @@
             SRP (Single Responsibility Principle) cuya única responsabilidad es guardar las partidas de cierto usuario
             </summary>
         </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardException">
-            <summary>
-            Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
-            Cumple SRP cuya única responsabilidad es lanzar la excepción
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardException.#ctor(System.String)">
-            <summary>
-            Constructor que recibe el mensaje
-            </summary>
-            <param name="message">Mensaje de la excepcion</param>
-        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
             <summary>
             Subclase de exception, esta axcepcion será utilizada para cuando ocurra algo inesperado al utilizar algún método de Container
@@ -282,6 +270,18 @@
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.ReceiveShotException.#ctor(System.String)">
+            <summary>
+            Constructor que recibe el mensaje
+            </summary>
+            <param name="message">Mensaje de la excepcion</param>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardException">
+            <summary>
+            Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
+            Cumple SRP cuya única responsabilidad es lanzar la excepción
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardException.#ctor(System.String)">
             <summary>
             Constructor que recibe el mensaje
             </summary>

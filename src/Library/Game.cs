@@ -17,6 +17,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class Game
     {
         /// <summary>
+        ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+        /// </summary>
+        private static int currentGameID;
+        /// <summary>
+        /// Es el ID de usuario
+        /// </summary>
+        /// <value>Cada usuario tiene el suyo</value>
+        public int GameId { get; private set; }
+        /// <summary>
         /// Cada partida se guarda con la fecha de comienzo
         /// </summary>
         private DateTime Date;
@@ -50,6 +59,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
         public Game(User player1, User player2, int boardLength)
         {
+            GetNextGameID();
+            this.GameId= currentGameID;
             this.Date = DateTime.Now;
             this.Active_Player = new Player(player1, boardLength);
             this.Inactive_Player = new Player(player2, boardLength);
@@ -57,6 +68,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.usersList.Add(player1);
             this.usersList.Add(player2);
         }
+
+            /// <summary>
+        /// Constructor estático para inicializar el miembro estático, currentID. 
+        /// Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
+        /// </summary>
+        static Game() => currentGameID = 0;
+
+        /// <summary>
+        /// currentID es un campo estático. 
+        /// </summary>
+        /// <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
+
+        protected int GetNextGameID() => ++currentGameID;
         /// <summary>
         /// Todas las partidas tienen su fecha de inicio
         /// </summary>

@@ -7,6 +7,7 @@
 using ChatBot_Logic.src;
 using PII_ENTREGAFINAL_G8.src.Library;
 using System;
+using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -33,6 +34,10 @@ namespace PII_ENTREGAFINAL_G8.src.Program
             player.ReceiveShot("41");
             bool expected = submarine.IsShipSinked();
             Console.WriteLine(expected);
+
+            UserContainer userContainer = Singleton<UserContainer>.Instance;
+            userContainer.containerList= new List<User>();
+            User user1 = userContainer.AddItem()
         }
     }
 }

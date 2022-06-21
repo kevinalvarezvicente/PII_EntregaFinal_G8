@@ -2,38 +2,135 @@
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
-    public class Player: LibraryException 
+    /// <summary>
+    /// Esta clase es la que crea al jugador. 
+    /// Cumple patron expert ya que es la que contiene la información de:
+    /// - Los tableros
+    /// - Usuario
+    /// - Barcos y sus posiciones
+    /// - Hace tiro como jugador activo
+    /// - Recibe tiro como jugador inactctivo
+    /// </summary>
+    public class Player 
+    {
+        /// <summary>
+        /// Cada jugador tiene un tablero donde insertará sus barcos
+        /// </summary>
+        private ShipBoard playerShipBoard;
+        /// <summary>
+        /// Cada jugador tiene un tablero donde irán los tiros
+        /// </summary>
+        private ShotBoard playerShotBoard;
+        /// <summary>
+        /// El jugador se pone un nombre
+        /// </summary>
+        private string playerName;
+        /// <summary>
+        /// Cada jugador tiene una lista de listas. Cada lista interna representa las posiciones del barco.
+        /// Polimórfica, puede contener Submarine, LightCruiser, Frigate
+        /// </summary>
+        private List<Ship> shipsList = new List<Ship>();
+        /// <summary>
+        /// Constructor de player. 
+        /// Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
+        /// Cada jugador tiene su propio tablero.
+        /// </summary>
+        /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
+        /// <param name="BoardLength">Elige el tamaño del tablero</param>
+    
+    public class Player
     {
         private Board playerShipBoard;
         private Board playerShotBoard;
         private string playerName;
-                
+ 
         public Player(User user, int BoardLength)
         {
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
         }
-        public Board GetPlayerShipBoard()
+        /// <summary>
+        /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard 
+        /// </summary>
+        /// <returns>Retorna una matriz con los barcos agregados</returns>
+        public ShipBoard PlayerShipBoard
         {
-            return this.playerShipBoard;
+            get
+            {
+                return this.playerShipBoard;
+            }
+            
         }
-
-        public Board GetPlayerShotBoard()
+        /// <summary>
+        /// Se obtiene el tablero de tiros a través de la propiedad PlayerShotBoard
+        /// </summary>
+        /// <returns>Retorna una matriz con los tiros realizados </returns>
+        public ShotBoard PlayerShotBoard
         {
-            return this.playerShotBoard;
+            get
+            {
+                return this.playerShotBoard;
+            }
+            
         }
-
-        public string GetPlayerName()
+        /// <summary>
+        /// Se obtiene el nombre del jugador a través de la propiedad PlayerName
+        /// </summary>
+        /// <returns>Retorna el nombre del usuario</returns>
+        public string PlayerName
         {
-            return this.playerName;
+            get
+            {
+                return this.playerName;
+            }
+            
         }
-
-        private void SetPlayerName(string NewName)
+        /// <summary>
+        /// Permite al jugador cambiar su nombre
+        /// </summary>
+        /// <param name="NewName">Recibe un nuevo nombre para el jugador</param>
+        private void ChangePlayerName(string NewName)
         {
-            this.playerName=NewName;
+            this.playerName = NewName;
         }
-
+        /// <summary>
+        /// Es la lista de barcos formada por diccionarios.
+        /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
+        /// tratados como objetos de la clase base Ship
+        /// </summary>
+        public List<Ship> ShipsList
+        {
+            get
+            {
+                return this.shipsList;
+            }
+        }
+        /// <summary>
+        /// Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
+        /// Devuelve true una vez que cambio el valor del Spot
+        /// No funciona este método aún falta arreglarlo
+        /// </summary>
+        /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        public bool SearchForCoordInShipsList(string coord)
+        {
+            (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
+            Spot spot = new Spot(x,y);
+            foreach (Ship ship in ShipsList)
+            {
+                if (ship.CoordsList.Contains(spot))
+                {
+                    int index = ship.CoordsList.IndexOf(spot);
+                    ship.CoordsList[index].wasHit=true;
+                    return true;
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// Realiza el shot
+        /// </summary>
+        /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
         public void MakeShot(string coord)
         {
             int x;
@@ -47,11 +144,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Si hay un pipe "|" entonces significa que hubo disparo ahi pero no habia barco
         /// Si hay "x" es porque habia un barco y se disparo
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="coord">Es la coordenada que se pasa por parámetro</param>
         public void ReceiveShot(string coord)
         {
-           
             int x;
             int y;
             (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
@@ -68,76 +163,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     GetPlayerShipBoard().GameBoard[x, y-2] = "|";
                 }
 
-
-
-        }
-        /*public void ReceiveShot(string coord)
-        {
-            bool trySuperated = false;
-            int x;
-            int y;
-            (x, y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            try
-            {
-                if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("o"))
-                {
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "x";
-                    Console.WriteLine("Barco disparado");
-
-                }
-                else if (GetPlayerShipBoard().GameBoard[x-1, y-1].Equals("-"))
-                {
-                    Console.WriteLine("Oceano");
-                    GetPlayerShipBoard().GameBoard[x-1, y-1] = "|";
-                }
-                trySuperated = true;
-            }
-            catch
-            {
-                throw new LibraryException("Las coordenadas elegidas estan fuera de rango");
-            }
-            finally
-            {
-                if (!trySuperated)
-                {
-                    Console.WriteLine("Indique nuevamente las coordenadas a disparar");
-                    string newCoord = Console.Read().ToString();
-                    ReceiveShot(newCoord);               
-                }
-            }
-
-
-        }*/
-
-        public void PrintPlayerShotBoard()
-        {
-
-            Console.WriteLine($"Se imprime el tablero de tiros de {this.GetPlayerName()}");
-            
-            for (int i = 0; i < this.GetPlayerShotBoard().GameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < this.GetPlayerShotBoard().GameBoard.GetLength(1); j++)
-                    {
-                    Console.Write(this.GetPlayerShotBoard().GameBoard[i,j]+" ");
-                    }
-                Console.WriteLine();
-            }
         }
 
-        public void PrintPlayerShipBoard()
-        {
-            Console.WriteLine($"Se imprime el tablero de barcos de {this.GetPlayerName()}");
-            for (int i = 0; i < this.GetPlayerShipBoard().GameBoard.GetLength(0); i++)
-            {
-            for (int j = 0; j < this.GetPlayerShipBoard().GameBoard.GetLength(1); j++)
-                {
-                Console.Write(this.GetPlayerShipBoard().GameBoard[i,j]+" ");
-                }
-            Console.WriteLine();
-            }
-        }
-
-    
-        
     }
 }

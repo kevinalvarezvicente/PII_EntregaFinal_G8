@@ -3,13 +3,16 @@ using System;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
+    /// <summary>
+    /// Esta clase permite usar ciertas propiedades sin instanciar la clase
+    /// </summary>
     public class Utils
     {
         /// <summary>
-        /// Este método devuelve la fila y la columna en numeros enteros
+        /// Este método devuelve la fila y la columna en numeros enteros.
+        /// Cumple SRP ya que su única responsabilidad es brindar propiedades para facilitar la interaccion con el usuario
         /// </summary>
-        /// <param name="row"></param>
-        /// <param name="coord"></param>
+        /// <param name="coord">Es la coordenada de la matriz del tablero</param>
         /// <returns></returns>
         public static (int row, int column) SplitCoordIntoRowAndColumn(string coord)
         {
@@ -33,6 +36,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return (columnNum+1, row+1);
         }
 
+        /// <summary>
+        /// El método Swap permite ir variando el turno del jugador
+        /// </summary>
+        /// <param name="param1"></param>
+        /// <param name="param2"></param>
+        /// <typeparam name="T">Es el tipo, tal que sea genérico</typeparam>
         public static void Swap<T>(ref T param1, ref T param2)
         {
             T temporal;

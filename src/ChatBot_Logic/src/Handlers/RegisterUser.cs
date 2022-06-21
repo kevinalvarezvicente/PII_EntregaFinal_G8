@@ -1,19 +1,22 @@
-﻿namespace ChatBot_Logic.src.Handlers
+using ChatBot_Logic.src.HandlersConfiguration;
+using Telegram.Bot.Types;
+
+
+namespace ChatBot_Logic.src.Handlers
 {
-    using ChatBot_Logic.src.HandlersConfiguration;
-    using Telegram.Bot.Types;
+ 
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
-    public class HelloHandler : BaseHandler
+    public class RegisterUserHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase <see cref="RegisterUserHandler"/>. Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public HelloHandler(BaseHandler next) : base(next)
+        public RegisterUserHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "hola", "Hola" };
+            this.Keywords = new string[] { "registrar", "registrarme" };
         }
 
         /// <summary>
@@ -24,7 +27,7 @@
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override void InternalHandle(Message message, out string response)
         {
-            response = "que andas pariente todo tranky";
+            response = "que andas pariente no te registro porque no lo programaron pa";
         }
     }
 }

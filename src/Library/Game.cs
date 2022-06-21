@@ -16,12 +16,30 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Game
     {
-
+        /// <summary>
+        /// Cada partida se guarda con la fecha de comienzo
+        /// </summary>
         private DateTime Date;
+        /// <summary>
+        /// El Active_Player es el jugador con el turno, comienza él siempre
+        /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
+        /// </summary>
         private Player Active_Player;
+        /// <summary>
+        /// El Inactive_Player es el jugador que espera a que sea su turno
+        /// </summary>
         private Player Inactive_Player;
+        /// <summary>
+        /// Se crea una lista con ambos tableros del jugador
+        /// </summary>
         private List<Board> player1Boards;
+        /// <summary>
+        /// Se crea una lista con ambos tableros del jugador
+        /// </summary>
         private List<Board> player2Boards;
+        /// <summary>
+        /// Para guardar la partida se guardará una lista con los usuarios que la jugaron
+        /// </summary>
         private List<User> usersList;
         /// <summary>
         /// Se inicia el juego con el constructor de la clase
@@ -30,20 +48,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="player1">Será el jugador que inicia todo</param>
         /// <param name="player2"></param>
         /// <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
-
-        //Se crea el constructor para cuando se inicia un juego
-
         public Game(User player1, User player2, int boardLength)
         {
-            this.Date=DateTime.Now;
-            this.Active_Player= new Player(player1, boardLength);
-            this.Inactive_Player=new Player(player2, boardLength);
-            this.usersList= new List<User>();
+            this.Date = DateTime.Now;
+            this.Active_Player = new Player(player1, boardLength);
+            this.Inactive_Player = new Player(player2, boardLength);
+            this.usersList = new List<User>();
             this.usersList.Add(player1);
             this.usersList.Add(player2);
-            Console.WriteLine($"Comenzará {Active_Player.GetPlayerName()} \nSu tablero se ve asi");
-            Active_Player.PrintPlayerShipBoard();
         }
+        /// <summary>
+        /// Todas las partidas tienen su fecha de inicio
+        /// </summary>
+        /// <value>Son los getters y setters de la fecha de la partida</value>
         public DateTime DateTime
         {
             get
@@ -73,14 +90,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new CoordException("Las coordenadas estan fuera de rango.");
             }
+
             Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
+
         }
 
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
         /// Si el barco que se desea agregar no cumple con el rango habilitado por el tablero tira una excepción
         /// </summary>
-
         /// <param name="shipOption">Es la opción prederminada del barco a elegir</param>
         /// <param name="coord">Es un string de dos cifras que se divide en dos numeros enteros</param>
         /// <param name="direction">Las opciones son vertical u horizontal</param>
@@ -172,6 +190,57 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return false;
         }
+        
+        //El siguiente método es solo una referencia a futuro
+            // Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
+            // Sirve al comienzo para chequear que el tablero se imprima bien sin realizar test
+
+
+            /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)
+            {
+                int maxShipsQuantity = Active_Player.GetPlayerShipBoard().MaxShipsQuantity;
+                int shipsLeft = maxShipsQuantity;
+                Console.WriteLine($"{Active_Player.GetPlayerName()} puede agregar hasta {maxShipsQuantity} barcos según el tamaño de su tablero");
+                while (shipsLeft>0)
+                {
+                    /*Console.WriteLine($"{Active_Player.GetPlayerName()} Indique el tipo del barco: ");
+                    Console.WriteLine($"Opciones a elegir:\n1) 2 Coordenadas \n2) 3 Coordenadas \n3) 4 coordendas");
+                    int shipLength = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la coordenada en donde desea ubicarlo: ");
+                    string coord = Console.ReadLine();
+                    Console.WriteLine($"{Active_Player.GetPlayerName()} indique la dirección para ubicarlo ubicarlo v/h: ");
+                    string direction = Console.ReadLine();*/
+                /*switch (shipLength)
+                {
+                case 1:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(2, coord,direction));
+                        shipsLeft--;
+                break;
+
+                case 2:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(3, coord,direction));
+                        shipsLeft--;
+                break;
+
+                case 3:
+                        AddShipToPlayerShipList(Active_Player,PlaceShip(4, coord,direction));
+                        PlaceShip(4, coord,direction);
+                        shipsLeft--;
+                break;
+
+                default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("El barco no puede tener un tamaño mayor a 5");
+                break;
+                }
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine($"Le quedan {shipsLeft} barcos por agregar.");
+
+        }
+        Console.WriteLine($"Se ubicaron todos los barcos de {Active_Player.GetPlayerName()}");
+        Console.WriteLine("---------------------------");
+        Utils.Swap(ref Active_Player, ref Inactive_Player);
+        }*/
 
     }
 }

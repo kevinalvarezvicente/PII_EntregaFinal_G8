@@ -11,11 +11,26 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class User
     {
-        private int userId;
-        private string name;
-        private List<Game> gameHistory;
-        private bool wantToPlay;
-
+        /// <summary>
+        ///  Se registra con la instancia de UserGamesContainer en el constructor,
+        /// </summary>
+        private UserGamesContainer container;
+        /// <summary>
+        /// Solo get ya que se quiere acceder de afuera al contenedor 
+        /// </summary>
+        /// <value>En el caso de que se quiera agregar o remover una partida el método es de la clase UserGamesContainer</value>
+        
+        public UserGamesContainer Container
+        {
+            get 
+            {
+                return this.container;
+            }
+        }
+        /// <summary>
+        /// Es el ID de usuario
+        /// </summary>
+        /// <value>Cada usuario tiene el suyo</value>
         public int UserId { get; private set; }
         /// <summary>
         /// Nombre del usuario
@@ -29,27 +44,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="name">Es de tipo int</param>
         public User(int userId, string name)
         {
-            this.userId = userId;
-            this.name = name;
-            this.gameHistory = new List<Game>();
+            this.UserId = userId;
+            this.Name = name;
         }
         /// <summary>
         /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
         /// </summary>
         public void WantToPlay()
         {
-            Lobby lobby = new Lobby();
-            lobby.AddUserToList(this);
-        }
-
-        public void AddGameToGameHistory(Game game)
-        {
-            this.gameHistory.Add(game);
-        }
-
-        public List<Game> GetUserGameHistory()
-        {
-            return this.gameHistory;
+            Singleton<LobbyContainer>.Instance.AddItem(this);
         }
 
     }

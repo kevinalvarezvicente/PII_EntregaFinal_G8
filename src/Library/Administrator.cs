@@ -38,11 +38,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// toma los dos primeros usuarios en el lobby una vez que se comprueba que hay mas de un usuario esperando por una partida
         /// </summary>
         public void StartGame()
-            lobby.RemoveUserFromList(user1);
-            lobby.RemoveUserFromList(user2);
-        }
-
-        public void ReceiveUsersSearchingGameList()
         {
             if (Singleton<LobbyContainer>.Instance.AreUsersToStartGame())
             {
@@ -87,5 +82,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             user.Container.AddItem(game);
         }
+
+
     }
 }

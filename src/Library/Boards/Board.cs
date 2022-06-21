@@ -25,13 +25,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// La cantidad de barcos será la mitad del tamaño del lado del tablero.
         /// </summary>
         /// <param name="x">Es un entero que representa el largo del lado del tablero</param>
-        /// 
         public Board(int x)
         {
             this.InitializeBoard(x);
-            this.maxShipsQuantity = x/2;
+            this.maxShipsQuantity = x / 2;
         }
-
         /// <summary>
         /// Es una matriz de strings "-"-
         /// </summary>
@@ -47,15 +45,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 this.gameBoard = value;
             }
         }
-
+        /// <summary>
+        /// Permite acceder a la cantidad maxima de barcos
+        /// </summary>
+        /// <value>Es de tipo entero</value>
         public int MaxShipsQuantity
         {
-            get 
+            get
             {
                 return this.maxShipsQuantity;
             }
         }
-
         /// <summary>
         /// Metodo que inicializa el tablero .
         /// </summary>
@@ -77,5 +77,36 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
         }
+
+            /*int counter = 1;
+            string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            char[] lettersArray = letters.ToCharArray();
+            gameBoard = new string[x, x];
+
+            for (int i = 0; i < (Math.Sqrt(gameBoard.Length)); i++)
+            {
+                for (int j = 0; j < (Math.Sqrt(gameBoard.Length)); j++)
+                {
+                    if (i == 0 && j == 0)
+                    {
+                        gameBoard[0, 0] = " ";
+                    }
+                    else if (i == 0 && j != 0)
+                    {
+                        gameBoard[0, j] = lettersArray[j - 1].ToString();
+                    }
+                    else if (j == 0 && i != 0)
+                    {
+                        gameBoard[i, 0] = counter.ToString();
+                        counter++;
+                    }
+                    else
+                    {
+                        gameBoard[i, j] = "-";
+                    }
+                }
+            }*/
+
     }
 }
+

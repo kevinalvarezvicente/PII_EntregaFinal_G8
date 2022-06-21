@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Program": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Kevin\\Documents\\GitHub\\PII_EntregaFinal_G8\\src\\Program"
+    },
+    "Perfil 1": {
+      "commandName": "Executable"
+    },
+    "Perfil 2": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\Kevin\\Documents\\GitHub\\PII_EntregaFinal_G8\\src\\Program"
+    }
+  }
+}

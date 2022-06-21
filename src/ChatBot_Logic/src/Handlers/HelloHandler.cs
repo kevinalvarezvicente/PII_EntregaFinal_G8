@@ -13,7 +13,7 @@
         /// <param name="next">El próximo "handler".</param>
         public HelloHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "hola" };
+            this.Keywords = new string[] { "hola", "Hola" };
         }
 
         /// <summary>

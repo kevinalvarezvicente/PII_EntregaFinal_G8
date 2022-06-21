@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ChatBot_Logic": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "NETCORE_ENVIRONMENT": "development"
+      }
+    },
+  }
+}

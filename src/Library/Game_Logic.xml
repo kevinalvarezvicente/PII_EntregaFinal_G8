@@ -58,8 +58,9 @@
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AbstractBoard">
             <summary>
-            Se crea una clase Abstracta para el tablero. Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
-            La clase Board heredará de esta e implementará el método inicializeBoard en su constructor.
+            Se crea una clase Abstracta para el tablero. 
+            Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
+            La clase Board heredará de esta e implementará el método initializeBoard en su constructor.
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.AbstractBoard.gameBoard">
@@ -90,7 +91,8 @@
             Es una clase base de los tableros de tiros y de barcos.
             Cumple con SRP (Single Responsibility Principle)
             Tiene la única responsabilidad de inicializar el tablero y única razón de cambio es si el dia de mañana se quiere permitir que se elija un tablero de tamaño mayor que 12 o que la cantidad de barcos a agregar sea mayor.
-            Rompe LSP (Liskov Substitution Principle) ya que hay operaciones en el programa donde se requiere un objeto de tipo Board e importa si es de ShipBoard o ShotBoard ya que el juego está hecho para que cada jugador vea el ShotBoard y el ShipBoard por separado.
+            Romperá LSP (Liskov Substitution Principle) ya que hay operaciones en el programa en general donde se requiere un objeto de tipo Board e importa si es de ShipBoard o ShotBoard ya que el juego está hecho para que cada jugador vea el ShotBoard y el ShipBoard por separado.
+            Cumple OCP (Open-Close Principle) pues si el dia de mañana se agrega otro tipo de Board puede extender de esta sin problema y es cerrada a la modificación en el sentido de que  no es necesario realizar cambios en el código de esa clase
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.#ctor(System.Int32)">
@@ -165,83 +167,53 @@
             <param name="x">Posicion en la fila en el tablero</param>
             <param name="y">Posicion según la columna del tablero</param>
         </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Container`1">
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.GamesContainer">
             <summary>
-            CLASE SIN FUNCIONAR AUN
-            Es una clase base para los siguientes contenedores.
-            Se aplicará herencia permitiendo que las clases derivadas apliquen los métodos
-            </summary>
-            <typeparam name="T">Significa que todas las operaciones aceptarán cualquier objeto de las clases derivadas</typeparam>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Container`1.containerList">
-            <summary>
-            No tiene un constructor de por sí pero creando el Container se crea una lista de tipo genérico.
+            Clase estatica para no tener que instanciar en cada momento
+            Es Expert porque conoce toda la informacion de los juegos cumpliendo su tarea de agregar, eliminar o mostrar la informacion
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Container`1.AddItem(`0)">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.gamescontainer">
             <summary>
-            Operación genérica.
+            Una lista de juegos en general 
             </summary>
-            <param name="item">Demuestra que se puede poner como argumento cualquier elemento </param>
+            <typeparam name="Game"> La lista es de elementos de tipo Game</typeparam>
+            <returns></returns>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Container`1.RemoveItem(`0)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.AddGame(PII_ENTREGAFINAL_G8.src.Library.Game)">
             <summary>
-            Operación genérica
+            Se añade el juego
             </summary>
-            <param name="item">Acepta cualquier tipo</param>
+            <param name="game">Es un parámetro de tipo Game</param>
         </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Container`1.ContainerList">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.gamesContainer">
             <summary>
-            Es una operación genérica
+            Es el operador para tener acceso a la lista de juegos
             </summary>
-            <returns>Retorna la lista de objetos que estén en el contenedor</returns>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.RemoveUser(PII_ENTREGAFINAL_G8.src.Library.Game)">
+            <summary>
+            Saca el juego de la lista
+            </summary>
+            <param name="game">Tipo Game es el parámetro</param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer">
             <summary>
-            Es subclase de Container pues hereda métodos y atributos y puede agregar otro
+            Clase estatica para no tener que instanciar en cada momento
+            SRP unico motivo de cambio es si en vez de querer guardar Users tengo que guardar Players solo cambia los parámetros a pasar
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.containerList">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.lobbycontainer">
             <summary>
-            CLASE SIN FUNCIONAR AUN
-            Este método es agregado de la clase chequea que hayan suficiente cantidad de usuarios esperando para jugar
+            Se instancia una lista para usuarios que quieren esperar para jugar
             </summary>
-            <returns>Retorna un booleano tal que si hay mas de 2 usuarios retornará true</returns>
-            
-                    /// <summary>
-            No tiene un constructor de por sí pero creando el Container se crea una lista de tipo genérico.
-            </summary>
+            <typeparam name="User"></typeparam>
+            <returns></returns>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AddItem(PII_ENTREGAFINAL_G8.src.Library.User)">
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.UsersContainer">
             <summary>
-            Operación genérica.
-            </summary>
-            <param name="item">Demuestra que se puede poner como argumento cualquier elemento </param>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.RemoveItem(PII_ENTREGAFINAL_G8.src.Library.User)">
-            <summary>
-            Operación genérica
-            </summary>
-            <param name="item">Acepta cualquier tipo</param>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.ContainerList">
-            <summary>
-            Es una operación genérica
-            </summary>
-            <returns>Retorna la lista de objetos que estén en el contenedor</returns>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.UserContainer">
-            <summary>
-            CLASE SIN FUNCIONAR AUN
-            Subclase de Container donde se almacenarán todos los usuarios
-            Cumple SRP (Single Responsibility Principle) cuya única responsabilidad es almacenar todos los usuarios registrados
-            </summary>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.UserGamesContainer">
-            <summary>
-            CLASE SIN FUNCIONAR AUN
-            Subclase de Container donde se almacenarán todas las partidas del usuario
-            SRP (Single Responsibility Principle) cuya única responsabilidad es guardar las partidas de cierto usuario
+            Clase estatica para no tener que instanciar en cada momento
             </summary>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
@@ -562,57 +534,38 @@
             </summary>
             <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter">
+            <summary>
+            Clase que implementa la interfaz IPrinter. 
+            El único método que necesita también debe poder ser utilizado para imprimir un tablero de disparos.
+            Tiene la responsabilidad de imprimir el tablero del jugador con barcos
+            Se podría decir que cumple con SRP.
+            Es expert, es quien tiene toda la informacion para imprimir tablero
+            Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
+            Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+            <summary>
+            Permite imprimir el tablero de tiros del jugador pasado por parámetro.
+            Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
+            </summary>
+            <param name="board">Jugador dueño del tablero que se desea imprimir por pantalla</param>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.IPrinter">
             <summary>
-            CLASE SIN FUNCIONAR AUN
-            Interfaz que depende de la clase Player. 
-            Para poder imprimir un tablero cualquiera por pantalla tiene que conocer los detalles del jugador. 
+            Interfaz que depende de Board. 
+            Para poder imprimir un tablero cualquiera por pantalla tiene que conocer los detalles del Board. 
             Cada clase de tipo IPrinter tiene la responsabilidad de imprimir el tablero con un diseño diferente.
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.IPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
             <summary>
-            En este método se refleja que la interfaz depende de Player 
-            La declaración de la operación recibe una instancia de Player como parámetro y para que cumpla patrones se pondrá también el tablero como parámetro.
-            Es operación polimórifca ya que va a poder ser utilizada en el program de la misma forma pero habiendo 
+            En este método se refleja que la interfaz depende de Board
+            La declaración de la operación recibe una instancia de Board como parámetro 
+            Es operación polimórifca ya que va a poder ser utilizada en el program de la misma 
             </summary>
-            <param name="player"></param>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShipBoardPrinter">
-            <summary>
-            Clase que implementa la interfaz IPrinter. 
-            El único método que necesita también debe poder ser utilizado para imprimir un tablero de disparos.
-            Tiene la responsabilidad de imprimir el tablero del jugador con barcos
-            Se podría decir que cumple con SRP
-            Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
-            Se esta trabajando para que haga lo mismo pero pasandole por parámetro si va a ser tablero de tiros o de barcos
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipBoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
-            <summary>
-            CLASE SIN FUNCIONAR AUN
-            Permite imprimir el tablero de tiros del jugador pasado por parámetro.
-            Para que sea una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard.
-            </summary>
-            <param name="player">Jugador dueño del tablero que se desea imprimir por pantalla</param>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShotBoardPrinter">
-            <summary>
-            Clase que implementa la interfaz IPrinter. 
-            El único método que utili también debe poder ser utilizado para imprimir un tablero de disparos
-            Tiene la responsabilidad de imprimir el tablero del jugador con los disparos realizados.
-            Se podría decir que cumple con SRP
-            Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
-            Se esta trabajando para que haga lo mismo pero pasandole por parámetro si va a ser tablero de tiros o de barcos.
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotBoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Player)">
-            <summary>
-            CLASE SIN FUNCIONAR AUN
-            Permite imprimir el tablero de tiros del jugador pasado por parámetro.
-            No es una operación polimórfica ya que solo sirve para imprimir el tablero de tiros.
-            </summary>
-            <param name="player">Jugador dueño del tablero que se desea imprimir por pantalla</param>
+            <param name="board"> Es un supertipo </param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Frigate">
             <summary>
@@ -767,17 +720,6 @@
              <summary>
             El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
              </summary>
-        </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.container">
-            <summary>
-             Se registra con la instancia de UserGamesContainer en el constructor,
-            </summary>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Container">
-            <summary>
-            Solo get ya que se quiere acceder de afuera al contenedor 
-            </summary>
-            <value>En el caso de que se quiera agregar o remover una partida el método es de la clase UserGamesContainer</value>
         </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.UserId">
             <summary>

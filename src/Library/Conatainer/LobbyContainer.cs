@@ -1,18 +1,55 @@
+using System.Collections.Generic;
+
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Es subclase de Container pues hereda métodos y atributos y puede agregar otro
+    /// Clase estatica para no tener que instanciar en cada momento
+    /// SRP unico motivo de cambio es si en vez de querer guardar Users tengo que guardar Players solo cambia los parámetros a pasar
     /// </summary>
-    public class LobbyContainer: Container<User>
+    public static class LobbyContainer
     {
         /// <summary>
-        /// CLASE SIN FUNCIONAR AUN
-        /// Este método es agregado de la clase chequea que hayan suficiente cantidad de usuarios esperando para jugar
+        /// Se instancia una lista para usuarios que quieren esperar para jugar
         /// </summary>
-        /// <returns>Retorna un booleano tal que si hay mas de 2 usuarios retornará true</returns>
-        public bool AreUsersToStartGame() 
+        /// <typeparam name="User"></typeparam>
+        /// <returns></returns>
+        private static List<User> lobbycontainer = new List<User>();
+
+        public static void AddUser(User user)
         {
-            if (ContainerList.Count>=2)
+            if(!lobbycontainer.Contains(user))
+            {
+                lobbycontainer.Add(user);
+            }
+            else
+            {
+                throw new ContainerException($"El elemento ya está en la lista");
+            }
+
+            
+        }
+        public static List<User> lobbyContainer
+        {
+            get
+            {
+                return lobbycontainer;
+            }
+        }
+        public static void RemoveUser(User user)
+        {
+            
+            if(lobbycontainer.Contains(user))
+            {
+                lobbycontainer.Remove(user);
+            }
+            else
+            {
+                throw new ContainerException($"El elemento ya está en la lista");
+            }
+        }
+        public static bool AreUsersToStartGame() 
+        {
+            if (lobbycontainer.Count>=2)
             {
                 return true;
             }
@@ -21,6 +58,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return false;
                 
             }
-        }        
+        } 
+        
     }
 }

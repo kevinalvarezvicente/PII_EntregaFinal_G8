@@ -15,22 +15,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
         /// </summary>
         private static int currentID;
-        /// <summary>
-        ///  Se registra con la instancia de UserGamesContainer en el constructor,
-        /// </summary>
-        private UserGamesContainer container;
-        /// <summary>
-        /// Solo get ya que se quiere acceder de afuera al contenedor 
-        /// </summary>
-        /// <value>En el caso de que se quiera agregar o remover una partida el método es de la clase UserGamesContainer</value>
-        
-        public UserGamesContainer Container
-        {
-            get 
-            {
-                return this.container;
-            }
-        }
+
         /// <summary>
         /// Es el ID de usuario
         /// </summary>
@@ -46,6 +31,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <value></value>
         public string Surename { get; private set; }
+        public List<Game> UserGamesList {get; private set;} 
         /// <summary>
         /// El constructor de Usuario crea una Lista de juegos del usuario
         /// </summary>
@@ -57,13 +43,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.UserId= currentID;
             this.Name = name;
             this.Surename=surename;
+            List<Game> userGamesList = new List<Game>();
+            this.UserGamesList = userGamesList;
+
+            
         }
         /// <summary>
         /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
         /// </summary>
         public void WantToPlay()
         {
-            Singleton<LobbyContainer>.Instance.AddItem(this);
+            
+            LobbyContainer.AddUser(this);
         }
                          
 

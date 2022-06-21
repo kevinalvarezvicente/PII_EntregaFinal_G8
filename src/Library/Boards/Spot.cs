@@ -2,8 +2,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Clase para las coordenadas que ocupan los barcos en el tablero
-    /// Es experta en información sobre el estado de las coordenadas de los barcos
-    /// Cumple SRP ya que tiene una única responsabilidad de crear las coordenadas de los barcos
+    /// Es experta en información sobre el estado de las coordenadas de los barcos.
+    /// Cumple SRP ya que tiene una única responsabilidad de crear las coordenadas de los barcos y 
     /// </summary>
     public class Spot
     {

@@ -3,10 +3,10 @@ using System;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    ///  Clase que implementa la interfaz IPrinter. 
+    /// Clase que implementa la interfaz IPrinter. 
     /// El único método que utili también debe poder ser utilizado para imprimir un tablero de disparos
     /// Tiene la responsabilidad de imprimir el tablero del jugador con los disparos realizados
-    /// Se cumple SRP (Single Responsibility Principle)
+    /// Pero no cumple SRP. Se esta trabajando para que se cumpla, ver la forma de
     /// </summary>
     public class ShotBoardPrinter: IPrinter
     {
@@ -15,7 +15,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
       /// No es una operación polimórfica ya que solo sirve para imprimir el tablero de tiros.
       /// </summary>
       /// <param name="player">Jugador dueño del tablero que se desea imprimir por pantalla</param>
-        public void PrintPlayerBoard(Player player)
+        public void PrintPlayerBoard(Player player, Board board)
         {
 
             Console.WriteLine($"Se imprime el tablero de tiros de {player.PlayerName}");
@@ -28,6 +28,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     }
                 Console.WriteLine();
             }
+        }
+
+        public void PrintPlayerBoard(Player player)
+        {
+            throw new NotImplementedException();
         }
     }
 }

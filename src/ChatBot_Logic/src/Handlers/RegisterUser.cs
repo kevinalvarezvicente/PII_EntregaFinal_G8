@@ -1,5 +1,6 @@
 using ChatBot_Logic.src.HandlersConfiguration;
 using Telegram.Bot.Types;
+using System;
 
 
 namespace ChatBot_Logic.src.Handlers
@@ -27,6 +28,20 @@ namespace ChatBot_Logic.src.Handlers
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override void InternalHandle(Message message, out string response)
         {
+            string[] parametros = new string[1]; 
+            parametros = message.Text.Split(" ");
+
+            if (parametros.Length!=2)
+            {
+                Console.WriteLine("Solo se puede recibir 2 parametros"); //Es una exception
+            }
+            else
+            {
+                string name = parametros[2];
+                response = ($"Se ha registrado con el nombre {name}");
+                //User user = new User(name, );
+                //this.userContainer.AddItem(user);
+            }
             response = "que andas pariente no te registro porque no lo programaron pa";
         }
     }

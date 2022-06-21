@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="x">Es el tamaño del tablero</param>
         /// <returns></returns>    
-        public ShipBoard(int x) : base(x)
+        public ShipBoard(int x): base (x)
         {
             this.InitializeBoard(x);
 

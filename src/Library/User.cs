@@ -4,7 +4,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Class User guarda y trabaja con la información del usuario
-    /// Es experta en la información del usuario
+    /// Es expert por contener toda la información del usuario
     /// Cumple (LCHC) Low Coupling and High Cohesion
     /// Hace lo mínimo necesario como almacenar la información del usuario y delega todo lo demás 
     /// Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
@@ -12,7 +12,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class User
     {
         /// <summary>
-        ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+        ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
         /// </summary>
         private static int currentID;
         /// <summary>

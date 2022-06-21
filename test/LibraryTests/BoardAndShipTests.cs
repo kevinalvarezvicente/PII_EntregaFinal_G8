@@ -327,5 +327,48 @@ namespace LibraryTests
             player.PlaceShipOnBoard(frigate);     
             Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
         }
+        /// <summary>
+        /// Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+        /// </summary>
+        [Test]
+        public void TestPlaceShipOutOfBoard()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 5);
+            LightCruiser cruiser = new LightCruiser("04","h");  
+            Frigate frigate = new Frigate("55","h"); 
+            Submarine submarine = new Submarine("44","v");
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(submarine));
+
+        }
+        /// <summary>
+        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+        /// Se hace Assert.AreEqual para una coordenada que si esta
+        /// </summary>
+        [Test]
+        public void TestSearchForCoordInShipsListOK()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 8);
+            LightCruiser cruiser = new LightCruiser("03","h"); 
+            player.PlaceShipOnBoard(cruiser);
+            Assert.AreEqual(true, player.SearchForCoordInShipsList("04"));
+              
+        }
+        /// <summary>
+        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+        /// Se hace Assert.AreEqual para una coordenada que no esta
+        /// </summary>
+        [Test]
+        public void TestSearchForCoordInShipsListNotOK()
+        {
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias, 8);
+            LightCruiser cruiser = new LightCruiser("03","h"); 
+            player.PlaceShipOnBoard(cruiser);
+            Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));   
+        }
     }
 }

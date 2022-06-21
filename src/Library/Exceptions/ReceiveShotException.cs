@@ -4,6 +4,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// Clase que hereda de Exception, es clase derivada que se utilizará si la coordenada al hacer el shot no existe 
     /// Cumple SRP cuya única responsabilidad es lanzar la excepción
+    /// único motivo de cambio es si se desea agrgarle otro parámetro 
     /// </summary>
     public class ReceiveShotException:Exception 
     {

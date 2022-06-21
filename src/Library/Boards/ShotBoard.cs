@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="x">Es el tamaño del tablero</param>
         /// <returns></returns>    
-        public ShotBoard(int x) : base(x)
+        public ShotBoard(int x):base(x) 
         {
             this.InitializeBoard(x);
         }

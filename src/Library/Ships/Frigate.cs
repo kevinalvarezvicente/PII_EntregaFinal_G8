@@ -7,6 +7,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Es una subclase de Ship ya que  atributos y métodos de otra clase y 
     /// habitualmente se puede agregar nuevos atributos y nuevos métodos.
     /// Lo que se modifica es el tamaño del barco esté predeterminado según el tipo. 
+    /// SRP: único motivo de cambio es si se desea agrgarle otro parámetro o cambiar el tamaño.
     /// /// </summary>
     public class Frigate: Ship
     {

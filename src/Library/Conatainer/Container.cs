@@ -4,6 +4,7 @@ using System.Collections.Generic;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
+    /// CLASE SIN FUNCIONAR AUN
     /// Es una clase base para los siguientes contenedores.
     /// Se aplicará herencia permitiendo que las clases derivadas apliquen los métodos
     /// </summary>

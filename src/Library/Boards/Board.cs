@@ -9,16 +9,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Tiene la única responsabilidad de inicializar el barco y única razón de cambio es si el dia de mañana se quiere permitir que se elija un tablero de tamaño mayor que 12 o que la cantidad de barcos a agregar sea mayor.
     /// Rompe LSP (Liskov Substitution Principle) ya que hay operaciones en el programa donde se requiere un objeto de tipo Board e importa si es de ShipBoard o ShotBoard ya que el juego está hecho para que cada jugador vea el ShotBoard y el ShipBoard por separado.
     /// </summary>
-    public class Board
-    {
-        /// <summary>
-        /// Se crea atributo privado de la matriz.
-        /// </summary>
-        private string[,] gameBoard;
-        /// <summary>
-        /// Atributo que permite tener una cantidad maxima de barcos segun el tamaño del tablero.
-        /// </summary>
-        private int maxShipsQuantity;
+    public class Board: AbstractBoard
+    {  
         /// <summary>
         /// Constructor del tablero
         /// Como funcionalidad extra del equipo se pone un maximo de barcos a agregar segun el tamaño del tablero.
@@ -31,24 +23,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.maxShipsQuantity = x / 2;
         }
         /// <summary>
-        /// Es una matriz de strings "-"
+        /// Método de acceso a la cantidad maxima habilitada de barcos a ubicar
         /// </summary>
-        /// <value>Matriz del tablero general</value>
-        public string[,] GameBoard
-        {
-            get
-            {
-                return this.gameBoard;
-            }
-            private set
-            {
-                this.gameBoard = value;
-            }
-        }
-        /// <summary>
-        /// Permite acceder a la cantidad maxima de barcos
-        /// </summary>
-        /// <value>Es de tipo entero</value>
+        /// <value>Retorna un entero segun el tamaño del tablero</value>
         public int MaxShipsQuantity
         {
             get
@@ -56,56 +33,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return this.maxShipsQuantity;
             }
         }
-        /// <summary>
-        /// Metodo que inicializa el tablero .
-        /// </summary>
-        /// <param name="x">Largo del lado del tablero</param>
-        protected void InitializeBoard(int x)
-        {
-            if (x>12 || x<1)
-            {
-                throw new BoardException("El lado del tablero no puede superar el tamaño 12");
-            }
-            gameBoard = new string[x, x];
-
-            for (int i = 0; i < this.gameBoard.GetLength(0); i++)
-            {
-                for (int j = 0; j < this.gameBoard.GetLength(1); j++)
-                {
-                    //this.gameBoard[i, j] = i + "," + j;
-                    this.gameBoard[i, j] = "-";
-                }
-            }
-        }
-
-            /*int counter = 1;
-            string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            char[] lettersArray = letters.ToCharArray();
-            gameBoard = new string[x, x];
-
-            for (int i = 0; i < (Math.Sqrt(gameBoard.Length)); i++)
-            {
-                for (int j = 0; j < (Math.Sqrt(gameBoard.Length)); j++)
-                {
-                    if (i == 0 && j == 0)
-                    {
-                        gameBoard[0, 0] = " ";
-                    }
-                    else if (i == 0 && j != 0)
-                    {
-                        gameBoard[0, j] = lettersArray[j - 1].ToString();
-                    }
-                    else if (j == 0 && i != 0)
-                    {
-                        gameBoard[i, 0] = counter.ToString();
-                        counter++;
-                    }
-                    else
-                    {
-                        gameBoard[i, j] = "-";
-                    }
-                }
-            }*/
 
     }
 }

@@ -1,24 +1,41 @@
 ﻿using ChatBot_Logic.src.Handlers_Configuration;
 using PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types.ReplyMarkups;
 
 
 namespace ChatBot_Logic.src
 {
+    /// <summary>
+    /// Clase encargada de la gestion del ChatBot
+    /// </summary>
     public class ChatBot : ISecretService
     {
+        /// <summary>
+        //  Obtenemos el Token de la clase TokenConfiguration
+        /// </summary>
         public string Token => TokenConfiguration.Token;
+
+        /// <summary>
+        //  Instancia privada y unica de la clase ChatBot
+        /// </summary>
         private static ChatBot _instance;
+        /// <summary>
+        /// Variable que almacenara el cliente Telegram, en este caso el Bot.
+        /// </summary>
         private static TelegramBotClient Bot;
+        /// <summary>
+        /// Variable para cerrar la escucha del bot.
+        /// </summary>
         CancellationTokenSource cts = new CancellationTokenSource();
+        /// <summary>
+        /// Constructor de ChatBot
+        /// </summary>
         private ChatBot()
         {
             TokenConfiguration.StartTokenConfig();
@@ -35,6 +52,9 @@ namespace ChatBot_Logic.src
             // Terminamos el bot.
             cts.Cancel();
         }
+        /// <summary>
+        /// Obtiene la informacion del Bot.
+        /// </summary>
         private User BotInfo
         {
             get
@@ -42,6 +62,9 @@ namespace ChatBot_Logic.src
                 return this.Client.GetMeAsync().Result;
             }
         }
+        /// <summary>
+        /// Obtiene el id del Bot.
+        /// </summary>
         public int BotId
         {
             get
@@ -50,6 +73,9 @@ namespace ChatBot_Logic.src
             }
         }
 
+        /// <summary>
+        /// Obtiene el nombre del Bot.
+        /// </summary>
         public string BotName
         {
             get
@@ -57,6 +83,11 @@ namespace ChatBot_Logic.src
                 return this.BotInfo.FirstName;
             }
         }
+
+
+        /// <summary>
+        /// Obtiene al cliente.
+        /// </summary>
         public ITelegramBotClient Client
         {
             get
@@ -64,6 +95,9 @@ namespace ChatBot_Logic.src
                 return Bot;
             }
         }
+        /// <summary>
+        /// Iniciar la escucha del Bot, para asi poder recibir y procesar los mensajes.
+        /// </summary>
         public void listen()
         {
             Bot.StartReceiving(
@@ -94,6 +128,7 @@ namespace ChatBot_Logic.src
                 }
                 else
                 {
+                    //Agregamos la funcionalidad para agregar la respuesta a eventos de tipo botones.
                     await HandleCallbackQueryReceived(botClient, update.CallbackQuery);
                 }
             }
@@ -118,10 +153,14 @@ namespace ChatBot_Logic.src
 
             if (!string.IsNullOrEmpty(response))
             {
-                await botClient.SendTextMessageAsync(message.Chat.Id, ".", replyMarkup: GetMenu());
+                await Bot.SendTextMessageAsync(message.Chat.Id, response);
             }
         }
-
+        /// <summary>
+        /// Maneja los botones que se envían al bot a través de handlers de una chain of responsibility. (En proceso de desarollo
+        /// </summary>
+        /// <param name="CallbackQuery">El boton recibido</param>
+        /// <returns></returns>
         private static async Task HandleCallbackQueryReceived(ITelegramBotClient botClient, CallbackQuery callbackQueryEventArgs)
         {
             var callbackQuery = callbackQueryEventArgs;
@@ -135,11 +174,12 @@ namespace ChatBot_Logic.src
                 await botClient.SendTextMessageAsync(
                 chatId: callbackQuery.Message.Chat.Id,
                 text: $"Received send {callbackQuery.Data}"
+                //await botClient.SendTextMessageAsync(message.Chat.Id, ".", replyMarkup: GetMenu());
             );
             }
         }
 
-        public static InlineKeyboardMarkup GetMenu()
+        /*public static InlineKeyboardMarkup GetMenu() (En proceso de desarollo)
         {
             //Creamos los botones
             List<InlineKeyboardButton> buttons = new List<InlineKeyboardButton>();
@@ -153,7 +193,8 @@ namespace ChatBot_Logic.src
             //Creamos el KeyBoard y agregamos la fila de butones
             var menu = new InlineKeyboardMarkup(menuDosColumnas.ToArray());
             return menu;
-        }
+        }*/
+
         /// <summary>
         /// Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
         /// </summary>
@@ -163,6 +204,10 @@ namespace ChatBot_Logic.src
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Obtine la instancia del ChatBot, si no existe la crea.
+        /// Desarollo con el patrón Singleton.
+        /// </summary>
         public static ChatBot Instance
         {
             get

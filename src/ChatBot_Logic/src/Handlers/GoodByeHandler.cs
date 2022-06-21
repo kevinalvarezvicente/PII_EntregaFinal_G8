@@ -3,6 +3,9 @@ using Telegram.Bot.Types;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "chau".
+    /// </summary>
     public class GoodByeHandler : BaseHandler
     {
         /// <summary>

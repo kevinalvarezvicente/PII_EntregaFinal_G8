@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.ReplyMarkups;
 
 namespace ChatBot_Logic.src.HandlersConfiguration
 {
@@ -31,7 +29,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// Inicializa una nueva instancia de la clase <see cref="BaseHandler"/>.
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public BaseHandler(IHandler next)
+        protected BaseHandler(IHandler next)
         {
             this.Next = next;
         }
@@ -41,7 +39,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// </summary>
         /// <param name="keywords">La lista de comandos.</param>
         /// <param name="next">El próximo "handler".</param>
-        public BaseHandler(string[] keywords, BaseHandler next)
+        protected BaseHandler(string[] keywords, BaseHandler next)
         {
             this.Keywords = keywords;
             this.Next = next;
@@ -122,7 +120,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
             }
         }
 
-        
+
 
     }
 }

@@ -6,10 +6,17 @@ using System;
 
 namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
 {
+    /// <summary>
+    /// Clase encargada de administrar y realizar la verificación del entorno de desarollo 
+    /// y la obtencion del Token secreto de la ubicacion secreta.
+    /// </summary>
     public static class TokenConfiguration
     {
         private static string token;
 
+        /// <summary>
+        /// Obtiene el token y lo revela.
+        /// </summary>
         public static void StartTokenConfig()
         {
             // Lee una variable de entorno NETCORE_ENVIRONMENT que si no existe o tiene el valor 'development' indica
@@ -44,6 +51,9 @@ namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
             token = revealer.Token;
         }
 
+        /// <summary>
+        /// Obtiene el Token.
+        /// </summary>
         public static string Token
         {
             get { return token; }

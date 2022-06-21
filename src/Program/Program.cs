@@ -21,18 +21,7 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            //ChatBot bot = ChatBot.Instance;
-            User carol = new User("Carol","Glass");
-            Player player = new Player(carol,10);
-            User maria = new User("Maria","P");
-            carol.WantToPlay();
-            maria.WantToPlay();
-            Console.WriteLine(LobbyContainer.lobbyContainer.Count);
-            
-           
-            //ShipBoardPrinter printer = new ShipBoardPrinter();
-            //printer.PrintPlayerBoard(player.PlayerShipBoard);
-
+            ChatBot bot = ChatBot.Instance;
         }
     }
 }

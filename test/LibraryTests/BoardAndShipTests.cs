@@ -6,25 +6,10 @@ namespace LibraryTests
     /// <summary>
     /// Se hace test para el método que divide la coordenada
     /// </summary>
-    public class BoardTests
+    public class BoardAndShipTests
     {
-        private User player1;
-        private User player2;
-        private Player carol;
-        private Player tony;
-
-        [SetUp]
-        public void SetUp()
-        {
-            /*User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
-            Player carol = new Player(player1, 10);
-            Player tony  = new Player(player2, 10);*/
-        }
-
         /// <summary>
-        /// Test4
-        /// Se testea el disparo dos veces a la misma coordenada
+        /// Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
         /// </summary>
         [Test]
         public void TestReceiveShotException()
@@ -37,7 +22,7 @@ namespace LibraryTests
             Assert.Throws<ReceiveShotException>(() =>player.ReceiveShot("11"));
         }
         /// <summary>
-        /// Test5
+        /// Se testea la maxima cantidad de barcos 
         /// </summary>
 
         [Test]
@@ -48,7 +33,7 @@ namespace LibraryTests
             Assert.AreEqual(5, max);
         }
         /// <summary>
-        /// Test 6
+        /// Se testea agregar un LightCruiser en vertical
         /// </summary>
         [Test]
         public void AddFrigateToBoardVertical()
@@ -61,7 +46,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 1]);
         }
         /// <summary>
-        /// Test6
+        /// Se testea agregar un Frigate en horizontal
         /// </summary>
         [Test]
         public void AddFrigateToBoardHorizontal()
@@ -74,7 +59,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[1, 2]);
         }
         /// <summary>
-        /// Test7
+        /// Testea que se agreguen 2 posiciones de Frigate
         /// </summary>
         [Test]
         public void AddAllPositionsOfFrigate()
@@ -91,8 +76,9 @@ namespace LibraryTests
             Assert.AreEqual(2, count);
         }
         /// <summary>
-        /// Test8
+        /// Se testea agregar un LightCruiser en vertical
         /// </summary>
+        [Test]
         public void AddLightCruiserToBoardVertical()
         {
             User player1 = new User(1, "Carol");
@@ -104,8 +90,9 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[3, 3]);
         }
         /// <summary>
-        /// Test9
+        /// Se testea agregar un LightCruiser en horizontal
         /// </summary>
+        [Test]
         public void AddLightCruiserToBoardHorizontal()
         {
             User player1 = new User(1, "Carol");
@@ -117,7 +104,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
         }
         /// <summary>
-        /// Test10
+        /// Se testea que se agreguen las 3 posiciones de LightCruiser
         /// </summary>
         [Test]
         public void AddAllPositionsOfLightCruiser()
@@ -134,8 +121,9 @@ namespace LibraryTests
             Assert.AreEqual(3, count);
         }
         /// <summary>
-        /// Test11
+        /// Se testea agregar un Submarino en vertical
         /// </summary>
+        [Test]
         public void AddSubmarineToBoardVertical()
         {
             User player1 = new User(1, "Carol");
@@ -148,8 +136,9 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[4, 1]);
         }
         /// <summary>
-        /// Test12
+        /// Se testea agregar un Submarino en horizontal
         /// </summary>
+        [Test]
         public void AddSubmarineToBoardHorizontal()
         {
             User player1 = new User(1, "Carol");
@@ -162,7 +151,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.PlayerShipBoard.GameBoard[2, 4]);
         }
         /// <summary>
-        /// Test 13
+        /// Se testea que se agreguen las 4 posiciones del submarino
         /// </summary>
         [Test]
         public void AddAllPositionsOfSubmarine()

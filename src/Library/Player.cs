@@ -11,6 +11,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// - Barcos y sus posiciones
     /// - Hace tiro como jugador activo
     /// - Recibe tiro como jugador inactctivo
+    /// La responsabilidades mencionadas e implementaciones de métodos recaen sobre Player ya que ésta conoce toda la informacion para ejecutar.
+    /// Se obtiene mayor cohesion y menor acoplamiento. 
     /// </summary>
     public class Player 
     {
@@ -34,7 +36,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Constructor de player. 
         /// Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
-        /// Cada jugador tiene su propio tablero.
+        /// Cada Usuario, al decidir que quiere jugar, se transforma en jugadory se le asigna propio tablero de tiros y de barcos
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
         /// <param name="BoardLength">Elige el tamaño del tablero</param>
@@ -104,8 +106,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         }
         /// <summary>
         /// Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
-        /// Devuelve true una vez que cambio el valor del Spot
-        /// No funciona este método aún falta arreglarlo
+        /// Devuelve true una vez que cambio el valor del Spot.
+        /// Usa creator para crear el Spot que sería la posicion que ocupa una parte del barco.
         /// </summary>
         /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
         public bool SearchForCoordInShipsList(string coord)
@@ -196,6 +198,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
                 foreach (Spot spot in  ship.CoordsList)
                 {
+                    if (spot.X>playerShipBoard.GameBoard.GetLength(0) || spot.Y>playerShipBoard.GameBoard.GetLength(1))
+                    {
+                        throw new CoordException("el barco queda fuera del tablero");
+                    }
                     foreach (Ship ShipToCompare in this.ShipsList)
                     {
                         foreach (Spot SpotToCompare in ShipToCompare.CoordsList)

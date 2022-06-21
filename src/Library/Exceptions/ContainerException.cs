@@ -3,7 +3,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Subclase de exception, esta axcepcion será utilizada para cuando ocurra algo inesperado al utilizar algún método de Container
-    /// Cumple SRP cuya única responsabilidad es lanzar la excepción
+    /// Cumple SRP cuya única responsabilidad es lanzar la excepción y único motivo de cambio es si se desea agrgarle otro parámetro 
     /// </summary>
     public class ContainerException:Exception 
     {

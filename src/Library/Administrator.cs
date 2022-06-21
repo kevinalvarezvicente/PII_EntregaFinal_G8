@@ -21,6 +21,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// El método JoinUsersToPlay permite unir a dos Usuarios que esten esperando para jugar e inicia una partida Game
         /// Como ya ambos usuarios comenzaron a jugar y se transformaron en jugadores los quita del lobby de espera
         /// Recibe como argumento todos los datos necesarios para crear instancia de Game
+        /// Usa Creator tal que cuando se unen dos usuarios para jugar, comienza el juego.
         /// </summary>
         /// <param name="user1">Usuario que comenzará el juego</param>
         /// <param name="user2">Uusario contrario</param>

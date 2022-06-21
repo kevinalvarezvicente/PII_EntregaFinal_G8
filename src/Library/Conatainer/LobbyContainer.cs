@@ -6,6 +6,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class LobbyContainer: Container<User>
     {
         /// <summary>
+        /// CLASE SIN FUNCIONAR AUN
         /// Este método es agregado de la clase chequea que hayan suficiente cantidad de usuarios esperando para jugar
         /// </summary>
         /// <returns>Retorna un booleano tal que si hay mas de 2 usuarios retornará true</returns>

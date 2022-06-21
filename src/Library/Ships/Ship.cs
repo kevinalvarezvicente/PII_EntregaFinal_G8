@@ -12,6 +12,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Cumple (LCHC) Low Coupling and High Cohesion
     /// - Hace lo mínimo necesario como almacenar la información del barco y delega todo lo demás 
     /// - Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
+    /// Cumple patron Expert
+    /// - La responsabilidades mencionadas e implementaciones de métodos recaen sobre ella ya que ésta conoce toda la situacion del barco.
     /// </summary>
     public class Ship
     {

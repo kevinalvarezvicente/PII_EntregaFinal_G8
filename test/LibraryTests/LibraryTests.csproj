@@ -23,9 +23,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="coverlet.msbuild" Version="3.1.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Library\Game_Logic.csproj" />
+    <ProjectReference Include="..\..\ChatBot_Logic\ChatBot_Logic.csproj" />
+    <ProjectReference Include="..\..\Library\Game_Logic.csproj" />
   </ItemGroup>
 
 </Project>

@@ -76,30 +76,56 @@
             Test sin funcionar aún 
             </summary>    
         </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestVulnerableCoord">
+            <summary>
+            Testea que si se dispara a la coordenada vulnerable de cualquier barco se hunde.
+            Testea que al jugador se le hundieron todos sus barcos
+            </summary>  
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestPlayerShipsList">
+            <summary>
+            Testea que cuando se agregan barcos a la lista de barcos del jugador
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestPlayerAddingManyShipsList">
+            <summary>
+            Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestMakeShot">
+            <summary>
+            El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestBigBoardException">
+            <summary>
+            Testea excepcion del tamaño del tablero
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestSmallBoardException">
+            <summary>
+            Testea excepcion de que el tamaño del tablero se elige 0
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestPlaceSubmarineInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestPlaceFrigateInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestPlaceCruiserInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
+            </summary>
+        </member>
         <member name="T:LibraryTests.ContainerTests">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
             IMPORTANTE: Para correr cada uno se debe descomentar, pues dado que es un singleton, al agregar usuarios a la lista se mentienen alli
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestAddUserToLobby">
-            <summary>
-            Se realiza Test1
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestRemoveUserFromLobby">
-            <summary>
-            Test2
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestAreNOTUsersToStartGame">
-            <summary>
-            Test para ver que no es posible iniciar una partida solo con un jugador
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestRegisterUser">
-            <summary>
-            Test para chequear que queda un usuario registrado
             </summary>
         </member>
         <member name="T:LibraryTests.UtilsTests">

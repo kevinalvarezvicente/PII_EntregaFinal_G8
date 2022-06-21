@@ -17,7 +17,7 @@ namespace ChatBot_Logic.src
     public class ChatBot : ISecretService
     {
         /// <summary>
-        //  Obtenemos el Token de la clase TokenConfiguration
+        /// Obtenemos el Token de la clase TokenConfiguration
         /// </summary>
         public string Token => TokenConfiguration.Token;
 

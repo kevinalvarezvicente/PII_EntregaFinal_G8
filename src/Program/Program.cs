@@ -7,6 +7,7 @@
 using ChatBot_Logic.src;
 using PII_ENTREGAFINAL_G8.src.Library;
 using System;
+using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -22,17 +23,14 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             //ChatBot bot = ChatBot.Instance;
 
-            User juan = new User(1,"Juan");
-            Player player = new Player(juan,10);
-            Submarine submarine = new Submarine("11","v");
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias,10);
+            Frigate frigate = new Frigate("01","h");
+            player.PlaceShipOnBoard(frigate);
+            Submarine submarine = new Submarine("00","h");
             player.PlaceShipOnBoard(submarine);
             //Se agrega el submarino en las coordenadas 
-            player.ReceiveShot("11");
-            player.ReceiveShot("21");
-            player.ReceiveShot("31");
-            player.ReceiveShot("41");
-            bool expected = submarine.IsShipSinked();
-            Console.WriteLine(expected);
+
         }
     }
 }

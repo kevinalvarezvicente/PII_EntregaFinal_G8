@@ -12,6 +12,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class User
     {
         /// <summary>
+        ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+        /// </summary>
+        private static int currentID;
+        /// <summary>
         ///  Se registra con la instancia de UserGamesContainer en el constructor,
         /// </summary>
         private UserGamesContainer container;
@@ -38,14 +42,21 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <value></value>
         public string Name { get; private set; }
         /// <summary>
+        /// Apellido del usuario
+        /// </summary>
+        /// <value></value>
+        public string Surename { get; private set; }
+        /// <summary>
         /// El constructor de Usuario crea una Lista de juegos del usuario
         /// </summary>
-        /// <param name="userId">Es de tipo int</param>
         /// <param name="name">Es de tipo int</param>
-        public User(int userId, string name)
+        /// <param name="surename">Es de tipo string</param>
+        public User(string name, string surename)
         {
-            this.UserId = userId;
+            GetNextID();
+            this.UserId= currentID;
             this.Name = name;
+            this.Surename=surename;
         }
         /// <summary>
         /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
@@ -54,6 +65,20 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             Singleton<LobbyContainer>.Instance.AddItem(this);
         }
+                         
+
+        /// <summary>
+        /// Constructor estático para inicializar el miembro estático, currentID. 
+        /// Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
+        /// </summary>
+        static User() => currentID = 0;
+
+        /// <summary>
+        /// currentID es un campo estático. 
+        /// </summary>
+        /// <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
+
+        protected int GetNextID() => ++currentID;
 
     }
 }

@@ -8,12 +8,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Se aplicará herencia permitiendo que las clases derivadas apliquen los métodos
     /// </summary>
     /// <typeparam name="T">Significa que todas las operaciones aceptarán cualquier objeto de las clases derivadas</typeparam>
-    public class Container <T>
+    public abstract class Container <T>
     {
         /// <summary>
         /// No tiene un constructor de por sí pero creando el Container se crea una lista de tipo genérico.
         /// </summary>
-        private List<T> containerList = new List<T>();
+        public List<T> containerList = Singleton<List<T>>.Instance;
         /// <summary>
         /// Operación genérica.
         /// </summary>

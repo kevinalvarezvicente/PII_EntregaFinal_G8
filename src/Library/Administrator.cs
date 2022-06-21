@@ -66,11 +66,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Hace que la clase use User
         /// Recibe como argumento todos los datos necesarios para crear instancias de User
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        public void RegisterUser(int id, string name)
+        /// <param name="surename">Parametro de tipo string</param>
+        /// <param name="name">Parametro de tipo string</param>
+        public void RegisterUser(string name, string surename)
         {
-            User user = new User(id,name);
+            User user = new User(name, surename);
             Singleton<UserContainer>.Instance.AddItem(user);
         }
         /// <summary>

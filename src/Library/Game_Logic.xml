@@ -39,14 +39,14 @@
             </summary>
             <param name="game">Recibe como parámetro la partida</param>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RegisterUser(System.Int32,System.String)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RegisterUser(System.String,System.String)">
             <summary>
             Registra el usuario
             Hace que la clase use User
             Recibe como argumento todos los datos necesarios para crear instancias de User
             </summary>
-            <param name="id"></param>
-            <param name="name"></param>
+            <param name="surename">Parametro de tipo string</param>
+            <param name="name">Parametro de tipo string</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.AddGameToUserGamesContainer(PII_ENTREGAFINAL_G8.src.Library.Game,PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
@@ -186,12 +186,6 @@
             </summary>
             <returns>Retorna la lista de objetos que estén en el contenedor</returns>
         </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.GamesContainer">
-            <summary>
-            Subclase de Container donde se almacenarán todas las partidas
-            Cumple SRP (Single Responsibility Principle) cuya única responsabilidad es almacenar todas las partidas jugadas
-            </summary>
-        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer">
             <summary>
             Es subclase de Container pues hereda métodos y atributos y puede agregar otro
@@ -275,13 +269,13 @@
             </summary>
             <param name="message">Mensaje de la excepcion</param>
         </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.SizeException">
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardException">
             <summary>
             Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
             Cumple SRP cuya única responsabilidad es lanzar la excepción
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.SizeException.#ctor(System.String)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardException.#ctor(System.String)">
             <summary>
             Constructor que recibe el mensaje
             </summary>
@@ -300,36 +294,54 @@
             - Ship (Cualquier tipo)
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Date">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.currentGameID">
+             <summary>
+            El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+             </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.GameId">
+            <summary>
+            Es el ID del juago y es unico
+            </summary>
+            <value>Cada usuario tiene el suyo</value>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.Date">
             <summary>
             Cada partida se guarda con la fecha de comienzo
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Active_Player">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.Active_Player">
             <summary>
             El Active_Player es el jugador con el turno, comienza él siempre
             Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Inactive_Player">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.Inactive_Player">
             <summary>
             El Inactive_Player es el jugador que espera a que sea su turno
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.player1Boards">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Player1Boards">
             <summary>
             Se crea una lista con ambos tableros del jugador
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.player2Boards">
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.Player2Boards">
             <summary>
             Se crea una lista con ambos tableros del jugador
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.usersList">
             <summary>
-            Para guardar la partida se guardará una lista con los usuarios que la jugaron
+            Para guardar la partida se guardará una lista con los usuarios que la jugaron.
+            Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
             </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.GameStatus">
+            <summary>
+            Este atributo dice si el juego finalizó o no
+            </summary>
+            <value>Es un valor booleano</value>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
             <summary>
@@ -340,11 +352,17 @@
             <param name="player2"></param>
             <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
         </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.DateTime">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.#cctor">
             <summary>
-            Todas las partidas tienen su fecha de inicio
+            Constructor estático para inicializar el miembro estático, currentID. 
+            Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
             </summary>
-            <value>Son los getters y setters de la fecha de la partida</value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.GetNextGameID">
+            <summary>
+            currentID es un campo estático. 
+            </summary>
+            <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.ShotMade(System.String)">
             <summary>
@@ -370,12 +388,6 @@
             <param name="option">Es un entero, hay solo 3 opciones de barco </param>
             <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
             <param name="direction">Es una cadena que recive v o h</param>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.UsersPlayingList">
-            <summary>
-            Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
-            </summary>
-            <value>Es una lista de tipo User</value>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.AreAllShipsSinked(PII_ENTREGAFINAL_G8.src.Library.Player)">
             <summary>
@@ -697,6 +709,11 @@
             Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
             </summary>
         </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.currentID">
+             <summary>
+            El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+             </summary>
+        </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.container">
             <summary>
              Se registra con la instancia de UserGamesContainer en el constructor,
@@ -720,17 +737,35 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.Int32,System.String)">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Surename">
+            <summary>
+            Apellido del usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.String,System.String)">
             <summary>
             El constructor de Usuario crea una Lista de juegos del usuario
             </summary>
-            <param name="userId">Es de tipo int</param>
             <param name="name">Es de tipo int</param>
+            <param name="surename">Es de tipo string</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.WantToPlay">
             <summary>
             El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
             </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#cctor">
+            <summary>
+            Constructor estático para inicializar el miembro estático, currentID. 
+            Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.GetNextID">
+            <summary>
+            currentID es un campo estático. 
+            </summary>
+            <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Utils">
             <summary>

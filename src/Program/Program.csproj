@@ -11,7 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Library\Library.csproj" />
+    <ProjectReference Include="..\ChatBot_Logic\ChatBot_Logic.csproj" />
+    <ProjectReference Include="..\Library\Game_Logic.csproj" />
   </ItemGroup>
 
   <ItemGroup>

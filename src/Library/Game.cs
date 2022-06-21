@@ -107,6 +107,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
+
             ChooseShipOption(shipOption, coord, direction);
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
                         
@@ -141,7 +142,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 break;
 
                 default:                        
-                        throw new OptionException("Solo tiene 3 opciones de nave.");
+                    throw new OptionException("Solo tiene 3 opciones de nave.");
 
                 }
         }
@@ -184,16 +185,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna true o false para finalizar el juego</returns>
         public bool GameFinished()
         {
+
             if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))
             {
                 return true;
             }
             return false;
         }
-        
-        //El siguiente método es solo una referencia a futuro
-            // Este metodo le pide al jugador que agregue los barcos según el tamaño del tablero
-            // Sirve al comienzo para chequear que el tablero se imprima bien sin realizar test
+
 
 
             /*public void AskPlayerToPlaceShips(int shipLength,string coord, string direction)

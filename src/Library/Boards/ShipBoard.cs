@@ -1,7 +1,7 @@
 ﻿namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
-    /// Es el tablero de barcos. Es subclase de Board. Hereda los métodos de Board menos el constructor
+    /// Es el tablero de barcos. Es subclase de Board. Hereda los métodos de Board menos el constructor.
     /// </summary>
     public class ShipBoard : Board
     {

@@ -12,7 +12,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// - Indicar si finalizó la partida
     /// Cumple Creator ya que tiene responsabilidad de crear instancias de:
     /// - Player
-    /// - Ship (Cualquier subtipo)
+    /// - Ship (Cualquier tipo)
     /// </summary>
     public class Game
     {

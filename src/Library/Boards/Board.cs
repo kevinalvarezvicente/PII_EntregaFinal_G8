@@ -7,7 +7,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Es una clase base de los tableros de tiros y de barcos.
     /// Cumple con SRP (Single Responsibility Principle)
     /// Tiene la única responsabilidad de inicializar el barco.
-    /// Rompe LSP (Liskov Substitution Principle) ya que hay operaciones donde se requiere un objeto de tipo Board e importa si es ShipBoard o ShotBoard dependiendo de eso que verá cada jugador
+    /// Rompe LSP (Liskov Substitution Principle) ya que hay operaciones en el programa donde se requiere un objeto de tipo Board e importa si es ShipBoard o ShotBoard dependiendo de eso que verá cada jugador
     /// </summary>
     public class Board
     {

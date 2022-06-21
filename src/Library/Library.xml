@@ -275,6 +275,18 @@
             </summary>
             <param name="message">Mensaje de la excepcion</param>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.SizeException">
+            <summary>
+            Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
+            Cumple SRP cuya única responsabilidad es lanzar la excepción
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.SizeException.#ctor(System.String)">
+            <summary>
+            Constructor que recibe el mensaje
+            </summary>
+            <param name="message">Mensaje de la excepcion</param>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Game">
             <summary>
             Aca se encuentran todos los métodos relacionados con el juego en general.
@@ -382,12 +394,11 @@
             <summary>
             Esta clase es la que crea al jugador. 
             Cumple patron expert ya que es la que contiene la información de:
-            Los tableros
-            Usuario
-            Barcos y sus posiciones
-            Hace tiro
-            recibe tiro como jugador inactivo
-            Ubica los barcos
+            - Los tableros
+            - Usuario
+            - Barcos y sus posiciones
+            - Hace tiro como jugador activo
+            - Recibe tiro como jugador inactctivo
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Player.playerShipBoard">
@@ -688,7 +699,7 @@
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.container">
             <summary>
-            Atributo de User, cada User tiene un Container donde se guardarán las partidas
+             Se registra con la instancia de UserGamesContainer en el constructor,
             </summary>
         </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Container">

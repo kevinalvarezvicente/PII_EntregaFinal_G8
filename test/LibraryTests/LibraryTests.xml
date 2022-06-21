@@ -4,75 +4,74 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
-        <member name="T:LibraryTests.BoardTests">
+        <member name="T:LibraryTests.BoardAndShipTests">
             <summary>
             Se hace test para el método que divide la coordenada
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.TestReceiveShotException">
+        <member name="M:LibraryTests.BoardAndShipTests.TestReceiveShotException">
             <summary>
-            Test4
-            Se testea el disparo dos veces a la misma coordenada
+            Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.TestMaxShipQuantity">
+        <member name="M:LibraryTests.BoardAndShipTests.TestMaxShipQuantity">
             <summary>
-            Test5
+            Se testea la maxima cantidad de barcos 
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddFrigateToBoardVertical">
+        <member name="M:LibraryTests.BoardAndShipTests.AddFrigateToBoardVertical">
             <summary>
-            Test 6
+            Se testea agregar un LightCruiser en vertical
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddFrigateToBoardHorizontal">
+        <member name="M:LibraryTests.BoardAndShipTests.AddFrigateToBoardHorizontal">
             <summary>
-            Test6
+            Se testea agregar un Frigate en horizontal
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddAllPositionsOfFrigate">
+        <member name="M:LibraryTests.BoardAndShipTests.AddAllPositionsOfFrigate">
             <summary>
-            Test7
+            Testea que se agreguen 2 posiciones de Frigate
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddLightCruiserToBoardVertical">
+        <member name="M:LibraryTests.BoardAndShipTests.AddLightCruiserToBoardVertical">
             <summary>
-            Test8
+            Se testea agregar un LightCruiser en vertical
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddLightCruiserToBoardHorizontal">
+        <member name="M:LibraryTests.BoardAndShipTests.AddLightCruiserToBoardHorizontal">
             <summary>
-            Test9
+            Se testea agregar un LightCruiser en horizontal
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddAllPositionsOfLightCruiser">
+        <member name="M:LibraryTests.BoardAndShipTests.AddAllPositionsOfLightCruiser">
             <summary>
-            Test10
+            Se testea que se agreguen las 3 posiciones de LightCruiser
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddSubmarineToBoardVertical">
+        <member name="M:LibraryTests.BoardAndShipTests.AddSubmarineToBoardVertical">
             <summary>
-            Test11
+            Se testea agregar un Submarino en vertical
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddSubmarineToBoardHorizontal">
+        <member name="M:LibraryTests.BoardAndShipTests.AddSubmarineToBoardHorizontal">
             <summary>
-            Test12
+            Se testea agregar un Submarino en horizontal
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.AddAllPositionsOfSubmarine">
+        <member name="M:LibraryTests.BoardAndShipTests.AddAllPositionsOfSubmarine">
             <summary>
-            Test 13
+            Se testea que se agreguen las 4 posiciones del submarino
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.PlayerReceivesShotTest">
+        <member name="M:LibraryTests.BoardAndShipTests.PlayerReceivesShotTest">
             <summary>
             Se testea cuando un jugador recibe un shot 
             Se testea que el barco que se agregó se agrega a la lista de barcos del jugador
             Se testea que al recibir el shot cambie el valor de la coordenada del barco
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.PlayerShipSinkedTest">
+        <member name="M:LibraryTests.BoardAndShipTests.PlayerShipSinkedTest">
             <summary>
             Test sin funcionar aún 
             </summary>    

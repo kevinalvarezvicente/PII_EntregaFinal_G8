@@ -5,9 +5,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// <summary>
     /// Clase base de barcos pues es la clase a partir de la cual heredan los 3 tipos de barcos.
     /// Permite que si el día de mañana se desea agregar otro tamaño de barco se pueda sin problema, sin necesidad de modificar tanto el código.
-    /// Cumple LSP (Liskov Substitution Principle)
-    /// - En todas las operaciones donde se requiera de un tipo Ship,
-    /// este puede ser reemplazables con objetos de sus subclases (Submarine, LightCruiser, Frigate) sin interrumpir la aplicación.
+    /// Cumple LSP (Liskov Substitution Principle): 
+    /// - Al tener 3 objetos de tipos diferentes que derivan de la clase base Ship en las operaciones que requiera tipo Ship
+    /// se puede reemplazar por cada uno de los objetos de sus subclases (Submarine, LightCruiser, Frigate) sin interrumpir la aplicación.
     /// - No se romperá ya que los objetos de las subclases se comportan de la misma manera que los objetos de la superclase Ship.
     /// Cumple (LCHC) Low Coupling and High Cohesion
     /// - Hace lo mínimo necesario como almacenar la información del barco y delega todo lo demás 

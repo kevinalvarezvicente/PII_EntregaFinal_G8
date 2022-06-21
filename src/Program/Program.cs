@@ -3,9 +3,10 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
+
 using ChatBot_Logic.src;
 
-namespace Program
+namespace PII_ENTREGAFINAL_G8.src.Program
 {
     /// <summary>
     /// Programa de consola de demostración.

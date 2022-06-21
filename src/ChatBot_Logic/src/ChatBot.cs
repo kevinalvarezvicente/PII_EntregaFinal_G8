@@ -122,20 +122,6 @@ namespace ChatBot_Logic.src
             }
         }
 
-        private static async Task HandleMessageReceived(ITelegramBotClient botClient, Message message)
-        {
-            Console.WriteLine($"Received a message from {message.From} saying: {message.Text}");
-
-            string response = string.Empty;
-
-            HandlersConcadenation.FirstHandler.Handle(message, out response);
-
-            if (!string.IsNullOrEmpty(response))
-            {
-                await botClient.SendTextMessageAsync(message.Chat.Id, ".", replyMarkup: GetMenu());
-            }
-        }
-
         private static async Task HandleCallbackQueryReceived(ITelegramBotClient botClient, CallbackQuery callbackQueryEventArgs)
         {
             var callbackQuery = callbackQueryEventArgs;

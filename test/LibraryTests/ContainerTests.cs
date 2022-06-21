@@ -21,8 +21,8 @@ namespace LibraryTests
         [Test]
         public void TestAddUserToLobby()
         {
-            User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
+            User player1 = new User("Carol","Glass");
+            User player2 = new User("Tony","Pereira");
             int expected = 2;
             LobbyContainer lobby = new LobbyContainer();
             lobby.AddItem(player1);
@@ -35,8 +35,8 @@ namespace LibraryTests
         [Test]
         public void TestRemoveUserFromLobby()
         {   
-            User player1 = new User(1, "Carol");
-            User player2 = new User(2, "Tony");
+            User player1 = new User("Carol","Glass");
+            User player2 = new User("Tony","Pereira");
             int expected = 1;
             LobbyContainer lobby = new LobbyContainer();
             lobby.AddItem(player1);
@@ -60,10 +60,27 @@ namespace LibraryTests
         [Test]
         public void TestRegisterUser()
         {
-            Singleton<Administrator>.Instance.RegisterUser(1,"Carol");
-            int expected = 1;
+            Singleton<Administrator>.Instance.RegisterUser("Carol","Glass");
+            Singleton<Administrator>.Instance.RegisterUser("Matias","Olave");
+            int expected = 2;
             Assert.AreEqual(expected,Singleton<UserContainer>.Instance.ContainerList.Count);
         }
+        /*[Test]
+        public void TestUserWantToPlayer()
+        {
+            User carol = new User("Carol","Glass");
+            carol.WantToPlay();
+            Assert.AreEqual(1,Singleton<LobbyContainer>.Instance.ContainerList.Count);
+        }*/
+
+        /*[Test]
+        public void TestStartGame()
+        {
+            User juan = new User("Juan","Gomez");
+            juan.WantToPlay();
+            Singleton<Administrator>.Instance.StartGame();
+            Assert.AreEqual(0,Singleton<LobbyContainer>.Instance.ContainerList.Count);
+        }*/
         
         
     }

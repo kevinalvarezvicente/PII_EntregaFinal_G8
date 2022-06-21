@@ -22,8 +22,8 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             //ChatBot bot = ChatBot.Instance;
 
-            User juan = new User(1,"Juan");
-            Player player = new Player(juan,10);
+            User matias = new User("Matias","Olave");
+            Player player = new Player(matias,10);
             Submarine submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             //Se agrega el submarino en las coordenadas 

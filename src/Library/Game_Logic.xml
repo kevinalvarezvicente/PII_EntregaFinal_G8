@@ -39,14 +39,14 @@
             </summary>
             <param name="game">Recibe como parámetro la partida</param>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RegisterUser(System.Int32,System.String)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.RegisterUser(System.String,System.String)">
             <summary>
             Registra el usuario
             Hace que la clase use User
             Recibe como argumento todos los datos necesarios para crear instancias de User
             </summary>
-            <param name="id"></param>
-            <param name="name"></param>
+            <param name="surename">Parametro de tipo string</param>
+            <param name="name">Parametro de tipo string</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.AddGameToUserGamesContainer(PII_ENTREGAFINAL_G8.src.Library.Game,PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
@@ -215,6 +215,18 @@
             SRP (Single Responsibility Principle) cuya única responsabilidad es guardar las partidas de cierto usuario
             </summary>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardException">
+            <summary>
+            Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
+            Cumple SRP cuya única responsabilidad es lanzar la excepción
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardException.#ctor(System.String)">
+            <summary>
+            Constructor que recibe el mensaje
+            </summary>
+            <param name="message">Mensaje de la excepcion</param>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
             <summary>
             Subclase de exception, esta axcepcion será utilizada para cuando ocurra algo inesperado al utilizar algún método de Container
@@ -270,18 +282,6 @@
             </summary>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.ReceiveShotException.#ctor(System.String)">
-            <summary>
-            Constructor que recibe el mensaje
-            </summary>
-            <param name="message">Mensaje de la excepcion</param>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.SizeException">
-            <summary>
-            Clase que hereda de Exception, es clase derivada que se utilizará si el usuario indica un tablero mayor que 12 
-            Cumple SRP cuya única responsabilidad es lanzar la excepción
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.SizeException.#ctor(System.String)">
             <summary>
             Constructor que recibe el mensaje
             </summary>
@@ -697,6 +697,11 @@
             Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
             </summary>
         </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.currentID">
+             <summary>
+            El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
+             </summary>
+        </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.container">
             <summary>
              Se registra con la instancia de UserGamesContainer en el constructor,
@@ -720,17 +725,35 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.Int32,System.String)">
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.Surename">
+            <summary>
+            Apellido del usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.String,System.String)">
             <summary>
             El constructor de Usuario crea una Lista de juegos del usuario
             </summary>
-            <param name="userId">Es de tipo int</param>
             <param name="name">Es de tipo int</param>
+            <param name="surename">Es de tipo string</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.WantToPlay">
             <summary>
             El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
             </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#cctor">
+            <summary>
+            Constructor estático para inicializar el miembro estático, currentID. 
+            Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.GetNextID">
+            <summary>
+            currentID es un campo estático. 
+            </summary>
+            <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Utils">
             <summary>

@@ -76,6 +76,11 @@
             Test sin funcionar aún 
             </summary>    
         </member>
+        <member name="M:LibraryTests.BoardAndShipTests.TestMakeShot">
+            <summary>
+            El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            </summary>
+        </member>
         <member name="T:LibraryTests.ContainerTests">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton

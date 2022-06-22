@@ -24,7 +24,7 @@
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override void InternalHandle(Message message, out string response)
         {
-            response = "que andas pariente todo tranky";
+            response = "Hola como estas?";
         }
     }
 }

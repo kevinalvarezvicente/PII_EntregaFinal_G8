@@ -145,6 +145,16 @@
             IMPORTANTE: Para correr cada uno se debe descomentar, pues dado que es un singleton, al agregar usuarios a la lista se mentienen alli
             </summary>
         </member>
+        <member name="M:LibraryTests.ContainerTests.TestAddUserToLobby">
+            <summary>
+            Se realiza Test1
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ContainerTests.TestRemoveUserFromLobby">
+            <summary>
+            Test2
+            </summary>
+        </member>
         <member name="T:LibraryTests.UserPlayerTests">
             <summary>
             Se hace test para los métodos de la clase Utilidades

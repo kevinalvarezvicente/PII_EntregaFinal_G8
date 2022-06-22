@@ -54,7 +54,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else
             {
-                throw new ContainerException($"El elemento ya está en la lista");
+                throw new ContainerException($"El elemento no está en la lista");
             }
         }
         /// <summary>

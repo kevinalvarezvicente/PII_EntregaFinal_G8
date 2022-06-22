@@ -22,6 +22,11 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         public static void Main()
         {
             ChatBot bot = ChatBot.Instance;
+            User user = new User("Carol","Glass");
+            LobbyContainer.AddUser(user);
+            LobbyContainer.RemoveUser(user);
+            
         }
+            
     }
 }

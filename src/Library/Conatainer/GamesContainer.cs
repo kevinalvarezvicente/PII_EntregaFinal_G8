@@ -10,9 +10,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     {
         /// <summary>
         /// Una lista de juegos en general 
-        /// </summary>
-        /// <typeparam name="Game"> La lista es de elementos de tipo Game</typeparam>
-        /// <returns></returns>
+        /// </summary>    
         private static List<Game> gamescontainer = new List<Game>();
         /// <summary>
         /// Se añade el juego

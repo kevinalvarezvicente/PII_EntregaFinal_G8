@@ -11,10 +11,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Se instancia una lista para usuarios que quieren esperar para jugar
         /// </summary>
-        /// <typeparam name="User"></typeparam>
         /// <returns></returns>
         private static List<User> lobbycontainer = new List<User>();
-
+        /// <summary>
+        /// Método para agregar usuario al contenedor
+        /// </summary>
+        /// <param name="user"></param>
         public static void AddUser(User user)
         {
             if(!lobbycontainer.Contains(user))
@@ -28,6 +30,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             
         }
+        /// <summary>
+        /// Para tener acceso al container de espera
+        /// </summary>
+        /// <value></value>
         public static List<User> lobbyContainer
         {
             get
@@ -35,6 +41,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return lobbycontainer;
             }
         }
+        /// <summary>
+        /// Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
+        /// </summary>
+        /// <param name="user"></param>
         public static void RemoveUser(User user)
         {
             
@@ -44,9 +54,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else
             {
-                throw new ContainerException($"El elemento ya está en la lista");
+                throw new ContainerException($"El elemento no está en la lista");
             }
         }
+        /// <summary>
+        /// Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
+        /// </summary>
+        /// <returns></returns>
         public static bool AreUsersToStartGame() 
         {
             if (lobbycontainer.Count>=2)

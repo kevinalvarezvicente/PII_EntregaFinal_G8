@@ -11,7 +11,7 @@ namespace LibraryTests
     public class ContainerTests
     {
 
-        /*[SetUp]
+        [SetUp]
         public void SetUp()
         {
         }
@@ -23,11 +23,9 @@ namespace LibraryTests
         {
             User player1 = new User("Carol","Glass");
             User player2 = new User("Tony","Pereira");
-            int expected = 2;
-            LobbyContainer lobby = new LobbyContainer();
-            lobby.AddItem(player1);
-            lobby.AddItem(player2);
-            Assert.AreEqual(expected,lobby.ContainerList.Count);
+            LobbyContainer.AddUser(player1);
+            LobbyContainer.AddUser(player2);
+            Assert.AreEqual(2,LobbyContainer.lobbyContainer.Count);
         }
         /// <summary>
         /// Test2
@@ -37,17 +35,15 @@ namespace LibraryTests
         {   
             User player1 = new User("Carol","Glass");
             User player2 = new User("Tony","Pereira");
-            int expected = 1;
-            LobbyContainer lobby = new LobbyContainer();
-            lobby.AddItem(player1);
-            lobby.AddItem(player2);
-            lobby.RemoveItem(player1);
-            Assert.AreEqual(expected,lobby.ContainerList.Count);
+            LobbyContainer.AddUser(player1);
+            LobbyContainer.AddUser(player2);
+            LobbyContainer.RemoveUser(player1);
+            Assert.AreEqual(1,LobbyContainer.lobbyContainer.Count);
         }
         /// <summary>
         /// Test para ver que no es posible iniciar una partida solo con un jugador
         /// </summary>
-        [Test]
+        /*[Test]
         public void TestAreNOTUsersToStartGame()
         {
             LobbyContainer lobby = new LobbyContainer();

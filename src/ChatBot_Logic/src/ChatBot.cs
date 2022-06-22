@@ -116,7 +116,7 @@ namespace ChatBot_Logic.src
         /// Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
         /// respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
         /// </summary>
-        public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+        private static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             try
             {

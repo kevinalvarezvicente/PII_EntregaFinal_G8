@@ -19,14 +19,22 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user"></param>
         public static void AddUser(User user)
         {
-            if(!lobbycontainer.Contains(user))
+            foreach (User userToCompare in lobbycontainer)
+            {
+                if(userToCompare.Equals(user))
+                {
+                    throw new ContainerException($"El elemento ya está en la lista");
+                }
+            }
+            lobbycontainer.Add(user);
+            /*if(!lobbycontainer.Contains(user))
             {
                 lobbycontainer.Add(user);
             }
             else
             {
                 throw new ContainerException($"El elemento ya está en la lista");
-            }
+            }*/
 
             
         }

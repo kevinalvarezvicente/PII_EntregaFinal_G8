@@ -370,5 +370,44 @@ namespace LibraryTests
             player.PlaceShipOnBoard(cruiser);
             Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));   
         }
+
+        /// <summary>
+        /// Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
+        /// </summary>
+
+        /// <summary>
+        /// Se realiza Test1
+        /// </summary>
+        [Test]
+        public void TestAddUserToLobby()
+        {
+            User player1 = new User("Carol","Glass");
+            User player2 = new User("Tony","Pereira");
+            LobbyContainer.AddUser(player1);
+            LobbyContainer.AddUser(player2);
+            Assert.AreEqual(2,LobbyContainer.lobbyContainer.Count);
+        }
+        /// <summary>
+        /// Test para ver que es posible iniciar una partida porque hay mas jugadores
+        /// </summary>
+        [Test]
+        public void TestAreNotUserInListException()
+        {
+            User player1 = new User("Carol","Glass");
+            User player2 = new User("Tony","Pereira");
+            Assert.Throws<ContainerException>(() =>LobbyContainer.RemoveUser(player1));
+            Assert.Throws<ContainerException>(() =>LobbyContainer.RemoveUser(player2));
+        }
+        /// <summary>
+        /// Test para chequear que queda un usuario registrado
+        /// </summary>
+        [Test]
+        public void TestRegisterUser()
+        {
+            Administrator.RegisterUser("Carol","Glass");
+            Administrator.RegisterUser("Matias","Olave");
+            int expected = 2;
+            Assert.AreEqual(expected,UsersContainer.usersContainer.Count);
+        }
     }
 }

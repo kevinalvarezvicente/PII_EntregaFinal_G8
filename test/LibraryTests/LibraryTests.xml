@@ -139,35 +139,22 @@
             Se hace Assert.AreEqual para una coordenada que no esta
             </summary>
         </member>
-        <member name="T:LibraryTests.ContainerTests">
+        <member name="M:LibraryTests.BoardAndShipTests.TestAddUserToLobby">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
-            IMPORTANTE: Para correr cada uno se debe descomentar, pues dado que es un singleton, al agregar usuarios a la lista se mentienen alli
             </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestAddUserToLobby">
             <summary>
             Se realiza Test1
             </summary>
         </member>
-        <member name="M:LibraryTests.ContainerTests.TestRemoveUserFromLobby">
+        <member name="M:LibraryTests.BoardAndShipTests.TestAreNotUserInListException">
             <summary>
-            Test2
+            Test para ver que es posible iniciar una partida porque hay mas jugadores
             </summary>
         </member>
-        <member name="T:LibraryTests.UserPlayerTests">
+        <member name="M:LibraryTests.BoardAndShipTests.TestRegisterUser">
             <summary>
-            Se hace test para los métodos de la clase Utilidades
-            </summary>
-        </member>
-        <member name="M:LibraryTests.UserPlayerTests.TestCurrentID">
-            <summary>
-            Se testea el ID al registrar un nuevo usuario, dado que en otros tests tambien se registro usuarios esta sería la numero 23 y 24
-            </summary>
-        </member>
-        <member name="M:LibraryTests.UserPlayerTests.TestCurrentIDAgain">
-            <summary>
-            Se testea el ID al registrar un nuevo usuario denuevo chequeando que funciona, dado que en otros tests tambien se registro usuarios esta sería la numero 25
+            Test para chequear que queda un usuario registrado
             </summary>
         </member>
         <member name="T:LibraryTests.UtilsTests">

@@ -21,6 +21,8 @@
 		<EmbeddedResource Remove="src\Handlers_Concatenation\**" />
 		<None Remove="src\Handlers_Concatenation\**" />
 
+    	<ProjectReference Include="..\Library\Game_Logic.csproj" />
+
 		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />

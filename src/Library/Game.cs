@@ -33,7 +33,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// El Active_Player es el jugador con el turno, comienza él siempre
         /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
         /// </summary>
-        public Player Active_Player {get; private set;}
+        private Player active_Player;
+        public Player Active_Player
+        {
+            get
+            {
+                return this.active_Player;
+            }
+        }
         /// <summary>
         /// El Inactive_Player es el jugador que espera a que sea su turno
         /// </summary>
@@ -52,7 +59,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Para guardar la partida se guardará una lista con los usuarios que la jugaron.
         /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
         /// </summary>
-        public List<User> usersList = new List<User>();
+        private List<User> usersList = new List<User>();
+        public List<User> UsersList
+        {
+            get
+            {
+                return this.usersList;
+            }
+        }
         /// <summary>
         /// Este atributo dice si el juego finalizó o no
         /// </summary>
@@ -71,7 +85,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.GameStatus = default;
             this.GameId= currentGameID;
             this.Date = DateTime.Now;
-            this.Active_Player = new Player(player1, boardLength);
+            this.active_Player = new Player(player1, boardLength);
             this.Inactive_Player = new Player(player2, boardLength);
             this.usersList.Add(player1);
             this.usersList.Add(player2);
@@ -203,6 +217,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return this.GameStatus;
         }
+
+        
 
     }
 }

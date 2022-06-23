@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 using System;
 
 
-namespace ChatBot_Logic.src.Handlers
+/*namespace ChatBot_Logic.src.Handlers
 {
  
     /// <summary>
@@ -45,5 +45,5 @@ namespace ChatBot_Logic.src.Handlers
             response = "que andas pariente no te registro porque no lo programaron pa";
         }
     }
-}
+}*/
 

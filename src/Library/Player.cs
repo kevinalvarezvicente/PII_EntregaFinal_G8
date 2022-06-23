@@ -20,6 +20,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene un tablero donde insertará sus barcos
         /// </summary>
         private ShipBoard playerShipBoard;
+        private long userId;
         /// <summary>
         /// Cada jugador tiene un tablero donde irán los tiros
         /// </summary>
@@ -42,6 +43,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="BoardLength">Elige el tamaño del tablero</param>
         public Player(User user, int BoardLength)
         {
+            this.userId = user.UserId;
             this.playerName = user.Name;
             this.playerShipBoard = new ShipBoard(BoardLength);
             this.playerShotBoard = new ShotBoard(BoardLength);
@@ -56,6 +58,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             get
             {
                 return this.playerShipBoard;
+            }
+            
+        }
+        public long UserId
+        {
+            get
+            {
+                return this.userId;
             }
             
         }

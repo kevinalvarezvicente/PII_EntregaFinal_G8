@@ -57,25 +57,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
-        /*public static List<string> SearchUserByID(int ID)
+        public static bool VerifyUserByID(long ID)
         {
             for (int i = 0; i<userscontainer.Count; i++)
             {
                 if (ID==userscontainer[i].UserId)
                 {
-                    List<string> list = new List<string>()
-                                                {
-                                                    userscontainer[i].Name,
-                                                    userscontainer[i].Surename,
-                                                };
-                    return list;
-                }
-                else
-                {
-                    throw new ContainerException("No se ha encontrado el usuario");
+                    return true;
                 }
             }
-        }*/
+            return false;
+        }
         
     }
 }

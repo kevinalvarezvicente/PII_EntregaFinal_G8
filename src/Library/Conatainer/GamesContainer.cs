@@ -44,7 +44,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Saca el juego de la lista
         /// </summary>
         /// <param name="game">Tipo Game es el parámetro</param>
-        public static void RemoveUser(Game game)
+        public static void RemoveGame(Game game)
         {
             
             if(gamescontainer.Contains(game))
@@ -55,6 +55,34 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new ContainerException($"El elemento ya está en la lista");
             }
+        }
+
+        public static int VerifyUserOnGame(long ID)
+        {
+            for (int i=0; i<GamesContainer.gamesContainer.Count; i++)
+            {
+                List <User> UsersPlaying = GamesContainer.gamesContainer[i].UsersList;
+                foreach (User user in UsersPlaying)
+                {
+                    if (user.UserId==ID)
+                    {
+                        return GamesContainer.gamesContainer[i].GameId;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public static Game ObtainGame(long ID)
+        {
+                foreach (Game game in gamescontainer)
+                {
+                    if (game.GameId==ID)
+                    {
+                        return game;
+                    }
+                }
+            return null;
         }
 
         /*public static List<string> SearchGameByID(int ID)

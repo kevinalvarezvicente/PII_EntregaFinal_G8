@@ -1,6 +1,7 @@
 ﻿using ChatBot_Logic.src.Handlers_Configuration;
 using PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Telegram.Bot;
@@ -15,6 +16,8 @@ namespace ChatBot_Logic.src
     /// </summary>
     public class ChatBot : ISecretService
     {
+        public static Dictionary<string, string> lastPosition = new Dictionary<string, string>();
+
         /// <summary>
         /// Obtenemos el Token de la clase TokenConfiguration
         /// </summary>

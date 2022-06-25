@@ -8,8 +8,10 @@ namespace ChatBot_Logic.src.HandlersConfiguration
     /// pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
     /// recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
     /// decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
+    /// <remarks>
     /// La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
     /// responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
+    /// <remarks/>
     /// </summary>
     public interface IHandler
     {
@@ -17,7 +19,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// Obtiene el próximo "handler".
         /// </summary>
         /// <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
-        IHandler Next { get; set; }
+        IHandler Next{ get; set; }
 
         /// <summary>
         /// Procesa el mensaje o la pasa al siguiente "handler" si existe.

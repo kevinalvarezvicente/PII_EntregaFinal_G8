@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Telegram.Bot.Types;
 
@@ -13,6 +14,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
     /// </summary>
     public abstract class BaseHandler : IHandler
     {
+
         /// <summary>
         /// Obtiene el próximo "handler".
         /// </summary>
@@ -25,7 +27,6 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// <value>Un array de palabras clave.</value>
         public string[] Keywords { get; set; }
 
-        public int Repetitions { get; set; }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="BaseHandler"/>.
@@ -53,7 +54,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
-        protected abstract void InternalHandle(Message message, out string response);
+        protected abstract bool InternalHandle(Message message, out string response);
 
         /// <summary>
         /// Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de estado

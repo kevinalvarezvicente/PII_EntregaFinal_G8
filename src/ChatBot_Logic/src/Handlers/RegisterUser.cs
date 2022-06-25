@@ -3,7 +3,7 @@ using Telegram.Bot.Types;
 using System;
 
 
-/*namespace ChatBot_Logic.src.Handlers
+namespace ChatBot_Logic.src.Handlers
 {
  
     /// <summary>
@@ -17,7 +17,7 @@ using System;
         /// <param name="next">El próximo "handler".</param>
         public RegisterUserHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "registrar", "registrarme" };
+            this.Keywords = new string[] { "anthony pereira", "registrarme" };
         }
 
         /// <summary>
@@ -28,9 +28,9 @@ using System;
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override void InternalHandle(Message message, out string response)
         {
+            
             string[] parametros = new string[1]; 
             parametros = message.Text.Split(" ");
-
             if (parametros.Length!=2)
             {
                 Console.WriteLine("Solo se puede recibir 2 parametros"); //Es una exception
@@ -45,5 +45,5 @@ using System;
             response = "que andas pariente no te registro porque no lo programaron pa";
         }
     }
-}*/
+}
 

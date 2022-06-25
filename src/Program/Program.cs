@@ -21,9 +21,7 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            ChatBot bot = ChatBot.Instance;
-
-            
+            ChatBot bot = ChatBot.Instance;            
         }
             
     }

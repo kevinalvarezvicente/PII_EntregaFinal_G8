@@ -11,8 +11,9 @@
         /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
+        
         public HelloHandler(BaseHandler next) : base(next)
-        {
+        {   
             this.Keywords = new string[] { "hola", "Hola" };
         }
 
@@ -24,7 +25,8 @@
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override void InternalHandle(Message message, out string response)
         {
-            response = "Hola como estas?";
+            //response = ($"Received a message from {callbackQuery.From} saying: {callbackQuery.Data}");
+            response = ("coso pe ");
         }
     }
 }

@@ -27,7 +27,7 @@ namespace ChatBot_Logic.src.Handlers
             /*bool verification = UsersContainer.VerifyUserByID(this.SenderID);
             if (verification)
             {/*/
-            long gameID=GamesContainer.VerifyUserOnGame(this.SenderID);
+            long gameID = GamesContainer.VerifyUserOnGame(this.SenderID);
 
             PII_ENTREGAFINAL_G8.src.Library.Game game = GamesContainer.ObtainGame(gameID);
 

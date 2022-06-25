@@ -24,9 +24,10 @@ namespace ChatBot_Logic.src.Handlers
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override void InternalHandle(Message message, out string response)
+        protected override bool InternalHandle(Message message, out string response)
         {
             response = "¡Chau! ¡Qué andes bien!";
+            return true;
         }
     }
 }

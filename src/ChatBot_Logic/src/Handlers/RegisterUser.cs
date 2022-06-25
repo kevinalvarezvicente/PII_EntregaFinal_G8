@@ -1,21 +1,21 @@
 using ChatBot_Logic.src.HandlersConfiguration;
-using Telegram.Bot.Types;
 using System;
+using Telegram.Bot.Types;
 
 
-/*namespace ChatBot_Logic.src.Handlers
+namespace ChatBot_Logic.src.Handlers
 {
- 
+
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
-    public class RegisterUserHandler : BaseHandler
+    public class RegisterUserHandler1 : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="RegisterUserHandler"/>. Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase <see cref="RegisterUserHandler1"/>. Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public RegisterUserHandler(BaseHandler next) : base(next)
+        public RegisterUserHandler1(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] { "registrar", "registrarme" };
         }
@@ -26,12 +26,12 @@ using System;
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override void InternalHandle(Message message, out string response)
+        protected override bool InternalHandle(Message message, out string response)
         {
-            string[] parametros = new string[1]; 
+            string[] parametros = new string[1];
             parametros = message.Text.Split(" ");
 
-            if (parametros.Length!=2)
+            if (parametros.Length != 2)
             {
                 Console.WriteLine("Solo se puede recibir 2 parametros"); //Es una exception
             }
@@ -43,7 +43,7 @@ using System;
                 //this.userContainer.AddItem(user);
             }
             response = "que andas pariente no te registro porque no lo programaron pa";
+            return true;
         }
     }
-}*/
-
+}

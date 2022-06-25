@@ -9,13 +9,13 @@ namespace ChatBot_Logic.src.Handlers_Configuration
     public static class HandlersConcadenation
     {
         private static IHandler firstHandler;
-
+        static ChatBot chbot = ChatBot.Instance;
         /// <summary>
         /// Inicializa cada Handler.
         /// </summary>
         public static void InitializeHandlers()
         {
-            firstHandler = new HelloHandler(new RegisterUserHandler(new GoodByeHandler(null)));
+            firstHandler = new HelloHandler(new RegisterUserHandler(null));
         }
 
         /// <summary>

@@ -25,6 +25,8 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// <value>Un array de palabras clave.</value>
         public string[] Keywords { get; set; }
 
+        public int Repetitions { get; set; }
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="BaseHandler"/>.
         /// </summary>

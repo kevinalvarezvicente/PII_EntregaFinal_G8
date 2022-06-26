@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
@@ -67,6 +68,23 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
             return false;
+        }
+
+        
+        public static User GetUSerByID(long ID)
+        {
+            Console.WriteLine(ID);
+            Console.WriteLine(userscontainer.Count);
+            for (int i = 0; i<userscontainer.Count; i++)
+            {   
+                Console.WriteLine(userscontainer[i]);
+                if (ID==userscontainer[i].UserId)
+                {
+                    
+                    return userscontainer[i];
+                }
+            }
+           throw new ContainerException("No se encontro user id");
         }
         
     }

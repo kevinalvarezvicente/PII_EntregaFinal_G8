@@ -14,7 +14,7 @@ namespace LibraryTests
         [Test]
         public void TestReceiveShotException()
         {
-            User matias = new User("Matias","Olave");
+            User matias = new User("Matias","Olave", "trolo");
             Player player = new Player(matias, 10);
             Ship frigate = new Frigate("11","v");
             player.PlaceShipOnBoard(frigate);

@@ -8,6 +8,7 @@ namespace ChatBot_Logic.src.Handlers
     {
         public RegisterUserHandler(BaseHandler next) : base(next)
         {
+            //Lo que queremos es que entre a los handlers sin depender de la keyword, en nuestro caso esta entrando solo si es con la keyword
             this.Keywords = new string[] { "/registrarme" };
         }
 

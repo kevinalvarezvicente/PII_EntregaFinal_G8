@@ -1,6 +1,7 @@
 ﻿using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
-using Telegram.Bot.Types;
+using PII_ENTREGAFINAL_G8.src.Library;
+using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
@@ -8,39 +9,34 @@ namespace ChatBot_Logic.src.Handlers
     {
         public RegisterUserHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "/registrarme" };
+            this.Keywords = new List<string>();
+            Keywords.Add("/SerSoldado");
         }
 
-        protected override bool InternalHandle(Message message, out string response)
+        protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;
             string from = message.From.ToString();
 
+            chainData.userPostionHandler[message.From.ToString()].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
+
             if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
             {
                 chainData.userPostionHandler[from].Add(message.Text);
-                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 1)
-                {
-                    response = "Ingrese nombre usuario:";
-                    return true;
-                }
 
-                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 2)
+                if (chainData.userPostionHandler[from].Count == 1)
                 {
-                    chainData.userPostionHandler[from].Add(message.Text);
-                    response = "Ingrese apellido usuario:";
-                    return true;
-                }
-                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 3)
-                {
-                    chainData.userPostionHandler[from].Add(message.Text);
-                    response = $"{message.Text}{chainData.userPostionHandler[from][1]}FUNCA";
+                    response = "Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
+                        "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
+                        + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
+                        "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
+                        "lucha contra un enemigo 💣 /batallar";
+                    User.usersList.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
                     return true;
                 }
             }
             response = string.Empty;
             return false;
-
         }
     }
 }

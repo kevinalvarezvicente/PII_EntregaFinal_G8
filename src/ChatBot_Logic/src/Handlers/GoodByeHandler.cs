@@ -1,5 +1,5 @@
 ﻿using ChatBot_Logic.src.HandlersConfiguration;
-using Telegram.Bot.Types;
+using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
@@ -15,7 +15,8 @@ namespace ChatBot_Logic.src.Handlers
         /// <param name="next">El próximo "handler".</param>
         public GoodByeHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "chau", "adiós" };
+            this.Keywords = new List<string>();
+            Keywords.Add("chau");
         }
 
         /// <summary>
@@ -24,7 +25,7 @@ namespace ChatBot_Logic.src.Handlers
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(Message message, out string response)
+        protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             response = "¡Chau! ¡Qué andes bien!";
             return true;

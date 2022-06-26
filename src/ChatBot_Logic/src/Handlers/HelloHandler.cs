@@ -1,6 +1,8 @@
 ﻿namespace ChatBot_Logic.src.Handlers
 {
     using ChatBot_Logic.src.HandlersConfiguration;
+    using ClassLibrary;
+    using System.Collections.ObjectModel;
     using Telegram.Bot.Types;
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -24,11 +26,10 @@
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(Message message, out string response)
         {
-            string from = message.From.ToString();
-            ChatBot.lastPosition[from] = "HelloHandler";
-
-            response = "Hola como estas?";
-            return true;
+            ChainData chainData = ChainData.Instance;
+            chainData.userPostionHandler.Add(message.From.ToString(), new Collection<string>());
+            response = "¡Hola! ¿Cómo estás?";
+            return false;
         }
     }
 }

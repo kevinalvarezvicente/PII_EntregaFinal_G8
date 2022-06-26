@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -29,12 +28,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             if (LobbyContainer.AreUsersToStartGame())
             {
-            Console.WriteLine($"Jugarán {user1.Name} contra {user2.Name}");
-            Console.WriteLine($"{user1.Name} indique el tamaño del tablero");
-            int boardLength = Console.Read();
-            Game game = new Game(user1, user2, boardLength);
-            LobbyContainer.RemoveUser(user1);
-            LobbyContainer.RemoveUser(user2);
+                Console.WriteLine($"Jugarán {user1.Name} contra {user2.Name}");
+                Console.WriteLine($"{user1.Name} indique el tamaño del tablero");
+                int boardLength = Console.Read();
+                Game game = new Game(user1, user2, boardLength);
+                LobbyContainer.RemoveUser(user1);
+                LobbyContainer.RemoveUser(user2);
             }
 
         }
@@ -64,8 +63,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="name">Parametro de tipo string</param>
         public static void RegisterUser(string name, string surename)
         {
-            User user = new User(name, surename);
-            UsersContainer.AddUser(user);
+            /* User user = new User(name, surename);
+             UsersContainer.AddUser(user);*/
         }
         /// <summary>
         /// Método que guarda la partida del usuario en el Container

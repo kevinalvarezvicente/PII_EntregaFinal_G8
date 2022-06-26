@@ -784,7 +784,7 @@
             </summary>
             <value></value>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.String,System.String)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#ctor(System.Int64,System.String,System.String)">
             <summary>
             El constructor de Usuario crea una Lista de juegos del usuario
             </summary>
@@ -795,18 +795,6 @@
             <summary>
             El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
             </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.#cctor">
-            <summary>
-            Constructor estático para inicializar el miembro estático, currentID. 
-            Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.User.GetNextID">
-            <summary>
-            currentID es un campo estático. 
-            </summary>
-            <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Utils">
             <summary>

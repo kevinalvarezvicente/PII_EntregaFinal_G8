@@ -1,4 +1,5 @@
 using ChatBot_Logic.src.HandlersConfiguration;
+using System.Collections.Generic;
 using Telegram.Bot.Types;
 
 namespace ChatBot_Logic.src.Handlers
@@ -19,7 +20,8 @@ namespace ChatBot_Logic.src.Handlers
         /// <param name="next">El próximo "handler".</param>
         public PlaceShipHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "/placeShip" };
+            this.Keywords = new List<string>();
+            Keywords.Add("/placeShi");
         }
 
         /*public void VerifyHandlersConclude()
@@ -39,7 +41,7 @@ namespace ChatBot_Logic.src.Handlers
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(Message message, out string response)
+        protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             if (this.verification)
             {

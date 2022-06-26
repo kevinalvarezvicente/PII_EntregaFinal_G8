@@ -11,6 +11,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class User
     {
+
+        public static List<User> usersList = new List<User>();
+
         /// <summary>
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
         /// </summary>
@@ -20,7 +23,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es el ID de usuario
         /// </summary>
         /// <value>Cada usuario tiene el suyo</value>
-        public int UserId { get; private set; }
+        public long UserId { get; private set; }
         /// <summary>
         /// Nombre del usuario
         /// </summary>
@@ -35,45 +38,31 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es la lista de juegos del usuario propio
         /// </summary>
         /// <value></value>
-        public List<Game> UserGamesList {get; private set;} 
+        public List<Game> UserGamesList { get; private set; }
         /// <summary>
         /// El constructor de Usuario crea una Lista de juegos del usuario
         /// </summary>
         /// <param name="name">Es de tipo int</param>
         /// <param name="surename">Es de tipo string</param>
-        public User(string name, string surename)
+        public User(long userId, string name, string surename)
         {
-            GetNextID();
-            this.UserId= currentID;
+            this.UserId = userId;
             this.Name = name;
-            this.Surename=surename;
-            List<Game> userGamesList = new List<Game>();
-            this.UserGamesList = userGamesList;
+            this.Surename = surename;
 
-            
+
         }
         /// <summary>
         /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
         /// </summary>
         public void WantToPlay()
         {
-            
+
             LobbyContainer.AddUser(this);
         }
-                         
 
-        /// <summary>
-        /// Constructor estático para inicializar el miembro estático, currentID. 
-        /// Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
-        /// </summary>
-        static User() => currentID = 0;
 
-        /// <summary>
-        /// currentID es un campo estático. 
-        /// </summary>
-        /// <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
 
-        protected int GetNextID() => ++currentID;
 
     }
 }

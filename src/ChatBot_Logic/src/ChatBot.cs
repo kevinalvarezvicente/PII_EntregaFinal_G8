@@ -151,7 +151,7 @@ namespace ChatBot_Logic.src
                 await Bot.SendTextMessageAsync(message.Chat.Id, response);
             }
         }
- 
+
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             Console.WriteLine(exception.Message);

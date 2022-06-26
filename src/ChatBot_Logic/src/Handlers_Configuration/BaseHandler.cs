@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Telegram.Bot.Types;
 
@@ -24,7 +25,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// Obtiene o asigna el conjunto de palabras clave que este "handler" puede procesar.
         /// </summary>
         /// <value>Un array de palabras clave.</value>
-        public string[] Keywords { get; set; }
+        public List<string> Keywords { get; set; }
 
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// </summary>
         /// <param name="keywords">La lista de comandos.</param>
         /// <param name="next">El próximo "handler".</param>
-        protected BaseHandler(string[] keywords, BaseHandler next)
+        protected BaseHandler(List<string> keywords, BaseHandler next)
         {
             this.Keywords = keywords;
             this.Next = next;
@@ -76,12 +77,12 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         {
             // Cuando no hay palabras clave este método debe ser sobreescrito por las clases sucesoras y por lo tanto
             // este método no debería haberse invocado.
-            if (this.Keywords == null || this.Keywords.Length == 0)
+            if (this.Keywords == null || this.Keywords.Count == 0)
             {
                 throw new InvalidOperationException("No hay palabras clave que puedan ser procesadas");
             }
-
-            return this.Keywords.Any(s => message.Text.Equals(s, StringComparison.InvariantCultureIgnoreCase));
+            String id = message.From.Id.ToString();
+            return this.Keywords.Any(s => message.Text.Equals(s, StringComparison.InvariantCultureIgnoreCase)) || this.Keywords.Any(s => id.Equals(s, StringComparison.InvariantCultureIgnoreCase));
         }
 
         /// <summary>

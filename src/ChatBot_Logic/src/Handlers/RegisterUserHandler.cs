@@ -9,8 +9,10 @@ namespace ChatBot_Logic.src.Handlers
     {
         public RegisterUserHandler(BaseHandler next) : base(next)
         {
+
             this.Keywords = new List<string>();
             Keywords.Add("/SerSoldado");
+
         }
 
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)

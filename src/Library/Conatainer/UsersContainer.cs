@@ -22,6 +22,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             if(!userscontainer.Contains(user))
             {
                 userscontainer.Add(user);
+                Console.WriteLine("Se agrego el usuario a la lista");
             }
             else
             {

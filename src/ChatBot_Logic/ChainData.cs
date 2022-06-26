@@ -6,12 +6,8 @@ namespace ClassLibrary
     public class ChainData
     {
         private static ChainData _instance;
-        public Dictionary<string, string> userPostionHandler = new Dictionary<string, string>();
+        public Dictionary<string, Collection<string>> userPostionHandler = new Dictionary<string, Collection<string>>();
 
-        public ChainData()
-        {
-
-        }
         public static ChainData Instance
         {
             get

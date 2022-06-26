@@ -15,22 +15,31 @@ namespace ChatBot_Logic.src.Handlers
         {
             ChainData chainData = ChainData.Instance;
             string from = message.From.ToString();
-            string resp = "";
 
-            if (!chainData.userPostionHandler.ContainsKey(from) && message.Text == "/registrarme")
+            if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
             {
-                response = "Ingrese nombre usuario:";
-                chainData.userPostionHandler[from] = "regis1";
-                return true;
+                chainData.userPostionHandler[from].Add(message.Text);
+                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 1)
+                {
+                    response = "Ingrese nombre usuario:";
+                    return true;
+                }
+
+                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 2)
+                {
+                    chainData.userPostionHandler[from].Add(message.Text);
+                    response = "Ingrese apellido usuario:";
+                    return true;
+                }
+                if (chainData.userPostionHandler[from][0].Equals("/registrarme") && chainData.userPostionHandler[from].Count == 3)
+                {
+                    chainData.userPostionHandler[from].Add(message.Text);
+                    response = $"{message.Text}{chainData.userPostionHandler[from][1]}FUNCA";
+                    return true;
+                }
             }
-            else if (chainData.userPostionHandler.ContainsKey(from) && chainData.userPostionHandler[from] == "regis1")
-            {
-                response = "Ingrese apellido usuario:";
-                return true;
-            }
-            response = "Paso todo";
+            response = string.Empty;
             return false;
-
 
         }
     }

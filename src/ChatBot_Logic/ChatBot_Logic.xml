@@ -89,18 +89,6 @@
             <param name="message">El mensaje recibido</param>
             <returns></returns>
         </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.HandleCallbackQueryReceived(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.CallbackQuery)">
-            <summary>
-            Maneja los botones que se envían al bot a través de handlers de una chain of responsibility. (En proceso de desarollo
-            </summary>
-            <param name="CallbackQuery">El boton recibido</param>
-            <returns></returns>
-        </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.HandleErrorAsync(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
-            <summary>
-            Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
-            </summary>
-        </member>
         <member name="P:ChatBot_Logic.src.ChatBot.Instance">
             <summary>
             Obtine la instancia del ChatBot, si no existe la crea.
@@ -158,25 +146,6 @@
             <param name="next">El próximo "handler".</param>
         </member>
         <member name="M:ChatBot_Logic.src.Handlers.PlaceShipHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
-            <summary>
-            Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
-            </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
-            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        </member>
-        <member name="T:ChatBot_Logic.src.Handlers.RegisterUserHandler1">
-            <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.Handlers.RegisterUserHandler1.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.RegisterUserHandler1"/>. Esta clase procesa el mensaje "hola".
-            </summary>
-            <param name="next">El próximo "handler".</param>
-        </member>
-        <member name="M:ChatBot_Logic.src.Handlers.RegisterUserHandler1.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
             <summary>
             Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
             </summary>

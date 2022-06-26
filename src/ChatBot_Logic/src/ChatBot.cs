@@ -103,23 +103,21 @@ namespace ChatBot_Logic.src
         public void listen()
         {
             Bot.StartReceiving(
-                    HandleUpdateAsync,
-                    HandleErrorAsync,
-                    new ReceiverOptions()
-                    {
-                        AllowedUpdates = Array.Empty<UpdateType>()
-                    },
-                    cts.Token
-           );
-
-
+                HandleUpdateAsync,
+                HandleErrorAsync,
+                new ReceiverOptions()
+                {
+                    AllowedUpdates = Array.Empty<UpdateType>()
+                },
+                cts.Token
+            );
         }
 
         /// <summary>
         /// Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
         /// respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
         /// </summary>
-        private static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
+        public static async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken)
         {
             try
             {
@@ -127,11 +125,6 @@ namespace ChatBot_Logic.src
                 if (update.Type == UpdateType.Message)
                 {
                     await HandleMessageReceived(botClient, update.Message);
-                }
-                else
-                {
-                    //Agregamos la funcionalidad para agregar la respuesta a eventos de tipo botones.
-                    await HandleCallbackQueryReceived(botClient, update.CallbackQuery);
                 }
             }
             catch (Exception e)
@@ -158,48 +151,7 @@ namespace ChatBot_Logic.src
                 await Bot.SendTextMessageAsync(message.Chat.Id, response);
             }
         }
-        /// <summary>
-        /// Maneja los botones que se envían al bot a través de handlers de una chain of responsibility. (En proceso de desarollo
-        /// </summary>
-        /// <param name="CallbackQuery">El boton recibido</param>
-        /// <returns></returns>
-        private static async Task HandleCallbackQueryReceived(ITelegramBotClient botClient, CallbackQuery callbackQueryEventArgs)
-        {
-            var callbackQuery = callbackQueryEventArgs;
-
-            Console.WriteLine($"Received a message from {callbackQuery.From} saying: {callbackQuery.Data}");
-
-            string response = callbackQuery.Data;
-
-            if (!string.IsNullOrEmpty(response))
-            {
-                await botClient.SendTextMessageAsync(
-                chatId: callbackQuery.Message.Chat.Id,
-                text: $"Received send {callbackQuery.Data}"
-                //await botClient.SendTextMessageAsync(message.Chat.Id, ".", replyMarkup: GetMenu());
-            );
-            }
-        }
-
-        /*public static InlineKeyboardMarkup GetMenu() (En proceso de desarollo)
-        {
-            //Creamos los botones
-            List<InlineKeyboardButton> buttons = new List<InlineKeyboardButton>();
-            buttons.Add(new InlineKeyboardButton("No") { Text = "No", CallbackData = $"No" });
-            buttons.Add(new InlineKeyboardButton("Si") { Text = "Si", CallbackData = $"Si" });
-
-            //Creamos una fila con dos columnas
-            var menuDosColumnas = new List<InlineKeyboardButton[]>();
-            menuDosColumnas.Add(new[] { buttons[0], buttons[1] });
-
-            //Creamos el KeyBoard y agregamos la fila de butones
-            var menu = new InlineKeyboardMarkup(menuDosColumnas.ToArray());
-            return menu;
-        }*/
-
-        /// <summary>
-        /// Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
-        /// </summary>
+ 
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             Console.WriteLine(exception.Message);

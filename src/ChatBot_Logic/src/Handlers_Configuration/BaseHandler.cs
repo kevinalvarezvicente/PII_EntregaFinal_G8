@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Telegram.Bot.Types;
 
@@ -122,8 +121,6 @@ namespace ChatBot_Logic.src.HandlersConfiguration
                 this.Next.Cancel();
             }
         }
-
-
 
     }
 }

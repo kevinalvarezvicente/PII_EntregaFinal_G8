@@ -11,8 +11,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
     /// Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
     /// </summary>
-    public class BoardPrinter
-    //: IPrinter
+    public class BoardPrinter: IPrinter
     {
         /// <summary>
       /// Permite imprimir el tablero de tiros del jugador pasado por parámetro.

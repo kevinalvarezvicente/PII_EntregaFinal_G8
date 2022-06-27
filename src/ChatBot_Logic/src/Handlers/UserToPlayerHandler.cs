@@ -1,6 +1,5 @@
 ﻿using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
-using System;
 using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
@@ -38,14 +37,11 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     response = "Antes de luchar debes de seleccionar la region 🌎 de campo en la que batallarás a muerte.🪦" +
                     "\n🇦🇷 /Maldivas: 10 hectareas \n🇺🇦 /Donbas: 15 hectareas \n🇱🇦 /Laos: 25 hectareas";
-                    
+
                     chainData.userPostionHandler[from].Add(message.Text);
-                   // this.Keywords.Add(message.From.Id.ToString()); //porque hace esto? se supone que agrega el tablero en este mismo handler
-                    Console.WriteLine(chainData.userPostionHandler[from]);
-                    return true;
+                    this.Keywords.Add(message.From.Id.ToString()); //Añadimos el user id a las Keywords. Important!
                 }
-                /*
-                if (chainData.userPostionHandler[from].Count == 1)
+                if (chainData.userPostionHandler[from].Count == 2)
                 {
                     if (message.Text.Equals("/Maldivas"))
                     {
@@ -66,11 +62,10 @@ namespace ChatBot_Logic.src.Handlers
                     this.Keywords.Remove(message.From.Id.ToString());
                     return true;
                 }
-                */
             }
             response = string.Empty;
             return false;
-
         }
     }
+
 }

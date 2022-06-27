@@ -26,18 +26,13 @@ namespace ChatBot_Logic.src.Handlers
             {
                 chainData.userPostionHandler[from].Add(message.Text);
 
-                if (chainData.userPostionHandler[from].Count == 1)
-                {
-                    response = "Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
-                        "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
-                        + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
-                        "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
-                        "lucha contra un enemigo 💣 /batallar";
-                    //User.usersList.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
-                    //que la clase no se llame usuario y tenga una lista de usuarios. nos pueden decir algo
-                    UsersContainer.usersContainer.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
-                    return true;
-                }
+                response = "Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
+                    "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
+                    + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
+                    "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
+                    "lucha contra un enemigo 💣 /batallar";
+                UsersContainer.usersContainer.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
+                return true;
             }
             response = string.Empty;
             return false;

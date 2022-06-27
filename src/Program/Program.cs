@@ -22,6 +22,9 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             ChatBot bot = ChatBot.Instance;
 
+ 
+
+
         }
     }
 }

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using PII_ENTREGAFINAL_G8.src.Library;
 
-namespace LibraryTests
+/*namespace LibraryTests
 {
     /// <summary>
     /// Se hace test para el método que divide la coordenada
@@ -410,4 +410,4 @@ namespace LibraryTests
             Assert.AreEqual(expected,UsersContainer.usersContainer.Count);
         }
     }
-}
+}*/

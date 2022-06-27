@@ -584,7 +584,7 @@
             Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.AbstractBoard)">
             <summary>
             Permite imprimir el tablero de tiros del jugador pasado por parámetro.
             Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
@@ -598,7 +598,7 @@
             Cada clase de tipo IPrinter tiene la responsabilidad de imprimir el tablero con un diseño diferente.
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.IPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.IPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.AbstractBoard)">
             <summary>
             En este método se refleja que la interfaz depende de Board
             La declaración de la operación recibe una instancia de Board como parámetro 

@@ -18,7 +18,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
       /// Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
       /// </summary>
       /// <param name="board">Jugador dueño del tablero que se desea imprimir por pantalla</param>
-        public void PrintPlayerBoard(Board board)
+        public void PrintPlayerBoard(AbstractBoard board)
         {
             
             for (int i = 0; i < board.GameBoard.GetLength(0); i++)

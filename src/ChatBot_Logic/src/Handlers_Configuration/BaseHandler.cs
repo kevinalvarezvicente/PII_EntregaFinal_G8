@@ -93,9 +93,8 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
         public IHandler Handle(Message message, out string response)
         {
-            if (this.CanHandle(message))
+            if (this.InternalHandle(message, out response))
             {
-                this.InternalHandle(message, out response);
                 return this;
             }
             else if (this.Next != null)
@@ -104,7 +103,6 @@ namespace ChatBot_Logic.src.HandlersConfiguration
             }
             else
             {
-                response = String.Empty;
                 return null;
             }
         }

@@ -60,7 +60,7 @@
                     response = "Lamento que no puedas ayudarnos, es nuestro fin ☣️.";
                     this.Keywords.Remove(message.From.Id.ToString()); //Removemos el id asi sigue el handler
                     return true;
-                }
+                } //SOLUCIONAR MENSAJE DE REPETICION
 
             }
             response = string.Empty;

@@ -1,6 +1,5 @@
 using ChatBot_Logic.src.HandlersConfiguration;
 using System.Collections.Generic;
-using Telegram.Bot.Types;
 
 namespace ChatBot_Logic.src.Handlers
 {

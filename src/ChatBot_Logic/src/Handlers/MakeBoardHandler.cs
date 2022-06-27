@@ -19,29 +19,31 @@ namespace ChatBot_Logic.src.Handlers
         {
             ChainData chainData = ChainData.Instance;
             string from = message.From.ToString();
-            
-            if(message.Text.Equals("/Maldivas"))
+
+            if (message.Text.Equals("/Maldivas"))
             {
-              // User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-              // Player player = new Player(ActiveUser, 10);
-              
-               User ActiveUser = new User(message.From.Id,message.From.FirstName, message.From.FirstName);
-               Player player = new Player(ActiveUser, 10);
-               response = "se creo un board de 10";
-               return true;
+                // User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
+                // Player player = new Player(ActiveUser, 10);
+
+                User ActiveUser = new User(message.From.Id, message.From.FirstName, message.From.FirstName);
+                Player player = new Player(ActiveUser, 10);
+                response = "se creo un board de 10";
+                return true;
             }
-            else if(message.Text.Equals("/Maldivas")){
-               User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-               Player player = new Player(ActiveUser, 15);
-               response = "se creo un board de 15";
-               
+            else if (message.Text.Equals("/Maldivas"))
+            {
+                User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
+                Player player = new Player(ActiveUser, 15);
+                response = "se creo un board de 15";
+
             }
-            else{
-               User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-               Player player = new Player(ActiveUser, 25);
-               response = "se creo un board de 25";
-               return true;
-               
+            else
+            {
+                User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
+                Player player = new Player(ActiveUser, 25);
+                response = "se creo un board de 25";
+                return true;
+
             }
 
             response = string.Empty;

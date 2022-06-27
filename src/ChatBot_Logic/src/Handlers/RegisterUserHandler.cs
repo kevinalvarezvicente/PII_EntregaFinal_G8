@@ -33,8 +33,9 @@ namespace ChatBot_Logic.src.Handlers
                         + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
                         "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
                         "lucha contra un enemigo 💣 /batallar";
-                    User.usersList.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
+                    //User.usersList.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
                     //que la clase no se llame usuario y tenga una lista de usuarios. nos pueden decir algo
+                    UsersContainer.usersContainer.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
                     return true;
                 }
             }

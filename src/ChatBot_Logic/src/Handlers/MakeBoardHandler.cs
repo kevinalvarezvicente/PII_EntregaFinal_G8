@@ -20,7 +20,8 @@ namespace ChatBot_Logic.src.Handlers
             ChainData chainData = ChainData.Instance;
             string from = message.From.ToString();
             
-            if(message.Text.Equals("/Maldivas")){
+            if(message.Text.Equals("/Maldivas"))
+            {
               // User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
               // Player player = new Player(ActiveUser, 10);
               

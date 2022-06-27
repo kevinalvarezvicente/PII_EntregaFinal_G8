@@ -20,7 +20,8 @@ namespace ChatBot_Logic.src.Handlers
             ChainData chainData = ChainData.Instance;
             string from = message.From.ToString();
 
-            chainData.userPostionHandler[message.From.ToString()].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
+            //chainData.userPostionHandler[message.From.ToString()].Clear(); 
+            //Vaciamos el userPositionHandler para asi registrar el nuevo
 
             if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
             {
@@ -31,6 +32,7 @@ namespace ChatBot_Logic.src.Handlers
                     + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
                     "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
                     "lucha contra un enemigo 💣 /batallar";
+
                 UsersContainer.usersContainer.Add(new User(message.From.Id, message.From.FirstName, message.From.LastName));
                 return true;
             }

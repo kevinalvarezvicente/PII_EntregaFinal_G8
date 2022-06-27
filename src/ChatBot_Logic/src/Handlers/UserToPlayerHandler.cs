@@ -31,7 +31,7 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
             {
-                chainData.userPostionHandler[from].Add(message.Text);
+                chainData.userPostionHandler[from].Add(message.Text);   //Le dice en que handler esta
 
                 if (chainData.userPostionHandler[from].Count == 1)
                 {
@@ -41,6 +41,7 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Add(message.Text);
                     this.Keywords.Add(message.From.Id.ToString()); //Añadimos el user id a las Keywords. Important!
                 }
+                
                 if (chainData.userPostionHandler[from].Count == 2)
                 {
                     if (message.Text.Equals("/Maldivas"))

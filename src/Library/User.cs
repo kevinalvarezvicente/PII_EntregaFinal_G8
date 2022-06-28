@@ -50,14 +50,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.Name = name;
             this.Surename = surename;
         }
-        /// <summary>
-        /// El método dice si el usuario quiere jugar llama al lobby para que lo agregue a la lista
-        /// </summary>
-        public void WantToPlay()
-        {
 
-            LobbyContainer.AddUser(this);
-        }
 
 
 

@@ -50,12 +50,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Para guardar la partida se guardará una lista con los usuarios que la jugaron.
         /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
         /// </summary>
-        private List<User> usersList = new List<User>();
-        public List<User> UsersList
+        private List<Player> playersList = new List<Player>();
+        public List<Player> PlayersList
         {
             get
             {
-                return this.usersList;
+                return this.playersList;
             }
         }
         /// <summary>
@@ -69,20 +69,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <param name="player1">Será el jugador que inicia todo</param>
         /// <param name="player2"></param>
-        public Game(User player1, User player2)
+        public Game(Player player1, Player player2)
         {
             GetNextGameID();
             this.GameStatus = default;
             this.GameId= currentGameID;
             this.Date = DateTime.Now;
-            this.active_Player = new Player(player1);
-            this.Inactive_Player = new Player(player2);
-            this.usersList.Add(player1);
-            this.usersList.Add(player2);
-            this.Player1Boards.Add(this.Active_Player.PlayerShipBoard);
-            this.Player1Boards.Add(this.Active_Player.PlayerShotBoard);
-            this.Player2Boards.Add(this.Inactive_Player.PlayerShipBoard);
-            this.Player2Boards.Add(this.Inactive_Player.PlayerShotBoard);
+            this.active_Player = player1;
+            this.Inactive_Player = player2;
+            this.playersList.Add(player1);
+            this.playersList.Add(player2);
+
 
         }
 

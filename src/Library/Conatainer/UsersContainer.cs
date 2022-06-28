@@ -74,8 +74,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         
         public static User GetUSerByID(long ID)
         {
-            Console.WriteLine(ID);
-            Console.WriteLine(userscontainer.Count);
             for (int i = 0; i<userscontainer.Count; i++)
             {   
                 Console.WriteLine(userscontainer[i]);

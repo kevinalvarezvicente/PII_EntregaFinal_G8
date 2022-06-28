@@ -18,7 +18,8 @@ namespace ChatBot_Logic.src.Handlers_Configuration
                 new RegisterUserHandler(
                     new BatllePlacerHandler(
                         new SelectLobbyHandler(
-                            new GoodByeHandler(null)))));
+                            new JoinPlayerHandler(
+                                new GoodByeHandler(null))))));
         }
 
         /// <summary>

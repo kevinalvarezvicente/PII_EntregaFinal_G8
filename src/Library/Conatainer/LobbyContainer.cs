@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 
+
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -12,116 +13,94 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se instancia una lista para usuarios que quieren esperar para jugar
         /// </summary>
         /// <returns></returns>
-        private static List<Player> lobbycontainerMaldivas = new List<Player>();
-        private static List<Player> lobbycontainerDonbas = new List<Player>();
-        private static List<Player> lobbycontainerLaos = new List<Player>();
-
+        private static List<Player> lobbycontainer = new List<Player>();
         /// <summary>
         /// Método para agregar usuario al contenedor
         /// </summary>
         /// <param name="user"></param>
-        public static void AddPlayer(Player player, int lobbyType)
+        public static void AddPlayer(Player player)
         {
-            foreach (Player userToCompare in lobbycontainerMaldivas)
+            foreach (Player playerToCompare in lobbycontainer)
             {
-                if (userToCompare.Equals(player))
+                if(playerToCompare.Equals(player))
                 {
-                    throw new ContainerException($"El elemento ya está en la lista");
+                    throw new ContainerException($"El jugador ya está en la lista");
                 }
             }
-            foreach (Player userToCompare in lobbycontainerDonbas)
-            {
-                if (userToCompare.Equals(player))
-                {
-                    throw new ContainerException($"El elemento ya está en la lista");
-                }
-            }
-            foreach (Player userToCompare in lobbycontainerLaos)
-            {
-                if (userToCompare.Equals(player))
-                {
-                    throw new ContainerException($"El elemento ya está en la lista");
-                }
-            }
-            if (lobbyType == 1)
-            {
-                lobbycontainerMaldivas.Add(player);
-            }
-            else if (lobbyType == 2)
-            {
-                lobbycontainerDonbas.Add(player);
-            }
-            else if (lobbyType == 3)
-            {
-                lobbycontainerLaos.Add(player);
-            }
+            lobbycontainer.Add(player);
 
-            /*if(!lobbycontainer.Contains(user))
-            {
-                lobbycontainer.Add(user);
-            }
-            else
-            {
-                throw new ContainerException($"El elemento ya está en la lista");
-            }*/
+
+            
         }
         /// <summary>
         /// Para tener acceso al container de espera
         /// </summary>
         /// <value></value>
-        public static List<Player> lobbyMaldivas
+        public static List<Player> lobbyContainer
         {
             get
             {
-                return lobbycontainerMaldivas;
-            }
-        }
-        public static List<Player> lobbyDonbas
-        {
-            get
-            {
-                return lobbycontainerDonbas;
-            }
-        }
-        public static List<Player> lobbyLaos
-        {
-            get
-            {
-                return lobbycontainerLaos;
+                return lobbycontainer;
             }
         }
         /// <summary>
         /// Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
         /// </summary>
         /// <param name="user"></param>
-        public static void RemovePlayer(Player player)
+        public static void RemoveUser(Player player)
         {
-
-            if (lobbycontainerMaldivas.Contains(player))
+            
+            if(lobbycontainer.Contains(player))
             {
-                lobbycontainerMaldivas.Remove(player);
-            }
-            else if ((lobbycontainerDonbas.Contains(player)) {
-                lobbycontainerDonbas.Remove(player);
-            }
-            else if ((lobbycontainerLaos.Contains(player)) {
-                lobbycontainerLaos.Remove(player);
+                lobbycontainer.Remove(player);
             }
             else
             {
-                throw new ContainerException($"El elemento no está en la lista");
+                throw new ContainerException($"El jugador no está en la lista");
             }
         }
         /// <summary>
         /// Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
         /// </summary>
         /// <returns></returns>
-        public static bool ArePlayerToStartGame()
+        public static bool AreUsersToStartGame() 
         {
-            if (lobbycontainerMaldivas.Count >= 2 || lobbycontainerDonbas.Count >= 2 || lobbycontainerLaos.Count >= 2)
+            if (lobbycontainer.Count>=2)
             {
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+                
+            }
         }
+
+        public static Player JoinPlayersWithSameBoardSize(Player player)
+        {
+            for (int i=0; i<lobbycontainer.Count; i++)
+            {
+                    if (lobbycontainer[i].GetPlayerBoardSize()==player.GetPlayerBoardSize() && lobbycontainer[i].UserId!=player.UserId)
+                    {
+                        return lobbycontainer[i];
+                    }
+            }
+            return null;
+        } 
+
+        public static Player GetPlayerByID(long ID)
+        {
+            for (int i = 0; i<lobbycontainer.Count; i++)
+            {   
+
+                if (ID==lobbycontainer[i].UserId)
+                {
+                    
+                    return lobbycontainer[i];
+                }
+            }
+           throw new ContainerException("No se encontro player id");
+        }
+        
     }
+}

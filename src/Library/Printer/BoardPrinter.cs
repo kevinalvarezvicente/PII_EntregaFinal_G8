@@ -10,6 +10,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Es expert, es quien tiene toda la informacion para imprimir tablero
     /// Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
     /// Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
+    /// Cumple DIP pues a través de la clase abstracta AbstractBoard de la que Board depende y que BoardPrinter depende también de esa abstracción por la interfaz de la cual hereda.
     /// </summary>
     public class BoardPrinter: IPrinter
     {

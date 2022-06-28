@@ -14,5 +14,5 @@ namespace ChatBot_Logic.src.Handlers_Concatenation
                 new PhotoHandler(Bot, null)
             ));
     }
-}
-*/
+}*/
+

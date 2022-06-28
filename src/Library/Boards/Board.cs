@@ -11,7 +11,32 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Cumple OCP (Open-Close Principle) pues si el dia de mañana se agrega otro tipo de Board puede extender de esta sin problema y es cerrada a la modificación en el sentido de que  no es necesario realizar cambios en el código de esa clase
     /// </summary>
     public class Board: AbstractBoard
-    {  
+    {
+        protected string what;
+        /// <summary>
+        /// Se crea atributo privado de la matriz.
+        /// </summary>
+        private string[,] gameBoard;
+        /// <summary>
+        /// Atributo que permite tener una cantidad maxima de barcos segun el tamaño del tablero.
+        /// </summary>
+        private int maxShipsQuantity;
+        /// <summary>
+        /// Es una matriz de strings "-".
+        /// </summary>
+        /// <value>Matriz del tablero general</value>
+        public string[,] GameBoard
+        {
+            get
+            {
+                return this.gameBoard;
+            }
+            private set
+            {
+                this.gameBoard = value;
+            }
+        }
+
         /// <summary>
         /// Constructor del tablero
         /// Como funcionalidad extra del equipo se pone un maximo de barcos a agregar segun el tamaño del tablero.
@@ -22,6 +47,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.InitializeBoard(x);
             this.maxShipsQuantity = x / 2;
+            this.what="";
         }
         /// <summary>
         /// Método de acceso a la cantidad maxima habilitada de barcos a ubicar
@@ -32,6 +58,32 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             get
             {
                 return this.maxShipsQuantity;
+            }
+        }
+        public string What
+        {
+            get
+            {
+                return this.what;
+            }
+        }
+
+        
+        public override void InitializeBoard(int x)
+        {
+            if (x>20 || x<1)
+            {
+                throw new BoardException("El lado del tablero no puede superar el tamaño 20");
+            }
+            this.gameBoard = new string[x, x];
+
+            for (int i = 0; i < this.gameBoard.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.gameBoard.GetLength(1); j++)
+                {
+                    
+                    this.gameBoard[i, j] = "-";
+                }
             }
         }
 

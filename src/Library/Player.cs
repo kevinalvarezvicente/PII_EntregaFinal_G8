@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -15,17 +14,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// La responsabilidades mencionadas e implementaciones de métodos recaen sobre Player ya que ésta conoce toda la informacion para ejecutar.
     /// Se obtiene mayor cohesion y menor acoplamiento. 
     /// </summary>
-    public class Player 
+    public class Player
     {
         /// <summary>
         /// Cada jugador tiene un tablero donde insertará sus barcos
         /// </summary>
-        private ShipBoard playerShipBoard;
+        private Board playerShipBoard;
         private long userId;
         /// <summary>
         /// Cada jugador tiene un tablero donde irán los tiros
         /// </summary>
-        private ShotBoard playerShotBoard;
+        private Board playerShotBoard;
         /// <summary>
         /// El jugador se pone un nombre
         /// </summary>
@@ -39,7 +38,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Esta es un arreglo de tamaño 2 donde va a estar los dos tableros del jugador
         /// </summary>
         private List<Board> playerBoardsList = new List<Board>();
-        
+
         /// <summary>
         /// Constructor de player. 
         /// Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
@@ -50,7 +49,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.userId = user.UserId;
             this.playerName = user.Name;
-
+            this.playerShipBoard = this.GetPlayerShipBoard();
+            this.playerShotBoard = this.GetPlayerShotBoard();
         }
         /// <summary>
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
@@ -60,27 +60,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             playerBoardsList.Add(board);
         }
-        public ShipBoard GetPlayerShipBoard()
+        public Board GetPlayerShipBoard()
         {
             foreach (Board board in playerBoardsList)
             {
-                if (board.What=="ShipBoard")
+                if (board.What == "ShipBoard")
                 {
-                    return this.playerShipBoard;
-                }  
+                    return board;
+                }
             }
-            return null; 
+            return null;
         }
-        public ShotBoard GetPlayerShotBoard()
+        public Board GetPlayerShotBoard()
         {
             foreach (Board board in playerBoardsList)
             {
-                if (board.What=="ShotBoard")
+                if (board.What == "ShotBoard")
                 {
-                    return this.playerShotBoard;
-                }  
+                    return board;
+                }
             }
-            return null; 
+            return null;
         }
         /// <summary>
         /// Esta seria la lista de tableros del jugador
@@ -100,7 +100,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 return this.userId;
             }
-            
+
         }
 
         /// <summary>
@@ -115,9 +115,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             private set
             {
-                this.playerName=value;
+                this.playerName = value;
             }
-            
+
         }
 
         /// <summary>
@@ -141,16 +141,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
         public bool SearchForCoordInShipsList(string coord)
         {
-            (int x, int y)=Utils.SplitCoordIntoRowAndColumn(coord);
-            Spot spot = new Spot(x,y);
+            (int x, int y) = Utils.SplitCoordIntoRowAndColumn(coord);
+            Spot spot = new Spot(x, y);
             foreach (Ship ship in ShipsList)
             {
                 foreach (Spot SpotToCompare in ship.CoordsList)
                 {
-                    if (spot.X==SpotToCompare.X && spot.Y==SpotToCompare.Y)
+                    if (spot.X == SpotToCompare.X && spot.Y == SpotToCompare.Y)
                     {
                         int index = ship.CoordsList.IndexOf(SpotToCompare);
-                        ship.CoordsList[index].wasHit=true;
+                        ship.CoordsList[index].wasHit = true;
                         return true;
                     }
                 }
@@ -205,17 +205,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Devuelve un booleano según si todos los barcos del jugador eestán hundidos o no</returns>
         public bool AreAllShipsSinked()
         {
-           foreach (Ship ship in ShipsList)
+            foreach (Ship ship in ShipsList)
             {
-                foreach(Spot spot in ship.CoordsList)
+                foreach (Spot spot in ship.CoordsList)
                 {
-                    if (spot.wasHit==false)
+                    if (spot.wasHit == false)
                     {
                         return false;
                     }
                 }
             }
-            return true; 
+            return true;
         }
         /// <summary>
         /// Operación polimórifca que ubica el barco en el tablero.
@@ -225,29 +225,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
         public void PlaceShipOnBoard(Ship ship)
         {
-                foreach (Spot spot in  ship.CoordsList)
+            foreach (Spot spot in ship.CoordsList)
+            {
+                if (spot.X > playerShipBoard.GameBoard.GetLength(0) || spot.Y > playerShipBoard.GameBoard.GetLength(1))
                 {
-                    if (spot.X>playerShipBoard.GameBoard.GetLength(0) || spot.Y>playerShipBoard.GameBoard.GetLength(1))
+                    throw new CoordException("el barco queda fuera del tablero");
+                }
+                foreach (Ship ShipToCompare in this.ShipsList)
+                {
+                    foreach (Spot SpotToCompare in ShipToCompare.CoordsList)
                     {
-                        throw new CoordException("el barco queda fuera del tablero");
-                    }
-                    foreach (Ship ShipToCompare in this.ShipsList)
-                    {
-                        foreach (Spot SpotToCompare in ShipToCompare.CoordsList)
+                        if (spot.X == SpotToCompare.X && spot.Y == SpotToCompare.Y)
                         {
-                            if (spot.X==SpotToCompare.X && spot.Y==SpotToCompare.Y)
-                            {
-                                throw new CoordException("Ya hay un barco ubicado en esa coordenada");
-                            }
+                            throw new CoordException("Ya hay un barco ubicado en esa coordenada");
                         }
                     }
-                        
                 }
-                foreach (Spot spot in  ship.CoordsList)
-                {
-                    this.playerShipBoard.GameBoard[spot.X,spot.Y] = "o";
-                }
-                ShipsList.Add(ship);
+
+            }
+            foreach (Spot spot in ship.CoordsList)
+            {
+                this.playerShipBoard.GameBoard[spot.X, spot.Y] = "o";
+            }
+            ShipsList.Add(ship);
         }
 
         /// <summary>

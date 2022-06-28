@@ -4,8 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
-using ChatBot_Logic.src;
 using PII_ENTREGAFINAL_G8.src.Library;
 
 
@@ -23,13 +21,16 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             //hatBot bot = ChatBot.Instance;
 
-            User user = new User(12,"Carol","Glass");
+            User user = new User(12, "Carol", "Glass");
             Board Shipboard1 = new ShipBoard(4);
-            Board Shotboard1= new ShotBoard(4);
+            Board Shotboard1 = new ShotBoard(4);
             Player player = new Player(user);
             player.AddPlayerBoard(Shipboard1);
             player.AddPlayerBoard(Shotboard1);
 
+            BoardPrinter printer = new BoardPrinter();
+            Board board = player.GetPlayerShipBoard();
+            printer.PrintPlayerBoard(board);
         }
     }
 }

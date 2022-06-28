@@ -1,43 +1,22 @@
-# Qué hay configurado en esta plantilla
+# Entrega Final Programación II 
+## Batalla Naval
 
-1. Un proyecto de biblioteca (creado con [`dotnet new classlib --name Library`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `src\Library`
-2. Un proyecto de aplicación de consola (creado con [`dotnet new console --name Program`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `src\Program`
-3. Un proyecto de prueba en [NUnit](https://nunit.org/) (creado con [`dotnet new nunit --name LibraryTests`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-new?tabs=netcore22)) en la carpeta `test\LibraryTests`
-4. Un proyecto de [Doxygen](https://www.doxygen.nl/index.html) para generación de sitio web de documentación en la carpeta `docs`
-5. Análisis estático con [Roslyn analyzers](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/overview) en los proyectos de biblioteca y de aplicación
-6. Análisis de estilo con [StyleCop](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/README.md) en los proyectos de biblioteca y de aplicación
-7. Una solución `ProjectTemplate.sln` que referencia todos los proyectos de C# y facilita la compilación con [`dotnet build`](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-build).
-8. Tareas preconfiguradas para compilar y ejecutar los proyectos, ejecutar las pruebas, y generar documentación desde VSCode en la carpeta `.vscode`
-9. Análisis de cobertura de los casos de prueba mediante []() que aparece en los márgenes con el complemento de VS Code [Coverage Gutters](https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters).
-10. Ejecución automática de compilación y prueba mediante [GitHub Actions](https://docs.github.com/en/actions) configuradas en el repositorio al hacer [push](https://github.com/git-guides/git-push) o [pull request](https://docs.github.com/en/github/collaborating-with-pull-requests).
+Kevin Alvarez
+Carol Glass
+Anthony Pereira
 
-Vean este 🎥 [video](https://web.microsoftstream.com/video/55c6a06c-07dc-4f95-a96d-768f198c9044) que explica el funcionamiento de la plantilla.
+Ingeniería en informática - Universidad Católica del Uruguay
 
-## Convenciones
+## Guía para correr el código
 
-[Convenciones de código en C#](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+Para una ejecución exitosa se deberán de tener ciertos paquetes en su ordenador en el directorio C:\Users\<Su usuario>\.nuget\packages. Dichos paquetes con las versiones correspondientes están localizadas en  la carpeta “docs” de nuestro repositorio en Github. La carpeta que contiene dichos paquetes es llamada “PaquetesUtilizados” y se deberá copiar su interior en el directorio mencionado anteriormente.
 
-[Convenciones de nombres en C#](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
+Por último pero no menos importante se deberá copiar y pegar el archivo llamado “appsettings.json” en la siguiente ubicación dentro de su ordenador “PII_EntregaFinal_G8\src\Program\bin\Debug\net6.0 ”. Esto se debe a que el archivo al ser subido al repositorio es ignorado por GitHub por lo cual debe de ser añadido manualmente en cada ordenador al ejecutar el proyecto. Cabe recalcar que el ignorar este archivo por parte de Github no es aleatorio y fue configurado previamente con el fin de evitar que el token de seguridad de nuestro chatbot pueda ser accedido y extraído por personas mal intencionadas. Por cualquier otra consulta acerca de la ejecución de nuestro proyecto se agradece la comunicación con los desarrolladores que estarán disponible para usted las 24 hs.
 
-## Dónde encontrar información sobre los errores/avisos al compilar
+## Informacion acerca del Bot
+Identificador del Bot: 898174738
+El token del TelegramBot es:  5193142034:AAFHGchgSiw5oq5ba9gV19F4b8_Zn44MAfA
+Bot Username: @paco_pii_G8_bot
 
-[C# Compiler Errors (CS*)](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/compiler-messages/)
+[Comunicación directa con el Bot](https://web.telegram.org/k/#@paco_pii_G8_bot)
 
-[Roslyn Analyzer Warnings (CA*)](https://docs.microsoft.com/en-us/dotnet/fundamentals/code-analysis/categories)
-
-[StyleCop Analyzer Warnings (SA*)](https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/DOCUMENTATION.md)
-
-# Cómo deshabilitar temporalmente los avisos al compilar
-
-## Roslyn Analyzer
-
-Comentar las siguientes líneas en los archivos de proyecto (`*.csproj`)
-```
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-```
-
-## StyleCop Analyzer
-
-Comentar la línea `<PackageReference Include="StyleCop.Analyzers" Version="1.1.118"/>` en los archivos de proyecto (`*.csproj`)

@@ -4,7 +4,6 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using PII_ENTREGAFINAL_G8.src.Library;
 using ChatBot_Logic.src;
 
 
@@ -21,8 +20,6 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         public static void Main()
         {
             ChatBot bot = ChatBot.Instance;
-
-
         }
     }
 }

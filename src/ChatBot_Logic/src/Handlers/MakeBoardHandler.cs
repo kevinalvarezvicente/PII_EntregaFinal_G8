@@ -1,4 +1,4 @@
-using ChatBot_Logic.src.HandlersConfiguration;
+﻿using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
 using PII_ENTREGAFINAL_G8.src.Library;
 using System.Collections.Generic;
@@ -20,42 +20,46 @@ using System.Collections.Generic;
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;
-            string from = message.From.ToString();
-            chainData.userPostionHandler[message.From.ToString()].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
+            string from = message.From.Id.ToString();
 
-            if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
+            if (this.CanHandle(message))
             {
-                chainData.userPostionHandler[from].Add(message.Text);   //Le dice en que handler esta
 
-                if (chainData.userPostionHandler[from].Count == 2 && message.Text.Equals("/Maldivas"))
+                if (chainData.userPostionHandler[from].Count == 1 && message.Text.Equals("/Maldivas"))
                 {
+                    chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
                     // Player player = new Player(ActiveUser, 10);
-
                     //User ActiveUser = new User(message.From.Id, message.From.FirstName, message.From.FirstName);
                     Player player = new Player(ActiveUser, 10);
-                    response = "se creo un board de 10";
+                    response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     return true;
                 }
-                else if (chainData.userPostionHandler[from].Count == 2 && message.Text.Equals("/Donbas"))
+                else if (chainData.userPostionHandler[from].Count == 1 && message.Text.Equals("/Donbas"))
                 {
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
                     Player player = new Player(ActiveUser, 15);
-                    response = "se creo un board de 15";
+                    response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
+                            + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
 
                 }
-                else if (chainData.userPostionHandler[from].Count == 2 && message.Text.Equals("/Laos"))
+                else if (chainData.userPostionHandler[from].Count == 1 && message.Text.Equals("/Laos"))
                 {
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 20);
-                    response = "se creo un board de 20";
+                    Player player = new Player(ActiveUser, 25);
+                    response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
+                            "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     return true;
-
+                }
+                else
+                {
+                    response = "No has seleccionado una opcion valida 🥺";
+                    return true;
                 }
             }
-
             response = string.Empty;
             return false;
+
         }
     }
 }*/

@@ -25,44 +25,25 @@ namespace ChatBot_Logic.src.Handlers
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;
-            string from = message.From.ToString();
+            string from = message.From.Id.ToString();
 
-            chainData.userPostionHandler[message.From.ToString()].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
-
-            if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
+            if (this.CanHandle(message))
             {
-                chainData.userPostionHandler[from].Add(message.Text);   //Le dice en que handler esta
 
-                if (chainData.userPostionHandler[from].Count == 1)
+                if (!chainData.userPostionHandler[from][0].Equals("/batallar"))
                 {
+                    chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                }
+
+                if (chainData.userPostionHandler[from].Count == 0)
+                {
+                    chainData.userPostionHandler[from].Add("/batallar"); //Añadimos el nuevo handler que se esta ejecutando
+
                     response = "Antes de luchar debes de seleccionar la region 🌎 de campo en la que batallarás a muerte.🪦" +
                     "\n🇦🇷 /Maldivas: 10 hectareas \n🇺🇦 /Donbas: 15 hectareas \n🇱🇦 /Laos: 25 hectareas";
-
-                    chainData.userPostionHandler[from].Add(message.Text);
-                    this.Keywords.Add(message.From.Id.ToString()); //Añadimos el user id a las Keywords. Important!
-                }
-                
-                if (chainData.userPostionHandler[from].Count == 2)
-                {
-                    if (message.Text.Equals("/Maldivas"))
-                    {
-                        response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. "
-                            + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
-                    }
-                    else if (message.Text.Equals("/Donbas"))
-                    {
-                        response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
-                            + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
-                    }
-                    else
-                    {
-                        response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
-                            "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
-
-                    }
-                    this.Keywords.Remove(message.From.Id.ToString());
                     return true;
                 }
+
             }
             response = string.Empty;
             return false;

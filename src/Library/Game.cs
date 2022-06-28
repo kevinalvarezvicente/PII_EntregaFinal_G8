@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-/*namespace PII_ENTREGAFINAL_G8.src.Library
+namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Aca se encuentran todos los métodos relacionados con el juego en general.
@@ -211,4 +211,4 @@ using System.Collections.Generic;
         
 
     }
-}*/
+}

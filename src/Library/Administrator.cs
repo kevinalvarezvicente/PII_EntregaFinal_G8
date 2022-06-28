@@ -1,6 +1,6 @@
 using System;
 
-/*namespace PII_ENTREGAFINAL_G8.src.Library
+namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Esta clase cumple el rol de administrador.
@@ -79,4 +79,3 @@ using System;
 
     }
 }
-*/

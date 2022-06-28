@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-/*namespace PII_ENTREGAFINAL_G8.src.Library
+namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Clase estatica para no tener que instanciar en cada momento
@@ -106,4 +106,4 @@ using System.Collections.Generic;
         }
         
     }
-}*/
+}

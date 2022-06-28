@@ -20,13 +20,14 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
-                chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
-
-                chainData.userPostionHandler[from].Add("/SerSoldado"); //Añadimos el nuevo handler que se esta ejecutando
-
-                if (chainData.userPostionHandler[from].Count == 1)
+                if (!chainData.userPostionHandler[from][0].Equals("/SerSoldado"))
                 {
-                    chainData.userPostionHandler[from].Add(message.Text); // Persistimos que el Usuario esta en la primera iteración.
+                    chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                }
+
+                if (chainData.userPostionHandler[from].Count == 0)
+                {
+                    chainData.userPostionHandler[from].Add("/SerSoldado"); //Añadimos el nuevo handler que se esta ejecutando.
                     response = "Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
                         "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
                         + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +

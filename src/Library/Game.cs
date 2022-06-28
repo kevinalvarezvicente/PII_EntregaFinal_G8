@@ -47,15 +47,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public Player Inactive_Player{get; private set;}
         
         /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
-        public List<Board> Player1Boards = new List<Board>();
-
-        /// <summary>
-        /// Se crea una lista con ambos tableros del jugador
-        /// </summary>
-        public List<Board> Player2Boards = new List<Board>();
-        /// <summary>
         /// Para guardar la partida se guardará una lista con los usuarios que la jugaron.
         /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
         /// </summary>
@@ -78,15 +69,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <param name="player1">Será el jugador que inicia todo</param>
         /// <param name="player2"></param>
-        /// <param name="boardLength">Ambos jugadores tendrán el mismo tamaño de tablero</param>
-        public Game(User player1, User player2, int boardLength)
+        public Game(User player1, User player2)
         {
             GetNextGameID();
             this.GameStatus = default;
             this.GameId= currentGameID;
             this.Date = DateTime.Now;
-            this.active_Player = new Player(player1, boardLength);
-            this.Inactive_Player = new Player(player2, boardLength);
+            this.active_Player = new Player(player1);
+            this.Inactive_Player = new Player(player2);
             this.usersList.Add(player1);
             this.usersList.Add(player2);
             this.Player1Boards.Add(this.Active_Player.PlayerShipBoard);

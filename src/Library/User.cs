@@ -38,7 +38,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es la lista de juegos del usuario propio
         /// </summary>
         /// <value></value>
-        public List<Game> UserGamesList { get; private set; }
+        //public List<Game> UserGamesList { get; private set; }
         /// <summary>
         /// El constructor de Usuario crea una Lista de juegos del usuario
         /// </summary>

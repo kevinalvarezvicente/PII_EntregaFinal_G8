@@ -6,6 +6,7 @@
     /// </summary>
     public class ShotBoard : Board
     {
+
         /// <summary>
         /// El tablero de tiros se inicializa
         /// </summary>
@@ -14,6 +15,10 @@
         public ShotBoard(int x):base(x) 
         {
             this.InitializeBoard(x);
+            this.what="ShotBoard";
         }
+
+
+
     }
 }

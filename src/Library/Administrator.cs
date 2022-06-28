@@ -64,7 +64,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public static void RegisterUser(string name, string surename)
         {
             /* User user = new User(name, surename);
-             UsersContainer.AddUser(user);*/
+             UsersContainer.AddUser(user);
         }
         /// <summary>
         /// Método que guarda la partida del usuario en el Container

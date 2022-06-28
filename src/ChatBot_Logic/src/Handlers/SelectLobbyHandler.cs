@@ -33,30 +33,44 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 10);
+                    Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(10);
+                    Board board2 = new ShotBoard(10);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
                     response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. "
-                            + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+         + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Donbas"))
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 15);
+                    Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(15);
+                    Board board2 = new ShotBoard(15);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
                     response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
-                            + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+        + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Laos"))
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 20);
+                    Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(20);
+                    Board board2 = new ShotBoard(20);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. "
-                    + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+                    response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
+                        "el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+
                     return true;
                 }
                 else

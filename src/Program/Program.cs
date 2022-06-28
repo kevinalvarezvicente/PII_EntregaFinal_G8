@@ -4,6 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
+using System;
 using ChatBot_Logic.src;
 using PII_ENTREGAFINAL_G8.src.Library;
 
@@ -20,10 +21,14 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            ChatBot bot = ChatBot.Instance;
+            //hatBot bot = ChatBot.Instance;
 
- 
-
+            User user = new User(12,"Carol","Glass");
+            Board Shipboard1 = new ShipBoard(4);
+            Board Shotboard1= new ShotBoard(4);
+            Player player = new Player(user);
+            player.AddPlayerBoard(Shipboard1);
+            player.AddPlayerBoard(Shotboard1);
 
         }
     }

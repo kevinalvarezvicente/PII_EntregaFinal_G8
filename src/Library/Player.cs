@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -35,31 +36,63 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         private List<Ship> shipsList = new List<Ship>();
         /// <summary>
+        /// Esta es un arreglo de tamaño 2 donde va a estar los dos tableros del jugador
+        /// </summary>
+        private List<Board> playerBoardsList = new List<Board>();
+        
+        /// <summary>
         /// Constructor de player. 
         /// Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador
         /// Cada Usuario, al decidir que quiere jugar, se transforma en jugadory se le asigna propio tablero de tiros y de barcos
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
-        /// <param name="BoardLength">Elige el tamaño del tablero</param>
-        public Player(User user, int BoardLength)
+        public Player(User user)
         {
             this.userId = user.UserId;
             this.playerName = user.Name;
-            this.playerShipBoard = new ShipBoard(BoardLength);
-            this.playerShotBoard = new ShotBoard(BoardLength);
 
         }
         /// <summary>
-        /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard 
+        /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
         /// </summary>
         /// <returns>Retorna una matriz con los barcos agregados</returns>
-        public ShipBoard PlayerShipBoard
+        public void AddPlayerBoard(Board board)
+        {
+            playerBoardsList.Add(board);
+        }
+        public ShipBoard GetPlayerShipBoard()
+        {
+            foreach (Board board in playerBoardsList)
+            {
+                if (board.What=="ShipBoard")
+                {
+                    return this.playerShipBoard;
+                }  
+            }
+            return null; 
+        }
+        public ShotBoard GetPlayerShotBoard()
+        {
+            foreach (Board board in playerBoardsList)
+            {
+                if (board.What=="ShotBoard")
+                {
+                    return this.playerShotBoard;
+                }  
+            }
+            return null; 
+        }
+        /// <summary>
+        /// Esta seria la lista de tableros del jugador
+        /// </summary>
+        /// <value>Es una lista</value>
+        public List<Board> PlayerBoardsList
         {
             get
             {
-                return this.playerShipBoard;
+                return this.playerBoardsList;
             }
-            
+
         }
         public long UserId
         {
@@ -69,18 +102,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             
         }
-        /// <summary>
-        /// Se obtiene el tablero de tiros a través de la propiedad PlayerShotBoard
-        /// </summary>
-        /// <returns>Retorna una matriz con los tiros realizados </returns>
-        public ShotBoard PlayerShotBoard
-        {
-            get
-            {
-                return this.playerShotBoard;
-            }
-            
-        }
+
         /// <summary>
         /// Se obtiene el nombre del jugador a través de la propiedad PlayerName
         /// </summary>
@@ -91,16 +113,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 return this.playerName;
             }
+            private set
+            {
+                this.playerName=value;
+            }
             
         }
-        /// <summary>
-        /// Permite al jugador cambiar su nombre
-        /// </summary>
-        /// <param name="NewName">Recibe un nuevo nombre para el jugador</param>
-        private void ChangePlayerName(string NewName)
-        {
-            this.playerName = NewName;
-        }
+
         /// <summary>
         /// Es la lista de barcos formada por diccionarios.
         /// En tiempo de ejecución, los objetos de una clase derivada (como Submarine, LightCruiser o Frigate) pueden ser
@@ -226,7 +245,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
                 foreach (Spot spot in  ship.CoordsList)
                 {
-                    this.PlayerShipBoard.GameBoard[spot.X,spot.Y] = "o";
+                    this.playerShipBoard.GameBoard[spot.X,spot.Y] = "o";
                 }
                 ShipsList.Add(ship);
         }

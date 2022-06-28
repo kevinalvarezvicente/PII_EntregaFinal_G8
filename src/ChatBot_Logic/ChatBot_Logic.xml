@@ -25,76 +25,6 @@
               Busca una cadena traducida similar a development.
             </summary>
         </member>
-        <member name="T:ChatBot_Logic.src.ChatBot">
-            <summary>
-            Clase encargada de la gestion del ChatBot
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.Token">
-            <summary>
-            Obtenemos el Token de la clase TokenConfiguration
-            </summary>
-        </member>
-        <!-- Badly formed XML comment ignored for member "F:ChatBot_Logic.src.ChatBot._instance" -->
-        <member name="F:ChatBot_Logic.src.ChatBot.Bot">
-            <summary>
-            Variable que almacenara el cliente Telegram, en este caso el Bot.
-            </summary>
-        </member>
-        <member name="F:ChatBot_Logic.src.ChatBot.cts">
-            <summary>
-            Variable para cerrar la escucha del bot.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.#ctor">
-            <summary>
-            Constructor de ChatBot
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.BotInfo">
-            <summary>
-            Obtiene la informacion del Bot.
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.BotId">
-            <summary>
-            Obtiene el id del Bot.
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.BotName">
-            <summary>
-            Obtiene el nombre del Bot.
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.Client">
-            <summary>
-            Obtiene al cliente.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.listen">
-            <summary>
-            Iniciar la escucha del Bot, para asi poder recibir y procesar los mensajes.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.HandleUpdateAsync(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
-            <summary>
-            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
-            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.ChatBot.HandleMessageReceived(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.Message)">
-            <summary>
-            Maneja los mensajes que se envían al bot a través de handlers de una chain of responsibility.
-            </summary>
-            <param name="message">El mensaje recibido</param>
-            <returns></returns>
-        </member>
-        <member name="P:ChatBot_Logic.src.ChatBot.Instance">
-            <summary>
-            Obtine la instancia del ChatBot, si no existe la crea.
-            Desarollo con el patrón Singleton.
-            </summary>
-        </member>
         <member name="T:ChatBot_Logic.src.Handlers.GoodByeHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "chau".
@@ -262,21 +192,6 @@
             caso de error por ejemplo.
             </summary>
         </member>
-        <member name="T:ChatBot_Logic.src.Handlers_Configuration.HandlersConcadenation">
-            <summary>
-            Clase titular de informacion, facilita la informacion de los handlers.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.Handlers_Configuration.HandlersConcadenation.InitializeHandlers">
-            <summary>
-            Inicializa cada Handler.
-            </summary>
-        </member>
-        <member name="P:ChatBot_Logic.src.Handlers_Configuration.HandlersConcadenation.FirstHandler">
-            <summary>
-            Obtiene el primer Handler.
-            </summary>
-        </member>
         <member name="T:ChatBot_Logic.src.SecretToken.BotSecret">
             <summary>
             Object POCO class.
@@ -311,22 +226,6 @@
         </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.SecretService.Token">
             <inheritdoc/>
-        </member>
-        <member name="T:PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.TokenConfiguration">
-            <summary>
-            Clase encargada de administrar y realizar la verificación del entorno de desarollo 
-            y la obtencion del Token secreto de la ubicacion secreta.
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.TokenConfiguration.StartTokenConfig">
-            <summary>
-            Obtiene el token y lo revela.
-            </summary>
-        </member>
-        <member name="P:PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.TokenConfiguration.Token">
-            <summary>
-            Obtiene el Token.
-            </summary>
         </member>
     </members>
 </doc>

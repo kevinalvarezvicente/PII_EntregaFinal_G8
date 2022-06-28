@@ -13,6 +13,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es operación polimórifca ya que va a poder ser utilizada en el program de la misma 
         /// </summary>
         /// <param name="board"> Es un supertipo </param>
-       void PrintPlayerBoard(AbstractBoard board);
+       void PrintPlayerBoard(Board board);
     }
 }

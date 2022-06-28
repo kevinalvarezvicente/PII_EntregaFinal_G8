@@ -45,14 +45,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada Usuario, al decidir que quiere jugar, se transforma en jugadory se le asigna propio tablero de tiros y de barcos
         /// </summary>
         /// <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
-        public Player(User user, int largo)
+        public Player(User user)
         {
             this.userId = user.UserId;
             this.playerName = user.Name;
-            Board board1 = new ShipBoard(largo);
-            Board board2 = new ShotBoard(largo);
-            this.playerShipBoard = board1;
-            this.playerShotBoard = board2;
+            this.playerShipBoard = this.GetPlayerShipBoard();
+            this.playerShotBoard = this.GetPlayerShotBoard();
         }
         /// <summary>
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard

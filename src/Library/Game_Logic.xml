@@ -456,7 +456,7 @@
             Esta es un arreglo de tamaño 2 donde va a estar los dos tableros del jugador
             </summary>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.#ctor(PII_ENTREGAFINAL_G8.src.Library.User,System.Int32)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.#ctor(PII_ENTREGAFINAL_G8.src.Library.User)">
             <summary>
             Constructor de player. 
             Se utiliza patrón creator para crear instancia del tablero de tiros y de barcos del jugador

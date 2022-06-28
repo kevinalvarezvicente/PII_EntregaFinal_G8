@@ -38,8 +38,10 @@ namespace ChatBot_Logic.src.Handlers
                     Board board2 = new ShotBoard(10);
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
-                    LobbyContainer.AddPlayer(player, 1);
-                    response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
+                    LobbyContainer.AddPlayer(player);
+                    response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. "
+         + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Donbas"))
@@ -51,9 +53,9 @@ namespace ChatBot_Logic.src.Handlers
                     Board board2 = new ShotBoard(15);
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
-                    LobbyContainer.AddPlayer(player, 2);
+                    LobbyContainer.AddPlayer(player);
                     response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
-                            + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
+        + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Laos"))
@@ -65,9 +67,10 @@ namespace ChatBot_Logic.src.Handlers
                     Board board2 = new ShotBoard(20);
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
-                    LobbyContainer.AddPlayer(player, 3);
+                    LobbyContainer.AddPlayer(player);
                     response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
-                            "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
+                        "el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+
                     return true;
                 }
                 else

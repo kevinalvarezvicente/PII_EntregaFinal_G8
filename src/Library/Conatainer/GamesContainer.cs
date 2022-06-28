@@ -61,10 +61,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             for (int i=0; i<GamesContainer.gamesContainer.Count; i++)
             {
-                List <User> UsersPlaying = GamesContainer.gamesContainer[i].UsersList;
-                foreach (User user in UsersPlaying)
+                List <Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
+                foreach (Player player in UsersPlaying)
                 {
-                    if (user.UserId==ID)
+                    if (player.UserId==ID)
                     {
                         return GamesContainer.gamesContainer[i].GameId;
                     }
@@ -91,10 +91,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 if (ID==gamescontainer[i].GameId)
                 {
-                    List<T> list = new List<T>()
+                    List<string> list = new List<string>()
                                                 {
-                                                    gamescontainer[i].Date,
-                                                    gamescontainer[i].,
+                                                    gamescontainer[i].Date.ToString(),
+                                                    gamescontainer[i].Active_Player.ToString(),
+                                                    gamescontainer[i].Active_Player.ToString(),
+                                                    gamescontainer[i]
                                                 };
                     return list;
                 }
@@ -103,7 +105,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     throw new ContainerException("No se ha encontrado el usuario");
                 }
             }
-        }
+        }*/
         
     }
 }

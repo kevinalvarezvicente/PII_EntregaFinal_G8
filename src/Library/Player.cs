@@ -133,6 +133,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
+        public int GetPlayerBoardSize()
+        {
+            return this.playerShipBoard.GameBoard.GetLength(0);
+        }
         /// <summary>
         /// Busca la coordenada en la lista de barcos cambiarla a true pues se realizó un disparo
         /// Devuelve true una vez que cambio el valor del Spot.

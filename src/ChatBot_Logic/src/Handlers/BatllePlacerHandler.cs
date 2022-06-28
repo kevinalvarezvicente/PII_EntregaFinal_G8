@@ -1,16 +1,17 @@
 ﻿using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
+using PII_ENTREGAFINAL_G8.src.Library;
 using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
-    public class UserToPlayerHandler : BaseHandler
+    public class BatllePlacerHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public UserToPlayerHandler(BaseHandler next) : base(next)
+        public BatllePlacerHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
             Keywords.Add("/batallar");

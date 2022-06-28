@@ -12,21 +12,50 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se instancia una lista para usuarios que quieren esperar para jugar
         /// </summary>
         /// <returns></returns>
-        private static List<User> lobbycontainer = new List<User>();
+        private static List<Player> lobbycontainerMaldivas = new List<Player>();
+        private static List<Player> lobbycontainerDonbas = new List<Player>();
+        private static List<Player> lobbycontainerLaos = new List<Player>();
+
         /// <summary>
         /// Método para agregar usuario al contenedor
         /// </summary>
         /// <param name="user"></param>
-        public static void AddUser(User user)
+        public static void AddPlayer(Player player, int lobbyType)
         {
-            foreach (User userToCompare in lobbycontainer)
+            foreach (Player userToCompare in lobbycontainerMaldivas)
             {
-                if(userToCompare.Equals(user))
+                if (userToCompare.Equals(player))
                 {
                     throw new ContainerException($"El elemento ya está en la lista");
                 }
             }
-            lobbycontainer.Add(user);
+            foreach (Player userToCompare in lobbycontainerDonbas)
+            {
+                if (userToCompare.Equals(player))
+                {
+                    throw new ContainerException($"El elemento ya está en la lista");
+                }
+            }
+            foreach (Player userToCompare in lobbycontainerLaos)
+            {
+                if (userToCompare.Equals(player))
+                {
+                    throw new ContainerException($"El elemento ya está en la lista");
+                }
+            }
+            if (lobbyType == 1)
+            {
+                lobbycontainerMaldivas.Add(player);
+            }
+            else if (lobbyType == 2)
+            {
+                lobbycontainerDonbas.Add(player);
+            }
+            else if (lobbyType == 3)
+            {
+                lobbycontainerLaos.Add(player);
+            }
+
             /*if(!lobbycontainer.Contains(user))
             {
                 lobbycontainer.Add(user);
@@ -35,30 +64,48 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new ContainerException($"El elemento ya está en la lista");
             }*/
-
-            
         }
         /// <summary>
         /// Para tener acceso al container de espera
         /// </summary>
         /// <value></value>
-        public static List<User> lobbyContainer
+        public static List<Player> lobbyMaldivas
         {
             get
             {
-                return lobbycontainer;
+                return lobbycontainerMaldivas;
+            }
+        }
+        public static List<Player> lobbyDonbas
+        {
+            get
+            {
+                return lobbycontainerDonbas;
+            }
+        }
+        public static List<Player> lobbyLaos
+        {
+            get
+            {
+                return lobbycontainerLaos;
             }
         }
         /// <summary>
         /// Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
         /// </summary>
         /// <param name="user"></param>
-        public static void RemoveUser(User user)
+        public static void RemovePlayer(Player player)
         {
-            
-            if(lobbycontainer.Contains(user))
+
+            if (lobbycontainerMaldivas.Contains(player))
             {
-                lobbycontainer.Remove(user);
+                lobbycontainerMaldivas.Remove(player);
+            }
+            else if ((lobbycontainerDonbas.Contains(player)) {
+                lobbycontainerDonbas.Remove(player);
+            }
+            else if ((lobbycontainerLaos.Contains(player)) {
+                lobbycontainerLaos.Remove(player);
             }
             else
             {
@@ -69,18 +116,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
         /// </summary>
         /// <returns></returns>
-        public static bool AreUsersToStartGame() 
+        public static bool ArePlayerToStartGame()
         {
-            if (lobbycontainer.Count>=2)
+            if (lobbycontainerMaldivas.Count >= 2 || lobbycontainerDonbas.Count >= 2 || lobbycontainerLaos.Count >= 2)
             {
                 return true;
             }
-            else
-            {
-                return false;
-                
-            }
-        } 
-        
+            return false;
+        }
     }
-}

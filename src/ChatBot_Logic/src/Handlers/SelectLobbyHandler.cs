@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
-    public class MakeBoardHandler : BaseHandler
+    public class SelectLobbyHandler : BaseHandler
     {
-        public MakeBoardHandler(BaseHandler next) : base(next)
+        public SelectLobbyHandler(BaseHandler next) : base(next)
         {
 
             this.Keywords = new List<string>();
@@ -33,9 +33,8 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    // Player player = new Player(ActiveUser, 10);
-                    //User ActiveUser = new User(message.From.Id, message.From.FirstName, message.From.FirstName);
-                    Player player = new Player(ActiveUser, 10);
+                    Player player = new Player(ActiveUser);
+                    LobbyContainer.AddPlayer(player, 1);
                     response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     return true;
                 }
@@ -43,16 +42,18 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 15);
+                    Player player = new Player(ActiveUser);
+                    LobbyContainer.AddPlayer(player, 2);
                     response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
                             + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
-
+                    return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Laos"))
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
-                    Player player = new Player(ActiveUser, 25);
+                    Player player = new Player(ActiveUser);
+                    LobbyContainer.AddPlayer(player, 3);
                     response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
                             "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     return true;

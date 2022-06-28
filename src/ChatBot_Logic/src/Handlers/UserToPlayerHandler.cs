@@ -25,24 +25,24 @@ namespace ChatBot_Logic.src.Handlers
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;
-            string from = message.From.ToString();
+            string from = message.From.Id.ToString();
 
-            chainData.userPostionHandler[message.From.ToString()].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
-
-            if (this.CanHandle(message) || chainData.userPostionHandler.ContainsKey(from))
+            if (this.CanHandle(message))
             {
-                chainData.userPostionHandler[from].Add(message.Text);
+                chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo
+                chainData.userPostionHandler[from].Add("/batallar"); //Añadimos el nuevo handler que se esta ejecutando
 
                 if (chainData.userPostionHandler[from].Count == 1)
                 {
+                    chainData.userPostionHandler[from].Add(message.Text); // Persistimos que el Usuario esta en la primera iteración.
                     response = "Antes de luchar debes de seleccionar la region 🌎 de campo en la que batallarás a muerte.🪦" +
                     "\n🇦🇷 /Maldivas: 10 hectareas \n🇺🇦 /Donbas: 15 hectareas \n🇱🇦 /Laos: 25 hectareas";
-
-                    chainData.userPostionHandler[from].Add(message.Text);
-                    this.Keywords.Add(message.From.Id.ToString()); //Añadimos el user id a las Keywords. Important!
+                    this.Keywords.Add(message.From.Id.ToString()); //// Captamos el segundo mensaje que sea enviado luego de esta response, añadiendo el id del Usuario a las Keywords 
+                    return true;
                 }
                 if (chainData.userPostionHandler[from].Count == 2)
                 {
+                    chainData.userPostionHandler[from].Add(message.Text); // Persistimos que el Usuario esta en la segunda iteración.
                     if (message.Text.Equals("/Maldivas"))
                     {
                         response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. "
@@ -53,13 +53,16 @@ namespace ChatBot_Logic.src.Handlers
                         response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
                             + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     }
-                    else
+                    else if (message.Text.Equals("/Laos"))
                     {
                         response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
                             "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
-
                     }
-                    this.Keywords.Remove(message.From.Id.ToString());
+                    else
+                    {
+                        response = "No has seleccionado una opcion valida 🥺";
+                    }
+                    this.Keywords.Remove(from);
                     return true;
                 }
             }

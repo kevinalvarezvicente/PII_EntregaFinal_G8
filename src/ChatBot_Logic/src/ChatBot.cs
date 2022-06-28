@@ -1,4 +1,4 @@
-﻿//using ChatBot_Logic.src.Handlers_Configuration;
+﻿using ChatBot_Logic.src.Handlers_Configuration;
 using PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using Telegram.Bot.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-/*namespace ChatBot_Logic.src
+namespace ChatBot_Logic.src
 {
     /// <summary>
     /// Clase encargada de la gestion del ChatBot
@@ -174,4 +174,4 @@ using Telegram.Bot.Types.Enums;
             }
         }
     }
-}*/
+}

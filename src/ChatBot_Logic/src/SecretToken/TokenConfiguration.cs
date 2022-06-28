@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-/*namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
+namespace PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken
 {
     /// <summary>
     /// Clase encargada de administrar y realizar la verificación del entorno de desarollo 
@@ -59,4 +59,4 @@ using System;
             get { return token; }
         }
     }
-}*/
+}

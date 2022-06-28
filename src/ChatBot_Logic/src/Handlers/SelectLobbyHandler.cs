@@ -34,6 +34,10 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
                     Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(10);
+                    Board board2 = new ShotBoard(10);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player, 1);
                     response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
                     return true;
@@ -43,6 +47,10 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
                     Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(15);
+                    Board board2 = new ShotBoard(15);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player, 2);
                     response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
                             + "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";
@@ -53,6 +61,10 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
                     Player player = new Player(ActiveUser);
+                    Board board1 = new ShipBoard(20);
+                    Board board2 = new ShotBoard(20);
+                    player.AddPlayerBoard(board1);
+                    player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player, 3);
                     response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
                             "Estoy buscandote una battalla ⚔️... \n Sal vivo por favor 🤞🏽. ¡Suerte 🍀!";

@@ -718,11 +718,6 @@
             Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
             </summary>
         </member>
-        <member name="F:PII_ENTREGAFINAL_G8.src.Library.User.currentID">
-             <summary>
-            El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
-             </summary>
-        </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.User.UserId">
             <summary>
             Es el ID de usuario

@@ -4,6 +4,146 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="M:LibraryTests.BoardTests.TestBigBoardException">
+            <summary>
+            Testea excepcion del tamaño del tablero
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardTests.TestSmallBoardException">
+            <summary>
+            Testea excepcion de que el tamaño del tablero se elige 0
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ContainerTests.TestAddPlayerToLobby">
+            <summary>
+            Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ContainerTests.TestAreNotUserInListException">
+            <summary>
+            Test para ver que es posible iniciar una partida porque hay mas jugadores
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.PlayerReceivesShotTest">
+            <summary>
+            Se testea cuando un jugador recibe un shot 
+            Se testea que el barco que se agregó se agrega a la lista de barcos del jugador
+            Se testea que al recibir el shot cambie el valor de la coordenada del barco
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestPlayerShipsList">
+            <summary>
+            Testea que cuando se agregan barcos a la lista de barcos del jugador
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestMakeShot">
+            <summary>
+            El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            </summary>
+        </member>
+        <member name="T:LibraryTests.ShipTests">
+            <summary>
+            Se hace test para el método que divide la coordenada
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestReceiveShotException">
+            <summary>
+            Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddFrigateToBoardVertical">
+            <summary>
+            Se testea agregar un LightCruiser en vertical
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddFrigateToBoardHorizontal">
+            <summary>
+            Se testea agregar un Frigate en horizontal
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfFrigate">
+            <summary>
+            Testea que se agreguen 2 posiciones de Frigate
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddLightCruiserToBoardVertical">
+            <summary>
+            Se testea agregar un LightCruiser en vertical
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddLightCruiserToBoardHorizontal">
+            <summary>
+            Se testea agregar un LightCruiser en horizontal
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfLightCruiser">
+            <summary>
+            Se testea que se agreguen las 3 posiciones de LightCruiser
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddSubmarineToBoardVertical">
+            <summary>
+            Se testea agregar un Submarino en vertical
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddSubmarineToBoardHorizontal">
+            <summary>
+            Se testea agregar un Submarino en horizontal
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfSubmarine">
+            <summary>
+            Se testea que se agreguen las 4 posiciones del submarino
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.PlayerShipSinkedTest">
+            <summary>
+            Test sin funcionar aún 
+            </summary>    
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestVulnerableCoord">
+            <summary>
+            Testea que si se dispara a la coordenada vulnerable de cualquier barco se hunde.
+            Testea que al jugador se le hundieron todos sus barcos
+            </summary>  
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlayerAddingManyShipsList">
+            <summary>
+            Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceSubmarineInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceFrigateInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceCruiserInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceShipOutOfBoard">
+            <summary>
+            Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListOK">
+            <summary>
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que si esta
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListNotOK">
+            <summary>
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que no esta
+            </summary>
+        </member>
         <member name="T:LibraryTests.UtilsTests">
             <summary>
             Se hace test para los métodos de la clase Utilidades

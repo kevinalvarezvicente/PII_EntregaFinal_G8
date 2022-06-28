@@ -14,10 +14,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public static List<User> usersList = new List<User>();
 
-        /// <summary>
-        ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado. 
-        /// </summary>
-        private static int currentID;
 
         /// <summary>
         /// Es el ID de usuario

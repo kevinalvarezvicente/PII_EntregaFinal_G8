@@ -94,6 +94,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 return this.playerBoardsList;
             }
+            set
+            {
+                this.playerBoardsList=value;
+            }
 
         }
         public long UserId

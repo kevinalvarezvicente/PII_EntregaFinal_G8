@@ -14,6 +14,16 @@
             Testea excepcion de que el tamaño del tablero se elige 0
             </summary>
         </member>
+        <member name="M:LibraryTests.BoardTests.MakeBoard">
+            <summary>
+            se prueba un board de 10, 100 porque 10*10 es 100
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardTests.MaxShipsQuantity">
+            <summary>
+            se prueba la maxima cantidad de barcos
+            </summary>
+        </member>
         <member name="M:LibraryTests.ContainerTests.TestAddPlayerToLobby">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton

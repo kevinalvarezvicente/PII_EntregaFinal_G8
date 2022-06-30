@@ -19,7 +19,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user"></param>
         public static void AddUser(User user)
         {
-            if(!userscontainer.Contains(user))
+            if (!userscontainer.Contains(user))
             {
                 userscontainer.Add(user);
                 Console.WriteLine("Se agrego el usuario a la lista");
@@ -29,7 +29,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new ContainerException($"El elemento ya está en la lista");
             }
 
-            
+
         }
         /// <summary>
         /// Permite tener acceso al contenedor de usuarios
@@ -48,8 +48,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user">Recibe por parámetro un usuario para eliminar de la lista de usuarios</param>
         public static void RemoveUser(User user)
         {
-            
-            if(userscontainer.Contains(user))
+
+            if (userscontainer.Contains(user))
             {
                 userscontainer.Remove(user);
             }
@@ -65,9 +65,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna verdadero o falso si el usuario esta registrado o no</returns>
         public static bool VerifyUserByID(long ID)
         {
-            for (int i = 0; i<userscontainer.Count; i++)
+            for (int i = 0; i < userscontainer.Count; i++)
             {
-                if (ID==userscontainer[i].UserId)
+                if (ID == userscontainer[i].UserId)
                 {
                     return true;
                 }
@@ -81,17 +81,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Devuelve el usuario que concuerde con el ID o lanza una excepcion</returns>
         public static User GetUSerByID(long ID)
         {
-            for (int i = 0; i<userscontainer.Count; i++)
-            {   
+            for (int i = 0; i < userscontainer.Count; i++)
+            {
                 Console.WriteLine(userscontainer[i]);
-                if (ID==userscontainer[i].UserId)
+                if (ID == userscontainer[i].UserId)
                 {
-                    
+
                     return userscontainer[i];
                 }
             }
-           throw new ContainerException("No se encontro user id");
+            throw new ContainerException("No se encontro user id");
         }
-        
+
     }
 }

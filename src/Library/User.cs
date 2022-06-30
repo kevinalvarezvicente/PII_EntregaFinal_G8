@@ -9,7 +9,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Hace lo mínimo necesario como almacenar la información del usuario y delega todo lo demás 
     /// Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
     /// </summary>
-    public class User 
+    public class User
     {
 
         public static List<User> usersList = new List<User>();

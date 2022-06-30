@@ -22,7 +22,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             foreach (Player playerToCompare in lobbycontainer)
             {
-                if(playerToCompare.Equals(player))
+                if (playerToCompare.Equals(player))
                 {
                     throw new ContainerException($"El jugador ya está en la lista");
                 }
@@ -30,7 +30,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             lobbycontainer.Add(player);
 
 
-            
+
         }
         /// <summary>
         /// Para tener acceso al container de espera
@@ -49,8 +49,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="player"></param>
         public static void RemoveUser(Player player)
         {
-            
-            if(lobbycontainer.Contains(player))
+
+            if (lobbycontainer.Contains(player))
             {
                 lobbycontainer.Remove(player);
             }
@@ -63,16 +63,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
         /// </summary>
         /// <returns></returns>
-        public static bool AreUsersToStartGame() 
+        public static bool AreUsersToStartGame()
         {
-            if (lobbycontainer.Count>=2)
+            if (lobbycontainer.Count >= 2)
             {
                 return true;
             }
             else
             {
                 return false;
-                
+
             }
         }
         /// <summary>
@@ -82,33 +82,35 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna el jugador cuyo tablero coincide con el del jugador pasado por parámetro</returns>
         public static Player JoinPlayersWithSameBoardSize(Player player)
         {
-            for (int i=0; i<lobbycontainer.Count; i++)
+            for (int i = 0; i < lobbycontainer.Count; i++)
             {
-                    if (lobbycontainer[i].GetPlayerBoardSize()==player.GetPlayerBoardSize() && lobbycontainer[i].UserId!=player.UserId)
-                    {
-                        return lobbycontainer[i];
-                    }
+                if (lobbycontainer[i].GetPlayerBoardSize() == player.GetPlayerBoardSize() && lobbycontainer[i].UserId != player.UserId)
+                {
+                    return lobbycontainer[i];
+                }
             }
             return null;
-        } 
+        }
+
         /// <summary>
         /// Metodo que busca al jugador en el lobby por su ID
         /// </summary>
         /// <param name="ID">Identificador del jugador</param>
         /// <returns>Retorna el jugador que coincide con el ID o larga Excepcion</returns>
+
         public static Player GetPlayerByID(long ID)
         {
-            for (int i = 0; i<lobbycontainer.Count; i++)
-            {   
+            for (int i = 0; i < lobbycontainer.Count; i++)
+            {
 
-                if (ID==lobbycontainer[i].UserId)
+                if (ID == lobbycontainer[i].UserId)
                 {
-                    
+
                     return lobbycontainer[i];
                 }
             }
-           throw new ContainerException("No se encontro player id");
+            throw new ContainerException("No se encontro player id");
         }
-        
+
     }
 }

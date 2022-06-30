@@ -39,9 +39,8 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado las 🇦🇷 /Maldivas de 10 hectareas!. "
-         + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
-
+                    response = "¡Has seleccionado las 🇦🇷 Maldivas 🇦🇷 de 10 hectareas!. "
+                            + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Donbas"))
@@ -54,8 +53,8 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado el 🇺🇦 /Donbas de 15 hectareas!. "
-        + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
+                    response = "¡Has seleccionado el 🇺🇦 Donbas 🇺🇦 de 15 hectareas!. "
+                            + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Laos"))
@@ -68,9 +67,8 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerBoard(board1);
                     player.AddPlayerBoard(board2);
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado 🇱🇦 /Laos de 25 hectareas!. " +
-                        "el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia estan atacando tu zona, defiendela o la perderás /defender";
-
+                    response = "¡Has seleccionado 🇱🇦 Laos 🇱🇦 de 25 hectareas!. "
+                    + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
                 else

@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 
@@ -11,7 +12,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Romperá LSP (Liskov Substitution Principle) ya que hay operaciones en el programa en general donde se requiere un objeto de tipo Board e importa si es de ShipBoard o ShotBoard ya que el juego está hecho para que cada jugador vea el ShotBoard y el ShipBoard por separado.
     /// Cumple OCP (Open-Close Principle) pues si el dia de mañana se agrega otro tipo de Board puede extender de esta sin problema y es cerrada a la modificación en el sentido de que  no es necesario realizar cambios en el código de esa clase
     /// </summary>
-    public class Board: AbstractBoard
+    public class Board : AbstractBoard
     {
         /// <summary>
         /// Atributo que dice que tablero es, si de barcos o de disparos
@@ -51,7 +52,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.InitializeBoard(x);
             this.maxShipsQuantity = x / 2;
-            this.what="";
+            this.what = "";
         }
         /// <summary>
         /// Método de acceso a la cantidad maxima habilitada de barcos a ubicar
@@ -81,7 +82,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="x">Es el largo del tablero</param>
         public override void InitializeBoard(int x)
         {
-            if (x>20 || x<1)
+            if (x > 20 || x < 1)
             {
                 throw new BoardException("El lado del tablero no puede superar el tamaño 20");
             }
@@ -91,6 +92,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)
                 {
+
                     this.gameBoard[i, j] = "-";
                 }
             }

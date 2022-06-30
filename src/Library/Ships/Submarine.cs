@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -8,7 +6,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Es subclase de Ship, lo que significa que heredará todos los métodos y se puede agregar otros.
     /// SRP: único motivo de cambio es si se desea agrgarle otro parámetro o cambiar el tamaño.
     /// </summary>
-    public class Submarine: Ship
+    public class Submarine : Ship
     {
         /// <summary>
         /// Tiene tamaño 4
@@ -16,7 +14,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Cadena donde ubicar la primer coordenada del barco</param>
         /// <param name="direction">Direccion que desea si vertical u horizontal</param>
         /// <returns></returns>
-        public Submarine(string coord, string direction):base(4, coord, direction)
+        public Submarine(string coord, string direction) : base(4, coord, direction)
         {
         }
 

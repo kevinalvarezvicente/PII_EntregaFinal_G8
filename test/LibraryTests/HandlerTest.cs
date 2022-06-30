@@ -5,9 +5,8 @@ using NUnit.Framework;
 
 namespace LibraryTests{
      public class HandlerTest{
-         ChatBot bot = ChatBot.Instance;
-
-
+        ChatBot bot = ChatBot.Instance;
 
      }
+
 }

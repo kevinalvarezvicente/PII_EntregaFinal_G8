@@ -1,5 +1,5 @@
 using System;
-
+ using System.Text;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -31,6 +31,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 Console.WriteLine();
             }
         }
+        public void PrintToTelegram(Board board){
+            StringBuilder txt = new StringBuilder("", 100);
+            for (int i = 0; i < board.GameBoard.GetLength(0); i++)
+            {
+            for (int j = 0; j <  board.GameBoard.GetLength(1); j++)
+                {
+                txt.Append(board.GameBoard[i,j]+" ");
+                }
+                txt.Append("\n");
+             }
+           Console.WriteLine(txt);  
+        }
+
     }
 }
 

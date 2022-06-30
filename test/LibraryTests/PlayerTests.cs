@@ -3,6 +3,9 @@ using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace LibraryTests
 {
+    /// <summary>
+    /// Tests de los métodos de la clase Player
+    /// </summary>
     public class PlayerTests
     {
         /// <summary>

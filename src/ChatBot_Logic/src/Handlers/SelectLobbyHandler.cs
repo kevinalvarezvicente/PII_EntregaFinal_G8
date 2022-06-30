@@ -5,8 +5,17 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// Handler que asigna al usuario a un lobby segun el tamaño del tablero qeu selecciono
+    /// Es subclase de BaseHandler
+    /// Forma parte de Chain of fResponsibility
+    /// </summary>
     public class SelectLobbyHandler : BaseHandler
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="SelectLobbyHandler"/>. Esta clase procesa el mensaje "hola".
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public SelectLobbyHandler(BaseHandler next) : base(next)
         {
 
@@ -16,6 +25,13 @@ namespace ChatBot_Logic.src.Handlers
             Keywords.Add("/Laos");
 
         }
+        /// <summary>
+        /// Es el método donde se trabaja todo lo del handler.
+        /// Procesa los mensajes "/Maldivas", "/Donbas", "/Laos"
+        /// </summary>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
 
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {

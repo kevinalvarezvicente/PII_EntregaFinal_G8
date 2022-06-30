@@ -5,14 +5,29 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// Handler que registra al usuario
+    /// Es subclase de BaseHandler
+    /// Forma parte de Chain of fResponsibility
+    /// </summary>
     public class RegisterUserHandler : BaseHandler
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="RegisterUserHandler"/>. Esta clase procesa el mensaje "hola".
+        /// </summary>
+        /// <param name="next">El próximo "handler".</param>
         public RegisterUserHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
             Keywords.Add("/SerSoldado");
         }
-
+        /// <summary>
+        /// Es el método donde se trabaja todo lo del handler.
+        /// Procesa el mensaje "/SerSoldado"
+        /// </summary>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;

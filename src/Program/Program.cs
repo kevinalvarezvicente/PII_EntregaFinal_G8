@@ -22,14 +22,14 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         {
             ChatBot bot = ChatBot.Instance;
 
-
-            //No borrar esto, sirve para correr y que se guarde GameContainer en el JSON 
-            /*User c = new User(10,"c","g");
-            User x = new User(11,"x","Y");
-            Game game1 = new Game(new Player(c),new Player(x));
-            game1.saveGame();*/
-
-            
+            /*Board board = new ShipBoard(10);
+            User user = new User(10,"c","g");
+            Player player = new Player(user);
+            player.AddPlayerBoard(board);
+            Ship f = new Frigate("02","h");
+            player.PlaceShipOnBoard(f);
+            BoardPrinter bp = new BoardPrinter();
+            bp.PrintPlayerBoard(player.GetPlayerShipBoard());*/
 
         }
     }

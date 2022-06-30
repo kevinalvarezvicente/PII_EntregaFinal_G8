@@ -15,6 +15,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Una lista de juegos en general 
         /// </summary>    
         private static List<Game> gamescontainer = new List<Game>();
+        
         /// <summary>
         /// Se añade el juego
         /// </summary>
@@ -81,7 +82,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return null;
         }
-
+        /// <summary>
+        /// Método para obtener el iD del oponente
+        /// </summary>
+        /// <param name="ID">Es el identificador del oponente</param>
+        /// <returns>retorna un long porque es el id de telegram</returns>
         public static long ObtainEnemyId(long ID)
         {
             for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
@@ -104,11 +109,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ID">Es el ID del jugador obtenido de telegram</param>
         /// <returns>Retorna el juego</returns>
 
-
-
         public static Player ObtainPlayer(long ID)
         {
-
             for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
             {
                 List<Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
@@ -123,6 +125,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return null;
         }
+        /// <summary>
+        /// Método para obtener la partida segun el ID
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
 
         public static Game ObtainGame(long ID)
         {

@@ -8,9 +8,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Utils
     {
+        /// <summary>
+        /// Convierte la letra a numero
+        /// </summary>
+        /// <param name="number">Recibe por parámetro el numero de coordenada</param>
+        /// <returns>Retorna el el numero</returns>
         public static string NumberToletter(int number)
         {
-            int counter = 0;
             string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             return abc[number];
         }

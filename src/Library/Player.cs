@@ -19,6 +19,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene un tablero donde insertará sus barcos
         /// </summary>
         private Board playerShipBoard;
+        /// <summary>
+        /// Es el identificador que sale de telegram
+        /// </summary>
         private long userId;
         /// <summary>
         /// Cada jugador tiene un tablero donde irán los tiros
@@ -58,6 +61,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             playerBoardsList.Add(board);
             this.GetPlayerShipBoard();
         }
+        /// <summary>
+        /// Obtiene tablero de barcos del jugador
+        /// </summary>
+        /// <returns>Retorna el tablero</returns>
         public Board GetPlayerShipBoard()
         {
             foreach (Board board in playerBoardsList)
@@ -70,6 +77,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return null;
         }
+        /// <summary>
+        /// Método para obtener el tablero de tiros del jugador
+        /// </summary>
+        /// <returns>Retorna el tablero de tiros </returns>
         public Board GetPlayerShotBoard()
         {
             foreach (Board board in playerBoardsList)
@@ -97,6 +108,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
+        /// <summary>
+        /// Es el atributo identificador del usuario
+        /// </summary>
+        /// <value>Retorna el valor</value>
         public long UserId
         {
             get
@@ -136,6 +151,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
+        /// <summary>
+        /// Método para obtener el tamaño del tablero
+        /// </summary>
+        /// <returns>Retorna un entero con el tamaño del board</returns>
         public int GetPlayerBoardSize()
         {
             return this.playerShipBoard.GameBoard.GetLength(0);

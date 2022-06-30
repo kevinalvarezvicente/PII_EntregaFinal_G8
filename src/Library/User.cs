@@ -11,7 +11,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class User
     {
-
+        /// <summary>
+        /// Es la lista de usuaruis registrados
+        /// </summary>
         public static List<User> usersList = new List<User>();
 
 
@@ -30,26 +32,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// </summary>
         /// <value></value>
         public string Surename { get; private set; }
-        /// <summary>
-        /// Es la lista de juegos del usuario propio
-        /// </summary>
-        /// <value></value>
-        //public List<Game> UserGamesList { get; private set; }
+        
         /// <summary>
         /// El constructor de Usuario crea una Lista de juegos del usuario
         /// </summary>
         /// <param name="name">Es de tipo int</param>
         /// <param name="surename">Es de tipo string</param>
+        /// <param name="userId">Es de tipo long y es el ID del jugador</param>
         public User(long userId, string name, string surename)
         {
             this.UserId = userId;
             this.Name = name;
             this.Surename = surename;
         }
-
-
-
-
 
     }
 }

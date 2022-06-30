@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -75,7 +78,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public static Game ObtainGame(long ID)
         {
-                foreach (Game game in gamescontainer)
+                foreach (Game game in gamesContainer)
                 {
                     if (game.GameId==ID)
                     {
@@ -85,27 +88,28 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return null;
         }
 
-        /*public static List<string> SearchGameByID(int ID)
+        /*public static void saveContainer()
         {
-            for (int i = 0; i<gamescontainer.Count; i++)
+            List<string> jsonList = new List<string>();
+            foreach (Game game in gamesContainer)
             {
-                if (ID==gamescontainer[i].GameId)
-                {
-                    List<string> list = new List<string>()
-                                                {
-                                                    gamescontainer[i].Date.ToString(),
-                                                    gamescontainer[i].Active_Player.ToString(),
-                                                    gamescontainer[i].Active_Player.ToString(),
-                                                    gamescontainer[i]
-                                                };
-                    return list;
-                }
-                else
-                {
-                    throw new ContainerException("No se ha encontrado el usuario");
-                }
+                string json = game.ConvertToJson();
+                jsonList.Add(json);
             }
+            File.WriteAllText(@"..\..\src\Library\Games.json", jsonList.ToString());  
         }*/
+
+        public static void saveContainer()
+        {
+            foreach (Game game in gamesContainer)
+            {
+                string json = game.ConvertToJson();
+                File.AppendAllText(@"..\..\src\Library\Games.json", json);
+
+            }
+             
+        }
+
         
     }
 }

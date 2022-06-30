@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text.Json;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -14,8 +16,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// - Player
     /// - Ship (Cualquier tipo)
     /// </summary>
-    public class Game
+    public class Game: IJsonConvertible
     {
+        
         /// <summary>
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
         /// </summary>
@@ -78,12 +81,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.active_Player = player1;
             this.Inactive_Player = player2;
             this.playersList.Add(player1);
-            this.playersList.Add(player2);
-
-
         }
 
-            /// <summary>
+        /// <summary>
         /// Constructor estático para inicializar el miembro estático, currentID. 
         /// Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
         /// </summary>
@@ -205,6 +205,44 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return this.GameStatus;
         }
 
+        public List<string> TransformGameToList()
+        {
+            List<string> gameInfo= new List<string>();
+            gameInfo.Add(this.GameStatus.ToString());
+            gameInfo.Add(this.GameId.ToString());
+            gameInfo.Add(this.Date.ToString());
+            gameInfo.Add(this.active_Player.ToString());
+            gameInfo.Add(this.active_Player.PlayerBoardsList.ToString());
+            gameInfo.Add(this.Inactive_Player.PlayerBoardsList.ToString());
+            gameInfo.Add(this.Inactive_Player.ToString());
+            gameInfo.Add(this.playersList.ToString());
+            return gameInfo;            
+        }
+
+        public Game(string json)
+        {
+            this.LoadFromJson(json);
+        }
+
+        public string ConvertToJson()
+        {
+
+            return JsonSerializer.Serialize(this.TransformGameToList());
+        }
+
+        public void LoadFromJson(string json)
+        {
+            Game deserialized = JsonSerializer.Deserialize<Game>(json);
+            this.GameStatus = deserialized.GameStatus;
+            this.GameId= deserialized.GameId;
+            this.Date = deserialized.Date;
+            this.active_Player = deserialized.active_Player;
+            this.active_Player.PlayerBoardsList=deserialized.Inactive_Player.PlayerBoardsList;
+            this.Inactive_Player.PlayerBoardsList=deserialized.Inactive_Player.PlayerBoardsList;
+            this.Inactive_Player = deserialized.Inactive_Player;
+            this.playersList=deserialized.playersList;
+
+        }
         
 
     }

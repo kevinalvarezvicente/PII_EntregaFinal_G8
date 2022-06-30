@@ -59,7 +59,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new ContainerException($"El elemento ya está en la lista");
             }
         }
-
+        /// <summary>
+        /// Verifica el Usuario en el juego
+        /// </summary>
+        /// <param name="ID">Es el Identificador del usuario</param>
+        /// <returns>Devuelve el ID si es que el usuario esta en el juego</returns>
         public static int VerifyUserOnGame(long ID)
         {
             for (int i=0; i<GamesContainer.gamesContainer.Count; i++)
@@ -75,7 +79,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return 0;
         }
-
+        /// <summary>
+        /// Método para obtener el juego según el ID del jugador
+        /// </summary>
+        /// <param name="ID">Es el ID del jugador obtenido de telegram</param>
+        /// <returns>Retorna el juego</returns>
         public static Game ObtainGame(long ID)
         {
                 foreach (Game game in gamesContainer)
@@ -88,27 +96,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return null;
         }
 
-        /*public static void saveContainer()
-        {
-            List<string> jsonList = new List<string>();
-            foreach (Game game in gamesContainer)
-            {
-                string json = game.ConvertToJson();
-                jsonList.Add(json);
-            }
-            File.WriteAllText(@"..\..\src\Library\Games.json", jsonList.ToString());  
-        }*/
-
-        public static void saveContainer()
-        {
-            foreach (Game game in gamesContainer)
-            {
-                string json = game.ConvertToJson();
-                File.AppendAllText(@"..\..\src\Library\Games.json", json);
-
-            }
-             
-        }
 
         
     }

@@ -48,6 +48,11 @@
             Cumple OCP (Open-Close Principle) pues si el dia de mañana se agrega otro tipo de Board puede extender de esta sin problema y es cerrada a la modificación en el sentido de que  no es necesario realizar cambios en el código de esa clase
             </summary>
         </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Board.what">
+            <summary>
+            Atributo que dice que tablero es, si de barcos o de disparos
+            </summary>
+        </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Board.gameBoard">
             <summary>
             Se crea atributo privado de la matriz.
@@ -77,6 +82,18 @@
             Método de acceso a la cantidad maxima habilitada de barcos a ubicar
             </summary>
             <value>Retorna un entero segun el tamaño del tablero</value>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Board.What">
+            <summary>
+            Propiedad de acceso al atributo what
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Board.InitializeBoard(System.Int32)">
+            <summary>
+            Método implementado que inicializa el tablero
+            </summary>
+            <param name="x">Es el largo del tablero</param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShipBoard">
             <summary>
@@ -165,10 +182,24 @@
             </summary>
             <param name="game">Tipo Game es el parámetro</param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.VerifyUserOnGame(System.Int64)">
+            <summary>
+            Verifica el Usuario en el juego
+            </summary>
+            <param name="ID">Es el Identificador del usuario</param>
+            <returns>Devuelve el ID si es que el usuario esta en el juego</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.ObtainGame(System.Int64)">
+            <summary>
+            Método para obtener el juego según el ID del jugador
+            </summary>
+            <param name="ID">Es el ID del jugador obtenido de telegram</param>
+            <returns>Retorna el juego</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer">
             <summary>
             Clase estatica para no tener que instanciar en cada momento
-            SRP unico motivo de cambio es si en vez de querer guardar Users tengo que guardar Players solo cambia los parámetros a pasar
+            SRP unico motivo de cambio es si en vez de querer guardar Players tengo que guardar Users solo cambia los parámetros a pasar
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.lobbycontainer">
@@ -181,7 +212,7 @@
             <summary>
             Método para agregar usuario al contenedor
             </summary>
-            <param name="user"></param>
+            <param name="player">Recibe por parámetro un jugador para agrgar a lobby</param>
         </member>
         <member name="P:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.lobbyContainer">
             <summary>
@@ -191,15 +222,29 @@
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.RemoveUser(PII_ENTREGAFINAL_G8.src.Library.Player)">
             <summary>
-            Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
+            Quita al jugador, sirve para cuando un jugador comienza a jugar ya no es necesario que este en el lobby
             </summary>
-            <param name="user"></param>
+            <param name="player"></param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.AreUsersToStartGame">
             <summary>
             Retorna un booleanos si hay suficientes usuarios para comenzar un juwgo
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.JoinPlayersWithSameBoardSize(PII_ENTREGAFINAL_G8.src.Library.Player)">
+            <summary>
+            Une a los jugadores con el mismo tamaño de tablero elegido
+            </summary>
+            <param name="player">Recibe por parámetro un jugador</param>
+            <returns>Retorna el jugador cuyo tablero coincide con el del jugador pasado por parámetro</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.LobbyContainer.GetPlayerByID(System.Int64)">
+            <summary>
+            Metodo que busca al jugador en el lobby por su ID
+            </summary>
+            <param name="ID">Identificador del jugador</param>
+            <returns>Retorna el jugador que coincide con el ID o larga Excepcion</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.UsersContainer">
             <summary>
@@ -228,7 +273,21 @@
             <summary>
             Hay opcion de eliminar usuario si éste lo desea
             </summary>
-            <param name="user"></param>
+            <param name="user">Recibe por parámetro un usuario para eliminar de la lista de usuarios</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.VerifyUserByID(System.Int64)">
+            <summary>
+            Verifica que el usuario este registrado
+            </summary>
+            <param name="ID">Recibe por parámetro el ID del usuario de telegram</param>
+            <returns>Retorna verdadero o falso si el usuario esta registrado o no</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.UsersContainer.GetUSerByID(System.Int64)">
+            <summary>
+            Obtiene el Usuario según ID
+            </summary>
+            <param name="ID">Recibe por parámetro el ID del usuario de telegram</param>
+            <returns>Devuelve el usuario que concuerde con el ID o lanza una excepcion</returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
             <summary>
@@ -417,6 +476,35 @@
             </summary>
             <returns>Retorna true o false para finalizar el juego</returns>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.TransformGameToList">
+            <summary>
+            Transforma los datos del juego a una lista para poder guardarlo en json a futuro
+            </summary>
+            <returns>Retorna una lista</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.#ctor(System.String)">
+            <summary>
+            Método que carga el juego desde el Json
+            </summary>
+            <param name="json"></param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.ConvertToJson">
+            <summary>
+            Método que transforna a json
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.LoadFromJson(System.String)">
+            <summary>
+            Método que carga desde el archivo json
+            </summary>
+            <param name="json">Se le debe pasar por parámetro el json</param>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.saveGame">
+            <summary>
+            Método que guarda todo lo que hay en el contenedor de partidas en el archivo Games.json
+            </summary>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.IJsonConvertible">
             <summary>
             Define el tipo que tienen los objetos que pueder ser serializados en y deserializados desde texto en formato
@@ -569,10 +657,10 @@
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
             <summary>
-            Permite imprimir el tablero de tiros del jugador pasado por parámetro.
+            Permite imprimir el tablero del jugador pasado por parámetro.
             Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
             </summary>
-            <param name="board">Jugador dueño del tablero que se desea imprimir por pantalla</param>
+            <param name="board">Tablero que se desea imprimir por pantalla</param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.IPrinter">
             <summary>
@@ -588,6 +676,25 @@
             Es operación polimórifca ya que va a poder ser utilizada en el program de la misma 
             </summary>
             <param name="board"> Es un supertipo </param>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.TelegramBoardPrinter">
+            <summary>
+            Clase que implementa la interfaz IPrinter. 
+            El único método que necesita también debe poder ser utilizado para imprimir un tablero.
+            Tiene la responsabilidad de imprimir el tablero del jugador
+            Se podría decir que cumple con SRP.
+            Es expert, es quien tiene toda la informacion para imprimir tablero
+            Tiene un único motivo de cambio, pues solo imprime el tablero de tiros.
+            Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
+            Cumple DIP pues a través de la clase abstracta AbstractBoard de la que Board depende y que BoardPrinter depende también de esa abstracción por la interfaz de la cual hereda.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.TelegramBoardPrinter.PrintPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+            <summary>
+            Permite imprimir el tablero del jugador pasado por parámetro.
+            Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
+            </summary>
+            <param name="board">Tablero que se desea imprimir en telegram</param>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Frigate">
             <summary>

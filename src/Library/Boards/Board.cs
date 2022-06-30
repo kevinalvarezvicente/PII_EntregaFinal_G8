@@ -13,6 +13,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Board: AbstractBoard
     {
+        /// <summary>
+        /// Atributo que dice que tablero es, si de barcos o de disparos
+        /// </summary>
         protected string what;
         /// <summary>
         /// Se crea atributo privado de la matriz.
@@ -61,6 +64,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return this.maxShipsQuantity;
             }
         }
+        /// <summary>
+        /// Propiedad de acceso al atributo what
+        /// </summary>
+        /// <value></value>
         public string What
         {
             get
@@ -68,8 +75,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 return this.what;
             }
         }
-
-        
+        /// <summary>
+        /// Método implementado que inicializa el tablero
+        /// </summary>
+        /// <param name="x">Es el largo del tablero</param>
         public override void InitializeBoard(int x)
         {
             if (x>20 || x<1)

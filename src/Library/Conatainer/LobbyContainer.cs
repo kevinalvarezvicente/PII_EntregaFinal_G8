@@ -5,7 +5,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Clase estatica para no tener que instanciar en cada momento
-    /// SRP unico motivo de cambio es si en vez de querer guardar Users tengo que guardar Players solo cambia los parámetros a pasar
+    /// SRP unico motivo de cambio es si en vez de querer guardar Players tengo que guardar Users solo cambia los parámetros a pasar
     /// </summary>
     public static class LobbyContainer
     {
@@ -17,7 +17,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Método para agregar usuario al contenedor
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="player">Recibe por parámetro un jugador para agrgar a lobby</param>
         public static void AddPlayer(Player player)
         {
             foreach (Player playerToCompare in lobbycontainer)
@@ -44,9 +44,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
         /// <summary>
-        /// Quita al usuario, sirve para cuando un usuario comienza a jugar ya no es necesario que este en el lobby
+        /// Quita al jugador, sirve para cuando un jugador comienza a jugar ya no es necesario que este en el lobby
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="player"></param>
         public static void RemoveUser(Player player)
         {
             
@@ -75,7 +75,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 
             }
         }
-
+        /// <summary>
+        /// Une a los jugadores con el mismo tamaño de tablero elegido
+        /// </summary>
+        /// <param name="player">Recibe por parámetro un jugador</param>
+        /// <returns>Retorna el jugador cuyo tablero coincide con el del jugador pasado por parámetro</returns>
         public static Player JoinPlayersWithSameBoardSize(Player player)
         {
             for (int i=0; i<lobbycontainer.Count; i++)
@@ -87,7 +91,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return null;
         } 
-
+        /// <summary>
+        /// Metodo que busca al jugador en el lobby por su ID
+        /// </summary>
+        /// <param name="ID">Identificador del jugador</param>
+        /// <returns>Retorna el jugador que coincide con el ID o larga Excepcion</returns>
         public static Player GetPlayerByID(long ID)
         {
             for (int i = 0; i<lobbycontainer.Count; i++)

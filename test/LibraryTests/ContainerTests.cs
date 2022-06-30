@@ -34,7 +34,15 @@ namespace LibraryTests
             Assert.Throws<ContainerException>(() =>LobbyContainer.RemoveUser(player1));
             Assert.Throws<ContainerException>(() =>LobbyContainer.RemoveUser(player2));
         }
+/*
+        [Test]
+        public void RemoveUser(){
+            User carol = new User(10,"Carol","Glass");
+            Player player1 = new Player(carol);
+            Assert.AreEqual("player1",LobbyContainer.GetPlayerByID(10));
+        }
+*/
 
-
+        
     }
 }

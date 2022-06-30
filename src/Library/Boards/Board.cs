@@ -81,7 +81,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)
                 {
-                    
                     this.gameBoard[i, j] = "-";
                 }
             }

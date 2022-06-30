@@ -45,7 +45,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Hay opcion de eliminar usuario si éste lo desea
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">Recibe por parámetro un usuario para eliminar de la lista de usuarios</param>
         public static void RemoveUser(User user)
         {
 
@@ -58,7 +58,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new ContainerException($"El elemento ya está en la lista");
             }
         }
-
+        /// <summary>
+        /// Verifica que el usuario este registrado
+        /// </summary>
+        /// <param name="ID">Recibe por parámetro el ID del usuario de telegram</param>
+        /// <returns>Retorna verdadero o falso si el usuario esta registrado o no</returns>
         public static bool VerifyUserByID(long ID)
         {
             for (int i = 0; i < userscontainer.Count; i++)
@@ -70,8 +74,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return false;
         }
-
-
+        /// <summary>
+        /// Obtiene el Usuario según ID
+        /// </summary>
+        /// <param name="ID">Recibe por parámetro el ID del usuario de telegram</param>
+        /// <returns>Devuelve el usuario que concuerde con el ID o lanza una excepcion</returns>
         public static User GetUSerByID(long ID)
         {
             for (int i = 0; i < userscontainer.Count; i++)

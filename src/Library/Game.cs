@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
@@ -221,33 +222,44 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return this.GameStatus;
         }
-
-
-        public List<string> TransformGameToList()
+        /// <summary>
+        /// Transforma los datos del juego a una lista para poder guardarlo en json a futuro
+        /// </summary>
+        /// <returns>Retorna una lista</returns>
+        public Dictionary<string,string> TransformGameToList()
         {
-            List<string> gameInfo= new List<string>();
-            gameInfo.Add(this.GameStatus.ToString());
-            gameInfo.Add(this.GameId.ToString());
-            gameInfo.Add(this.Date.ToString());
-            gameInfo.Add(this.active_Player.ToString());
-            gameInfo.Add(this.active_Player.PlayerBoardsList.ToString());
-            gameInfo.Add(this.Inactive_Player.PlayerBoardsList.ToString());
-            gameInfo.Add(this.Inactive_Player.ToString());
-            gameInfo.Add(this.playersList.ToString());
+            Dictionary<string,string> gameInfo= new Dictionary<string,string>();
+            gameInfo.Add("Estado", this.GameStatus.ToString());
+            gameInfo.Add("Id",this.GameId.ToString());
+            gameInfo.Add("Fecha" , this.Date.ToString());
+            gameInfo.Add("JugadorInicial",this.active_Player.PlayerName);
+            gameInfo.Add("TableroJugadorInicial",this.active_Player.PlayerBoardsList.ToString());
+            gameInfo.Add("TableroJugadorOponente", this.Inactive_Player.PlayerBoardsList.ToString());
+            gameInfo.Add("JugadorOponente",this.Inactive_Player.PlayerName);
+            gameInfo.Add("ListaJugadores",this.playersList.ToString());
             return gameInfo;            
         }
-
+        /// <summary>
+        /// Método que carga el juego desde el Json
+        /// </summary>
+        /// <param name="json"></param>
         public Game(string json)
         {
             this.LoadFromJson(json);
         }
-
+        /// <summary>
+        /// Método que transforna a json
+        /// </summary>
+        /// <returns></returns>
         public string ConvertToJson()
         {
 
             return JsonSerializer.Serialize(this.TransformGameToList());
         }
-
+        /// <summary>
+        /// Método que carga desde el archivo json
+        /// </summary>
+        /// <param name="json">Se le debe pasar por parámetro el json</param>
         public void LoadFromJson(string json)
         {
             Game deserialized = JsonSerializer.Deserialize<Game>(json);
@@ -261,7 +273,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.playersList=deserialized.playersList;
 
         }
-        
+
+        /// <summary>
+        /// Método que guarda todo lo que hay en el contenedor de partidas en el archivo Games.json
+        /// </summary>
+        public void saveGame()
+        {
+            string json = this.ConvertToJson();
+            File.AppendAllText(@"..\..\src\Library\Games.json", json);
+             
+        } 
 
     }
 }

@@ -14,7 +14,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public static List<User> usersList = new List<User>();
 
-
         /// <summary>
         /// Es el ID de usuario
         /// </summary>

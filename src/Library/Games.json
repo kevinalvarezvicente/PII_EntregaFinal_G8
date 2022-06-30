@@ -1,0 +1,10 @@
+{
+    "Estado": "False",
+    "Id": "1",
+    "Fecha": "30/6/2022 19:17:49",
+    "JugadorInicial": "c",
+    "TableroJugadorInicial": "System.Collections.Generic.List\u00601[PII_ENTREGAFINAL_G8.src.Library.Board]",
+    "TableroJugadorOponente": "System.Collections.Generic.List\u00601[PII_ENTREGAFINAL_G8.src.Library.Board]",
+    "JugadorOponente": "x",
+    "ListaJugadores": "System.Collections.Generic.List\u00601[PII_ENTREGAFINAL_G8.src.Library.Player]"
+}

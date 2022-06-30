@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -49,8 +48,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.userId = user.UserId;
             this.playerName = user.Name;
-            this.playerShipBoard = this.GetPlayerShipBoard();
-            this.playerShotBoard = this.GetPlayerShotBoard();
         }
         /// <summary>
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
@@ -59,6 +56,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddPlayerBoard(Board board)
         {
             playerBoardsList.Add(board);
+            this.GetPlayerShipBoard();
         }
         public Board GetPlayerShipBoard()
         {
@@ -66,7 +64,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 if (board.What == "ShipBoard")
                 {
-                    return board;
+                    this.playerShipBoard = board;
+                    return this.playerShipBoard;
                 }
             }
             return null;
@@ -77,7 +76,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 if (board.What == "ShotBoard")
                 {
-                    return board;
+                    this.playerShotBoard = board;
                 }
             }
             return null;
@@ -179,7 +178,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Si hay "x" es porque habia un barco y se disparo
         /// </summary>
         /// <param name="coord">Es la coordenada que se pasa por parámetro</param>
-        public void ReceiveShot(string coord)
+        public string ReceiveShot(string coord)
         {
             int x;
             int y;
@@ -189,17 +188,18 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             if (this.playerShipBoard.GameBoard[x, y].Equals("o"))
             {
                 this.playerShipBoard.GameBoard[x, y] = "x";
-                Console.WriteLine("Tocado");
+                return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
             {
-                Console.WriteLine("Agua");
+                return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
                 this.playerShipBoard.GameBoard[x, y] = "|";
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {
-                throw new ReceiveShotException("Ya disparo a esta coordenada");
+                return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
             }
+            return null;
 
         }
         /// <summary>

@@ -28,24 +28,40 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Cada partida se guarda con la fecha de comienzo
         /// </summary>
-        public DateTime Date {get; private set;}
+        public DateTime Date { get; private set; }
         /// <summary>
         /// El Active_Player es el jugador con el turno, comienza él siempre
         /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
         /// </summary>
-        private Player active_Player;
+        private Player active_Player = null;
+        private Player inactive_Player = null;
         public Player Active_Player
         {
             get
             {
                 return this.active_Player;
             }
+            set
+            {
+                this.active_Player = value;
+            }
         }
         /// <summary>
         /// El Inactive_Player es el jugador que espera a que sea su turno
         /// </summary>
-        public Player Inactive_Player{get; private set;}
-        
+        public Player Inactive_Player
+        {
+            get
+            {
+                return this.inactive_Player;
+            }
+            set
+            {
+                this.inactive_Player = value;
+            }
+        }
+
+
         /// <summary>
         /// Para guardar la partida se guardará una lista con los usuarios que la jugaron.
         /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
@@ -57,12 +73,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 return this.playersList;
             }
+
         }
         /// <summary>
         /// Este atributo dice si el juego finalizó o no
         /// </summary>
         /// <value>Es un valor booleano</value>
-        public bool GameStatus {get; set;}        
+        public bool GameStatus { get; set; }
         /// <summary>
         /// Se inicia el juego con el constructor de la clase
         /// Recibe como argumento todos los datos necesarios para crear instancia de Player transformando a un usuario en player
@@ -73,7 +90,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             GetNextGameID();
             this.GameStatus = default;
-            this.GameId= currentGameID;
+            this.GameId = currentGameID;
             this.Date = DateTime.Now;
             this.active_Player = player1;
             this.Inactive_Player = player2;
@@ -83,7 +100,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         }
 
-            /// <summary>
+        /// <summary>
         /// Constructor estático para inicializar el miembro estático, currentID. 
         /// Este se llama al constructor una vez, automáticamente, antes de cualquier instancia User se crea, o se hace referencia a currentID.
         /// </summary>
@@ -95,7 +112,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Se incrementa cada vez que una nueva se crea una instancia de Person.</returns>
 
         protected int GetNextGameID() => ++currentGameID;
-        
+
         /// <summary>
         /// Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
         /// No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
@@ -133,7 +150,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             ChooseShipOption(shipOption, coord, direction);
             Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
-                        
+
         }
         /// <summary>
         /// Es un método que al recibir la posicion del barco la pone en el board.
@@ -144,30 +161,30 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="direction">Es una cadena que recive v o h</param>
         public void ChooseShipOption(int option, string coord, string direction)
         {
-                switch (option)
-                {
+            switch (option)
+            {
                 case 1:
-                    Ship shipFrigate= new Frigate(coord,direction);
+                    Ship shipFrigate = new Frigate(coord, direction);
                     this.Active_Player.PlaceShipOnBoard(shipFrigate);
                     this.Active_Player.AddShipToPlayerShipList(shipFrigate);
-                break;
+                    break;
 
                 case 2:
-                    Ship shipLightCruiser= new LightCruiser(coord,direction);
+                    Ship shipLightCruiser = new LightCruiser(coord, direction);
                     this.Active_Player.PlaceShipOnBoard(shipLightCruiser);
                     this.Active_Player.AddShipToPlayerShipList(shipLightCruiser);
-                break;
+                    break;
 
                 case 3:
-                    Ship shipSubmarine= new LightCruiser(coord,direction);
+                    Ship shipSubmarine = new LightCruiser(coord, direction);
                     this.Active_Player.PlaceShipOnBoard(shipSubmarine);
                     this.Active_Player.AddShipToPlayerShipList(shipSubmarine);
-                break;
+                    break;
 
-                default:                        
+                default:
                     throw new OptionException("Solo tiene 3 opciones de nave.");
 
-                }
+            }
         }
 
         /// <summary>
@@ -178,17 +195,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public bool AreAllShipsSinked(Player player)
         {
-           foreach (Ship ship in player.ShipsList)
+            foreach (Ship ship in player.ShipsList)
             {
-                foreach(Spot spot in ship.CoordsList)
+                foreach (Spot spot in ship.CoordsList)
                 {
-                    if (spot.wasHit==false)
+                    if (spot.wasHit == false)
                     {
                         return false;
                     }
                 }
             }
-            return true; 
+            return true;
         }
         /// <summary>
         /// Método que chequea que todos los barcos de alguno de los jugadores estén hundidos
@@ -199,13 +216,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
             if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))
             {
-                this.GameStatus=true;
+                this.GameStatus = true;
                 return this.GameStatus;
             }
             return this.GameStatus;
         }
 
-        
+
 
     }
 }

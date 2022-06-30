@@ -104,8 +104,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ID">Es el ID del jugador obtenido de telegram</param>
         /// <returns>Retorna el juego</returns>
 
-
-
         public static Player ObtainPlayer(long ID)
         {
 

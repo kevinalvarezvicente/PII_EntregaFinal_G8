@@ -20,7 +20,7 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            //ChatBot bot = ChatBot.Instance;
+            ChatBot bot = ChatBot.Instance;
 
 
             //No borrar esto, sirve para correr y que se guarde GameContainer en el JSON 

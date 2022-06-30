@@ -19,7 +19,7 @@ namespace ChatBot_Logic.src.HandlersConfiguration
         /// Obtiene el próximo "handler".
         /// </summary>
         /// <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
-        IHandler Next{ get; set; }
+        IHandler Next { get; set; }
 
         /// <summary>
         /// Procesa el mensaje o la pasa al siguiente "handler" si existe.

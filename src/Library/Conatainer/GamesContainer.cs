@@ -21,7 +21,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="game">Es un parámetro de tipo Game</param>
         public static void AddGame(Game game)
         {
-            if(!gamescontainer.Contains(game))
+            if (!gamescontainer.Contains(game))
             {
                 gamescontainer.Add(game);
             }
@@ -30,7 +30,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new ContainerException($"El elemento ya está en la lista");
             }
 
-            
+
         }
         /// <summary>
         /// Es el operador para tener acceso a la lista de juegos
@@ -49,10 +49,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="game">Tipo Game es el parámetro</param>
         public static void RemoveGame(Game game)
         {
-            
-            if(gamescontainer.Contains(game))
+
+            if (gamescontainer.Contains(game))
             {
-               gamescontainer.Remove(game);
+                gamescontainer.Remove(game);
             }
             else
             {
@@ -60,31 +60,65 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
         }
 
-        public static int VerifyUserOnGame(long ID)
+        public static Game VerifyUserOnGame(long ID)
         {
-            for (int i=0; i<GamesContainer.gamesContainer.Count; i++)
+            for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
             {
-                List <Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
+                List<Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
                 foreach (Player player in UsersPlaying)
                 {
-                    if (player.UserId==ID)
+                    if (player.UserId == ID)
                     {
-                        return GamesContainer.gamesContainer[i].GameId;
+                        return GamesContainer.gamesContainer[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static long ObtainEnemyId(long ID)
+        {
+            for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
+            {
+                List<Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
+                foreach (Player player in UsersPlaying)
+                {
+                    if (player.UserId != ID)
+                    {
+                        return player.UserId;
                     }
                 }
             }
             return 0;
         }
 
-        public static Game ObtainGame(long ID)
+        public static Player ObtainPlayer(long ID)
         {
-                foreach (Game game in gamesContainer)
+
+            for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
+            {
+                List<Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
+                foreach (Player player in UsersPlaying)
+
                 {
-                    if (game.GameId==ID)
+                    if (player.UserId == ID)
                     {
-                        return game;
+                        return player;
                     }
                 }
+            }
+            return null;
+        }
+
+        public static Game ObtainGame(long ID)
+        {
+            foreach (Game game in gamescontainer)
+            {
+                if (game.GameId == ID)
+                {
+                    return game;
+                }
+            }
             return null;
         }
 
@@ -99,17 +133,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             File.WriteAllText(@"..\..\src\Library\Games.json", jsonList.ToString());  
         }*/
 
-        public static void saveContainer()
-        {
-            foreach (Game game in gamesContainer)
-            {
-                string json = game.ConvertToJson();
-                File.AppendAllText(@"..\..\src\Library\Games.json", json);
 
-            }
-             
-        }
-
-        
     }
 }

@@ -25,29 +25,31 @@ namespace ChatBot_Logic.src.Handlers
             {
                 if (!chainData.userPostionHandler[from][0].Equals("/defender"))
                 {
-                    chainData.userPostionHandler[from].Clear(); 
+                    chainData.userPostionHandler[from].Clear();
                     //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
                 }
 
-                if (chainData.userPostionHandler[from].Count == 0 )
+                if (chainData.userPostionHandler[from].Count == 0)
                 //Si estas en la primera iteración
                 {
-                    chainData.userPostionHandler[from].Add("/defender"); 
+                    chainData.userPostionHandler[from].Add("/defender");
                     //Añadimos el nuevo handler que se esta ejecutando
 
                     Player player1 = LobbyContainer.GetPlayerByID(message.From.Id);
                     Player player2 = LobbyContainer.JoinPlayersWithSameBoardSize(player1);
-                    if(player2 == null)
+                    if (player2 == null)
                     {
-                        response = "Estamos buscando tu oponente";
+                        response = "Al parecer tu oponente se ha asustado 😂 y ha decidido retirarse de la batalla, es hora de atacar 🔥 y no de defender tu terreno ⚔️. Te estamos buscando un rival digno.";
                     }
                     else
                     {
                         Game game = new Game(player1, player2);
-
-                        response = $"Te hemos encontrado un digno oponente {player2.PlayerName}";
+                        LobbyContainer.RemoveUser(player1);
+                        LobbyContainer.RemoveUser(player2);
+                        GamesContainer.AddGame(game);
+                        ChatBot.sendMessage(player2.UserId, $"Te infiltrarás 🕵 en el terreno de {player1.PlayerName} es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla");
+                        response = $"El enemigo conocido como {player2.PlayerName} se ha inflitrado 🕵 en tu terreno, es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla";
                     }
-
                     return true;
                 }
                 else

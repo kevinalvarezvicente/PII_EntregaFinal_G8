@@ -19,7 +19,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user"></param>
         public static void AddUser(User user)
         {
-            if(!userscontainer.Contains(user))
+            if (!userscontainer.Contains(user))
             {
                 userscontainer.Add(user);
                 Console.WriteLine("Se agrego el usuario a la lista");
@@ -29,7 +29,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new ContainerException($"El elemento ya está en la lista");
             }
 
-            
+
         }
         /// <summary>
         /// Permite tener acceso al contenedor de usuarios
@@ -48,8 +48,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="user"></param>
         public static void RemoveUser(User user)
         {
-            
-            if(userscontainer.Contains(user))
+
+            if (userscontainer.Contains(user))
             {
                 userscontainer.Remove(user);
             }
@@ -61,9 +61,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public static bool VerifyUserByID(long ID)
         {
-            for (int i = 0; i<userscontainer.Count; i++)
+            for (int i = 0; i < userscontainer.Count; i++)
             {
-                if (ID==userscontainer[i].UserId)
+                if (ID == userscontainer[i].UserId)
                 {
                     return true;
                 }
@@ -71,20 +71,20 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return false;
         }
 
-        
+
         public static User GetUSerByID(long ID)
         {
-            for (int i = 0; i<userscontainer.Count; i++)
-            {   
+            for (int i = 0; i < userscontainer.Count; i++)
+            {
                 Console.WriteLine(userscontainer[i]);
-                if (ID==userscontainer[i].UserId)
+                if (ID == userscontainer[i].UserId)
                 {
-                    
+
                     return userscontainer[i];
                 }
             }
-           throw new ContainerException("No se encontro user id");
+            throw new ContainerException("No se encontro user id");
         }
-        
+
     }
 }

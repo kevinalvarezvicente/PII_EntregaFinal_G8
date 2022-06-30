@@ -1,5 +1,5 @@
-using System.Linq;
 using System;
+using System.Linq;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -8,6 +8,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Utils
     {
+        public static string NumberToletter(int number)
+        {
+            int counter = 0;
+            string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            return abc[number];
+        }
+
         /// <summary>
         /// Este método devuelve la fila y la columna en numeros enteros.
         /// Cumple SRP ya que su única responsabilidad es brindar propiedades para facilitar la interaccion con el usuario
@@ -21,12 +28,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 throw new CoordException($"{coord} es una coordenada inválida");
             }
             char[] coordArray = coord.ToArray();
-            int row= (int)Char.GetNumericValue(coordArray[0]);
+            int row = (int)Char.GetNumericValue(coordArray[0]);
             int column = (int)Char.GetNumericValue(coordArray[1]);
             return (row, column);
 
             //Esta parte es porque tal vez en un futuro podamos hacer que diga letra y numero pero por el momento haremos solo numeros
-            
+
             /*string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string column = "";
             int row = 0;

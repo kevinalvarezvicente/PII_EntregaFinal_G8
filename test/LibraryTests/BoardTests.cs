@@ -46,7 +46,7 @@ namespace LibraryTests
         public void makeboard(){
                  Board board1 = new Board(10);
                  BoardPrinter classBoardPrinter = new BoardPrinter();
-                 classBoardPrinter.PrintToTelegram(board1);
+                 //classBoardPrinter.PrintToTelegram(board1);
 
         }
     }

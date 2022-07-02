@@ -92,6 +92,7 @@
             Maneja los mensajes que se envían al bot a través de handlers de una chain of responsibility.
             </summary>
             <param name="message">El mensaje recibido</param>
+            <param name="botClient">El bot que realiza</param>
             <returns></returns>
         </member>
         <member name="M:ChatBot_Logic.src.ChatBot.sendMessage(System.Int64,System.String)">
@@ -100,6 +101,14 @@
             </summary>
             <param name="id">Recibe como parámetro el identificador</param>
             <param name="text">recibe un texto de tipo string</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot_Logic.src.ChatBot.sendMessageBoard(System.Int64,System.String)">
+            <summary>
+            Método donde el bot imprime por pantalla el tablero indicado
+            </summary>
+            <param name="id">Persona que está hablando con el bot</param>
+            <param name="text">Es el tablero pasado a string</param>
             <returns></returns>
         </member>
         <member name="M:ChatBot_Logic.src.ChatBot.HandleErrorAsync(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
@@ -113,23 +122,23 @@
         </member>
         <member name="P:ChatBot_Logic.src.ChatBot.Instance">
             <summary>
-            Obtine la instancia del ChatBot, si no existe la crea.
+            Obtiene la instancia del ChatBot, si no existe la crea.
             Desarollo con el patrón Singleton.
             </summary>
         </member>
-        <member name="T:ChatBot_Logic.src.Handlers.BatllePlacerHandler">
+        <member name="T:ChatBot_Logic.src.Handlers.BattlePlacerHandler">
             <summary>
             El handler que trabaja cuando el usuario quiere comenzar a jugar y le pide que seleccione el tamaño del tablero para despues encontrarle un oponente
              Un "handler" del patrón Chain of Responsibility que implementa el comando "/batallar".
             </summary>
         </member>
-        <member name="M:ChatBot_Logic.src.Handlers.BatllePlacerHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+        <member name="M:ChatBot_Logic.src.Handlers.BattlePlacerHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.HelloHandler"/>. Esta clase procesa el mensaje "hola".
             </summary>
             <param name="next">El próximo "handler".</param>
         </member>
-        <member name="M:ChatBot_Logic.src.Handlers.BatllePlacerHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+        <member name="M:ChatBot_Logic.src.Handlers.BattlePlacerHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
             <summary>
             Es el método donde se trabaja todo lo del handler.
             Procesa el mensaje "/batallar"

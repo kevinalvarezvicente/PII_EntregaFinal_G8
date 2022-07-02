@@ -19,9 +19,9 @@
             Testea excepcion de que el tamaño del tablero se elige 0
             </summary>
         </member>
-        <member name="M:LibraryTests.BoardTests.MakeBoard">
+        <member name="M:LibraryTests.BoardTests.MakeBoard10">
             <summary>
-            se prueba un board de 10, 100 porque 10*10 es 100
+            se prueba un board de 10 de Maldivas, 100 porque 10*10 es 100
             </summary>
         </member>
         <member name="M:LibraryTests.BoardTests.MaxShipsQuantity">
@@ -29,14 +29,19 @@
             se prueba la maxima cantidad de barcos
             </summary>
         </member>
+        <member name="M:LibraryTests.BoardTests.MakeBoard15">
+            <summary>
+            Se testea hacer un tablero de Donbas
+            </summary>
+        </member>
+        <member name="M:LibraryTests.BoardTests.MakeBoard20">
+            <summary>
+            Se testea hacer un Tablero de Laos
+            </summary>
+        </member>
         <member name="T:LibraryTests.ContainerTests">
             <summary>
             Test de los containers
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ContainerTests.TestAddPlayerToLobby">
-            <summary>
-            Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
             </summary>
         </member>
         <member name="M:LibraryTests.ContainerTests.TestAreNotUserInListException">
@@ -44,18 +49,62 @@
             Test para ver que es posible iniciar una partida porque hay mas jugadores
             </summary>
         </member>
-
-
-        <member name="T:LibraryTests.PlayerTests">
+        <member name="M:LibraryTests.ContainerTests.JoinPlayersWithSameBoardSizeTest">
             <summary>
-            Tests de los métodos de la clase Player
+            Se testea la union de dos jugadores que escogen el mismo tamaño de tablero
+            Se testea método de añadir jugadores a lobby
             </summary>
         </member>
-        <member name="M:LibraryTests.PlayerTests.PlayerReceivesShotTest">
+        <member name="M:LibraryTests.ContainerTests.AddGameToGameContainer">
+            <summary>
+            Testea el método añadir una partida al container de partidas
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ContainerTests.AddUserToUsersContainer">
+            <summary>
+            Testea añadir un Uusario al contenedor de usuarios
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ContainerTests.JoinPlayersWithSameBoardSizeNull">
+            <summary>
+            Se testea que no hya otro jugador para unir con 
+            </summary>
+        </member>
+        <member name="T:LibraryTests.GameTests">
+            <summary>
+            Test de los métodos de la clase Game 
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.GameFinishedTest">
+            <summary>
+            Testea partida finalizada una vez que se disparo a todos los barcos de los usuarios de la partida
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.PlayerShipSinkedTest">
+            <summary>
+            Test sin funcionar aún 
+            </summary>    
+        </member>
+        <member name="M:LibraryTests.GameTests.PlayerReceivesShotTest">
             <summary>
             Se testea cuando un jugador recibe un shot 
             Se testea que el barco que se agregó se agrega a la lista de barcos del jugador
             Se testea que al recibir el shot cambie el valor de la coordenada del barco
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.TestMakeShot">
+            <summary>
+            El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            </summary>
+        </member>
+        <member name="T:LibraryTests.HelloHandlerTests">
+            <summary>
+              testea el hola handler
+            </summary>
+        </member>
+        <member name="T:LibraryTests.PlayerTests">
+            <summary>
+            Tests de los métodos de la clase Player
             </summary>
         </member>
         <member name="M:LibraryTests.PlayerTests.TestPlayerShipsList">
@@ -63,9 +112,26 @@
             Testea que cuando se agregan barcos a la lista de barcos del jugador
             </summary>
         </member>
-        <member name="M:LibraryTests.PlayerTests.TestMakeShot">
+        <member name="M:LibraryTests.PlayerTests.TestSearchForCoordInShipsListOK">
             <summary>
-            El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que si esta
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestSearchForCoordInShipsListNotOK">
+            <summary>
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que no esta
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestAddBoardsToPlayer">
+            <summary>
+            Testea cuando se añade el tablero a un jugador, se añade a su lista de tableros
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestGetPlayerBoardSize">
+            <summary>
+            Testea el método de conocer el tablero que selecciono el jugador
             </summary>
         </member>
         <member name="T:LibraryTests.ShipTests">
@@ -123,11 +189,6 @@
             Se testea que se agreguen las 4 posiciones del submarino a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.PlayerShipSinkedTest">
-            <summary>
-            Test sin funcionar aún 
-            </summary>    
-        </member>
         <member name="M:LibraryTests.ShipTests.TestVulnerableCoord">
             <summary>
             Testea que si se dispara a la coordenada vulnerable de cualquier barco se hunde.
@@ -172,18 +233,6 @@
         <member name="M:LibraryTests.ShipTests.TestPlaceShipOutOfBoard">
             <summary>
             Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListOK">
-            <summary>
-            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
-            Se hace Assert.AreEqual para una coordenada que si esta
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListNotOK">
-            <summary>
-            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
-            Se hace Assert.AreEqual para una coordenada que no esta
             </summary>
         </member>
         <member name="T:LibraryTests.UtilsTests">

@@ -63,6 +63,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddPlayerShipBoard(Board board)
         {
             this.playerShipBoard = board;
+            this.playerBoardsList.Add(board);
         }
         /// <summary>
         /// Método que añade tablero de tiros al jugador
@@ -71,6 +72,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddPlayerShotBoard(Board board)
         {
             this.playerShotBoard = board;
+            this.playerBoardsList.Add(board);
         }
         /// <summary>
         /// Obtiene tablero de barcos del jugador

@@ -28,12 +28,12 @@ namespace LibraryTests
 
 
         /// <summary>
-        /// se prueba un board de 10, 100 porque 10*10 es 100
+        /// se prueba un board de 10 de Maldivas, 100 porque 10*10 es 100
         /// </summary>
         [Test]
-        public void MakeBoard(){
+        public void MakeBoard10(){
             Board board1 = new Board(10);
-            Assert.AreEqual(100, board1.GameBoard.Length);//como hago pa ver el tamaño del tablero
+            Assert.AreEqual(100, board1.GameBoard.Length);
         }
 
         /// <summary>
@@ -44,12 +44,22 @@ namespace LibraryTests
             Board board1 = new Board(10);
             Assert.AreEqual(5, board1.MaxShipsQuantity);
         }
-    
+        /// <summary>
+        /// Se testea hacer un tablero de Donbas
+        /// </summary>
         [Test]
-        public void makeboard(){
-                 Board board1 = new Board(10);
-                 BoardPrinter classBoardPrinter = new BoardPrinter();
-                 //classBoardPrinter.PrintToTelegram(board1);
+        public void MakeBoard15(){
+            Board board1 = new Board(15);
+            Assert.AreEqual(225, board1.GameBoard.Length);
+        }
+
+        /// <summary>
+        /// Se testea hacer un Tablero de Laos
+        /// </summary>
+        [Test]
+        public void MakeBoard20(){
+            Board board1 = new Board(20);
+            Assert.AreEqual(400, board1.GameBoard.Length);
 
         }
     }

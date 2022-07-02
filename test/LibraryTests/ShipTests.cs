@@ -32,12 +32,15 @@ namespace LibraryTests
         [Test]
         public void AddFrigateToMaldivasVertical()
         {
-            Board board = new Board(10);
-            User user = new User(10,"c","g");
-            Player player = new Player(user);
-            player.AddPlayerShipBoard(board);
-            Ship f = new Frigate("11","v");
-            player.PlaceShipOnBoard(f);
+
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            Ship frigate = new Frigate("11","v");
+            player.PlaceShipOnBoard(frigate);
+
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
         }
@@ -47,12 +50,14 @@ namespace LibraryTests
         [Test]
         public void AddFrigateToMaldivasHorizontal()
         {
-            Board board = new Board(10);
-            User user = new User(4,"c","g");
-            Player player = new Player(user);
-            player.AddPlayerShipBoard(board);
-            Ship f = new Frigate("11","h");
-            player.PlaceShipOnBoard(f);
+
+             User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            Ship frigate = new Frigate("11","H");
+            player.PlaceShipOnBoard(frigate);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 2]);
         }
@@ -64,10 +69,13 @@ namespace LibraryTests
         public void AddAllPositionsOfFrigate()
         {
             int count=0;
-            Board board = new Board(10);
-            User carol = new User(4,"Carol","Glass");
-            Player player = new Player(carol);
-            player.AddPlayerShipBoard(board);
+
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+
             Ship frigate = new Frigate("11","v");
             player.PlaceShipOnBoard(frigate);
             foreach (Spot spot in frigate.CoordsList)
@@ -82,10 +90,12 @@ namespace LibraryTests
         [Test]
         public void AddLightCruiserToDonbasVertical()
         {
-            User carol = new User(4,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(15);
-            player.AddPlayerShipBoard(board);
+
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(15));
+            player.AddPlayerShotBoard(new ShotBoard(15));
+            LobbyContainer.AddPlayer(player);
             Ship lightCruiser= new LightCruiser("13","V");
             player.PlaceShipOnBoard(lightCruiser);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 3]);
@@ -116,11 +126,11 @@ namespace LibraryTests
         public void AddAllPositionsOfLightCruiser()
         {
             int count=0;
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(15);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(15));
+            player.AddPlayerShotBoard(new ShotBoard(15));
+            LobbyContainer.AddPlayer(player);
             Ship lightCruiser= new LightCruiser("22","V");
             player.PlaceShipOnBoard(lightCruiser);
             foreach (Spot spot in lightCruiser.CoordsList)
@@ -135,11 +145,12 @@ namespace LibraryTests
         [Test]
         public void AddSubmarineToLaosVertical()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(20);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(20));
+            player.AddPlayerShotBoard(new ShotBoard(20));
+            LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
@@ -153,11 +164,12 @@ namespace LibraryTests
         [Test]
         public void AddSubmarineToLaosHorizontal()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(20);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(20));
+            player.AddPlayerShotBoard(new ShotBoard(20));
+            LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("21","H");
             player.PlaceShipOnBoard(submarine);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
@@ -172,11 +184,12 @@ namespace LibraryTests
         public void AddAllPositionsOfSubmarine()
         {
             int count=0;
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(20);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(20));
+            player.AddPlayerShotBoard(new ShotBoard(20));
+            LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             foreach (Spot spot in submarine.CoordsList)
@@ -186,27 +199,7 @@ namespace LibraryTests
             Assert.AreEqual(4, count);
         }
         
-        /// <summary>
-        /// Test sin funcionar aún 
-        /// </summary>    
-        [Test]
-        public void PlayerShipSinkedTest()
-        {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(10);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);
-            Submarine submarine = new Submarine("11","v");
-            player.PlaceShipOnBoard(submarine);
-            //Se agrega el submarino en las coordenadas 
-            player.ReceiveShot("11");
-            player.ReceiveShot("21");
-            player.ReceiveShot("31");
-            player.ReceiveShot("41");
-            bool expected = true;
-            Assert.AreEqual(expected,submarine.IsShipSinked()); 
-        }
+        
         /// <summary>
         /// Testea que si se dispara a la coordenada vulnerable de cualquier barco se hunde.
         /// Testea que al jugador se le hundieron todos sus barcos
@@ -237,11 +230,13 @@ namespace LibraryTests
         [Test]
         public void TestPlayerAddingManyShipsList()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            Board board = new Board(15);
-            player.AddPlayerShipBoard(board);
-            player.AddPlayerShotBoard(board);  
+
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+
             LightCruiser cruiser = new LightCruiser("00","h");
             Submarine submarine = new Submarine("40","v");
             Frigate frigate = new Frigate("20","h");
@@ -311,24 +306,22 @@ namespace LibraryTests
             Assert.AreEqual(5, count);
         }
         
-
-/*
         /// <summary>
         /// Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
         /// </summary>
         [Test]
         public void TestPlaceSubmarineInTakenPosition()
         {
-            Board board1 = new Board(10);
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);}
-            Board board1 = new ShipBoard(10);
-
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
             Submarine submarine = new Submarine("00","h");
             //Ubica el submarino en (0,0), (0,1), (0,2) y (0,3)
             player.PlaceShipOnBoard(submarine);
             Frigate frigate = new Frigate("01","h");
-            //Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
+            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
         }
         /// <summary>
         /// Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
@@ -336,8 +329,11 @@ namespace LibraryTests
         [Test]
         public void TestPlaceFrigateInTakenPosition()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
             Frigate frigate = new Frigate("01","h");
             Submarine submarine = new Submarine("00","h");
             player.PlaceShipOnBoard(frigate);     
@@ -349,8 +345,11 @@ namespace LibraryTests
         [Test]
         public void TestPlaceCruiserInTakenPosition()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
             Frigate frigate = new ("01","h");
             LightCruiser cruiser = new LightCruiser("00","h");
             player.PlaceShipOnBoard(frigate);     
@@ -362,44 +361,24 @@ namespace LibraryTests
         [Test]
         public void TestPlaceShipOutOfBoard()
         {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
             LightCruiser cruiser = new LightCruiser("04","h");  
             Frigate frigate = new Frigate("55","h"); 
             Submarine submarine = new Submarine("44","v");
+            player.PlaceShipOnBoard(cruiser);     
+            player.PlaceShipOnBoard(frigate);     
+            player.PlaceShipOnBoard(submarine);     
             Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
             Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
             Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(submarine));
 
         }
-        /// <summary>
-        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
-        /// Se hace Assert.AreEqual para una coordenada que si esta
-        /// </summary>
-        [Test]
-        public void TestSearchForCoordInShipsListOK()
-        {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            LightCruiser cruiser = new LightCruiser("03","h"); 
-            player.PlaceShipOnBoard(cruiser);
-            Assert.AreEqual(true, player.SearchForCoordInShipsList("04"));
-              
-        }
-        /// <summary>
-        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
-        /// Se hace Assert.AreEqual para una coordenada que no esta
-        /// </summary>
-        [Test]
-        public void TestSearchForCoordInShipsListNotOK()
-        {
-            User carol = new User(10,"Carol","Glass");
-            Player player = new Player(carol);
-            LightCruiser cruiser = new LightCruiser("03","h"); 
-            player.PlaceShipOnBoard(cruiser);
-            Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));   
-        }
-        */
+
+        
 
 
 

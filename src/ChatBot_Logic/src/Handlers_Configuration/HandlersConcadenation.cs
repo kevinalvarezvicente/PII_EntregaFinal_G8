@@ -16,7 +16,7 @@ namespace ChatBot_Logic.src.Handlers_Configuration
         {
             firstHandler = new HelloHandler(
                 new RegisterUserHandler(
-                    new BatllePlacerHandler(
+                    new BattlePlacerHandler(
                         new SelectLobbyHandler(
                             new JoinPlayerHandler(
                                 new PlaceShipHandler(

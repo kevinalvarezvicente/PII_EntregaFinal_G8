@@ -64,6 +64,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             this.playerShipBoard = board;
         }
+        /// <summary>
+        /// Método que añade tablero de tiros al jugador
+        /// </summary>
+        /// <param name="board">Retorna una matriz con los tiros agregados</param>
         public void AddPlayerShotBoard(Board board)
         {
             this.playerShotBoard = board;

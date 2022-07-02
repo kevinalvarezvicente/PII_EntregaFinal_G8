@@ -567,6 +567,13 @@
             
             
             
+
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AddPlayerShotBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+            <summary>
+            Método que añade tablero de tiros al jugador
+            </summary>
+            <param name="board">Retorna una matriz con los tiros agregados</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShipBoard">
             <summary>
@@ -918,6 +925,13 @@
             </summary>
             <param name="number">Recibe por parámetro el numero que es el tamaño del tablero</param>
             <returns>Retorna la letra para el mensaje del boto</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.LetterToNumber(System.String)">
+            <summary>
+            Convierte la letra pasada por parámetro a numero
+            </summary>
+            <param name="letter">Es la cadena, la letra que selecciona el jugador</param>
+            <returns>Retorna el numero en string</returns>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.SplitCoordIntoRowAndColumn(System.String)">
             <summary>

@@ -27,11 +27,12 @@ namespace LibraryTests
         }
         
         /// <summary>
-        /// Se testea agregar un LightCruiser en vertical
+        /// Se testea agregar un Frigate en vertical al tablero de Maldivas
         /// </summary>
         [Test]
-        public void AddFrigateToBoardVertical()
+        public void AddFrigateToMaldivasVertical()
         {
+
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
@@ -39,37 +40,42 @@ namespace LibraryTests
             LobbyContainer.AddPlayer(player);
             Ship frigate = new Frigate("11","v");
             player.PlaceShipOnBoard(frigate);
+
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
         }
         /// <summary>
-        /// Se testea agregar un Frigate en horizontal
+        /// Se testea agregar un Frigate en horizontal al tablero de Maldivas
         /// </summary>
         [Test]
-        public void AddFrigateToBoardHorizontal()
+        public void AddFrigateToMaldivasHorizontal()
         {
+
              User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
             Ship frigate = new Frigate("11","H");
-            player.PlaceShipOnBoard(frigate);
+            player.PlaceShipOnBoard(frigate);r
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 2]);
         }
+
         /// <summary>
-        /// Testea que se agreguen 2 posiciones de Frigate
+        /// Testea que se agreguen 2 posiciones de Frigate al tablero de Maldivas
         /// </summary>
         [Test]
         public void AddAllPositionsOfFrigate()
         {
             int count=0;
+
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             Ship frigate = new Frigate("11","v");
             player.PlaceShipOnBoard(frigate);
             foreach (Spot spot in frigate.CoordsList)
@@ -79,11 +85,12 @@ namespace LibraryTests
             Assert.AreEqual(2, count);
         }
         /// <summary>
-        /// Se testea agregar un LightCruiser en vertical
+        /// Se testea agregar un LightCruiser en vertical a Donbas
         /// </summary>
         [Test]
-        public void AddLightCruiserToBoardVertical()
+        public void AddLightCruiserToDonbasVertical()
         {
+
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
@@ -96,16 +103,16 @@ namespace LibraryTests
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[3, 3]);
         }
         /// <summary>
-        /// Se testea agregar un LightCruiser en horizontal
+        /// Se testea agregar un LightCruiser en horizontal a Donbas
         /// </summary>
         [Test]
-        public void AddLightCruiserToBoardHorizontal()
+        public void AddLightCruiserToDonbasHorizontal()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
-            player.AddPlayerShipBoard(new ShipBoard(10));
-            player.AddPlayerShotBoard(new ShotBoard(10));
-            LobbyContainer.AddPlayer(player);
+            Board board = new Board(15);
+            player.AddPlayerShipBoard(board);
+            player.AddPlayerShotBoard(board);
             Ship lightCruiser= new LightCruiser("22","h");
             player.PlaceShipOnBoard(lightCruiser);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 2]);
@@ -113,7 +120,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 4]);
         }
         /// <summary>
-        /// Se testea que se agreguen las 3 posiciones de LightCruiser
+        /// Se testea que se agreguen las 3 posiciones de LightCruiser en Donbas
         /// </summary>
         [Test]
         public void AddAllPositionsOfLightCruiser()
@@ -133,16 +140,17 @@ namespace LibraryTests
             Assert.AreEqual(3, count);
         }
         /// <summary>
-        /// Se testea agregar un Submarino en vertical
+        /// Se testea agregar un Submarino en vertical a Laos
         /// </summary>
         [Test]
-        public void AddSubmarineToBoardVertical()
+        public void AddSubmarineToLaosVertical()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
@@ -151,16 +159,17 @@ namespace LibraryTests
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[4, 1]);
         }
         /// <summary>
-        /// Se testea agregar un Submarino en horizontal
+        /// Se testea agregar un Submarino en horizontal a Laos
         /// </summary>
         [Test]
-        public void AddSubmarineToBoardHorizontal()
+        public void AddSubmarineToLaosHorizontal()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("21","H");
             player.PlaceShipOnBoard(submarine);
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
@@ -169,7 +178,7 @@ namespace LibraryTests
             Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 4]);
         }
         /// <summary>
-        /// Se testea que se agreguen las 4 posiciones del submarino
+        /// Se testea que se agreguen las 4 posiciones del submarino a Laos
         /// </summary>
         [Test]
         public void AddAllPositionsOfSubmarine()
@@ -180,6 +189,7 @@ namespace LibraryTests
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             Ship submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             foreach (Spot spot in submarine.CoordsList)
@@ -200,6 +210,7 @@ namespace LibraryTests
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             Submarine submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             //Se agrega el submarino en las coordenadas 
@@ -235,16 +246,18 @@ namespace LibraryTests
         }
 
         /// <summary>
-        /// Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
+        /// Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard se agregan a la lista de barcos del jugador
         /// </summary>
         [Test]
         public void TestPlayerAddingManyShipsList()
         {
+
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
+
             LightCruiser cruiser = new LightCruiser("00","h");
             Submarine submarine = new Submarine("40","v");
             Frigate frigate = new Frigate("20","h");
@@ -253,9 +266,67 @@ namespace LibraryTests
             player.PlaceShipOnBoard(frigate);
             Assert.AreEqual(3,player.ShipsList.Count);
         }
+
+        /// <summary>
+        /// Se testea agregar un AircraftCarrier en vertical a Laos
+        /// </summary>
+        [Test]
+        public void AddAircraftCarrierToLaosVertical()
+        {
+            User carol = new User(10,"Carol","Glass");
+            Player player = new Player(carol);
+            Board board = new Board(20);
+            player.AddPlayerShipBoard(board);
+            player.AddPlayerShotBoard(board);
+            Ship aircraft = new AircraftCarrier("11","v");
+            player.PlaceShipOnBoard(aircraft);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[1, 1]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[3, 1]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[4, 1]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[5, 1]);
+        }
+        /// <summary>
+        /// Se testea agregar un Submarino en horizontal a Laos
+        /// </summary>
+        [Test]
+        public void AddAircraftCarrierToLaosHorizontal()
+        {
+            User carol = new User(10,"Carol","Glass");
+            Player player = new Player(carol);
+            Board board = new Board(20);
+            player.AddPlayerShipBoard(board);
+            player.AddPlayerShotBoard(board);
+            Ship aircraft = new AircraftCarrier("21","H");
+            player.PlaceShipOnBoard(aircraft);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 1]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 2]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 3]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 4]);
+            Assert.AreEqual("o", player.GetPlayerShipBoard().GameBoard[2, 5]);
+
+        }
+        /// <summary>
+        /// Se testea que se agreguen las 4 posiciones del aircraft a Laos
+        /// </summary>
+        [Test]
+        public void AddAllPositionsOfAircraftCarrier()
+        {
+            int count=0;
+            User carol = new User(10,"Carol","Glass");
+            Player player = new Player(carol);
+            Board board = new Board(20);
+            player.AddPlayerShipBoard(board);
+            player.AddPlayerShotBoard(board);
+            Ship aircraft = new AircraftCarrier("11","v");
+            player.PlaceShipOnBoard(aircraft);
+            foreach (Spot spot in aircraft.CoordsList)
+            {
+                count++;
+            }
+            Assert.AreEqual(5, count);
+        }
         
-
-
         /// <summary>
         /// Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
         /// </summary>

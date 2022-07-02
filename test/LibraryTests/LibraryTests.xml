@@ -44,11 +44,8 @@
             Test para ver que es posible iniciar una partida porque hay mas jugadores
             </summary>
         </member>
-        <member name="T:LibraryTests.HelloHandlerTests">
-            <summary>
-              testea el hola handler
-            </summary>
-        </member>
+
+
         <member name="T:LibraryTests.PlayerTests">
             <summary>
             Tests de los métodos de la clase Player
@@ -81,49 +78,49 @@
             Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddFrigateToBoardVertical">
+        <member name="M:LibraryTests.ShipTests.AddFrigateToMaldivasVertical">
             <summary>
-            Se testea agregar un LightCruiser en vertical
+            Se testea agregar un Frigate en vertical al tablero de Maldivas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddFrigateToBoardHorizontal">
+        <member name="M:LibraryTests.ShipTests.AddFrigateToMaldivasHorizontal">
             <summary>
-            Se testea agregar un Frigate en horizontal
+            Se testea agregar un Frigate en horizontal al tablero de Maldivas
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.AddAllPositionsOfFrigate">
             <summary>
-            Testea que se agreguen 2 posiciones de Frigate
+            Testea que se agreguen 2 posiciones de Frigate al tablero de Maldivas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddLightCruiserToBoardVertical">
+        <member name="M:LibraryTests.ShipTests.AddLightCruiserToDonbasVertical">
             <summary>
-            Se testea agregar un LightCruiser en vertical
+            Se testea agregar un LightCruiser en vertical a Donbas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddLightCruiserToBoardHorizontal">
+        <member name="M:LibraryTests.ShipTests.AddLightCruiserToDonbasHorizontal">
             <summary>
-            Se testea agregar un LightCruiser en horizontal
+            Se testea agregar un LightCruiser en horizontal a Donbas
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.AddAllPositionsOfLightCruiser">
             <summary>
-            Se testea que se agreguen las 3 posiciones de LightCruiser
+            Se testea que se agreguen las 3 posiciones de LightCruiser en Donbas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddSubmarineToBoardVertical">
+        <member name="M:LibraryTests.ShipTests.AddSubmarineToLaosVertical">
             <summary>
-            Se testea agregar un Submarino en vertical
+            Se testea agregar un Submarino en vertical a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddSubmarineToBoardHorizontal">
+        <member name="M:LibraryTests.ShipTests.AddSubmarineToLaosHorizontal">
             <summary>
-            Se testea agregar un Submarino en horizontal
+            Se testea agregar un Submarino en horizontal a Laos
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.AddAllPositionsOfSubmarine">
             <summary>
-            Se testea que se agreguen las 4 posiciones del submarino
+            Se testea que se agreguen las 4 posiciones del submarino a Laos
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.PlayerShipSinkedTest">
@@ -139,7 +136,22 @@
         </member>
         <member name="M:LibraryTests.ShipTests.TestPlayerAddingManyShipsList">
             <summary>
-            Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
+            Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard se agregan a la lista de barcos del jugador
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAircraftCarrierToLaosVertical">
+            <summary>
+            Se testea agregar un AircraftCarrier en vertical a Laos
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAircraftCarrierToLaosHorizontal">
+            <summary>
+            Se testea agregar un Submarino en horizontal a Laos
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfAircraftCarrier">
+            <summary>
+            Se testea que se agreguen las 4 posiciones del aircraft a Laos
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.TestPlaceSubmarineInTakenPosition">
@@ -197,6 +209,41 @@
             Test17
             Este test chequea que si se manda una coordenada menor que 2 entonces salta error
             Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestNumberToletter10BoardSize">
+            <summary>
+            Testea el método donde si el tamaño delt ablero es 10 aparecera que debe elegir una letra desde A hasta K
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestNumberToletter15BoardSize">
+            <summary>
+            Testea el método donde si el tamaño delt ablero es 15 aparecera que debe elegir una letra desde A hasta P
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestNumberToletter20BoardSize">
+            <summary>
+            Testea el método donde si el tamaño delt ablero es 20 aparecera que debe elegir una letra desde A hasta u
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestLetterToNumberA">
+            <summary>
+            Testea el método donde se pasa de letra a numero
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestLetterToNumberU">
+            <summary>
+            Testea el método donde se pasa de letra a numero
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestLetterToNumberP">
+            <summary>
+            Testea el método donde se pasa de letra a numero
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestLetterToNumberK">
+            <summary>
+            Testea el método donde se pasa de letra a numero
             </summary>
         </member>
     </members>

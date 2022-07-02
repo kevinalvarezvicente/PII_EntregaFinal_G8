@@ -213,8 +213,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
             {
-                return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
                 this.playerShipBoard.GameBoard[x, y] = "|";
+                return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {

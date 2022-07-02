@@ -189,7 +189,6 @@
             <param name="ID">Es el Identificador del usuario</param>
             <returns>Devuelve el ID si es que el usuario esta en el juego</returns>
         </member>
-
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.ObtainEnemyId(System.Int64)">
             <summary>
             Método para obtener el iD del oponente
@@ -197,7 +196,6 @@
             <param name="ID">Es el identificador del oponente</param>
             <returns>retorna un long porque es el id de telegram</returns>
         </member>
-
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.ObtainPlayer(System.Int64)">
             <summary>
             Método para obtener el juego según el ID del jugador
@@ -561,11 +559,14 @@
             </summary>
             <param name="user">Recibe como parámetro el usuario ya que en este momento el usuario pasa a ser jugador</param>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AddPlayerBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.AddPlayerShipBoard(PII_ENTREGAFINAL_G8.src.Library.Board)">
             <summary>
             Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
             </summary>
             <returns>Retorna una matriz con los barcos agregados</returns>
+            
+            
+            
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetPlayerShipBoard">
             <summary>

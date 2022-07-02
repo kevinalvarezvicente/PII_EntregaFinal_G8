@@ -16,10 +16,13 @@ namespace LibraryTests
         [Test]
         public void PlayerReceivesShotTest()
         {
-            User matias = new User(1202755835,"Matias","Olave");
+            User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
-            Submarine submarine = new Submarine("11","v");
-            player.PlaceShipOnBoard(submarine);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            Frigate frigate = new Frigate("11","h");
+            player.PlaceShipOnBoard(frigate);
             player.ReceiveShot("11");
             Assert.AreEqual("x", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual(1,player.ShipsList.Count);
@@ -49,10 +52,13 @@ namespace LibraryTests
         [Test]
         public void TestMakeShot()
         {
-                User player1 = new User(1202755835,"Kevin","Alvarez");
-                Player kevin = new Player(player1);
-                kevin.MakeShot("12");
-                Assert.AreEqual("X",kevin.GetPlayerShotBoard().GameBoard[1,2]);  
+                User matias = new User(3,"Olave", "Matias");
+                Player player = new Player(matias);
+                player.AddPlayerShipBoard(new ShipBoard(10));
+                player.AddPlayerShotBoard(new ShotBoard(10));
+                LobbyContainer.AddPlayer(player);
+                player.MakeShot("12");
+                Assert.AreEqual("X",player.GetPlayerShotBoard().GameBoard[1,2]);  
         }
 
     }

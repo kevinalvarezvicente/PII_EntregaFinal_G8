@@ -4,6 +4,11 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:LibraryTests.BoardTests">
+            <summary>
+            Test de los tableros
+            </summary>
+        </member>
         <member name="M:LibraryTests.BoardTests.TestBigBoardException">
             <summary>
             Testea excepcion del tamaño del tablero
@@ -24,6 +29,11 @@
             se prueba la maxima cantidad de barcos
             </summary>
         </member>
+        <member name="T:LibraryTests.ContainerTests">
+            <summary>
+            Test de los containers
+            </summary>
+        </member>
         <member name="M:LibraryTests.ContainerTests.TestAddPlayerToLobby">
             <summary>
             Se testean los métodos de Lobby y Administrator. Se hacen juntos ya que son clases Singleton
@@ -32,6 +42,16 @@
         <member name="M:LibraryTests.ContainerTests.TestAreNotUserInListException">
             <summary>
             Test para ver que es posible iniciar una partida porque hay mas jugadores
+            </summary>
+        </member>
+        <member name="T:LibraryTests.HelloHandlerTests">
+            <summary>
+              testea el hola handler
+            </summary>
+        </member>
+        <member name="T:LibraryTests.PlayerTests">
+            <summary>
+            Tests de los métodos de la clase Player
             </summary>
         </member>
         <member name="M:LibraryTests.PlayerTests.PlayerReceivesShotTest">
@@ -53,7 +73,7 @@
         </member>
         <member name="T:LibraryTests.ShipTests">
             <summary>
-            Se hace test para el método que divide la coordenada
+            Test de los métodos de la clase Ship y que relaciona con barcos
             </summary>
         </member>
         <member name="M:LibraryTests.ShipTests.TestReceiveShotException">
@@ -122,6 +142,38 @@
             Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard
             </summary>
         </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceSubmarineInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceFrigateInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceCruiserInTakenPosition">
+            <summary>
+            Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestPlaceShipOutOfBoard">
+            <summary>
+            Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListOK">
+            <summary>
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que si esta
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestSearchForCoordInShipsListNotOK">
+            <summary>
+            Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+            Se hace Assert.AreEqual para una coordenada que no esta
+            </summary>
+        </member>
         <member name="T:LibraryTests.UtilsTests">
             <summary>
             Se hace test para los métodos de la clase Utilidades
@@ -136,14 +188,14 @@
         <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK3">
             <summary>
             Test 16
-            Este test chequearía que si se manda una coordenada mas larga que 2 entonces salta error
+            Este test chequea que si se manda una coordenada mas larga que 2 entonces salta error
             Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
             </summary>
         </member>
         <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK1">
             <summary>
             Test17
-            Este test chequearía que si se manda una coordenada menor que 2 entonces salta error
+            Este test chequea que si se manda una coordenada menor que 2 entonces salta error
             Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
             </summary>
         </member>

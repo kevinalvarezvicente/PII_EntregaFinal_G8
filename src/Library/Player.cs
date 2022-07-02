@@ -212,7 +212,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {
-                return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
+                bool ExceptionShot = true;
+                throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
+                //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
             }
             return null;
 

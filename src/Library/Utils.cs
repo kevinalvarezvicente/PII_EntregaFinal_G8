@@ -18,10 +18,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             return abc[number];
         }
-
+        /// <summary>
+        /// Convierte la letra pasada por parámetro a numero
+        /// </summary>
+        /// <param name="letter">Es la cadena, la letra que selecciona el jugador</param>
+        /// <returns>Retorna el numero en string</returns>
         public static string LetterToNumber(string letter)
         {
-            int counter = 0;
             string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
             for (int i = 0; i < abc.GetLength(0); i++)
             {

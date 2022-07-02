@@ -20,16 +20,16 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            ChatBot bot = ChatBot.Instance;
+            //ChatBot bot = ChatBot.Instance;
 
-            /*Board board = new ShipBoard(10);
+            Board board = new ShipBoard(10);
             User user = new User(10,"c","g");
             Player player = new Player(user);
-            player.AddPlayerBoard(board);
-            Ship f = new Frigate("02","h");
+            player.AddPlayerShipBoard(board);
+            Ship f = new Frigate("02","v");
             player.PlaceShipOnBoard(f);
             BoardPrinter bp = new BoardPrinter();
-            bp.PrintPlayerBoard(player.GetPlayerShipBoard());*/
+            bp.PrintPlayerBoard(player.GetPlayerShipBoard());
 
         }
     }

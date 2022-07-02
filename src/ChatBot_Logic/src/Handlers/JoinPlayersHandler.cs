@@ -60,9 +60,10 @@ namespace ChatBot_Logic.src.Handlers
                     else
                     {
                         Game game = new Game(player1, player2);
+                        GamesContainer.AddGame(game);
                         LobbyContainer.RemoveUser(player1);
                         LobbyContainer.RemoveUser(player2);
-                        GamesContainer.AddGame(game);
+
                         ChatBot.sendMessage(player2.UserId, $"Te infiltrarás 🕵 en el terreno de {player1.PlayerName} es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla");
                         response = $"El enemigo conocido como {player2.PlayerName} se ha inflitrado 🕵 en tu terreno, es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla";
                     }

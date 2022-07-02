@@ -164,6 +164,12 @@ namespace ChatBot_Logic.src
         {
             await Bot.SendTextMessageAsync(id, text);
         }
+
+        public static async void sendMessageBoard(long id, String text)
+        {
+            await Bot.SendTextMessageAsync(id, text, ParseMode.MarkdownV2);
+        }
+
         /// <summary>
         /// Se fija del errores al comunicarse con el bot
         /// </summary>
@@ -171,6 +177,7 @@ namespace ChatBot_Logic.src
         /// <param name="exception"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
+
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {
             Console.WriteLine(exception.Message);

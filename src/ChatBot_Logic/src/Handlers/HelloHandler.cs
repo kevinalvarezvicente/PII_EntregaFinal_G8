@@ -18,6 +18,7 @@
             this.Keywords = new List<string>();
             Keywords.Add("hola");
             Keywords.Add("Hola");
+            Keywords.Add("/Hola");
         }
 
         /// <summary>

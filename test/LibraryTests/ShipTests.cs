@@ -4,7 +4,7 @@ using PII_ENTREGAFINAL_G8.src.Library;
 namespace LibraryTests
 {
     /// <summary>
-    /// Se hace test para el método que divide la coordenada
+    /// Test de los métodos de la clase Ship y que relaciona con barcos
     /// </summary>
     public class ShipTests
     {

@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// El handler que trabaja cuando el usuario quiere comenzar a jugar y le pide que seleccione el tamaño del tablero para despues encontrarle un oponente
+    ///  Un "handler" del patrón Chain of Responsibility que implementa el comando "/batallar".
+    /// </summary>
     public class BatllePlacerHandler : BaseHandler
     {
         /// <summary>
@@ -17,11 +21,12 @@ namespace ChatBot_Logic.src.Handlers
         }
 
         /// <summary>
-        /// Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
+        /// Es el método donde se trabaja todo lo del handler.
+        /// Procesa el mensaje "/batallar"
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
-        /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;

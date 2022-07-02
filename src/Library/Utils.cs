@@ -15,6 +15,20 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return abc[number];
         }
 
+        public static string LetterToNumber(string letter)
+        {
+            int counter = 0;
+            string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            for (int i = 0; i < abc.GetLength(0); i++)
+            {
+                if (abc[i] == letter)
+                {
+                    return i.ToString();
+                }
+            }
+            return null;
+        }
+
         /// <summary>
         /// Este método devuelve la fila y la columna en numeros enteros.
         /// Cumple SRP ya que su única responsabilidad es brindar propiedades para facilitar la interaccion con el usuario

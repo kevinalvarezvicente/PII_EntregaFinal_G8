@@ -1,5 +1,4 @@
-using System;
- using System.Text;
+using System.Text;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -12,27 +11,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// Es polimórfica pasandole por parámetro un argumento de tipo Board si el dia de mañana se creara otro tipo de tablero se imprimira sin problema. 
     /// Cumple DIP pues a través de la clase abstracta AbstractBoard de la que Board depende y que BoardPrinter depende también de esa abstracción por la interfaz de la cual hereda.
     /// </summary>
-    public class TelegramBoardPrinter: IPrinter
+    public class TelegramBoardPrinter : IPrinter
     {
         /// <summary>
-      /// Permite imprimir el tablero del jugador pasado por parámetro.
-      /// Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
-      /// </summary>
-      /// <param name="board">Tablero que se desea imprimir en telegram</param>
+        /// Permite imprimir el tablero del jugador pasado por parámetro.
+        /// Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
+        /// </summary>
+        /// <param name="board">Tablero que se desea imprimir en telegram</param>
 
-        public void PrintPlayerBoard(Board board)
+        public string PrintPlayerBoard(Board board)
         {
 
             StringBuilder txt = new StringBuilder("", 100);
             for (int i = 0; i < board.GameBoard.GetLength(0); i++)
             {
-            for (int j = 0; j <  board.GameBoard.GetLength(1); j++)
+                for (int j = 0; j < board.GameBoard.GetLength(1); j++)
                 {
-                txt.Append(board.GameBoard[i,j]+" ");
+                    txt.Append(board.GameBoard[i, j] + " ");
                 }
                 txt.Append("\n");
-             }
-           Console.WriteLine(txt);  
+            }
+            return txt.ToString();
         }
     }
 }

@@ -93,7 +93,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             set
             {
-                this.playerBoardsList=value;
+                this.playerBoardsList = value;
             }
 
         }
@@ -233,6 +233,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
         public void PlaceShipOnBoard(Ship ship)
         {
+
             foreach (Spot spot in ship.CoordsList)
             {
                 if (spot.X > playerShipBoard.GameBoard.GetLength(0) || spot.Y > playerShipBoard.GameBoard.GetLength(1))

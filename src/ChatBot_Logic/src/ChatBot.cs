@@ -156,6 +156,10 @@ namespace ChatBot_Logic.src
         {
             await Bot.SendTextMessageAsync(id, text);
         }
+        public static async void sendMessageBoard(long id, String text)
+        {
+            await Bot.SendTextMessageAsync(id, text, ParseMode.MarkdownV2);
+        }
 
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {

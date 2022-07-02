@@ -189,7 +189,7 @@
             <param name="ID">Es el Identificador del usuario</param>
             <returns>Devuelve el ID si es que el usuario esta en el juego</returns>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.ObtainGame(System.Int64)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.GamesContainer.ObtainPlayer(System.Int64)">
             <summary>
             Método para obtener el juego según el ID del jugador
             </summary>
@@ -695,6 +695,23 @@
             Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
             </summary>
             <param name="board">Tablero que se desea imprimir en telegram</param>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.AircraftCarrier">
+            <summary>
+            Es el barco mas pequeño, hereda de Ship
+            Es una subclase de Ship ya que  atributos y métodos de otra clase y 
+            habitualmente se puede agregar nuevos atributos y nuevos métodos.
+            Lo que se modifica es el tamaño del barco esté predeterminado según el tipo. 
+            SRP: único motivo de cambio es si se desea agrgarle otro parámetro o cambiar el tamaño.
+            /// </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.AircraftCarrier.#ctor(System.String,System.String)">
+            <summary>
+            Tiene tamaño 57
+            </summary>
+            <param name="coord">Es la coordenada inicial y a partir de esta ya se guardan las siguientes como claves</param>
+            <param name="direction">El usuario puede elegir si lo quiere ubicar vertical u horizontal</param>
+            <returns></returns>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Frigate">
             <summary>

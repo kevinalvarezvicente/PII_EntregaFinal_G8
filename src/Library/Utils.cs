@@ -8,11 +8,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Utils
     {
+        /// <summary>
+        /// Convierte un numero a letra patra cuando salta mensaje del bot
+        /// </summary>
+        /// <param name="number">Recibe por parámetro el numero que es el tamaño del tablero</param>
+        /// <returns>Retorna la letra para el mensaje del boto</returns>
         public static string NumberToletter(int number)
+        {
+            string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            return abc[number];
+        }
+
+        public static string LetterToNumber(string letter)
         {
             int counter = 0;
             string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-            return abc[number];
+            for (int i = 0; i < abc.GetLength(0); i++)
+            {
+                if (abc[i] == letter)
+                {
+                    return i.ToString();
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -32,26 +50,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int column = (int)Char.GetNumericValue(coordArray[1]);
             return (row, column);
 
-            //Esta parte es porque tal vez en un futuro podamos hacer que diga letra y numero pero por el momento haremos solo numeros
 
-            /*string letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string column = "";
-            int row = 0;
-            
-
-            if (coord.Length != 2)
-            {
-                throw new LibraryException($"{coord} es una coordenada inválida ");
-            }
-
-            char[] coordArray = coord.ToArray();
-
-            column = coordArray[1].ToString().ToUpper();
-            row = int.Parse(coordArray[0].ToString());
-
-            int columnNum = letters.IndexOf(column)+1;
-
-            return (columnNum+1, row+1);*/
         }
 
         /// <summary>

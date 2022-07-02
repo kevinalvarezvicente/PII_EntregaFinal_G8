@@ -1,5 +1,4 @@
 using System;
- using System.Text;
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -15,11 +14,11 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     public class BoardPrinter : IPrinter
     {
         /// <summary>
-      /// Permite imprimir el tablero del jugador pasado por parámetro.
-      /// Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
-      /// </summary>
-      /// <param name="board">Tablero que se desea imprimir por pantalla</param>
-        public void PrintPlayerBoard(Board board)
+        /// Permite imprimir el tablero del jugador pasado por parámetro.
+        /// Es una operación polimórfica se debe pasar por parámetro un objeto de tipo Board y allí imprime por pantalla sin problema si se le manda ShotBoard o ShipBoard o si el día de mañana se agrega otro subtipo de Board.
+        /// </summary>
+        /// <param name="board">Tablero que se desea imprimir por pantalla</param>
+        public string PrintPlayerBoard(Board board)
         {
 
             for (int i = 0; i < board.GameBoard.GetLength(0); i++)
@@ -30,6 +29,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
                 Console.WriteLine();
             }
+            return null;
         }
 
     }

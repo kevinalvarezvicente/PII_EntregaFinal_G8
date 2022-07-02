@@ -5,8 +5,18 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// Handler que une a los jugadores que coinciden con tamaño del tablero
+    /// Es subclase de BaseHandler
+    /// Forma parte de Chain of fResponsibility
+    /// </summary>
     public class JoinPlayerHandler : BaseHandler
     {
+        /// <summary>
+        /// Constructor del handler
+        /// </summary>
+        /// <param name="next">Es el siguiente handler a ejecutarse</param>
+        /// <returns></returns>
         public JoinPlayerHandler(BaseHandler next) : base(next)
         {
 
@@ -15,7 +25,13 @@ namespace ChatBot_Logic.src.Handlers
 
 
         }
-
+        /// <summary>
+        /// Es el método donde se trabaja todo lo del handler.
+        /// Procesa el mensaje "/defender"
+        /// </summary>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
             ChainData chainData = ChainData.Instance;
@@ -44,9 +60,10 @@ namespace ChatBot_Logic.src.Handlers
                     else
                     {
                         Game game = new Game(player1, player2);
+                        GamesContainer.AddGame(game);
                         LobbyContainer.RemoveUser(player1);
                         LobbyContainer.RemoveUser(player2);
-                        GamesContainer.AddGame(game);
+
                         ChatBot.sendMessage(player2.UserId, $"Te infiltrarás 🕵 en el terreno de {player1.PlayerName} es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla");
                         response = $"El enemigo conocido como {player2.PlayerName} se ha inflitrado 🕵 en tu terreno, es hora de derrotarlo 😈. Es hora de posicionar tus barcos 🛥 /NavesBatalla";
                     }

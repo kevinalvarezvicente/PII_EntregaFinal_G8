@@ -19,6 +19,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Cada jugador tiene un tablero donde insertará sus barcos
         /// </summary>
         private Board playerShipBoard;
+        /// <summary>
+        /// Es el identificador que sale de telegram
+        /// </summary>
         private long userId;
         /// <summary>
         /// Cada jugador tiene un tablero donde irán los tiros
@@ -53,33 +56,33 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
         /// </summary>
         /// <returns>Retorna una matriz con los barcos agregados</returns>
-        public void AddPlayerBoard(Board board)
+        /// 
+        /// 
+        /// 
+
+        public void AddPlayerShipBoard(Board board)
         {
-            playerBoardsList.Add(board);
-            this.GetPlayerShipBoard();
+            this.playerShipBoard = board;
         }
+        public void AddPlayerShotBoard(Board board)
+        {
+            this.playerShotBoard = board;
+        }
+        /// <summary>
+        /// Obtiene tablero de barcos del jugador
+        /// </summary>
+        /// <returns>Retorna el tablero</returns>
         public Board GetPlayerShipBoard()
         {
-            foreach (Board board in playerBoardsList)
-            {
-                if (board.What == "ShipBoard")
-                {
-                    this.playerShipBoard = board;
-                    return this.playerShipBoard;
-                }
-            }
-            return null;
+            return this.playerShipBoard;
         }
+        /// <summary>
+        /// Método para obtener el tablero de tiros del jugador
+        /// </summary>
+        /// <returns>Retorna el tablero de tiros </returns>
         public Board GetPlayerShotBoard()
         {
-            foreach (Board board in playerBoardsList)
-            {
-                if (board.What == "ShotBoard")
-                {
-                    this.playerShotBoard = board;
-                }
-            }
-            return null;
+            return this.playerShotBoard;
         }
         /// <summary>
         /// Esta seria la lista de tableros del jugador
@@ -93,10 +96,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             set
             {
-                this.playerBoardsList=value;
+                this.playerBoardsList = value;
             }
 
         }
+        /// <summary>
+        /// Es el atributo identificador del usuario
+        /// </summary>
+        /// <value>Retorna el valor</value>
         public long UserId
         {
             get
@@ -136,6 +143,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
 
         }
+        /// <summary>
+        /// Método para obtener el tamaño del tablero
+        /// </summary>
+        /// <returns>Retorna un entero con el tamaño del board</returns>
         public int GetPlayerBoardSize()
         {
             return this.playerShipBoard.GameBoard.GetLength(0);
@@ -233,6 +244,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
         public void PlaceShipOnBoard(Ship ship)
         {
+
             foreach (Spot spot in ship.CoordsList)
             {
                 if (spot.X > playerShipBoard.GameBoard.GetLength(0) || spot.Y > playerShipBoard.GameBoard.GetLength(1))

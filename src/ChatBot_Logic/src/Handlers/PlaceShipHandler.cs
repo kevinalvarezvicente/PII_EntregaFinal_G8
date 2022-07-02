@@ -33,7 +33,7 @@ namespace ChatBot_Logic.src.Handlers
                 if (chainData.userPostionHandler[from].Count == 0)
                 {
                     chainData.userPostionHandler[from].Add("/NavesBatalla"); //Añadimos el nuevo handler que se esta ejecutando.
-                    int b = player1.GetPlayerShipBoard().GameBoard.GetLength(0) - 1;
+                    int b = player1.GetPlayerShipBoard().GameBoard.GetLength(1) - 1;
                     String TopBoard = Utils.NumberToletter(b);
                     response = "Hola soldado, se te han asignado 4 naves 🛥 de batalla. Recuerda de posicionarlas lo mejor posible para que el enemigo no te encuentre. Yo no diré nada 😶." +
                         "Tienes las siguentes naves asignadas a tu responsabilidad. Estas tienen distintas capacidades."
@@ -58,9 +58,17 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/FrigateData");
                     string[] coord = message.Text.Split(":");
-                    Ship frigate = new Frigate(coord[0], coord[1]);
+                    string div = coord[0];
+                    string letter = div.Substring(0, 1);
+                    string number1 = Utils.LetterToNumber(letter);
+                    string number2 = div.Substring(1, div.Length - 1);
+                    string build = number1 + number2;
+                    Ship frigate = new Frigate(build, coord[1]);
+
                     player1.PlaceShipOnBoard(frigate);
-                    response = "La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.";
+                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                    response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
+                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                     return true;
                 }
                 if (chainData.userPostionHandler[from].Count == 3 && message.Text == "/LightCruiser")

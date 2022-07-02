@@ -3,6 +3,9 @@ using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace LibraryTests
 {
+    /// <summary>
+    /// Tests de los métodos de la clase Player
+    /// </summary>
     public class PlayerTests
     {
         /// <summary>
@@ -18,10 +21,8 @@ namespace LibraryTests
             Submarine submarine = new Submarine("11","v");
             player.PlaceShipOnBoard(submarine);
             player.ReceiveShot("11");
-            //ool isTrue= player.SearchForCoordInShipsList("11");
             Assert.AreEqual("x", player.GetPlayerShipBoard().GameBoard[1, 1]);
             Assert.AreEqual(1,player.ShipsList.Count);
-            //Assert.AreEqual(true,isTrue);   Método aún sin funcionar
             
         }
 

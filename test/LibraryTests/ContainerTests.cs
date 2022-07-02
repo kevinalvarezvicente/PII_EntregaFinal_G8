@@ -3,6 +3,9 @@ using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace LibraryTests
 {
+    /// <summary>
+    /// Test de los containers
+    /// </summary>
     public class ContainerTests
     {
         /// <summary>

@@ -30,6 +30,11 @@
             Clase encargada de la gestion del ChatBot
             </summary>
         </member>
+        <member name="F:ChatBot_Logic.src.ChatBot.lastPosition">
+            <summary>
+            Diccionario donde se guarda lo que hay en la ultima posición del trabajo del handler
+            </summary>
+        </member>
         <member name="P:ChatBot_Logic.src.ChatBot.Token">
             <summary>
             Obtenemos el Token de la clase TokenConfiguration
@@ -89,10 +94,33 @@
             <param name="message">El mensaje recibido</param>
             <returns></returns>
         </member>
+        <member name="M:ChatBot_Logic.src.ChatBot.sendMessage(System.Int64,System.String)">
+            <summary>
+            Método que envía mensaje
+            </summary>
+            <param name="id">Recibe como parámetro el identificador</param>
+            <param name="text">recibe un texto de tipo string</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot_Logic.src.ChatBot.HandleErrorAsync(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Se fija del errores al comunicarse con el bot
+            </summary>
+            <param name="botClient"></param>
+            <param name="exception"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="P:ChatBot_Logic.src.ChatBot.Instance">
             <summary>
             Obtine la instancia del ChatBot, si no existe la crea.
             Desarollo con el patrón Singleton.
+            </summary>
+        </member>
+        <member name="T:ChatBot_Logic.src.Handlers.BatllePlacerHandler">
+            <summary>
+            El handler que trabaja cuando el usuario quiere comenzar a jugar y le pide que seleccione el tamaño del tablero para despues encontrarle un oponente
+             Un "handler" del patrón Chain of Responsibility que implementa el comando "/batallar".
             </summary>
         </member>
         <member name="M:ChatBot_Logic.src.Handlers.BatllePlacerHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
@@ -103,11 +131,12 @@
         </member>
         <member name="M:ChatBot_Logic.src.Handlers.BatllePlacerHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
             <summary>
-            Procesa el mensaje "hola" y retorna true; retorna false en caso contrario.
+            Es el método donde se trabaja todo lo del handler.
+            Procesa el mensaje "/batallar"
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
-            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         </member>
         <member name="T:ChatBot_Logic.src.Handlers.GoodByeHandler">
             <summary>
@@ -147,6 +176,73 @@
             <param name="message">El mensaje a procesar.</param>
             <param name="response">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ChatBot_Logic.src.Handlers.JoinPlayerHandler">
+            <summary>
+            Handler que une a los jugadores que coinciden con tamaño del tablero
+            Es subclase de BaseHandler
+            Forma parte de Chain of fResponsibility
+            </summary>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.JoinPlayerHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+            <summary>
+            Constructor del handler
+            </summary>
+            <param name="next">Es el siguiente handler a ejecutarse</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.JoinPlayerHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Es el método donde se trabaja todo lo del handler.
+            Procesa el mensaje "/defender"
+            </summary>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
+        </member>
+        <member name="T:ChatBot_Logic.src.Handlers.RegisterUserHandler">
+            <summary>
+            Handler que registra al usuario
+            Es subclase de BaseHandler
+            Forma parte de Chain of fResponsibility
+            </summary>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.RegisterUserHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.RegisterUserHandler"/>. Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.RegisterUserHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Es el método donde se trabaja todo lo del handler.
+            Procesa el mensaje "/SerSoldado"
+            </summary>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
+        </member>
+        <member name="T:ChatBot_Logic.src.Handlers.SelectLobbyHandler">
+            <summary>
+            Handler que asigna al usuario a un lobby segun el tamaño del tablero qeu selecciono
+            Es subclase de BaseHandler
+            Forma parte de Chain of fResponsibility
+            </summary>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.SelectLobbyHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.SelectLobbyHandler"/>. Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.SelectLobbyHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Es el método donde se trabaja todo lo del handler.
+            Procesa los mensajes "/Maldivas", "/Donbas", "/Laos"
+            </summary>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         </member>
         <member name="T:ChatBot_Logic.src.HandlersConfiguration.BaseHandler">
             <summary>
@@ -267,6 +363,31 @@
             <summary>
             Obtiene o sobreescribe el etoken
             </summary>
+        </member>
+        <member name="T:ClassLibrary.ChainData">
+            <summary>
+            La clase que guardará la cadena de los datos de los handlers. 
+            Es un singleton pues permite controlar que solo se instancie una vez
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.ChainData._instance">
+            <summary>
+            Constructor privado, es el unico que sabe que esta instanciado
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.ChainData.userPostionHandler">
+            <summary>
+            Es un diccionario que guardará la posicion del handler en el que se encuentra el jugador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ChainData.Instance">
+             <summary>
+             Al acceder por primera vez a la propiedad de clase Instance 
+             se crea la única instancia y se guarda en la variable de clase privada instance
+            Luego cada vez que se accede a la propiedad de clase Instance se retorna esa única instancia.
+             </summary>
+             <value></value>
         </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.ChatBot_Logic.SecretToken.ISecretService">
             <summary>

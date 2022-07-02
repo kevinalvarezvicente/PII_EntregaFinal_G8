@@ -16,6 +16,9 @@ namespace ChatBot_Logic.src
     /// </summary>
     public class ChatBot : ISecretService
     {
+        /// <summary>
+        /// Diccionario donde se guarda lo que hay en la ultima posición del trabajo del handler
+        /// </summary>
         public static Dictionary<string, string> lastPosition = new Dictionary<string, string>();
 
         /// <summary>
@@ -151,15 +154,29 @@ namespace ChatBot_Logic.src
                 await Bot.SendTextMessageAsync(message.Chat.Id, response);
             }
         }
-
+        /// <summary>
+        /// Método que envía mensaje
+        /// </summary>
+        /// <param name="id">Recibe como parámetro el identificador</param>
+        /// <param name="text">recibe un texto de tipo string</param>
+        /// <returns></returns>
         public static async void sendMessage(long id, String text)
         {
             await Bot.SendTextMessageAsync(id, text);
         }
+
         public static async void sendMessageBoard(long id, String text)
         {
             await Bot.SendTextMessageAsync(id, text, ParseMode.MarkdownV2);
         }
+
+        /// <summary>
+        /// Se fija del errores al comunicarse con el bot
+        /// </summary>
+        /// <param name="botClient"></param>
+        /// <param name="exception"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
 
         public static Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
         {

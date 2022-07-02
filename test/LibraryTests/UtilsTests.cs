@@ -20,7 +20,7 @@ namespace LibraryTests
         }
         /// <summary>
         /// Test 16
-        /// Este test chequearía que si se manda una coordenada mas larga que 2 entonces salta error
+        /// Este test chequea que si se manda una coordenada mas larga que 2 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>
         [Test]
@@ -32,7 +32,7 @@ namespace LibraryTests
 
         /// <summary>
         /// Test17
-        /// Este test chequearía que si se manda una coordenada menor que 2 entonces salta error
+        /// Este test chequea que si se manda una coordenada menor que 2 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>
         [Test]
@@ -41,6 +41,16 @@ namespace LibraryTests
             string coord ="1";
             Assert.Throws<CoordException>(() => Utils.SplitCoordIntoRowAndColumn(coord));
         }
+        /// <summary>
+        /// Testea cuando el tamaño del tablero es 10
+        /// </summary>
+
+        /*[Test]
+        public void TestNumberToletter()
+        {
+            int numero = 10;
+            Assert.AreEqual("k",Utils.NumberToletter(numero));
+        }*/
         
     }
 }

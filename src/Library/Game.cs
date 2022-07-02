@@ -17,7 +17,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// - Player
     /// - Ship (Cualquier tipo)
     /// </summary>
-    public class Game: IJsonConvertible
+    public class Game
     {
         
         /// <summary>
@@ -38,7 +38,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
         /// </summary>
         private Player active_Player = null;
+        /// <summary>
+        /// Atributo de la partida, el oponente
+        /// </summary>
         private Player inactive_Player = null;
+        /// <summary>
+        /// Propiedad para acceder al jugador inicial de la partida
+        /// </summary>
+        /// <value>retorna el jugador inicial</value>
         public Player Active_Player
         {
             get
@@ -71,6 +78,10 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Usuarios que jugarán la partida. Tiene solo get porque no va a cambiar en ningun momento. 
         /// </summary>
         private List<Player> playersList = new List<Player>();
+        /// <summary>
+        /// Lista de jugadores del juego
+        /// </summary>
+        /// <value></value>
         public List<Player> PlayersList
         {
             get
@@ -222,67 +233,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return this.GameStatus;
         }
-        /// <summary>
-        /// Transforma los datos del juego a una lista para poder guardarlo en json a futuro
-        /// </summary>
-        /// <returns>Retorna una lista</returns>
-        public Dictionary<string,string> TransformGameToList()
-        {
-            Dictionary<string,string> gameInfo= new Dictionary<string,string>();
-            gameInfo.Add("Estado", this.GameStatus.ToString());
-            gameInfo.Add("Id",this.GameId.ToString());
-            gameInfo.Add("Fecha" , this.Date.ToString());
-            gameInfo.Add("JugadorInicial",this.active_Player.PlayerName);
-            gameInfo.Add("TableroJugadorInicial",this.active_Player.PlayerBoardsList.ToString());
-            gameInfo.Add("TableroJugadorOponente", this.Inactive_Player.PlayerBoardsList.ToString());
-            gameInfo.Add("JugadorOponente",this.Inactive_Player.PlayerName);
-            gameInfo.Add("ListaJugadores",this.playersList.ToString());
-            return gameInfo;            
-        }
-        /// <summary>
-        /// Método que carga el juego desde el Json
-        /// </summary>
-        /// <param name="json"></param>
-        public Game(string json)
-        {
-            this.LoadFromJson(json);
-        }
-        /// <summary>
-        /// Método que transforna a json
-        /// </summary>
-        /// <returns></returns>
-        public string ConvertToJson()
-        {
 
-            return JsonSerializer.Serialize(this.TransformGameToList());
-        }
-        /// <summary>
-        /// Método que carga desde el archivo json
-        /// </summary>
-        /// <param name="json">Se le debe pasar por parámetro el json</param>
-        public void LoadFromJson(string json)
-        {
-            Game deserialized = JsonSerializer.Deserialize<Game>(json);
-            this.GameStatus = deserialized.GameStatus;
-            this.GameId= deserialized.GameId;
-            this.Date = deserialized.Date;
-            this.active_Player = deserialized.active_Player;
-            this.active_Player.PlayerBoardsList=deserialized.Inactive_Player.PlayerBoardsList;
-            this.Inactive_Player.PlayerBoardsList=deserialized.Inactive_Player.PlayerBoardsList;
-            this.Inactive_Player = deserialized.Inactive_Player;
-            this.playersList=deserialized.playersList;
-
-        }
-
-        /// <summary>
-        /// Método que guarda todo lo que hay en el contenedor de partidas en el archivo Games.json
-        /// </summary>
-        public void saveGame()
-        {
-            string json = this.ConvertToJson();
-            File.AppendAllText(@"..\..\src\Library\Games.json", json);
-             
-        } 
 
     }
 }

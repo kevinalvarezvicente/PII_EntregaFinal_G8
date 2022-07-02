@@ -8,9 +8,6 @@ using Telegram.Bot.Types;
 
 namespace LibraryTests
 {
-    /// <summary>
-    /// Test de los handlers
-    /// </summary>
     public class HelloHandlerTests
     {
         HelloHandler handler;

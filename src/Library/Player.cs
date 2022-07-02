@@ -56,10 +56,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Se obtiene el tablero de barcos a través de la propiedad PlayerShipBoard
         /// </summary>
         /// <returns>Retorna una matriz con los barcos agregados</returns>
-        public void AddPlayerBoard(Board board)
+        /// 
+        /// 
+        /// 
+
+        public void AddPlayerShipBoard(Board board)
         {
-            playerBoardsList.Add(board);
-            this.GetPlayerShipBoard();
+            this.playerShipBoard = board;
+        }
+        public void AddPlayerShotBoard(Board board)
+        {
+            this.playerShotBoard = board;
         }
         /// <summary>
         /// Obtiene tablero de barcos del jugador
@@ -67,15 +74,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna el tablero</returns>
         public Board GetPlayerShipBoard()
         {
-            foreach (Board board in playerBoardsList)
-            {
-                if (board.What == "ShipBoard")
-                {
-                    this.playerShipBoard = board;
-                    return this.playerShipBoard;
-                }
-            }
-            return null;
+            return this.playerShipBoard;
         }
         /// <summary>
         /// Método para obtener el tablero de tiros del jugador
@@ -83,14 +82,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna el tablero de tiros </returns>
         public Board GetPlayerShotBoard()
         {
-            foreach (Board board in playerBoardsList)
-            {
-                if (board.What == "ShotBoard")
-                {
-                    this.playerShotBoard = board;
-                }
-            }
-            return null;
+            return this.playerShotBoard;
         }
         /// <summary>
         /// Esta seria la lista de tableros del jugador

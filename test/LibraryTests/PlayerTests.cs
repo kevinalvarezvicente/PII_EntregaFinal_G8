@@ -9,24 +9,6 @@ namespace LibraryTests
     public class PlayerTests
     {
         /// <summary>
-        /// Se testea cuando un jugador recibe un shot 
-        /// Se testea que el barco que se agregó se agrega a la lista de barcos del jugador
-        /// Se testea que al recibir el shot cambie el valor de la coordenada del barco
-        /// </summary>
-        [Test]
-        public void PlayerReceivesShotTest()
-        {
-            User matias = new User(1202755835,"Matias","Olave");
-            Player player = new Player(matias);
-            Submarine submarine = new Submarine("11","v");
-            player.PlaceShipOnBoard(submarine);
-            player.ReceiveShot("11");
-            Assert.AreEqual("x", player.GetPlayerShipBoard().GameBoard[1, 1]);
-            Assert.AreEqual(1,player.ShipsList.Count);
-            
-        }
-
-        /// <summary>
         /// Testea que cuando se agregan barcos a la lista de barcos del jugador
         /// </summary>
         [Test]
@@ -43,16 +25,63 @@ namespace LibraryTests
             Assert.AreEqual(3,player.ShipsList.Count);
         }
 
+
         /// <summary>
-        /// El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+        /// Se hace Assert.AreEqual para una coordenada que si esta
         /// </summary>
         [Test]
-        public void TestMakeShot()
+        public void TestSearchForCoordInShipsListOK()
         {
-                User player1 = new User(1202755835,"Kevin","Alvarez");
-                Player kevin = new Player(player1);
-                kevin.MakeShot("12");
-                Assert.AreEqual("X",kevin.GetPlayerShotBoard().GameBoard[1,2]);  
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            LightCruiser cruiser = new LightCruiser("03","h"); 
+            player.PlaceShipOnBoard(cruiser);
+            Assert.AreEqual(true, player.SearchForCoordInShipsList("04"));
+              
+        }
+        /// <summary>
+        /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
+        /// Se hace Assert.AreEqual para una coordenada que no esta
+        /// </summary>
+        [Test]
+        public void TestSearchForCoordInShipsListNotOK()
+        {
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            LightCruiser cruiser = new LightCruiser("03","h"); 
+            player.PlaceShipOnBoard(cruiser);
+            Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));   
+        }
+        /// <summary>
+        /// Testea cuando se añade el tablero a un jugador, se añade a su lista de tableros
+        /// </summary>
+        [Test]
+        public void TestAddBoardsToPlayer()
+        {
+            User maria = new User(3,"Maria", "Parapar");
+            Player player = new Player(maria);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            Assert.AreEqual(2,player.PlayerBoardsList.Count);
+        }
+        /// <summary>
+        /// Testea el método de conocer el tablero que selecciono el jugador
+        /// </summary>
+        [Test]
+        public void TestGetPlayerBoardSize()
+        {
+            User maria = new User(3,"Maria", "Parapar");
+            Player player = new Player(maria);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            Assert.AreEqual(10,player.GetPlayerBoardSize());
         }
 
     }

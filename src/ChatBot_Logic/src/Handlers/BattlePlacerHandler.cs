@@ -8,13 +8,13 @@ namespace ChatBot_Logic.src.Handlers
     /// El handler que trabaja cuando el usuario quiere comenzar a jugar y le pide que seleccione el tamaño del tablero para despues encontrarle un oponente
     ///  Un "handler" del patrón Chain of Responsibility que implementa el comando "/batallar".
     /// </summary>
-    public class BatllePlacerHandler : BaseHandler
+    public class BattlePlacerHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public BatllePlacerHandler(BaseHandler next) : base(next)
+        public BattlePlacerHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
             Keywords.Add("/batallar");

@@ -63,6 +63,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddPlayerShipBoard(Board board)
         {
             this.playerShipBoard = board;
+            this.playerBoardsList.Add(board);
         }
         /// <summary>
         /// Método que añade tablero de tiros al jugador
@@ -71,6 +72,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddPlayerShotBoard(Board board)
         {
             this.playerShotBoard = board;
+            this.playerBoardsList.Add(board);
         }
         /// <summary>
         /// Obtiene tablero de barcos del jugador
@@ -211,12 +213,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
             {
-                return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
                 this.playerShipBoard.GameBoard[x, y] = "|";
+                return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
             else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
             {
-                return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
+                bool ExceptionShot = true;
+                throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
+                //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
             }
             return null;
 

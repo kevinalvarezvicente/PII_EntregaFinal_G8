@@ -140,6 +140,7 @@ namespace ChatBot_Logic.src
         /// Maneja los mensajes que se envían al bot a través de handlers de una chain of responsibility.
         /// </summary>
         /// <param name="message">El mensaje recibido</param>
+        /// <param name="botClient">El bot que realiza</param>
         /// <returns></returns>
         private static async Task HandleMessageReceived(ITelegramBotClient botClient, Message message)
         {
@@ -164,7 +165,12 @@ namespace ChatBot_Logic.src
         {
             await Bot.SendTextMessageAsync(id, text);
         }
-
+        /// <summary>
+        /// Método donde el bot imprime por pantalla el tablero indicado
+        /// </summary>
+        /// <param name="id">Persona que está hablando con el bot</param>
+        /// <param name="text">Es el tablero pasado a string</param>
+        /// <returns></returns>
         public static async void sendMessageBoard(long id, String text)
         {
             await Bot.SendTextMessageAsync(id, text, ParseMode.MarkdownV2);
@@ -185,7 +191,7 @@ namespace ChatBot_Logic.src
         }
 
         /// <summary>
-        /// Obtine la instancia del ChatBot, si no existe la crea.
+        /// Obtiene la instancia del ChatBot, si no existe la crea.
         /// Desarollo con el patrón Singleton.
         /// </summary>
         public static ChatBot Instance

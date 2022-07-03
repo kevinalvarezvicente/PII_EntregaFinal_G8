@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{454AD4A3-D1D1-43AC-B1E9-AA3BDE115E4D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE2270FE-A632-420B-9CEC-3177528BF1A1}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\appsettings.json = ..\..\appsettings.json
@@ -14,12 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4609408A-2219-49AA-87F2-4A5D8B0B25F6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibraryTests", "test\LibraryTests\LibraryTests.csproj", "{C5A5123B-F975-417F-948C-EBAB197F5000}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatBot_Logic", "src\ChatBot_Logic\ChatBot_Logic.csproj", "{2D444F11-FD2D-429E-BD0C-F1610CC4F89F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game_Logic", "src\Library\Game_Logic.csproj", "{C25CCCDD-CD5A-40E3-837C-7180E606E41D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "src\Program\Program.csproj", "{572FCD99-040A-48C1-AF0B-03BCD7225355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,27 +23,12 @@ Global
 		{C5A5123B-F975-417F-948C-EBAB197F5000}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5A5123B-F975-417F-948C-EBAB197F5000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5A5123B-F975-417F-948C-EBAB197F5000}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2D444F11-FD2D-429E-BD0C-F1610CC4F89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2D444F11-FD2D-429E-BD0C-F1610CC4F89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2D444F11-FD2D-429E-BD0C-F1610CC4F89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2D444F11-FD2D-429E-BD0C-F1610CC4F89F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C25CCCDD-CD5A-40E3-837C-7180E606E41D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C25CCCDD-CD5A-40E3-837C-7180E606E41D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C25CCCDD-CD5A-40E3-837C-7180E606E41D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C25CCCDD-CD5A-40E3-837C-7180E606E41D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{572FCD99-040A-48C1-AF0B-03BCD7225355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{572FCD99-040A-48C1-AF0B-03BCD7225355}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{572FCD99-040A-48C1-AF0B-03BCD7225355}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{572FCD99-040A-48C1-AF0B-03BCD7225355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C5A5123B-F975-417F-948C-EBAB197F5000} = {4609408A-2219-49AA-87F2-4A5D8B0B25F6}
-		{2D444F11-FD2D-429E-BD0C-F1610CC4F89F} = {454AD4A3-D1D1-43AC-B1E9-AA3BDE115E4D}
-		{C25CCCDD-CD5A-40E3-837C-7180E606E41D} = {454AD4A3-D1D1-43AC-B1E9-AA3BDE115E4D}
-		{572FCD99-040A-48C1-AF0B-03BCD7225355} = {454AD4A3-D1D1-43AC-B1E9-AA3BDE115E4D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {905C22C0-46AA-4146-89DD-091CBFFAB75B}

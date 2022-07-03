@@ -4,9 +4,7 @@
 // </copyright>
 //--------------------------------------------------------------------------------
 
-using System;
 using ChatBot_Logic.src;
-using PII_ENTREGAFINAL_G8.src.Library;
 
 namespace PII_ENTREGAFINAL_G8.src.Program
 {
@@ -20,17 +18,7 @@ namespace PII_ENTREGAFINAL_G8.src.Program
         /// </summary>
         public static void Main()
         {
-            //ChatBot bot = ChatBot.Instance;
-
-            Board board = new ShipBoard(10);
-            User user = new User(10,"c","g");
-            Player player = new Player(user);
-            player.AddPlayerShipBoard(board);
-            Ship f = new Frigate("02","v");
-            player.PlaceShipOnBoard(f);
-            BoardPrinter bp = new BoardPrinter();
-            bp.PrintPlayerBoard(player.GetPlayerShipBoard());
-
+            ChatBot bot = ChatBot.Instance;
         }
     }
 }

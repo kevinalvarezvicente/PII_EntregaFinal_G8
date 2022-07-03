@@ -67,8 +67,8 @@ namespace ChatBot_Logic.src.Handlers
 
                     player1.PlaceShipOnBoard(frigate);
                     TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
-                    response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
                     ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
+                    response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
                     return true;
                 }
                 if (chainData.userPostionHandler[from].Count == 3 && message.Text == "/LightCruiser")
@@ -81,8 +81,16 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/LightCruiserData");
                     string[] coord = message.Text.Split(":");
-                    Ship lightCruiser = new LightCruiser(coord[0], coord[1]);
-                    player1.PlaceShipOnBoard(lightCruiser);
+                    string div = coord[0];
+                    string letter = div.Substring(0, 1);
+                    string number1 = Utils.LetterToNumber(letter);
+                    string number2 = div.Substring(1, div.Length - 1);
+                    string build = number1 + number2;
+                    Ship frigate = new Frigate(build, coord[1]);
+
+                    player1.PlaceShipOnBoard(frigate);
+                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                     response = "El Light Cruiser ha anclado ⚓ en la posicion capitan. Esta lista para atacar.";
                     return true;
                 }
@@ -96,8 +104,16 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/SubmarineData");
                     string[] coord = message.Text.Split(":");
-                    Ship submarine = new Submarine(coord[0], coord[1]);
-                    player1.PlaceShipOnBoard(submarine);
+                    string div = coord[0];
+                    string letter = div.Substring(0, 1);
+                    string number1 = Utils.LetterToNumber(letter);
+                    string number2 = div.Substring(1, div.Length - 1);
+                    string build = number1 + number2;
+                    Ship frigate = new Frigate(build, coord[1]);
+
+                    player1.PlaceShipOnBoard(frigate);
+                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                     response = "El Submarine se ha posicionado y ha alistado los torpedos capitan. Esta lista para atacar.";
                     return true;
                 }
@@ -109,10 +125,18 @@ namespace ChatBot_Logic.src.Handlers
                 }
                 if (chainData.userPostionHandler[from].Count == 8)
                 {
-                    string[] coord = message.Text.Split(":");
-                    Ship aircraftCarrier = new AircraftCarrier(coord[0], coord[1]);
-                    player1.PlaceShipOnBoard(aircraftCarrier);
                     chainData.userPostionHandler[from].Add("/AircraftCarrierData");
+                    string[] coord = message.Text.Split(":");
+                    string div = coord[0];
+                    string letter = div.Substring(0, 1);
+                    string number1 = Utils.LetterToNumber(letter);
+                    string number2 = div.Substring(1, div.Length - 1);
+                    string build = number1 + number2;
+                    Ship frigate = new Frigate(build, coord[1]);
+
+                    player1.PlaceShipOnBoard(frigate);
+                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                     response = "El Aircraft Carrier se ha aproximado a la zona de batalla. Ahora puedes usar aviones de guerra ✈️.";
                     return true;
                 }

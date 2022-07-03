@@ -50,7 +50,6 @@ namespace ChatBot_Logic.src.Handlers
                 {
                     chainData.userPostionHandler[from].Add("/defender");
                     //Añadimos el nuevo handler que se esta ejecutando
-
                     Player player1 = LobbyContainer.GetPlayerByID(message.From.Id);
                     Player player2 = LobbyContainer.JoinPlayersWithSameBoardSize(player1);
                     if (player2 == null)

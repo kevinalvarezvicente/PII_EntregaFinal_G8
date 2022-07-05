@@ -625,7 +625,7 @@
             </summary>
             <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
         </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.MakeShot(System.String)">
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.MakeShot(System.String,System.String)">
             <summary>
             Realiza el shot
             </summary>

@@ -138,7 +138,7 @@ namespace ChatBot_Logic.src
         /// <param name="message">El mensaje recibido</param>
         /// <param name="botClient">El bot que realiza</param>
         /// <returns></returns>
-        private static async Task HandleMessageReceived(ITelegramBotClient botClient, Message message)
+        public static async Task HandleMessageReceived(ITelegramBotClient botClient, Message message)
         {
             Console.WriteLine($"Received a message from {message.From.FirstName} --> {message.From.Id} saying: {message.Text}");
 

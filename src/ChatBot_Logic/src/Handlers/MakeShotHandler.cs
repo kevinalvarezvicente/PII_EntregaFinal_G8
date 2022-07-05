@@ -9,7 +9,6 @@ namespace ChatBot_Logic.src.Handlers
     {
         public MakeShotHandler(BaseHandler next) : base(next)
         {
-
             this.Keywords = new List<string>();
             Keywords.Add("/atacarEnemigo");
         }
@@ -22,13 +21,14 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
-                chainData.userPostionHandler[from].Add("/atacarEnemigo"); //Añadimos el nuevo handler que se esta ejecutando.
-                if (!chainData.userPostionHandler[from][0].Equals("/atacarEnemigo"))
+                if (chainData.userPostionHandler[from].Count > 0)
                 {
-                    chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
-                    chainData.userPostionHandler[from].Add("/atacarEnemigo"); //Añadimos el nuevo handler que se esta ejecutando.
+                    if (!chainData.userPostionHandler[from][0].Equals("/atacarEnemigo"))
+                    {
+                        chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                    }
                 }
-                
+
                 Game game = GamesContainer.VerifyUserOnGame(message.From.Id);
                 if (game.Active_Player == null)
                 {
@@ -46,17 +46,18 @@ namespace ChatBot_Logic.src.Handlers
                 }
                 if (message.From.Id == game.Active_Player.UserId)
                 {
-                    
+
                     Player player1 = game.Active_Player;
                     Player enemy = game.Inactive_Player;
 
-                    if (chainData.userPostionHandler[from].Count == 2)
+                    if (chainData.userPostionHandler[from].Count == 0)
                     {
+                        chainData.userPostionHandler[from].Add("/atacarEnemigo"); //Añadimos el nuevo handler que se esta ejecutando.
                         response = $"Es hora de que realizes tu ataque a tu enemigo {enemy.PlayerName}, escribe la coordenada.";
                         this.Keywords.Add(from); // Captamos el segundo mensaje que sea enviado luego de esta response, añadiendo el id del Usuario a las Keywords
                         return true;
                     }
-                    if (chainData.userPostionHandler[from].Count == 3)
+                    if (chainData.userPostionHandler[from].Count == 1)
                     {
                         chainData.userPostionHandler[from].Add("/tiro");
                         string letter = message.Text.Substring(0, 1);

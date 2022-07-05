@@ -238,8 +238,8 @@ namespace ChatBot_Logic.src.Handlers
                 else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemy.UserId.ToString()].Count == 9)
                 {
                     game.Active_Player = null;
-                    chainData.userPostionHandler[from].Add("/atacarEnemigo");
-                    chainData.userPostionHandler[enemy.UserId.ToString()].Add("/atacarEnemigo");
+                    chainData.userPostionHandler[from].Add("/ready");
+                    chainData.userPostionHandler[enemy.UserId.ToString()].Add("/ready");
                     ChatBot.sendMessage(enemy.UserId, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacarEnemigo");
                     this.Keywords.Remove(from); //Removemos el id asi sigue el handler
                     this.Keywords.Remove(enemy.UserId.ToString()); //Removemos el id asi sigue el handler

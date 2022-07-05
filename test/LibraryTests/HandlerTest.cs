@@ -1,10 +1,6 @@
-using System.Linq;
-using System.Threading.Tasks;
-using ChatBot_Logic.src;
 using ChatBot_Logic.src.Handlers;
 using ChatBot_Logic.src.HandlersConfiguration;
 using NUnit.Framework;
-using Telegram.Bot;
 using Telegram.Bot.Types;
 
 
@@ -17,24 +13,18 @@ namespace LibraryTests
     public class HelloHandlerTests
     {
         HelloHandler handler;
-        Telegram.Bot.Types.Message message;
-
-        public static async Task magic(ITelegramBotClient bot, Message msg){
-            await ChatBot.HandleMessageReceived(bot,msg);
-        } 
+        Message message;
 
         [SetUp]
         public void Setup()
         {
-            ChatBot bot = ChatBot.Instance;
-            Message msg = new Message();
-            msg.Text = "Hola"
-            ;
-            ITelegramBotClient client;
-            magic(bot.Client,msg);
             handler = new HelloHandler(null);
-            message = new Telegram.Bot.Types.Message();
-            
+            message = new Message();
+            Telegram.Bot.Types.User usu = new Telegram.Bot.Types.User();
+            usu.Id = 2046982637;
+            message.From = usu;
+            long id = 465798;
+            message.From.Id = id;
         }
 
         [Test]
@@ -45,8 +35,7 @@ namespace LibraryTests
 
             IHandler result = handler.Handle(message, out response);
 
-            Assert.That(result, Is.Not.Null);
-
+            Assert.That(result, Is.Not.Null);;
         }
 
         [Test]

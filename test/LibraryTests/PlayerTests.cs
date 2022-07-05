@@ -136,7 +136,7 @@ namespace LibraryTests
             player.PlaceShipOnBoard(cruiser);
             player.PlaceShipOnBoard(submarine);
             player.PlaceShipOnBoard(frigate);
-            Assert.AreEqual(cruiser,player.GetShip("00"));
+            Assert.AreEqual(cruiser, player.GetShip("00"));
         }
         /// <summary>
         /// Testea que no existe ningun barco con la coordenada indicada
@@ -154,7 +154,7 @@ namespace LibraryTests
             player.PlaceShipOnBoard(cruiser);
             player.PlaceShipOnBoard(submarine);
             player.PlaceShipOnBoard(frigate);
-            Assert.AreEqual(null,player.GetShip("10"));
+            Assert.AreEqual(null, player.GetShip("10"));
         }
         /// <summary>
         /// Obtiene el barco a aprtir de la coordenada y chequea que esta hundido
@@ -175,10 +175,10 @@ namespace LibraryTests
             player.ReceiveShot("00");
             player.ReceiveShot("01");
             player.ReceiveShot("02");
-            Assert.AreEqual(true,player.GetShip("00").IsShipSinked());
+            Assert.AreEqual(true, player.GetShip("00").IsShipSinked());
         }
 
-         /// <summary>
+        /// <summary>
         /// Obtiene el barco a aprtir de la coordenada y chequea que no esta hundido
         /// </summary>
         [Test]
@@ -196,7 +196,7 @@ namespace LibraryTests
             player.PlaceShipOnBoard(frigate);
             player.ReceiveShot("00");
             player.ReceiveShot("01");
-            Assert.AreEqual(false,player.GetShip("00").IsShipSinked());
+            Assert.AreEqual(false, player.GetShip("00").IsShipSinked());
         }
 
     }

@@ -179,7 +179,7 @@
             Testea método de buscar el barco a partir de una coordenada
             </summary>
         </member>
-        <member name="M:LibraryTests.PlayerTests.TestGetShipNotOK">
+        <member name="M:LibraryTests.PlayerTests.TestCantGetShip">
             <summary>
             Testea que no existe ningun barco con la coordenada indicada
             </summary>

@@ -23,20 +23,22 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
+                Player player1 = null;
+                Player enemy = null;
 
                 Game game = GamesContainer.VerifyUserOnGame(message.From.Id);
-                player1 = game.Active_Player;
-                if (message.From.Id == player1.UserId)
+
+                for (int i = 0; i < game.PlayersList.Count; i++)
                 {
-                    player1 = game.Active_Player;
-                    enemy = game.Inactive_Player;
+                    if (game.PlayersList[i].UserId == message.From.Id)
+                    {
+                        player1 = game.PlayersList[i];
+                    }
+                    if (game.PlayersList[i].UserId != message.From.Id)
+                    {
+                        enemy = game.PlayersList[i];
+                    }
                 }
-                else
-                {
-                    player1 = game.Inactive_Player;
-                    enemy = game.Active_Player;
-                }
-                String enemyId = enemy.UserId.ToString();
 
                 try
                 {
@@ -228,17 +230,20 @@ namespace ChatBot_Logic.src.Handlers
                     response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count < 9)
+                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemy.UserId.ToString()].Count < 9)
                 {
                     response = $"Has posicionado todas tus naves de batalla, estamos esperando a tu enemigo.";
                     return true;
                 }
-                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count == 9)
+                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemy.UserId.ToString()].Count == 9)
                 {
-                    chainData.userPostionHandler[from].Add("/atacar");
-                    ChatBot.sendMessage(enemy.UserId, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar");
+                    game.Active_Player = null;
+                    chainData.userPostionHandler[from].Add("/atacarEnemigo");
+                    chainData.userPostionHandler[enemy.UserId.ToString()].Add("/atacarEnemigo");
+                    ChatBot.sendMessage(enemy.UserId, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacarEnemigo");
                     this.Keywords.Remove(from); //Removemos el id asi sigue el handler
-                    response = $"Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar";
+                    this.Keywords.Remove(enemy.UserId.ToString()); //Removemos el id asi sigue el handler
+                    response = $"Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacarEnemigo";
                     return true;
                 }
             }

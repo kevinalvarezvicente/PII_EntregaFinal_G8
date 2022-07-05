@@ -20,7 +20,7 @@ namespace ChatBot_Logic.src.Handlers
         {
 
             this.Keywords = new List<string>();
-            Keywords.Add("/Maldivas");
+            Keywords.Add("/Malvinas");
             Keywords.Add("/Donbas");
             Keywords.Add("/Laos");
 
@@ -45,7 +45,7 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
                 }
 
-                if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Maldivas"))
+                if (chainData.userPostionHandler[from].Count == 0 && message.Text.Equals("/Malvinas"))
                 {
                     chainData.userPostionHandler[from].Add("/MakeBoard"); //Añadimos el nuevo handler que se esta ejecutando
                     User ActiveUser = UsersContainer.GetUSerByID(message.From.Id);
@@ -53,7 +53,7 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerShipBoard(new ShipBoard(10));
                     player.AddPlayerShotBoard(new ShotBoard(10));
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado las 🇦🇷 Maldivas 🇦🇷 de 10 hectareas!. "
+                    response = "¡Has seleccionado las 🇦🇷 Malvinas 🇦🇷 de 10 hectareas!. "
                             + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
@@ -77,7 +77,7 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerShipBoard(new ShipBoard(20));
                     player.AddPlayerShotBoard(new ShotBoard(20));
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado 🇱🇦 Laos 🇱🇦 de 25 hectareas!. "
+                    response = "¡Has seleccionado 🇱🇦 Laos 🇱🇦 de 20 hectareas!. "
                     + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }

@@ -28,9 +28,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 }
             }
             lobbycontainer.Add(player);
-
-
-
         }
         /// <summary>
         /// Para tener acceso al container de espera

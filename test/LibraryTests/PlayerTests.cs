@@ -121,5 +121,21 @@ namespace LibraryTests
 
         }
 
+        [Test]
+        public void TestGetShip()
+        {
+            User matias = new User(3, "Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LightCruiser cruiser = new LightCruiser("00", "h");
+            Submarine submarine = new Submarine("40", "v");
+            Frigate frigate = new Frigate("20", "h");
+            player.PlaceShipOnBoard(cruiser);
+            player.PlaceShipOnBoard(submarine);
+            player.PlaceShipOnBoard(frigate);
+            Assert.AreEqual(cruiser,player.GetShip("00"));
+        }
+
     }
 }

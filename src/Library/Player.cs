@@ -185,6 +185,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Realiza el shot
         /// </summary>
         /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+        /// <param name="emoji">Decide que emoji va en el tablero de tiros del jugador</param>
         public void MakeShot(string coord, string emoji)
         {
             int x;
@@ -288,6 +289,23 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public void AddShipToPlayerShipList(Ship ship)
         {
             ShipsList.Add(ship);
+        }
+
+        public Ship GetShip(string coord)
+        {
+            (int x, int y) = Utils.SplitCoordIntoRowAndColumn(coord);
+            Spot spot = new Spot(x, y);
+            foreach (Ship ship in ShipsList)
+            {
+                foreach (Spot SpotToCompare in ship.CoordsList)
+                {
+                    if (spot.X == SpotToCompare.X && spot.Y == SpotToCompare.Y)
+                    {
+                        return ship;
+                    }
+                }
+            }
+            return null;
         }
     }
 }

@@ -630,6 +630,7 @@
             Realiza el shot
             </summary>
             <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
+            <param name="emoji">Decide que emoji va en el tablero de tiros del jugador</param>
         </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.ReceiveShot(System.String)">
             <summary>

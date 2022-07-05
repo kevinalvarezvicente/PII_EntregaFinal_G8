@@ -234,8 +234,8 @@ namespace LibraryTests
             //Player1 es active_player
             //Player2 es inactive_player
             game.ShotMade("55");
-            Assert.AreEqual("X", player1.GetPlayerShotBoard().GameBoard[5, 5]);
-            Assert.AreEqual("🔵", player2.GetPlayerShipBoard().GameBoard[5, 5]);
+            Assert.AreEqual("⭕️", player1.GetPlayerShotBoard().GameBoard[5, 5]);
+            Assert.AreEqual("🟣", player2.GetPlayerShipBoard().GameBoard[5, 5]);
         }
         /// <summary>
         /// Testea método ShotMade con los barcos y la lista de barcos
@@ -256,8 +256,8 @@ namespace LibraryTests
             //Player1 es active_player
             //Player2 es inactive_player
             game.ShotMade("55");
-            Assert.AreEqual("X", player1.GetPlayerShotBoard().GameBoard[5, 5]);
-            Assert.AreEqual("X", player2.GetPlayerShipBoard().GameBoard[5, 5]);
+            Assert.AreEqual("❌", player1.GetPlayerShotBoard().GameBoard[5, 5]);
+            Assert.AreEqual("🔴", player2.GetPlayerShipBoard().GameBoard[5, 5]);
         }
     }
 }

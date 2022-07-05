@@ -312,7 +312,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             ShipsList.Add(ship);
         }
-
+        /// <summary>
+        /// Método para buscar el barco entre la lista de barcos del jugador a partir de la coordenada. 
+        /// Nos sservirá para ir chequeando que se hundio el barco o no
+        /// </summary>
+        /// <param name="coord">Es la coordenada que se desea buscar en la lista</param>
+        /// <returns>Retorna el barco que contiene a la coordenada</returns>
         public Ship GetShip(string coord)
         {
             (int x, int y) = Utils.SplitCoordIntoRowAndColumn(coord);

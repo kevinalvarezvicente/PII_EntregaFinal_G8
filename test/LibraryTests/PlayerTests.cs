@@ -118,8 +118,10 @@ namespace LibraryTests
             Assert.AreEqual(false, player.PlaceShipOnBoard(cruiser));
             Assert.AreEqual(false, player.PlaceShipOnBoard(submarine));
 
-
         }
+        /// <summary>
+        /// Testea método de buscar el barco a partir de una coordenada
+        /// </summary>
 
         [Test]
         public void TestGetShip()
@@ -135,6 +137,66 @@ namespace LibraryTests
             player.PlaceShipOnBoard(submarine);
             player.PlaceShipOnBoard(frigate);
             Assert.AreEqual(cruiser,player.GetShip("00"));
+        }
+        /// <summary>
+        /// Testea que no existe ningun barco con la coordenada indicada
+        /// </summary>
+        [Test]
+        public void TestCantGetShip()
+        {
+            User matias = new User(3, "Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LightCruiser cruiser = new LightCruiser("00", "h");
+            Submarine submarine = new Submarine("40", "v");
+            Frigate frigate = new Frigate("20", "h");
+            player.PlaceShipOnBoard(cruiser);
+            player.PlaceShipOnBoard(submarine);
+            player.PlaceShipOnBoard(frigate);
+            Assert.AreEqual(null,player.GetShip("10"));
+        }
+        /// <summary>
+        /// Obtiene el barco a aprtir de la coordenada y chequea que esta hundido
+        /// </summary>
+        [Test]
+        public void TestGetShipAndCheckIfIsSinked()
+        {
+            User matias = new User(3, "Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LightCruiser cruiser = new LightCruiser("00", "h");
+            Submarine submarine = new Submarine("40", "v");
+            Frigate frigate = new Frigate("20", "h");
+            player.PlaceShipOnBoard(cruiser);
+            player.PlaceShipOnBoard(submarine);
+            player.PlaceShipOnBoard(frigate);
+            player.ReceiveShot("00");
+            player.ReceiveShot("01");
+            player.ReceiveShot("02");
+            Assert.AreEqual(true,player.GetShip("00").IsShipSinked());
+        }
+
+         /// <summary>
+        /// Obtiene el barco a aprtir de la coordenada y chequea que no esta hundido
+        /// </summary>
+        [Test]
+        public void TestGetShipAndCheckIfIsNOTSinked()
+        {
+            User matias = new User(3, "Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LightCruiser cruiser = new LightCruiser("00", "h");
+            Submarine submarine = new Submarine("40", "v");
+            Frigate frigate = new Frigate("20", "h");
+            player.PlaceShipOnBoard(cruiser);
+            player.PlaceShipOnBoard(submarine);
+            player.PlaceShipOnBoard(frigate);
+            player.ReceiveShot("00");
+            player.ReceiveShot("01");
+            Assert.AreEqual(false,player.GetShip("00").IsShipSinked());
         }
 
     }

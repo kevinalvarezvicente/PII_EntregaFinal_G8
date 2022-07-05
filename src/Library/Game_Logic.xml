@@ -664,6 +664,14 @@
             </summary>
             <param name="ship">El barco a agregar a la lista de barcos del jugador</param>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Player.GetShip(System.String)">
+            <summary>
+            Método para buscar el barco entre la lista de barcos del jugador a partir de la coordenada. 
+            Nos sservirá para ir chequeando que se hundio el barco o no
+            </summary>
+            <param name="coord">Es la coordenada que se desea buscar en la lista</param>
+            <returns>Retorna el barco que contiene a la coordenada</returns>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.BoardPrinter">
             <summary>
             Clase que implementa la interfaz IPrinter. 

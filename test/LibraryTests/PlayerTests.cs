@@ -88,7 +88,7 @@ namespace LibraryTests
         /// Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
         /// </summary>
         [Test]
-        public void TestReceiveShotException()
+        public void TestReceiveShotNull()
         {
             User matias = new User(3, "Olave", "Matias");
             Player player = new Player(matias);
@@ -99,7 +99,7 @@ namespace LibraryTests
             player.PlaceShipOnBoard(frigate);
             //player.MakeShot("11");
             player.ReceiveShot("11");
-            Assert.Throws<ReceiveShotException>(() => player.ReceiveShot("11"));
+            Assert.AreEqual("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.",player.ReceiveShot("11"));
         }
 
         /// <summary>

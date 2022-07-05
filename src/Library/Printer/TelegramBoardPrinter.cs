@@ -22,7 +22,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public string PrintPlayerBoard(Board board)
         {
 
-            StringBuilder txt = new StringBuilder("", 100);
+            StringBuilder txt = new StringBuilder("");
             for (int i = 0; i < board.GameBoard.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GameBoard.GetLength(1); j++)

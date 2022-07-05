@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -19,7 +16,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Game
     {
-        
+
         /// <summary>
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
         /// </summary>
@@ -110,6 +107,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.active_Player = player1;
             this.Inactive_Player = player2;
             this.playersList.Add(player1);
+            this.playersList.Add(player2);
         }
 
         /// <summary>
@@ -142,8 +140,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             {
                 throw new CoordException("Las coordenadas estan fuera de rango.");
             }
-
+            Utils.Swap(ref this.active_Player,ref this.inactive_Player);
             Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
+            
 
         }
 
@@ -168,7 +167,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Es un método que al recibir la posicion del barco la pone en el board.
         /// Recibe como argumento todos los datos necesarios para crear instancia de los subtipos de Ship
         /// </summary>
-        /// <param name="option">Es un entero, hay solo 3 opciones de barco </param>
+        /// <param name="option">Es un entero, hay solo 4 opciones de barco </param>
         /// <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
         /// <param name="direction">Es una cadena que recive v o h</param>
         public void ChooseShipOption(int option, string coord, string direction)
@@ -226,7 +225,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public bool GameFinished()
         {
 
-            if (AreAllShipsSinked(this.Inactive_Player) || AreAllShipsSinked(this.Active_Player))
+            if (this.inactive_Player.AreAllShipsSinked() || this.active_Player.AreAllShipsSinked())
             {
                 this.GameStatus = true;
                 return this.GameStatus;

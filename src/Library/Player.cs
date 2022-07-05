@@ -201,24 +201,23 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Es la coordenada que se pasa por parámetro</param>
         public string ReceiveShot(string coord)
         {
+            SearchForCoordInShipsList(coord);
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            SearchForCoordInShipsList(coord);
-
-            if (this.playerShipBoard.GameBoard[x, y].Equals("o"))
+            
+            if (this.playerShipBoard.GameBoard[x, y]=="o")
             {
-                this.playerShipBoard.GameBoard[x, y] = "x";
+                this.playerShipBoard.GameBoard[x, y] = "X";
                 return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
+            else if (this.playerShipBoard.GameBoard[x, y]=="-")
             {
                 this.playerShipBoard.GameBoard[x, y] = "|";
                 return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
+            else if (this.playerShipBoard.GameBoard[x, y]=="X")
             {
-                bool ExceptionShot = true;
                 throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
                 //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
             }
@@ -250,14 +249,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// tratados como objetos de la clase base Ship
         /// </summary>
         /// <param name="ship">Es de tipo Ship pero se pasa por parametro cualquier subtipo de Ship</param>
-        public void PlaceShipOnBoard(Ship ship)
+        public bool PlaceShipOnBoard(Ship ship)
         {
 
             foreach (Spot spot in ship.CoordsList)
             {
                 if (spot.X > playerShipBoard.GameBoard.GetLength(0) || spot.Y > playerShipBoard.GameBoard.GetLength(1))
                 {
-                    throw new CoordException("el barco queda fuera del tablero");
+                    return false;
                 }
                 foreach (Ship ShipToCompare in this.ShipsList)
                 {
@@ -265,7 +264,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                     {
                         if (spot.X == SpotToCompare.X && spot.Y == SpotToCompare.Y)
                         {
-                            throw new CoordException("Ya hay un barco ubicado en esa coordenada");
+                            return false;
                         }
                     }
                 }
@@ -276,6 +275,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 this.playerShipBoard.GameBoard[spot.X, spot.Y] = "o";
             }
             ShipsList.Add(ship);
+            return true;
         }
 
         /// <summary>

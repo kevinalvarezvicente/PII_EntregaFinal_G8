@@ -12,7 +12,9 @@ namespace ChatBot_Logic.src.HandlersConfiguration
     /// <remarks>
     /// La interfaz se crea en función del principio de inversión de dependencias (DIP), para que los clientes de la cadena de
     /// responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
-    /// <remarks/>
+    /// </remarks>
+    /// </summary>
+    
    public interface IHandler
     {
         /// <summary>

@@ -25,10 +25,6 @@ namespace ChatBot_Logic.src
         /// Obtenemos el Token de la clase TokenConfiguration
         /// </summary>
         public string Token => TokenConfiguration.Token;
-
-        /// <summary>
-        //  Instancia privada y unica de la clase ChatBot
-        /// </summary>
         private static ChatBot _instance;
         /// <summary>
         /// Variable que almacenara el cliente Telegram, en este caso el Bot.

@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -19,7 +16,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Game
     {
-        
+
         /// <summary>
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
         /// </summary>
@@ -110,6 +107,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             this.active_Player = player1;
             this.Inactive_Player = player2;
             this.playersList.Add(player1);
+            this.playersList.Add(player2);
         }
 
         /// <summary>

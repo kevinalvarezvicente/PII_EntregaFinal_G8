@@ -12,7 +12,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Una lista de juegos en general 
         /// </summary>    
         private static List<Game> gamescontainer = new List<Game>();
-        
+
         /// <summary>
         /// Se añade el juego
         /// </summary>
@@ -68,10 +68,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
             for (int i = 0; i < GamesContainer.gamesContainer.Count; i++)
             {
-                List<Player> UsersPlaying = GamesContainer.gamesContainer[i].PlayersList;
-                foreach (Player player in UsersPlaying)
+                for (int x = 0; x <= GamesContainer.gamesContainer[i].PlayersList.Count; x++)
                 {
-                    if (player.UserId == ID)
+                    if (GamesContainer.gamesContainer[i].PlayersList[x].UserId == ID)
                     {
                         return GamesContainer.gamesContainer[i];
                     }
@@ -139,8 +138,5 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             return null;
         }
-
-
-
     }
 }

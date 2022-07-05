@@ -12,7 +12,6 @@ namespace ChatBot_Logic.src.Handlers
 
             this.Keywords = new List<string>();
             Keywords.Add("/atacar");
-
         }
 
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)

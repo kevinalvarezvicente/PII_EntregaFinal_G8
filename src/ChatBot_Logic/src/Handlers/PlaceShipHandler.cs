@@ -8,6 +8,7 @@ namespace ChatBot_Logic.src.Handlers
 {
     public class PlaceShipHandler : BaseHandler
     {
+        public static Player player1, enemy;
         public PlaceShipHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
@@ -22,8 +23,9 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
-                Player player1 = GamesContainer.ObtainPlayer(message.From.Id);
-                Player enemy = GamesContainer.ObtainPlayer(GamesContainer.ObtainEnemyId(message.From.Id));
+                Game game = GamesContainer.VerifyUserOnGame(message.From.Id);
+                player1 = game.Active_Player;
+                enemy = game.Inactive_Player;
 
                 if (!chainData.userPostionHandler[from][0].Equals("/NavesBatalla"))
                 {

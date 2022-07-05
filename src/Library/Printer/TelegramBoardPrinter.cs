@@ -23,9 +23,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         {
 
             StringBuilder txt = new StringBuilder("", 100);
-            for (int i = 0; i < board.GameBoard.GetLength(0); i++)
+            for (int i = 0; i <= board.GameBoard.GetLength(0); i++)
             {
-                for (int j = 0; j < board.GameBoard.GetLength(1); j++)
+                for (int j = 0; j <= board.GameBoard.GetLength(1); j++)
                 {
                     txt.Append(board.GameBoard[i, j] + " ");
                 }

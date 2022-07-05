@@ -20,7 +20,8 @@ namespace ChatBot_Logic.src.Handlers_Configuration
                         new SelectLobbyHandler(
                             new JoinPlayerHandler(
                                 new PlaceShipHandler(
-                                    new GoodByeHandler(null)))))));
+                                    new MakeShotHandler(
+                                    new GoodByeHandler(null))))))));
         }
 
         /// <summary>

@@ -22,44 +22,49 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
-                Player player1 = LobbyContainer.GetPlayerByID(message.From.Id);
                 Game game = GamesContainer.VerifyUserOnGame(message.From.Id);
-                Player enemy = LobbyContainer.GetPlayerByID(GamesContainer.ObtainEnemyId(message.From.Id));
+                if (message.From.Id == game.Active_Player.UserId)
+                {
+                    Player player1 = game.Active_Player;
+                    Player enemy = game.Inactive_Player;
 
-                if (!chainData.userPostionHandler[from][0].Equals("/atacar"))
-                {
-                    chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
-                }
-                if (game.Active_Player == player1)
-                {
-                    if (chainData.userPostionHandler[from].Count == 0)
+                    if (!chainData.userPostionHandler[from][0].Equals("/atacar"))
                     {
-                        if (game.Active_Player == null)
+                        chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                    }
+                    if (game.Active_Player == player1)
+                    {
+                        if (chainData.userPostionHandler[from].Count == 0)
                         {
-                            game.Active_Player = player1;
-                            game.Inactive_Player = enemy;
+                            chainData.userPostionHandler[from].Add("/atacar"); //Añadimos el nuevo handler que se esta ejecutando.
+                            response = $"Es hora de que realizes tu ataque a tu enemigo {enemy.PlayerName}, escribe la coordenada y direccion a enviar el ataque.";
+                            this.Keywords.Add(from); // Captamos el segundo mensaje que sea enviado luego de esta response, añadiendo el id del Usuario a las Keywords
+                            return true;
                         }
+                        if (chainData.userPostionHandler[from].Count == 1)
+                        {
+                            chainData.userPostionHandler[from].Add("/tiro");
 
-                        chainData.userPostionHandler[from].Add("/atacar"); //Añadimos el nuevo handler que se esta ejecutando.
-                        response = "Es hora de que realizes tu ataque, escribe la coordenada y direccion a enviar el ataque.";
-                        this.Keywords.Add(from); // Captamos el segundo mensaje que sea enviado luego de esta response, añadiendo el id del Usuario a las Keywords
-                        return true;
+                            string letter = message.Text.Substring(0, 1);
+                            string number1 = Utils.LetterToNumber(letter);
+                            string number2 = message.Text.Substring(1, message.Text.Length - 1);
+                            string build = number1 + number2;
+                            game.ShotMade(build);
+                            response = enemy.ReceiveShot(message.Text);
+                            return true;
+                        }
+                        else
+                        {
+                            response = "Tu enemigo esta realizando su ataque, debes esperar 🪖 ";
+                        }
                     }
-                    if (chainData.userPostionHandler[from].Count == 1)
+                    else if (message.From.Id != game.Active_Player.UserId)
                     {
-                        chainData.userPostionHandler[from].Add("/tiro");
-                        player1.MakeShot(message.Text);
-                        response = enemy.ReceiveShot(message.Text);
-                        return true;
+                        response = "Espera a que sea tu turno 🤡.";
                     }
                 }
-                else
-                {
-                    response = "Tu enemigo esta realizando su ataque, debes esperar 🪖 ";
-                }
+                response = string.Empty;
+                return false;
             }
-            response = string.Empty;
-            return false;
         }
     }
-}

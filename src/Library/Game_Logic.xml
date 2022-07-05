@@ -4,26 +4,6 @@
         <name>Game_Logic</name>
     </assembly>
     <members>
-        <member name="T:PII_ENTREGAFINAL_G8.src.Library.Administrator">
-            <summary>
-            Esta clase cumple el rol de administrador.
-            Es Expert.
-            Es un singleton ya que solo existirá un administrador y se lo puede llamar desde distintas clases.
-            Cumple Creator ya que tiene responsabilidad de crear instancias de:
-            - Game: cuando une a dos jugadores que quieren jugar.
-            - User: Para registrar el usuario y agregalo al UserContainer
-            Cumple (LCHC) Low Coupling and High Cohesion
-            Hace lo mínimo necesario como para realizar tareas de administrador
-            Es altamente cohesiva porque lo poco que hace está sumamente relacionado, pero tiene muchas relaciones con otras clases, con lo cual va a estar muy acoplada.
-            </summary>
-        </member>
-        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Administrator.EndGame(PII_ENTREGAFINAL_G8.src.Library.Game)">
-            <summary>
-            Finaliza la partida si es indicado
-            Hace que la clase use Game
-            </summary>
-            <param name="game">Recibe como parámetro la partida</param>
-        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AbstractBoard">
             <summary>
             Se crea una clase Abstracta para el tablero AbstractBoard de la que hereda Board.

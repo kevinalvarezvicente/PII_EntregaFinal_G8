@@ -164,7 +164,7 @@
             Testea el método de conocer el tablero que selecciono el jugador
             </summary>
         </member>
-        <member name="M:LibraryTests.PlayerTests.TestReceiveShotException">
+        <member name="M:LibraryTests.PlayerTests.TestReceiveShotNull">
             <summary>
             Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
             </summary>
@@ -179,7 +179,7 @@
             Testea método de buscar el barco a partir de una coordenada
             </summary>
         </member>
-        <member name="M:LibraryTests.PlayerTests.TestGetShipNotOK">
+        <member name="M:LibraryTests.PlayerTests.TestCantGetShip">
             <summary>
             Testea que no existe ningun barco con la coordenada indicada
             </summary>

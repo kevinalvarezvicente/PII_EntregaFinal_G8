@@ -11,7 +11,7 @@ namespace ChatBot_Logic.src.Handlers
     public class BattlePlacerHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="HelloHandler"/>. Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase <see cref="BattlePlacerHandler"/>. Esta clase procesa el mensaje "/batallar".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
         public BattlePlacerHandler(BaseHandler next) : base(next)

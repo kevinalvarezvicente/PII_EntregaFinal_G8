@@ -185,12 +185,12 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// Realiza el shot
         /// </summary>
         /// <param name="coord">Es una cadena que luego se transforma en (x,y)</param>
-        public void MakeShot(string coord)
+        public void MakeShot(string coord, string emoji)
         {
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            playerShotBoard.GameBoard[x, y] = "X";
+            playerShotBoard.GameBoard[x, y] = emoji;
         }
 
         /// <summary>
@@ -206,17 +206,17 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
             
-            if (this.playerShipBoard.GameBoard[x, y]=="o")
+            if (this.playerShipBoard.GameBoard[x, y]== "\U0001f7e2")
             {
-                this.playerShipBoard.GameBoard[x, y] = "X";
+                this.playerShipBoard.GameBoard[x, y] = "🔴";
                 return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y]=="-")
+            else if (this.playerShipBoard.GameBoard[x, y]== "🔵")
             {
-                this.playerShipBoard.GameBoard[x, y] = "|";
+                this.playerShipBoard.GameBoard[x, y] = "🟣";
                 return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y]=="X")
+            else if (this.playerShipBoard.GameBoard[x, y]== "🔴")
             {
                 throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
                 //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";

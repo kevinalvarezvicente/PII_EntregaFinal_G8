@@ -128,22 +128,27 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
         /// </summary>
         /// <param name="coord">coordenada string que luego se transformará en (x,y)</param>
-        public void ShotMade(string coord)
+        public string ShotMade(string coord)
         {
-            Console.WriteLine($"{Active_Player.PlayerName} hace el disparo a {Inactive_Player.PlayerName}");
+            String resp = "";
             try
             {
-                Active_Player.MakeShot(coord);
-                Inactive_Player.ReceiveShot(coord);
+                
+                resp = Inactive_Player.ReceiveShot(coord);
+                if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.")
+                {
+                    Active_Player.MakeShot(coord, "❌");
+                }
+                else {
+                    Active_Player.MakeShot(coord, "⭕️");
+                }
             }
             catch
             {
                 throw new CoordException("Las coordenadas estan fuera de rango.");
             }
-            Utils.Swap(ref this.active_Player,ref this.inactive_Player);
-            Console.WriteLine($"Ahora es el turno de {Active_Player.PlayerName} de realizar el tiro");
-            
-
+            Utils.Swap(ref this.active_Player, ref this.inactive_Player);
+            return resp;
         }
 
         /// <summary>
@@ -160,8 +165,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
 
             ChooseShipOption(shipOption, coord, direction);
-            Console.WriteLine($"Se ubican los barcos de {this.Active_Player.PlayerName} y se imprime tablero");
-
         }
         /// <summary>
         /// Es un método que al recibir la posicion del barco la pone en el board.

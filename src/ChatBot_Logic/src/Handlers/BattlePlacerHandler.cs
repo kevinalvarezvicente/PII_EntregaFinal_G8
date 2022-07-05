@@ -45,7 +45,7 @@ namespace ChatBot_Logic.src.Handlers
                     chainData.userPostionHandler[from].Add("/batallar"); //Añadimos el nuevo handler que se esta ejecutando
 
                     response = "Antes de luchar debes de seleccionar la region 🌎 de campo en la que batallarás a muerte.🪦" +
-                    "\n🇦🇷 /Malvinas: 8 hectareas \n🇺🇦 /Donbas: 10 hectareas \n🇱🇦 /Laos: 12 hectareas";
+                    "\n🇦🇷 /Malvinas: 7 hectareas \n🇺🇦 /Donbas: 9 hectareas \n🇱🇦 /Laos: 11 hectareas";
                     return true;
                 }
 

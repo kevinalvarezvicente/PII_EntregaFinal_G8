@@ -5,13 +5,27 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MakeShotHandler : BaseHandler
     {
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="MakeShotHandler"/>. Esta clase procesa el mensaje "/atacarEnemigo".
+        /// </summary>
+        /// <param name="next">Es el siguiente Handler</param>
         public MakeShotHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
             Keywords.Add("/atacarEnemigo");
         }
+        /// <summary>
+        /// Procesa el mensaje "/atacarEnemigo"
+        /// El primer jugador en indicar /atacarEnemigo es quien comenzará atacando
+        /// </summary>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
 
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {

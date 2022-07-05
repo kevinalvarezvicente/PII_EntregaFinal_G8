@@ -56,6 +56,19 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         }
 
+        public static bool IsALetter(string letter)
+        {
+            string[] abc = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            foreach (string abcd in abc)
+            {
+                if (letter.Equals(abcd))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// El método Swap permite ir variando el turno del jugador
         /// </summary>

@@ -21,15 +21,15 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 
         public string PrintPlayerBoard(Board board)
         {
-
-            StringBuilder txt = new StringBuilder("", 100);
-            for (int i = 0; i <= board.GameBoard.GetLength(0); i++)
+            StringBuilder txt = new StringBuilder("");
+            txt.Append("- ");
+            for (int i = 0; i < board.GameBoard.GetLength(0); i++)
             {
-                for (int j = 0; j <= board.GameBoard.GetLength(1); j++)
+                for (int j = 0; j < board.GameBoard.GetLength(1); j++)
                 {
-                    txt.Append(board.GameBoard[i, j] + " ");
+                    txt.Append(" " + board.GameBoard[i, j]);
                 }
-                txt.Append("\n");
+                txt.Append("\n ");
             }
             return txt.ToString();
         }

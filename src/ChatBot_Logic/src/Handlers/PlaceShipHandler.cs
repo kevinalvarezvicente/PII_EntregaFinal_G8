@@ -23,14 +23,30 @@ namespace ChatBot_Logic.src.Handlers
 
             if (this.CanHandle(message))
             {
+
                 Game game = GamesContainer.VerifyUserOnGame(message.From.Id);
                 player1 = game.Active_Player;
-                enemy = game.Inactive_Player;
-
-                if (!chainData.userPostionHandler[from][0].Equals("/NavesBatalla"))
+                if (message.From.Id == player1.UserId)
                 {
-                    chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                    player1 = game.Active_Player;
+                    enemy = game.Inactive_Player;
                 }
+                else
+                {
+                    player1 = game.Inactive_Player;
+                    enemy = game.Active_Player;
+                }
+                String enemyId = enemy.UserId.ToString();
+                
+                try
+                {
+                    if (!chainData.userPostionHandler[from][0].Equals("/NavesBatalla"))
+                    {
+                        chainData.userPostionHandler[from].Clear(); //Vaciamos el userPositionHandler para asi registrar el nuevo Handler
+                    }
+                }
+                catch (Exception ex) { }
+
 
                 if (chainData.userPostionHandler[from].Count == 0)
                 {
@@ -56,101 +72,178 @@ namespace ChatBot_Logic.src.Handlers
                     response = "Ingrese la coordenada y direccion de la Frigate: ";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 2)
+                else if (chainData.userPostionHandler[from].Count == 2)
                 {
-                    chainData.userPostionHandler[from].Add("/FrigateData");
                     string[] coord = message.Text.Split(":");
-                    string div = coord[0];
-                    string letter = div.Substring(0, 1);
-                    string number1 = Utils.LetterToNumber(letter);
-                    string number2 = div.Substring(1, div.Length - 1);
-                    string build = number1 + number2;
-                    Ship frigate = new Frigate(build, coord[1]);
-
-                    player1.PlaceShipOnBoard(frigate);
-                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
-                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                    response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
+                    if (coord.Length == 2)
+                    {
+                        string div = coord[0];
+                        string letter = div.Substring(0, 1);
+                        string number1 = Utils.LetterToNumber(letter);
+                        string number2 = div.Substring(1, div.Length - 1);
+                        if (Utils.IsALetter(letter))
+                        {
+                            string build = number1 + number2;
+                            Ship frigate = new Frigate(build, coord[1]);
+                            bool pass = player1.PlaceShipOnBoard(frigate);
+                            if (pass)
+                            {
+                                chainData.userPostionHandler[from].Add("/FrigateData");
+                                TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                                ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
+                                response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
+                                return true;
+                            }
+                            else
+                            {
+                                chainData.userPostionHandler[from].Remove("/Frigate");
+                                response = $"Las coordenadas son incorrectas.\n";
+                                return true;
+                            }
+                        }
+                    }
+                    chainData.userPostionHandler[from].Remove("/Frigate");
+                    response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 3 && message.Text == "/LightCruiser")
+                else if (chainData.userPostionHandler[from].Count == 3 && message.Text == "/LightCruiser")
                 {
                     chainData.userPostionHandler[from].Add("/LightCruiser");
                     response = "Ingrese la coordenada y direccion del LightCruiser: ";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 4)
+                else if (chainData.userPostionHandler[from].Count == 4)
                 {
-                    chainData.userPostionHandler[from].Add("/LightCruiserData");
                     string[] coord = message.Text.Split(":");
-                    string div = coord[0];
-                    string letter = div.Substring(0, 1);
-                    string number1 = Utils.LetterToNumber(letter);
-                    string number2 = div.Substring(1, div.Length - 1);
-                    string build = number1 + number2;
-                    Ship frigate = new Frigate(build, coord[1]);
-
-                    player1.PlaceShipOnBoard(frigate);
-                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
-                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                    response = "El Light Cruiser ha anclado ⚓ en la posicion capitan. Esta lista para atacar.";
+                    if (coord.Length == 2)
+                    {
+                        string div = coord[0];
+                        string letter = div.Substring(0, 1);
+                        string number1 = Utils.LetterToNumber(letter);
+                        string number2 = div.Substring(1, div.Length - 1);
+                        if (Utils.IsALetter(letter))
+                        {
+                            string build = number1 + number2;
+                            Ship frigate = new LightCruiser(build, coord[1]);
+                            bool pass = player1.PlaceShipOnBoard(frigate);
+                            if (pass)
+                            {
+                                chainData.userPostionHandler[from].Add("/LightCruiserData");
+                                TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                                ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
+                                response = "El Light Cruiser ha anclado ⚓ en la posicion capitan. Esta lista para atacar.";
+                                return true;
+                            }
+                            else
+                            {
+                                chainData.userPostionHandler[from].Remove("/LightCruiser");
+                                response = $"Las coordenadas son incorrectas.\n";
+                                return true;
+                            }
+                        }
+                    }
+                    chainData.userPostionHandler[from].Remove("/LightCruiser");
+                    response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 5 && message.Text == "/Submarine")
+                else if (chainData.userPostionHandler[from].Count == 5 && message.Text == "/Submarine")
                 {
                     chainData.userPostionHandler[from].Add("/Submarine");
                     response = "Ingrese la coordenada y direccion del Submarine: ";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 6)
+                else if (chainData.userPostionHandler[from].Count == 6)
                 {
-                    chainData.userPostionHandler[from].Add("/SubmarineData");
                     string[] coord = message.Text.Split(":");
-                    string div = coord[0];
-                    string letter = div.Substring(0, 1);
-                    string number1 = Utils.LetterToNumber(letter);
-                    string number2 = div.Substring(1, div.Length - 1);
-                    string build = number1 + number2;
-                    Ship frigate = new Frigate(build, coord[1]);
-
-                    player1.PlaceShipOnBoard(frigate);
-                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
-                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                    response = "El Submarine se ha posicionado y ha alistado los torpedos capitan. Esta lista para atacar.";
+                    if (coord.Length == 2)
+                    {
+                        string div = coord[0];
+                        string letter = div.Substring(0, 1);
+                        string number1 = Utils.LetterToNumber(letter);
+                        string number2 = div.Substring(1, div.Length - 1);
+                        if (Utils.IsALetter(letter))
+                        {
+                            string build = number1 + number2;
+                            Ship frigate = new Submarine(build, coord[1]);
+                            bool pass = player1.PlaceShipOnBoard(frigate);
+                            if (pass)
+                            {
+                                chainData.userPostionHandler[from].Add("/SubmarineData");
+                                TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                                ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
+                                response = "El Submarine se ha posicionado y ha alistado los torpedos capitan. Esta lista para atacar."; return true;
+                                return true;
+                            }
+                            else
+                            {
+                                chainData.userPostionHandler[from].Remove("/Submarine");
+                                response = $"Las coordenadas son incorrectas.\n";
+                                return true;
+                            }
+                        }
+                    }
+                    chainData.userPostionHandler[from].Remove("/Submarine");
+                    response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 7 && message.Text == "/AircraftCarrier")
+                else if (chainData.userPostionHandler[from].Count == 7 && message.Text == "/AircraftCarrier")
                 {
                     chainData.userPostionHandler[from].Add("/AircraftCarrier");
                     response = "Ingrese la coordenada y direccion del AircraftCarrier: ";
                     return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 8)
+                else if (chainData.userPostionHandler[from].Count == 8)
                 {
-                    chainData.userPostionHandler[from].Add("/AircraftCarrierData");
                     string[] coord = message.Text.Split(":");
-                    string div = coord[0];
-                    string letter = div.Substring(0, 1);
-                    string number1 = Utils.LetterToNumber(letter);
-                    string number2 = div.Substring(1, div.Length - 1);
-                    string build = number1 + number2;
-                    Ship frigate = new Frigate(build, coord[1]);
-
-                    player1.PlaceShipOnBoard(frigate);
-                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
-                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                    response = "El Aircraft Carrier se ha aproximado a la zona de batalla. Ahora puedes usar aviones de guerra ✈️.";
+                    if (coord.Length == 2)
+                    {
+                        string div = coord[0];
+                        string letter = div.Substring(0, 1);
+                        string number1 = Utils.LetterToNumber(letter);
+                        string number2 = div.Substring(1, div.Length - 1);
+                        if (Utils.IsALetter(letter))
+                        {
+                            string build = number1 + number2;
+                            Ship frigate = new AircraftCarrier(build, coord[1]);
+                            bool pass = player1.PlaceShipOnBoard(frigate);
+                            if (pass)
+                            {
+                                chainData.userPostionHandler[from].Add("/AircraftCarrierData");
+                                TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                                ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
+                                response = "El Aircraft Carrier se ha aproximado a la zona de batalla. Ahora puedes usar aviones de guerra ✈️.";
+                                return true;
+                            }
+                            else
+                            {
+                                chainData.userPostionHandler[from].Remove("/AircraftCarrier");
+                                response = $"Las coordenadas son incorrectas.\n";
+                                return true;
+                            }
+                        }
+                    }
+                    chainData.userPostionHandler[from].Remove("/AircraftCarrier");
+                    response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                String enemyId = enemy.UserId.ToString();
-                if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count < 9)
+                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count <= 9)
                 {
                     ChatBot.sendMessage(message.From.Id, "Has posicionado todas tus naves de batalla, estamos esperando a tu enemigo.");
+                    response = $"";
+                    return true;
                 }
-                if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count == 9)
+                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count == 9)
                 {
                     chainData.userPostionHandler[from].Add("/atacar");
                     ChatBot.sendMessage(message.From.Id, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar");
+                    response = $"";
+                    return true;
+                }
+                else
+                {
+                    chainData.userPostionHandler.Clear();
+                    response = $"No ingresó una opción valida.\n";
+                    return true;
                 }
             }
             response = string.Empty;

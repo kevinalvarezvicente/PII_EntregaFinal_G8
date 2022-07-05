@@ -14,15 +14,15 @@ namespace LibraryTests
         [Test]
         public void TestPlayerShipsList()
         {
-            User matias = new User(1202755835,"Matias","Olave");
-            Player player = new Player(matias); 
-            LightCruiser cruiser = new LightCruiser("00","h");
-            Submarine submarine = new Submarine("40","v");
-            Frigate frigate = new Frigate("20","h");
+            User matias = new User(1202755835, "Matias", "Olave");
+            Player player = new Player(matias);
+            LightCruiser cruiser = new LightCruiser("00", "h");
+            Submarine submarine = new Submarine("40", "v");
+            Frigate frigate = new Frigate("20", "h");
             player.AddShipToPlayerShipList(cruiser);
             player.AddShipToPlayerShipList(submarine);
             player.AddShipToPlayerShipList(frigate);
-            Assert.AreEqual(3,player.ShipsList.Count);
+            Assert.AreEqual(3, player.ShipsList.Count);
         }
 
 
@@ -33,15 +33,15 @@ namespace LibraryTests
         [Test]
         public void TestSearchForCoordInShipsListOK()
         {
-            User matias = new User(3,"Olave", "Matias");
+            User matias = new User(3, "Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
-            LightCruiser cruiser = new LightCruiser("03","h"); 
+            LightCruiser cruiser = new LightCruiser("03", "h");
             player.PlaceShipOnBoard(cruiser);
             Assert.AreEqual(true, player.SearchForCoordInShipsList("04"));
-              
+
         }
         /// <summary>
         /// Testea que busca la coordenada en la lista de barcos de cada jugador. Si esta la coordenada en la lista de barcos es porque el jugador tiene un barco ubicado ahi.
@@ -50,14 +50,14 @@ namespace LibraryTests
         [Test]
         public void TestSearchForCoordInShipsListNotOK()
         {
-            User matias = new User(3,"Olave", "Matias");
+            User matias = new User(3, "Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
-            LightCruiser cruiser = new LightCruiser("03","h"); 
+            LightCruiser cruiser = new LightCruiser("03", "h");
             player.PlaceShipOnBoard(cruiser);
-            Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));   
+            Assert.AreEqual(false, player.SearchForCoordInShipsList("00"));
         }
         /// <summary>
         /// Testea cuando se añade el tablero a un jugador, se añade a su lista de tableros
@@ -65,11 +65,11 @@ namespace LibraryTests
         [Test]
         public void TestAddBoardsToPlayer()
         {
-            User maria = new User(3,"Maria", "Parapar");
+            User maria = new User(3, "Maria", "Parapar");
             Player player = new Player(maria);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
-            Assert.AreEqual(2,player.PlayerBoardsList.Count);
+            Assert.AreEqual(2, player.PlayerBoardsList.Count);
         }
         /// <summary>
         /// Testea el método de conocer el tablero que selecciono el jugador
@@ -77,29 +77,29 @@ namespace LibraryTests
         [Test]
         public void TestGetPlayerBoardSize()
         {
-            User maria = new User(3,"Maria", "Parapar");
+            User maria = new User(3, "Maria", "Parapar");
             Player player = new Player(maria);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
-            Assert.AreEqual(10,player.GetPlayerBoardSize());
+            Assert.AreEqual(10, player.GetPlayerBoardSize());
         }
-        
+
         /// <summary>
         /// Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
         /// </summary>
         [Test]
         public void TestReceiveShotException()
         {
-            User matias = new User(3,"Olave", "Matias");
+            User matias = new User(3, "Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
-            Ship frigate = new Frigate("11","v");
+            Ship frigate = new Frigate("11", "V");
             player.PlaceShipOnBoard(frigate);
             //player.MakeShot("11");
-            player.ReceiveShot("11");  
-            Assert.Throws<ReceiveShotException>(() =>player.ReceiveShot("11"));
+            player.ReceiveShot("11");
+            Assert.Throws<ReceiveShotException>(() => player.ReceiveShot("11"));
         }
 
         /// <summary>
@@ -108,15 +108,15 @@ namespace LibraryTests
         [Test]
         public void TestPlaceShipOutOfBoard()
         {
-            User matias = new User(3,"Olave", "Matias");
+            User matias = new User(3, "Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
-            LightCruiser cruiser = new LightCruiser("99","h");  
-            Submarine submarine = new Submarine("98","h");
-            Assert.AreEqual(false,player.PlaceShipOnBoard(cruiser));
-            Assert.AreEqual(false,player.PlaceShipOnBoard(submarine));
+            LightCruiser cruiser = new LightCruiser("99", "h");
+            Submarine submarine = new Submarine("98", "h");
+            Assert.AreEqual(false, player.PlaceShipOnBoard(cruiser));
+            Assert.AreEqual(false, player.PlaceShipOnBoard(submarine));
 
 
         }

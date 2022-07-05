@@ -30,5 +30,5 @@ El token del TelegramBot es:  5193142034:AAFHGchgSiw5oq5ba9gV19F4b8_Zn44MAfA
 
 Bot Username: @paco_pii_G8_bot
 
-[Comunicación directa con el Bot a través de éste link](https://web.telegram.org/k/#@paco_pii_G8_bot)
+
 

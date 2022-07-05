@@ -46,13 +46,13 @@ namespace LibraryTests
         }
         /// <summary>
         /// Test 16
-        /// Este test chequea que si se manda una coordenada mas larga que 2 entonces salta error
+        /// Este test chequea que si se manda una coordenada mas larga que 2 o 3 entonces salta error
         /// Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
         /// </summary>
         [Test]
         public void TestSplitCoordIntoRowAndColumnNotOK3()
         {
-            string coord ="123";
+            string coord ="1234";
             Assert.Throws<CoordException>(() => Utils.SplitCoordIntoRowAndColumn(coord));
         }
 

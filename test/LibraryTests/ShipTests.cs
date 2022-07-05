@@ -8,29 +8,13 @@ namespace LibraryTests
     /// </summary>
     public class ShipTests
     {
-        /// <summary>
-        /// Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
-        /// </summary>
-        [Test]
-        public void TestReceiveShotException()
-        {
-            User matias = new User(3,"Olave", "Matias");
-            Player player = new Player(matias);
-            player.AddPlayerShipBoard(new ShipBoard(10));
-            player.AddPlayerShotBoard(new ShotBoard(10));
-            LobbyContainer.AddPlayer(player);
-            Ship frigate = new Frigate("11","v");
-            player.PlaceShipOnBoard(frigate);
-            player.MakeShot("11");
-            player.ReceiveShot("11");  
-            Assert.Throws<ReceiveShotException>(() =>player.ReceiveShot("11"));
-        }
+
         
         /// <summary>
         /// Se testea agregar un Frigate en vertical al tablero de Maldivas
         /// </summary>
         [Test]
-        public void AddFrigateToMaldivasVertical()
+        public void TestAddFrigateToMaldivasVertical()
         {
 
             User matias = new User(3,"Olave", "Matias");
@@ -48,7 +32,7 @@ namespace LibraryTests
         /// Se testea agregar un Frigate en horizontal al tablero de Maldivas
         /// </summary>
         [Test]
-        public void AddFrigateToMaldivasHorizontal()
+        public void TestAddFrigateToMaldivasHorizontal()
         {
 
              User matias = new User(3,"Olave", "Matias");
@@ -66,7 +50,7 @@ namespace LibraryTests
         /// Testea que se agreguen 2 posiciones de Frigate al tablero de Maldivas
         /// </summary>
         [Test]
-        public void AddAllPositionsOfFrigate()
+        public void TestAddAllPositionsOfFrigate()
         {
             int count=0;
 
@@ -88,7 +72,7 @@ namespace LibraryTests
         /// Se testea agregar un LightCruiser en vertical a Donbas
         /// </summary>
         [Test]
-        public void AddLightCruiserToDonbasVertical()
+        public void TestAddLightCruiserToDonbasVertical()
         {
 
             User matias = new User(3,"Olave", "Matias");
@@ -106,7 +90,7 @@ namespace LibraryTests
         /// Se testea agregar un LightCruiser en horizontal a Donbas
         /// </summary>
         [Test]
-        public void AddLightCruiserToDonbasHorizontal()
+        public void TestAddLightCruiserToDonbasHorizontal()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
@@ -123,7 +107,7 @@ namespace LibraryTests
         /// Se testea que se agreguen las 3 posiciones de LightCruiser en Donbas
         /// </summary>
         [Test]
-        public void AddAllPositionsOfLightCruiser()
+        public void TestAddAllPositionsOfLightCruiser()
         {
             int count=0;
             User matias = new User(3,"Olave", "Matias");
@@ -143,7 +127,7 @@ namespace LibraryTests
         /// Se testea agregar un Submarino en vertical a Laos
         /// </summary>
         [Test]
-        public void AddSubmarineToLaosVertical()
+        public void TestAddSubmarineToLaosVertical()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
@@ -162,7 +146,7 @@ namespace LibraryTests
         /// Se testea agregar un Submarino en horizontal a Laos
         /// </summary>
         [Test]
-        public void AddSubmarineToLaosHorizontal()
+        public void TestAddSubmarineToLaosHorizontal()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
@@ -181,7 +165,7 @@ namespace LibraryTests
         /// Se testea que se agreguen las 4 posiciones del submarino a Laos
         /// </summary>
         [Test]
-        public void AddAllPositionsOfSubmarine()
+        public void TestAddAllPositionsOfSubmarine()
         {
             int count=0;
             User matias = new User(3,"Olave", "Matias");
@@ -250,7 +234,7 @@ namespace LibraryTests
         /// Se testea agregar un AircraftCarrier en vertical a Laos
         /// </summary>
         [Test]
-        public void AddAircraftCarrierToLaosVertical()
+        public void TestAddAircraftCarrierToLaosVertical()
         {
             User carol = new User(10,"Carol","Glass");
             Player player = new Player(carol);
@@ -269,7 +253,7 @@ namespace LibraryTests
         /// Se testea agregar un Submarino en horizontal a Laos
         /// </summary>
         [Test]
-        public void AddAircraftCarrierToLaosHorizontal()
+        public void TestAddAircraftCarrierToLaosHorizontal()
         {
             User carol = new User(10,"Carol","Glass");
             Player player = new Player(carol);
@@ -310,7 +294,7 @@ namespace LibraryTests
         /// Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
         /// </summary>
         [Test]
-        public void TestPlaceSubmarineInTakenPosition()
+        public void TestPlaceFrigateInTakenPosition()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
@@ -321,13 +305,13 @@ namespace LibraryTests
             //Ubica el submarino en (0,0), (0,1), (0,2) y (0,3)
             player.PlaceShipOnBoard(submarine);
             Frigate frigate = new Frigate("01","h");
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
+            Assert.AreEqual(false,player.PlaceShipOnBoard(frigate));
         }
         /// <summary>
         /// Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
         /// </summary>
         [Test]
-        public void TestPlaceFrigateInTakenPosition()
+        public void TestPlaceSubmarineInTakenPosition()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
@@ -336,8 +320,8 @@ namespace LibraryTests
             LobbyContainer.AddPlayer(player);
             Frigate frigate = new Frigate("01","h");
             Submarine submarine = new Submarine("00","h");
-            player.PlaceShipOnBoard(frigate);     
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(submarine));
+            player.PlaceShipOnBoard(frigate);
+            Assert.AreEqual(false,player.PlaceShipOnBoard(submarine));     
         }
         /// <summary>
         /// Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
@@ -351,31 +335,43 @@ namespace LibraryTests
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
             Frigate frigate = new ("01","h");
+            player.PlaceShipOnBoard(frigate);
             LightCruiser cruiser = new LightCruiser("00","h");
-            player.PlaceShipOnBoard(frigate);     
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
+            Assert.AreEqual(false,player.PlaceShipOnBoard(frigate));   
         }
         /// <summary>
-        /// Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+        /// Testea coordenada fue disparada
         /// </summary>
+        
         [Test]
-        public void TestPlaceShipOutOfBoard()
+        public void TestCoordWasHit()
         {
             User matias = new User(3,"Olave", "Matias");
             Player player = new Player(matias);
             player.AddPlayerShipBoard(new ShipBoard(10));
             player.AddPlayerShotBoard(new ShotBoard(10));
             LobbyContainer.AddPlayer(player);
-            LightCruiser cruiser = new LightCruiser("04","h");  
-            Frigate frigate = new Frigate("55","h"); 
-            Submarine submarine = new Submarine("44","v");
-            player.PlaceShipOnBoard(cruiser);     
-            player.PlaceShipOnBoard(frigate);     
-            player.PlaceShipOnBoard(submarine);     
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(cruiser));
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(frigate));
-            Assert.Throws<CoordException>(() =>player.PlaceShipOnBoard(submarine));
-
+            Ship frigate = new Frigate("11","v");
+            player.PlaceShipOnBoard(frigate);
+            player.ReceiveShot("11");
+            Assert.AreEqual(true, frigate.CoordsList[0].wasHit);  
+        }
+        /// <summary>
+        /// Testea coordenada no fue disparada
+        /// </summary>
+        
+        [Test]
+        public void TestCoordWasNotHit()
+        {
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            Ship frigate = new Frigate("11","v");
+            player.PlaceShipOnBoard(frigate);
+            player.ReceiveShot("22");
+            Assert.AreEqual(false, frigate.CoordsList[0].wasHit);  
         }
 
         

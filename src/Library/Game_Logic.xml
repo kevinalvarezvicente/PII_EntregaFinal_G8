@@ -490,7 +490,7 @@
             Es un método que al recibir la posicion del barco la pone en el board.
             Recibe como argumento todos los datos necesarios para crear instancia de los subtipos de Ship
             </summary>
-            <param name="option">Es un entero, hay solo 3 opciones de barco </param>
+            <param name="option">Es un entero, hay solo 4 opciones de barco </param>
             <param name="coord">Es una cadena que indica la coordenada inicial del barco</param>
             <param name="direction">Es una cadena que recive v o h</param>
         </member>

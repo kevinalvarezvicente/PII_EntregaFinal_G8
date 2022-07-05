@@ -80,9 +80,29 @@
             Testea partida finalizada una vez que se disparo a todos los barcos de los usuarios de la partida
             </summary>
         </member>
+        <member name="M:LibraryTests.GameTests.GameFinishedBecauseOfOnePlayerTest">
+            <summary>
+            Testea partida finalizada una vez que se disparo a todos los barcos de un usuario de la partida
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.GameNotFinishedTest">
+            <summary>
+            Testea partida no finalizada pues aun los barcos no estan hundidos
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.GameFinishedTestWithShotMadeMethod">
+            <summary>
+            Testea partida finalizada una vez que se disparo a todos los barcos de un usuario de la partida con el método ShotMade
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.AreAllShipsSinkedTestWithShotMadeMethod">
+            <summary>
+            Testea todos los barcos de un usuario hundidos de la partida con el método ShotMade
+            </summary>
+        </member>
         <member name="M:LibraryTests.GameTests.PlayerShipSinkedTest">
             <summary>
-            Test sin funcionar aún 
+            Test De si todos los barcos fueron hundidos 
             </summary>    
         </member>
         <member name="M:LibraryTests.GameTests.PlayerReceivesShotTest">
@@ -95,6 +115,11 @@
         <member name="M:LibraryTests.GameTests.TestMakeShot">
             <summary>
             El test prueba el método MakeShot del jugador, este método hace que el jugador realiza el disparo y ubica una "x" en su tablero de tiros
+            </summary>
+        </member>
+        <member name="M:LibraryTests.GameTests.TestShotMadeWithoutShips">
+            <summary>
+            Se testea el método de ShotMade sin barcos, el cual afecta a los tableros de ambos jugadores
             </summary>
         </member>
         <member name="T:LibraryTests.HelloHandlerTests">
@@ -134,57 +159,62 @@
             Testea el método de conocer el tablero que selecciono el jugador
             </summary>
         </member>
+        <member name="M:LibraryTests.PlayerTests.TestReceiveShotException">
+            <summary>
+            Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
+            </summary>
+        </member>
+        <member name="M:LibraryTests.PlayerTests.TestPlaceShipOutOfBoard">
+            <summary>
+            Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+            </summary>
+        </member>
         <member name="T:LibraryTests.ShipTests">
             <summary>
             Test de los métodos de la clase Ship y que relaciona con barcos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.TestReceiveShotException">
-            <summary>
-            Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
-            </summary>
-        </member>
-        <member name="M:LibraryTests.ShipTests.AddFrigateToMaldivasVertical">
+        <member name="M:LibraryTests.ShipTests.TestAddFrigateToMaldivasVertical">
             <summary>
             Se testea agregar un Frigate en vertical al tablero de Maldivas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddFrigateToMaldivasHorizontal">
+        <member name="M:LibraryTests.ShipTests.TestAddFrigateToMaldivasHorizontal">
             <summary>
             Se testea agregar un Frigate en horizontal al tablero de Maldivas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfFrigate">
+        <member name="M:LibraryTests.ShipTests.TestAddAllPositionsOfFrigate">
             <summary>
             Testea que se agreguen 2 posiciones de Frigate al tablero de Maldivas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddLightCruiserToDonbasVertical">
+        <member name="M:LibraryTests.ShipTests.TestAddLightCruiserToDonbasVertical">
             <summary>
             Se testea agregar un LightCruiser en vertical a Donbas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddLightCruiserToDonbasHorizontal">
+        <member name="M:LibraryTests.ShipTests.TestAddLightCruiserToDonbasHorizontal">
             <summary>
             Se testea agregar un LightCruiser en horizontal a Donbas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfLightCruiser">
+        <member name="M:LibraryTests.ShipTests.TestAddAllPositionsOfLightCruiser">
             <summary>
             Se testea que se agreguen las 3 posiciones de LightCruiser en Donbas
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddSubmarineToLaosVertical">
+        <member name="M:LibraryTests.ShipTests.TestAddSubmarineToLaosVertical">
             <summary>
             Se testea agregar un Submarino en vertical a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddSubmarineToLaosHorizontal">
+        <member name="M:LibraryTests.ShipTests.TestAddSubmarineToLaosHorizontal">
             <summary>
             Se testea agregar un Submarino en horizontal a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddAllPositionsOfSubmarine">
+        <member name="M:LibraryTests.ShipTests.TestAddAllPositionsOfSubmarine">
             <summary>
             Se testea que se agreguen las 4 posiciones del submarino a Laos
             </summary>
@@ -200,12 +230,12 @@
             Testea que cuando se agregan barcos al tablero del jugador con el metodo PlaceShipOnBoard se agregan a la lista de barcos del jugador
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddAircraftCarrierToLaosVertical">
+        <member name="M:LibraryTests.ShipTests.TestAddAircraftCarrierToLaosVertical">
             <summary>
             Se testea agregar un AircraftCarrier en vertical a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.AddAircraftCarrierToLaosHorizontal">
+        <member name="M:LibraryTests.ShipTests.TestAddAircraftCarrierToLaosHorizontal">
             <summary>
             Se testea agregar un Submarino en horizontal a Laos
             </summary>
@@ -215,12 +245,12 @@
             Se testea que se agreguen las 4 posiciones del aircraft a Laos
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.TestPlaceSubmarineInTakenPosition">
+        <member name="M:LibraryTests.ShipTests.TestPlaceFrigateInTakenPosition">
             <summary>
             Testea si la coordenada elegida para ubicar el fragata ya tiene un barco ubicado
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.TestPlaceFrigateInTakenPosition">
+        <member name="M:LibraryTests.ShipTests.TestPlaceSubmarineInTakenPosition">
             <summary>
             Testea si la coordenada elegida para ubicar el submarino ya tiene un barco ubicado
             </summary>
@@ -230,14 +260,24 @@
             Testea si la coordenada elegida para ubicar el crucero ya tiene un barco ubicado
             </summary>
         </member>
-        <member name="M:LibraryTests.ShipTests.TestPlaceShipOutOfBoard">
+        <member name="M:LibraryTests.ShipTests.TestCoordWasHit">
             <summary>
-            Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+            Testea coordenada fue disparada
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShipTests.TestCoordWasNotHit">
+            <summary>
+            Testea coordenada no fue disparada
             </summary>
         </member>
         <member name="T:LibraryTests.UtilsTests">
             <summary>
             Se hace test para los métodos de la clase Utilidades
+            </summary>
+        </member>
+        <member name="M:LibraryTests.UtilsTests.TestSwapWithShotMade">
+            <summary>
+            Testea Swap al utilizar método ShotMade
             </summary>
         </member>
         <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnOK">

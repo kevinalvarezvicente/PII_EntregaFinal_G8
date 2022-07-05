@@ -83,6 +83,43 @@ namespace LibraryTests
             player.AddPlayerShotBoard(new ShotBoard(10));
             Assert.AreEqual(10,player.GetPlayerBoardSize());
         }
+        
+        /// <summary>
+        /// Se testea el disparo dos veces a la misma coordenada. Se testea excepcion
+        /// </summary>
+        [Test]
+        public void TestReceiveShotException()
+        {
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            Ship frigate = new Frigate("11","v");
+            player.PlaceShipOnBoard(frigate);
+            //player.MakeShot("11");
+            player.ReceiveShot("11");  
+            Assert.Throws<ReceiveShotException>(() =>player.ReceiveShot("11"));
+        }
+
+        /// <summary>
+        /// Testea que no se pueda ubicar ningun tipo de barco si una coordenada queda fuera del tablero lanzando una excepcion
+        /// </summary>
+        [Test]
+        public void TestPlaceShipOutOfBoard()
+        {
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(10));
+            player.AddPlayerShotBoard(new ShotBoard(10));
+            LobbyContainer.AddPlayer(player);
+            LightCruiser cruiser = new LightCruiser("99","h");  
+            Submarine submarine = new Submarine("98","h");
+            Assert.AreEqual(false,player.PlaceShipOnBoard(cruiser));
+            Assert.AreEqual(false,player.PlaceShipOnBoard(submarine));
+
+
+        }
 
     }
 }

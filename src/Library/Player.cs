@@ -201,22 +201,22 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <param name="coord">Es la coordenada que se pasa por parámetro</param>
         public string ReceiveShot(string coord)
         {
+            SearchForCoordInShipsList(coord);
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            SearchForCoordInShipsList(coord);
-
-            if (this.playerShipBoard.GameBoard[x, y].Equals("o"))
+            
+            if (this.playerShipBoard.GameBoard[x, y]=="o")
             {
-                this.playerShipBoard.GameBoard[x, y] = "x";
+                this.playerShipBoard.GameBoard[x, y] = "X";
                 return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("-"))
+            else if (this.playerShipBoard.GameBoard[x, y]=="-")
             {
                 this.playerShipBoard.GameBoard[x, y] = "|";
                 return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y].Equals("x"))
+            else if (this.playerShipBoard.GameBoard[x, y]=="X")
             {
                 throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
                 //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";

@@ -9,6 +9,32 @@ namespace LibraryTests
     public class UtilsTests
     {
         /// <summary>
+        /// Testea Swap al utilizar método ShotMade
+        /// </summary>
+        [Test]
+        public void TestSwapWithShotMade()
+        {
+            User matias = new User(3,"Olave", "Matias");
+            Player player = new Player(matias);
+            player.AddPlayerShipBoard(new ShipBoard(20));
+            player.AddPlayerShotBoard(new ShotBoard(20));
+            Ship frigateMatias= new Frigate("11","v");
+            player.PlaceShipOnBoard(frigateMatias);
+            User maria = new User(4,"Maria","Parapar");
+            Player player2 = new Player(maria);
+            player2.AddPlayerShipBoard(new ShipBoard(20));
+            player2.AddPlayerShotBoard(new ShotBoard(20));
+            LobbyContainer.AddPlayer(player);
+            Ship frigateMaria = new Frigate("11","H");
+            player2.PlaceShipOnBoard(frigateMaria);
+            Game game = new Game(player,player2);
+            Assert.AreEqual(player,game.Active_Player);
+            Assert.AreEqual(player2,game.Inactive_Player);
+            game.ShotMade("11");
+            Assert.AreEqual(player,game.Inactive_Player);
+            Assert.AreEqual(player2,game.Active_Player);
+        }
+        /// <summary>
         /// Test 15
         /// Primer test probando con una coordenada
         /// </summary>

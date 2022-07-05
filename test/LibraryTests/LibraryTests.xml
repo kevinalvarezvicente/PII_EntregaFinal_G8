@@ -122,6 +122,11 @@
             Se testea el método de ShotMade sin barcos, el cual afecta a los tableros de ambos jugadores
             </summary>
         </member>
+        <member name="M:LibraryTests.GameTests.TestShotMadeWithShips">
+            <summary>
+            Testea método ShotMade con los barcos y la lista de barcos
+            </summary>
+        </member>
         <member name="T:LibraryTests.HelloHandlerTests">
             <summary>
               testea el hola handler
@@ -289,7 +294,7 @@
         <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK3">
             <summary>
             Test 16
-            Este test chequea que si se manda una coordenada mas larga que 2 entonces salta error
+            Este test chequea que si se manda una coordenada mas larga que 2 o 3 entonces salta error
             Hay que hacerle test porque aun no sabemos hacerlo con excpeciones
             </summary>
         </member>

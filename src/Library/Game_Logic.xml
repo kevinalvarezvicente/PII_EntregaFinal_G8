@@ -940,6 +940,13 @@
             <param name="coord">Es la coordenada de la matriz del tablero</param>
             <returns></returns>
         </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.IsALetter(System.String)">
+            <summary>
+            Verifica que lo que envia el usuario sea una letra
+            </summary>
+            <param name="letter">Recibe como parámetro un string</param>
+            <returns></returns>
+        </member>
         <member name="M:PII_ENTREGAFINAL_G8.src.Library.Utils.Swap``1(``0@,``0@)">
             <summary>
             El método Swap permite ir variando el turno del jugador

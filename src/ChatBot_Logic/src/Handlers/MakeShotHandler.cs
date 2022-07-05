@@ -66,5 +66,8 @@ namespace ChatBot_Logic.src.Handlers
                 response = string.Empty;
                 return false;
             }
+            response = string.Empty;
+            return false;
         }
     }
+}

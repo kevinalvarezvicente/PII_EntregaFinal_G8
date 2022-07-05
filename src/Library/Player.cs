@@ -206,21 +206,43 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             int x;
             int y;
             (x, y) = Utils.SplitCoordIntoRowAndColumn(coord);
-            
-            if (this.playerShipBoard.GameBoard[x, y]== "\U0001f7e2")
+
+            if (this.playerShipBoard.GameBoard[x, y] == "\U0001f7e2")
             {
                 this.playerShipBoard.GameBoard[x, y] = "🔴";
-                return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
+                Ship ship = this.GetShip(coord);
+                bool sinked = ship.IsShipSinked();
+                bool win = this.AreAllShipsSinked();
+                if (win)
+                {
+                    return "¡Hemos ganado la batalla capitán! 👏🏻. El mundo es un lugar más seguro gracias a tu valentia 🌎.";
+                }
+                if (!sinked)
+                {
+                    return "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.";
+                }
+                else
+                {
+                    return "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.";
+                }
             }
-            else if (this.playerShipBoard.GameBoard[x, y]== "🔵")
+            else if (this.playerShipBoard.GameBoard[x, y] == "🔵")
             {
                 this.playerShipBoard.GameBoard[x, y] = "🟣";
                 return "Le has dado a una ola 🌊.\n Es el turno de tu enemigo 😨.";
             }
-            else if (this.playerShipBoard.GameBoard[x, y]== "🔴")
+            else if (this.playerShipBoard.GameBoard[x, y] == "🔴")
             {
-                throw new ReceiveShotException("Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.");
-                //return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
+                Ship ship = this.GetShip(coord);
+                bool sinked = ship.IsShipSinked();
+                if (!sinked)
+                {
+                    return "Misil perdido, ya has disparado aqui 😡.\n Es el turno de tu enemigo 😨.";
+                }
+                else
+                {
+                    return "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.";
+                }
             }
             return null;
 

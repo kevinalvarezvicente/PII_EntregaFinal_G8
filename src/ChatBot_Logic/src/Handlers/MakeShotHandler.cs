@@ -74,9 +74,9 @@ namespace ChatBot_Logic.src.Handlers
                     if (chainData.userPostionHandler[from].Count == 1)
                     {
                         chainData.userPostionHandler[from].Add("/tiro");
-                        string letter = message.Text.Substring(0, 1);
+                        string letter = message.Text.Substring(0, 1).ToUpper();
                         string number1 = Utils.LetterToNumber(letter);
-                        string number2 = message.Text.Substring(1, message.Text.Length - 1);
+                        string number2 = message.Text.Substring(1, message.Text.Length);
                         string build = number1 + number2;
                         string res = game.ShotMade(build);
                         TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();

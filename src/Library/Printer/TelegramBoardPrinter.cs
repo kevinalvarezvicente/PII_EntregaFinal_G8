@@ -22,14 +22,31 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         public string PrintPlayerBoard(Board board)
         {
             StringBuilder txt = new StringBuilder("");
-            txt.Append("- ");
+            txt.Append("  🤕🤕🟧🆘🆘🆘🟧🟧🤕🤕\n");
+            txt.Append("  🟧⛑🟧🟧⚔️🟧🟧🟧⛑🟧\n");
+            txt.Append("  🟧⛑🟧⚔️⚔️⚔️🟧🟧⛑🟧\n");
+            txt.Append("  🟧⛑🟧🟧⚔️🟧🟧🟧⛑🟧\n");
+            txt.Append("  🤕🤕🟧🆘🆘🆘🟧🟧🤕🤕\n");
+            txt.Append("  ");
+
+            for (int x = 0; x < board.GameBoard.GetLength(1); x++)
+            {
+                txt.Append(" " + x);
+            }
+            txt.Append("\n");
             for (int i = 0; i < board.GameBoard.GetLength(0); i++)
             {
+                txt.Append(" " + Utils.NumberToletter(i));
                 for (int j = 0; j < board.GameBoard.GetLength(1); j++)
                 {
-                    txt.Append(" " + board.GameBoard[i, j]);
+                    txt.Append(board.GameBoard[i, j]);
                 }
-                txt.Append("\n ");
+                txt.Append(" " + Utils.NumberToletter(i) + "\n");
+            }
+            txt.Append("  ");
+            for (int x = 0; x < board.GameBoard.GetLength(1); x++)
+            {
+                txt.Append(" " + x);
             }
             return txt.ToString();
         }

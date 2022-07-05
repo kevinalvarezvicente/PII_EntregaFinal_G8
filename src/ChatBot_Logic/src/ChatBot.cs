@@ -140,7 +140,7 @@ namespace ChatBot_Logic.src
         /// <returns></returns>
         private static async Task HandleMessageReceived(ITelegramBotClient botClient, Message message)
         {
-            Console.WriteLine($"Received a message from {message.From.Id} saying: {message.Text}");
+            Console.WriteLine($"Received a message from {message.From.FirstName} --> {message.From.Id} saying: {message.Text}");
 
             string response = string.Empty;
 

@@ -1,7 +1,3 @@
-
-using System;
-using System.Collections.Generic;
-
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
@@ -93,7 +89,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 for (int j = 0; j < this.gameBoard.GetLength(1); j++)
                 {
 
-                    this.gameBoard[i, j] = "-";
+                    this.gameBoard[i, j] = "\U0001F535";
                 }
             }
         }

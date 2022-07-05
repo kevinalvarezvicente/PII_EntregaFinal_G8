@@ -272,7 +272,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             foreach (Spot spot in ship.CoordsList)
             {
-                this.playerShipBoard.GameBoard[spot.X, spot.Y] = "o";
+                this.playerShipBoard.GameBoard[spot.X, spot.Y] = "🟢";
             }
             ShipsList.Add(ship);
             return true;

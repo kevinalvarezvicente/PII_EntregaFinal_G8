@@ -37,7 +37,7 @@ namespace ChatBot_Logic.src.Handlers
                     enemy = game.Active_Player;
                 }
                 String enemyId = enemy.UserId.ToString();
-                
+
                 try
                 {
                     if (!chainData.userPostionHandler[from][0].Equals("/NavesBatalla"))
@@ -56,9 +56,9 @@ namespace ChatBot_Logic.src.Handlers
                     response = "Hola soldado, se te han asignado 4 naves 🛥 de batalla. Recuerda de posicionarlas lo mejor posible para que el enemigo no te encuentre. Yo no diré nada 😶." +
                         "Tienes las siguentes naves asignadas a tu responsabilidad. Estas tienen distintas capacidades."
                         + "\n⭕️ /Frigate ⭕️ : 1 artilleria y 1 cañon de baja distancia " +
-                        "\n⭕️ /LightCruiser ⭕️: 2 cañones de media distancia y 1 artilleria" +
-                        "\n⭕️ /Submarine ⭕️: 2 torpedos nucleares, 1 zona de maquinas y 1 radar" +
-                        "\n⭕️ /AircraftCarrier ⭕️: Pista de aterrizaje de 5 espacios" +
+                        "\n⭕️ LightCruiser ⭕️: 2 cañones de media distancia y 1 artilleria" +
+                        "\n⭕️ Submarine ⭕️: 2 torpedos nucleares, 1 zona de maquinas y 1 radar" +
+                        "\n⭕️ AircraftCarrier ⭕️: Pista de aterrizaje de 5 espacios" +
                         $"\nLas coordenadas del tablero van de 0 - {b} vericalmente y de A - {TopBoard} "
                         + "\nLa coordenada se ingresa de la siguiente manera: A2:H o J8:V" +
                         "\n H: Horizontal" +
@@ -69,6 +69,8 @@ namespace ChatBot_Logic.src.Handlers
                 if (chainData.userPostionHandler[from].Count == 1 && message.Text == "/Frigate")
                 {
                     chainData.userPostionHandler[from].Add("/Frigate");
+                    TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
+                    ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                     response = "Ingrese la coordenada y direccion de la Frigate: ";
                     return true;
                 }
@@ -91,13 +93,13 @@ namespace ChatBot_Logic.src.Handlers
                                 chainData.userPostionHandler[from].Add("/FrigateData");
                                 TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                                 ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                                response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\n";
+                                response = $"La Frigate ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\nPosiciona tu /LightCruiser";
                                 return true;
                             }
                             else
                             {
                                 chainData.userPostionHandler[from].Remove("/Frigate");
-                                response = $"Las coordenadas son incorrectas.\n";
+                                response = $"Las coordenadas son incorrectas. Reingrese: /FrigateData\n";
                                 return true;
                             }
                         }
@@ -131,13 +133,13 @@ namespace ChatBot_Logic.src.Handlers
                                 chainData.userPostionHandler[from].Add("/LightCruiserData");
                                 TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                                 ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                                response = "El Light Cruiser ha anclado ⚓ en la posicion capitan. Esta lista para atacar.";
+                                response = "El Light Cruiser ha anclado ⚓ en la posicion capitan. Esta lista para atacar.\nPosiciona tu /Submarine";
                                 return true;
                             }
                             else
                             {
                                 chainData.userPostionHandler[from].Remove("/LightCruiser");
-                                response = $"Las coordenadas son incorrectas.\n";
+                                response = $"Las coordenadas son incorrectas. Reingrese: /LightCruiser\n";
                                 return true;
                             }
                         }
@@ -171,13 +173,13 @@ namespace ChatBot_Logic.src.Handlers
                                 chainData.userPostionHandler[from].Add("/SubmarineData");
                                 TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                                 ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                                response = "El Submarine se ha posicionado y ha alistado los torpedos capitan. Esta lista para atacar."; return true;
+                                response = "El Submarine se ha posicionado y ha alistado los torpedos capitan. Esta lista para atacar.\nPosiciona tu /AircraftCarrier"; return true;
                                 return true;
                             }
                             else
                             {
                                 chainData.userPostionHandler[from].Remove("/Submarine");
-                                response = $"Las coordenadas son incorrectas.\n";
+                                response = $"Las coordenadas son incorrectas. Reingrese: /Submarine\n";
                                 return true;
                             }
                         }
@@ -211,13 +213,13 @@ namespace ChatBot_Logic.src.Handlers
                                 chainData.userPostionHandler[from].Add("/AircraftCarrierData");
                                 TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                                 ChatBot.sendMessageBoard(message.From.Id, $"```{ classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
-                                response = "El Aircraft Carrier se ha aproximado a la zona de batalla. Ahora puedes usar aviones de guerra ✈️.";
+                                response = "El Aircraft Carrier se ha aproximado a la zona de batalla. Ahora puedes usar aviones de guerra ✈️. Ve como va tu enemigo /EstadoEnemigo";
                                 return true;
                             }
                             else
                             {
                                 chainData.userPostionHandler[from].Remove("/AircraftCarrier");
-                                response = $"Las coordenadas son incorrectas.\n";
+                                response = $"Las coordenadas son incorrectas. Reingrese: /AircraftCarrier\n";
                                 return true;
                             }
                         }
@@ -226,23 +228,17 @@ namespace ChatBot_Logic.src.Handlers
                     response = $"Las coordenadas son incorrectas.\n";
                     return true;
                 }
-                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count <= 9)
+                else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count < 9)
                 {
-                    ChatBot.sendMessage(message.From.Id, "Has posicionado todas tus naves de batalla, estamos esperando a tu enemigo.");
-                    response = $"";
+                    response = $"Has posicionado todas tus naves de batalla, estamos esperando a tu enemigo.";
                     return true;
                 }
                 else if (chainData.userPostionHandler[from].Count == 9 && chainData.userPostionHandler[enemyId].Count == 9)
                 {
                     chainData.userPostionHandler[from].Add("/atacar");
-                    ChatBot.sendMessage(message.From.Id, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar");
-                    response = $"";
-                    return true;
-                }
-                else
-                {
-                    chainData.userPostionHandler.Clear();
-                    response = $"No ingresó una opción valida.\n";
+                    ChatBot.sendMessage(enemy.UserId, "Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar");
+                    this.Keywords.Remove(from); //Removemos el id asi sigue el handler
+                    response = $"Tu enemigo tambien ha posicionado sus naves, es hora de la batalla ⚔️. Presiona atacar antes que tu enemigo para poseer el primer ataque /atacar";
                     return true;
                 }
             }

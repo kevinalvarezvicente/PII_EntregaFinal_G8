@@ -127,9 +127,19 @@
             Testea método ShotMade con los barcos y la lista de barcos
             </summary>
         </member>
-        <member name="T:LibraryTests.HelloHandlerTests">
+        <member name="T:LibraryTests.HelloHandlerTestss">
             <summary>
               testea el hola handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.HelloHandlerTestss.HelloHandler">
+            <summary>
+                se testea el hello handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.HelloHandlerTestss.TestDoesNotHandle">
+            <summary>
+                se teste que no hay un handler
             </summary>
         </member>
         <member name="T:LibraryTests.PlayerTests">
@@ -192,6 +202,21 @@
         <member name="M:LibraryTests.PlayerTests.TestGetShipAndCheckIfIsNOTSinked">
             <summary>
             Obtiene el barco a aprtir de la coordenada y chequea que no esta hundido
+            </summary>
+        </member>
+        <member name="T:LibraryTests.RegistrerUserHandlerTest">
+            <summary>
+              testea el hola handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RegistrerUserHandlerTest.RegisterUserHandler">
+            <summary>
+                se testea el hello handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RegistrerUserHandlerTest.TestDoesNotHandle">
+            <summary>
+                se teste que no hay un handler
             </summary>
         </member>
         <member name="T:LibraryTests.ShipTests">

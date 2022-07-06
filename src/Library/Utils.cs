@@ -55,7 +55,9 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 string columnS = Char.GetNumericValue(coordArray[1]).ToString() + Char.GetNumericValue(coordArray[2]).ToString();
                 int column = Int32.Parse(columnS);
                 return (row, column);
-            }else{
+            }
+            else
+            {
                 string columnS = Char.GetNumericValue(coordArray[1]).ToString();
                 int column = Int32.Parse(columnS);
                 return (row, column);

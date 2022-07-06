@@ -6,15 +6,31 @@ using System.Collections.Generic;
 
 namespace ChatBot_Logic.src.Handlers
 {
+    /// <summary>
+    /// Handler para ubicar los barcos
+    /// </summary>
     public class PlaceShipHandler : BaseHandler
     {
+        /// <summary>
+        /// Atributo del handler
+        /// </summary>
         public static Player player1, enemy;
+        /// <summary>
+        /// Constructor del handler
+        /// </summary>
+        /// <param name="next">Proximo handler a ejecutar</param>
+        /// <returns></returns>
         public PlaceShipHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new List<string>();
             Keywords.Add("/NavesBatalla");
         }
-
+        /// <summary>
+        /// Procesa el mensaje "/NavesBatalla"
+        /// </summary>
+        /// <param name="message">Mensaje que recibe</param>
+        /// <param name="response">Respuesta del bot</param>
+        /// <returns></returns>
         protected override bool InternalHandle(Telegram.Bot.Types.Message message, out string response)
         {
 

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace ChatBot_Logic.src.Handlers
 {
     /// <summary>
-    /// 
+    /// Handler para hacer el Shot
     /// </summary>
     public class MakeShotHandler : BaseHandler
     {

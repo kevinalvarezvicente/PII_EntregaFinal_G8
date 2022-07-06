@@ -210,7 +210,7 @@
         </member>
         <member name="T:ChatBot_Logic.src.Handlers.MakeShotHandler">
             <summary>
-            
+            Handler para hacer el Shot
             </summary>
         </member>
         <member name="M:ChatBot_Logic.src.Handlers.MakeShotHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
@@ -227,6 +227,36 @@
             <param name="message">Mensaje que recibe</param>
             <param name="response">Respuesta del bot</param>
             <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
+        </member>
+        <member name="T:ChatBot_Logic.src.Handlers.PlaceShipHandler">
+            <summary>
+            Handler para ubicar los barcos
+            </summary>
+        </member>
+        <member name="F:ChatBot_Logic.src.Handlers.PlaceShipHandler.player1">
+            <summary>
+            Atributo del handler
+            </summary>
+        </member>
+        <member name="F:ChatBot_Logic.src.Handlers.PlaceShipHandler.enemy">
+            <summary>
+            Atributo del handler
+            </summary>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.PlaceShipHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+            <summary>
+            Constructor del handler
+            </summary>
+            <param name="next">Proximo handler a ejecutar</param>
+            <returns></returns>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.PlaceShipHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje "/NavesBatalla"
+            </summary>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns></returns>
         </member>
         <member name="T:ChatBot_Logic.src.Handlers.RegisterUserHandler">
             <summary>

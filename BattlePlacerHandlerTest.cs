@@ -8,22 +8,19 @@ using Telegram.Bot.Types;
 namespace LibraryTests
 {
     /// <summary>
-    ///   testea el RegistrerUserHandler handler
+    ///   testea el hola handler
     /// </summary>
-    public class RegistrerUserHandlerTest
+    public class BattlePlacerHandlerTest
     {
-        RegisterUserHandler handler;
+        BattlePlacerHandler handler;
         Message message;
 
         ChainData chainData = ChainData.Instance;
 
-        /// <summary>
-        /// Se inicializa el handler
-        /// </summary>
         [SetUp]
         public void Setup()
         {
-            handler = new RegisterUserHandler(null);
+            handler = new BattlePlacerHandler(null);
             message = new Message();
             Telegram.Bot.Types.User usu = new Telegram.Bot.Types.User();
             usu.Id = 2046982637;
@@ -33,26 +30,21 @@ namespace LibraryTests
         }
 
         /// <summary>
-        ///     Se testea el hello handler
+        ///     se testea el hello handler
         /// </summary>
         [Test]
         public void RegisterUserHandler()
         {
-            chainData.userPostionHandler.Remove("465798");
             message.Text = handler.Keywords[0];
             string response;
             chainData.userPostionHandler.Add("465798", new Collection<string>());
             chainData.userPostionHandler["465798"].Add("/Prueba");
             IHandler result = handler.Handle(message, out response);
 
-            Assert.That(response, Is.EqualTo("Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
-                        "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
-                        + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
-                        "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
-                        "lucha contra un enemigo 💣 /batallar"));
+            Assert.That(response, Is.EqualTo("Antes de luchar debes de seleccionar la region 🌎 de campo en la que batallarás a muerte.🪦" +
+                    "\n🇦🇷 /Malvinas: 7 hectareas \n🇺🇦 /Donbas: 9 hectareas \n🇱🇦 /Laos: 11 hectareas"));
             Assert.That(result, Is.Not.Null);
         }
-
         /// <summary>
         ///     Se teste que no hay un handler
         /// </summary>

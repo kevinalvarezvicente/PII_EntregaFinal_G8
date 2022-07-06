@@ -3,56 +3,57 @@ using ChatBot_Logic.src.Handlers;
 using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
 using NUnit.Framework;
+using PII_ENTREGAFINAL_G8.src.Library;
 using Telegram.Bot.Types;
 
 namespace LibraryTests
 {
     /// <summary>
-    ///   testea el RegistrerUserHandler handler
+    ///   testea el SelectLobbyHandler handler
     /// </summary>
-    public class RegistrerUserHandlerTest
+    public class SelectLobbyHandlerTest
     {
-        RegisterUserHandler handler;
+        SelectLobbyHandler handler;
         Message message;
 
         ChainData chainData = ChainData.Instance;
 
         /// <summary>
-        /// Se inicializa el handler
+        ///     Inicializa datos del handler.
         /// </summary>
         [SetUp]
         public void Setup()
         {
-            handler = new RegisterUserHandler(null);
+            handler = new SelectLobbyHandler(null);
             message = new Message();
             Telegram.Bot.Types.User usu = new Telegram.Bot.Types.User();
             usu.Id = 2046982637;
             message.From = usu;
-            long id = 465798;
+            long id = 2046982637;
             message.From.Id = id;
         }
 
         /// <summary>
-        ///     Se testea el hello handler
+        ///     se testea el hello handler
         /// </summary>
         [Test]
         public void RegisterUserHandler()
         {
-            chainData.userPostionHandler.Remove("465798");
+            chainData.userPostionHandler.Add("2046982637", new Collection<string>());
+            chainData.userPostionHandler["2046982637"].Add("/Prueba1");
             message.Text = handler.Keywords[0];
             string response;
-            chainData.userPostionHandler.Add("465798", new Collection<string>());
-            chainData.userPostionHandler["465798"].Add("/Prueba");
+            PII_ENTREGAFINAL_G8.src.Library.User matias = new PII_ENTREGAFINAL_G8.src.Library.User(2046982637, "Olave", "Matias");
+            UsersContainer.AddUser(matias);
+            PII_ENTREGAFINAL_G8.src.Library.User ActiveUser = UsersContainer.GetUSerByID(2046982637);
+            Player player = new Player(ActiveUser);
+            
             IHandler result = handler.Handle(message, out response);
 
-            Assert.That(response, Is.EqualTo("Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
-                        "registrado en nuestro sistema de batallas 💻 con el nombre de : 🛑 "
-                        + message.From.FirstName + " " + message.From.LastName + " 🛑\n" +
-                        "¡Tenemos un centenar de battallas ⚔️ necesitamos de tu ayuda! Unete a un escuadrón y " +
-                        "lucha contra un enemigo 💣 /batallar"));
+            Assert.That(response, Is.EqualTo("¡Has seleccionado las 🇦🇷 Malvinas 🇦🇷 de 7 hectareas!. "
+                            + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender"));
             Assert.That(result, Is.Not.Null);
         }
-
         /// <summary>
         ///     Se teste que no hay un handler
         /// </summary>

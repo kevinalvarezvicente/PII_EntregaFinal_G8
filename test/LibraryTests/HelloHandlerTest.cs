@@ -15,6 +15,9 @@ namespace LibraryTests
         HelloHandler handler;
         Message message;
 
+        /// <summary>
+        /// Se inicializa datos del handler.
+        /// </summary>
         [SetUp]
         public void Setup()
         {

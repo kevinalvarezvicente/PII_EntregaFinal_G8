@@ -132,6 +132,11 @@
               testea el hola handler
             </summary>
         </member>
+        <member name="M:LibraryTests.HelloHandlerTestss.Setup">
+            <summary>
+            Se inicializa datos del handler.
+            </summary>
+        </member>
         <member name="M:LibraryTests.HelloHandlerTestss.HelloHandler">
             <summary>
                 se testea el hello handler
@@ -206,15 +211,40 @@
         </member>
         <member name="T:LibraryTests.RegistrerUserHandlerTest">
             <summary>
-              testea el hola handler
+              testea el RegistrerUserHandler handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.RegistrerUserHandlerTest.Setup">
+            <summary>
+            Se inicializa el handler
             </summary>
         </member>
         <member name="M:LibraryTests.RegistrerUserHandlerTest.RegisterUserHandler">
             <summary>
-                se testea el hello handler
+                Se testea el hello handler
             </summary>
         </member>
         <member name="M:LibraryTests.RegistrerUserHandlerTest.TestDoesNotHandle">
+            <summary>
+                Se teste que no hay un handler
+            </summary>
+        </member>
+        <member name="T:LibraryTests.SelectLobbyHandlerTest">
+            <summary>
+              testea el SelectLobbyHandler handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.SelectLobbyHandlerTest.Setup">
+            <summary>
+                Inicializa datos del handler.
+            </summary>
+        </member>
+        <member name="M:LibraryTests.SelectLobbyHandlerTest.RegisterUserHandler">
+            <summary>
+                se testea el hello handler
+            </summary>
+        </member>
+        <member name="M:LibraryTests.SelectLobbyHandlerTest.TestDoesNotHandle">
             <summary>
                 Se teste que no hay un handler
             </summary>

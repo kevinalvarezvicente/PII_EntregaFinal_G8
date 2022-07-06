@@ -1,14 +1,12 @@
+using System.Collections.ObjectModel;
 using ChatBot_Logic.src.Handlers;
 using ChatBot_Logic.src.HandlersConfiguration;
 using ClassLibrary;
 using NUnit.Framework;
-using PII_ENTREGAFINAL_G8.src.Library;
 using Telegram.Bot.Types;
-
 
 namespace LibraryTests
 {
-
     /// <summary>
     ///   testea el hola handler
     /// </summary>
@@ -39,7 +37,8 @@ namespace LibraryTests
         {
             message.Text = handler.Keywords[0];
             string response;
-            chainData.userPostionHandler["465798"].Add("/SerSoldado"); 
+            chainData.userPostionHandler.Add("465798", new Collection<string>());
+            chainData.userPostionHandler["465798"].Add("/Prueba");
             IHandler result = handler.Handle(message, out response);
 
             Assert.That(response, Is.EqualTo("Nuestros aliados de inteligencia 🔍 te han ahorrado el escribir tu nombre. Te hemos " +
@@ -49,9 +48,8 @@ namespace LibraryTests
                         "lucha contra un enemigo 💣 /batallar"));
             Assert.That(result, Is.Not.Null);
         }
-
         /// <summary>
-        ///     se teste que no hay un handler
+        ///     Se teste que no hay un handler
         /// </summary>
         [Test]
         public void TestDoesNotHandle()

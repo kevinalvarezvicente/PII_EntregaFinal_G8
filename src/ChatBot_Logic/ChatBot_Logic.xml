@@ -228,38 +228,6 @@
             <param name="response">Respuesta del bot</param>
             <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         </member>
-        <member name="T:ChatBot_Logic.src.Handlers.PlaceShipHandler">
-            <summary>
-             El handler que trabaja cuando el usuario debe comenzar a ubicar los barcos
-             Un "handler" del patrón Chain of Responsibility que implementa el comando "/NavesBatalla".
-            </summary>
-        </member>
-        <member name="F:ChatBot_Logic.src.Handlers.PlaceShipHandler.player1">
-            <summary>
-            Atributos que permitirá indicar los jugadores de la partida.
-            </summary>
-        </member>
-        <member name="F:ChatBot_Logic.src.Handlers.PlaceShipHandler.enemy">
-            <summary>
-            Atributos que permitirá indicar los jugadores de la partida.
-            </summary>
-        </member>
-        <member name="M:ChatBot_Logic.src.Handlers.PlaceShipHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
-            <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.PlaceShipHandler"/>. Esta clase procesa el mensaje "/NavesBatalla".
-            </summary>
-            <param name="next">Próximo handler a ejecutar</param>
-            <returns></returns>
-        </member>
-        <member name="M:ChatBot_Logic.src.Handlers.PlaceShipHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
-            <summary>
-            Es el método donde se trabaja todo lo del handler.
-            Procesa el mensaje "/NavesBatalla"
-            </summary>
-            <param name="message">Mensaje que recibe</param>
-            <param name="response">Respuesta del bot</param>
-            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
-        </member>
         <member name="T:ChatBot_Logic.src.Handlers.RegisterUserHandler">
             <summary>
             Handler que registra al usuario

@@ -216,7 +216,7 @@
         </member>
         <member name="M:LibraryTests.RegistrerUserHandlerTest.TestDoesNotHandle">
             <summary>
-                se teste que no hay un handler
+                Se teste que no hay un handler
             </summary>
         </member>
         <member name="T:LibraryTests.ShipTests">

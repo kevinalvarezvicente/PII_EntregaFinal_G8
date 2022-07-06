@@ -10,7 +10,7 @@ namespace LibraryTests
     /// <summary>
     ///   testea el hola handler
     /// </summary>
-    public class HelloHandlerTests
+    public class HelloHandlerTestss
     {
         HelloHandler handler;
         Message message;
@@ -27,8 +27,11 @@ namespace LibraryTests
             message.From.Id = id;
         }
 
+        /// <summary>
+        ///     se testea el hello handler
+        /// </summary>
         [Test]
-        public void TestHandle()
+        public void HelloHandler()
         {
             message.Text = handler.Keywords[0];
             string response;
@@ -39,6 +42,9 @@ namespace LibraryTests
             Assert.That(response, Is.EqualTo("¡Hola! Mi nombre es Paco, soy uno de los ultimos soldados vivos 😨. Necesitamos de tu ayuda para batallar contra nuestros enemigos 🤕. ¿Aceptas el reto? ( /Si /No )"));
         }
 
+        /// <summary>
+        ///     se teste que no hay un handler
+        /// </summary>
         [Test]
         public void TestDoesNotHandle()
         {

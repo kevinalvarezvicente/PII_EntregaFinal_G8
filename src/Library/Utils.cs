@@ -50,13 +50,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             }
             char[] coordArray = coord.ToArray();
             int row = (int)Char.GetNumericValue(coordArray[0]);
-            if (coord.Count() == 3)
+            if (coord.Length == 3)
             {
                 string columnS = Char.GetNumericValue(coordArray[1]).ToString() + Char.GetNumericValue(coordArray[2]).ToString();
                 int column = Int32.Parse(columnS);
                 return (row, column);
+            }else{
+                string columnS = Char.GetNumericValue(coordArray[1]).ToString();
+                int column = Int32.Parse(columnS);
+                return (row, column);
             }
-            return (0, 0);
         }
 
         /// <summary>

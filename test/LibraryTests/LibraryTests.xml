@@ -311,6 +311,11 @@
             Primer test probando con una coordenada
             </summary>
         </member>
+        <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnWith10OK">
+            <summary>
+            Primer test probando con una coordenada
+            </summary>
+        </member>
         <member name="M:LibraryTests.UtilsTests.TestSplitCoordIntoRowAndColumnNotOK3">
             <summary>
             Test 16

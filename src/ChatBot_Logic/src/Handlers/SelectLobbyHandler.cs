@@ -53,7 +53,7 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerShipBoard(new ShipBoard(7));
                     player.AddPlayerShotBoard(new ShotBoard(7));
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado las 🇦🇷 Malvinas 🇦🇷 de 8 hectareas!. "
+                    response = "¡Has seleccionado las 🇦🇷 Malvinas 🇦🇷 de 7 hectareas!. "
                             + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
@@ -65,7 +65,7 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerShipBoard(new ShipBoard(9));
                     player.AddPlayerShotBoard(new ShotBoard(9));
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado el 🇺🇦 Donbas 🇺🇦 de 10 hectareas!. "
+                    response = "¡Has seleccionado el 🇺🇦 Donbas 🇺🇦 de 9 hectareas!. "
                             + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }
@@ -77,7 +77,7 @@ namespace ChatBot_Logic.src.Handlers
                     player.AddPlayerShipBoard(new ShipBoard(11));
                     player.AddPlayerShotBoard(new ShotBoard(11));
                     LobbyContainer.AddPlayer(player);
-                    response = "¡Has seleccionado 🇱🇦 Laos 🇱🇦 de 12 hectareas!. "
+                    response = "¡Has seleccionado 🇱🇦 Laos 🇱🇦 de 11 hectareas!. "
                     + "Para ser el dueño 🔑 de esta zona debes defenderla ⚔️... \n Espero poder volver a verte luego de la batalla 🤞🏽. ¡Suerte 🍀! \n Según informes 📜 de nuestra inteligencia están atacando tu zona, defiendela o la perderás /defender";
                     return true;
                 }

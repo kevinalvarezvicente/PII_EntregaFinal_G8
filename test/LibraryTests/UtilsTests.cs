@@ -44,6 +44,16 @@ namespace LibraryTests
             string coord = "11";
             Assert.AreEqual((1,1), Utils.SplitCoordIntoRowAndColumn(coord));
         }
+
+        /// <summary>
+        /// Primer test probando con una coordenada
+        /// </summary>
+        [Test]
+        public void TestSplitCoordIntoRowAndColumnWith10OK()
+        {
+            string coord = "110";
+            Assert.AreEqual((1,10), Utils.SplitCoordIntoRowAndColumn(coord));
+        }
         /// <summary>
         /// Test 16
         /// Este test chequea que si se manda una coordenada mas larga que 2 o 3 entonces salta error

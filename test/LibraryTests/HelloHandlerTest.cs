@@ -1,4 +1,4 @@
-using ChatBot_Logic.src.Handlers;
+﻿using ChatBot_Logic.src.Handlers;
 using ChatBot_Logic.src.HandlersConfiguration;
 using NUnit.Framework;
 using Telegram.Bot.Types;
@@ -38,8 +38,8 @@ namespace LibraryTests
 
             IHandler result = handler.Handle(message, out response);
 
+            Assert.That(result, Is.Not.Null); ;
             Assert.That(response, Is.EqualTo("¡Hola! Mi nombre es Paco, soy uno de los ultimos soldados vivos 😨. Necesitamos de tu ayuda para batallar contra nuestros enemigos 🤕. ¿Aceptas el reto? ( /Si /No )"));
-            Assert.That(result, Is.Not.Null);;
         }
 
         /// <summary>

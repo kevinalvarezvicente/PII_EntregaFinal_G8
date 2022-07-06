@@ -133,13 +133,14 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             String resp = "";
             try
             {
-                
+
                 resp = Inactive_Player.ReceiveShot(coord);
-                if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.")
+                if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨." || resp == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
                 {
                     Active_Player.MakeShot(coord, "❌");
                 }
-                else {
+                else
+                {
                     Active_Player.MakeShot(coord, "⭕️");
                 }
             }

@@ -76,14 +76,42 @@ namespace ChatBot_Logic.src.Handlers
                         chainData.userPostionHandler[from].Add("/tiro");
                         string letter = message.Text.Substring(0, 1).ToUpper();
                         string number1 = Utils.LetterToNumber(letter);
-                        string number2 = message.Text.Substring(1, message.Text.Length);
+                        string number2 = message.Text.Substring(1, message.Text.Length - 1);
                         string build = number1 + number2;
+                        bool win = false;
+
                         string res = game.ShotMade(build);
+                        if (res == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.")
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"El enemigo te ha atacado.");
+                        }
+                        else if (res == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
+                        {
+                            ChatBot.sendMessage(enemy.UserId, "Han hundido uno de tus barcos :( .");
+                        }
+                        else if (res == "¡Hemos ganado la batalla capitán! 👏🏻. El mundo es un lugar más seguro gracias a tu valentia 🌎.")
+                        {
+                            GamesContainer.RemoveGame(game);
+                            this.Keywords.Remove(from); //Removemos el id asi sigue el handler
+                            this.Keywords.Remove(enemy.UserId.ToString()); //Removemos el id asi sigue el handler
+                            ChatBot.sendMessage(enemy.UserId, "Has perdido la batalla.");
+                            win = true;
+                        }
                         TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                         ChatBot.sendMessageBoard(message.From.Id, $"```SHIPBOARD: { classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                         ChatBot.sendMessageBoard(message.From.Id, $"```SHOTBOARD: { classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShotBoard())}```");
-                        ChatBot.sendMessage(enemy.UserId, $"Es tu turno /atacarEnemigo. ");
+                        if (!win)
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"Es tu turno /atacarEnemigo. ");
+                            chainData.userPostionHandler[enemy.UserId.ToString()].Clear();
+                        }
+                        else
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"Desea jugar nuevamente ? /hola");
+                            ChatBot.sendMessage(message.From.Id, $"Desea jugar nuevamente ? /hola");
+                        }
                         chainData.userPostionHandler[from].Clear();
+
                         response = res;
                         return true;
                     }

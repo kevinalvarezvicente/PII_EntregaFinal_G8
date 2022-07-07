@@ -146,6 +146,28 @@
             <param name="response">Respuesta del bot</param>
             <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
         </member>
+        <member name="T:ChatBot_Logic.src.Handlers.CountShotsHandler">
+            <summary>
+            Handler que registra al usuario
+            Es subclase de BaseHandler
+            Forma parte de Chain of fResponsibility
+            </summary>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.CountShotsHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ChatBot_Logic.src.Handlers.RegisterUserHandler"/>. Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ChatBot_Logic.src.Handlers.CountShotsHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Es el método donde se trabaja todo lo del handler.
+            Procesa el mensaje "/SerSoldado"
+            </summary>
+            <param name="message">Mensaje que recibe</param>
+            <param name="response">Respuesta del bot</param>
+            <returns>retorna un booleano de que será true si trabaja como corresponde</returns>
+        </member>
         <member name="T:ChatBot_Logic.src.Handlers.GoodByeHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "chau".

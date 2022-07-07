@@ -21,7 +21,8 @@ namespace ChatBot_Logic.src.Handlers_Configuration
                             new JoinPlayerHandler(
                                 new PlaceShipHandler(
                                     new MakeShotHandler(
-                                    new GoodByeHandler(null))))))));
+                                        new CountShotsHandler(
+                                            new GoodByeHandler(null)))))))));
         }
 
         /// <summary>

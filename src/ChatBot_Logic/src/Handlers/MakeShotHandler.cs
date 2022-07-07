@@ -58,6 +58,7 @@ namespace ChatBot_Logic.src.Handlers
                         }
                     }
                 }
+                
                 if (message.From.Id == game.Active_Player.UserId)
                 {
 
@@ -84,6 +85,7 @@ namespace ChatBot_Logic.src.Handlers
                         if (res == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.")
                         {
                             ChatBot.sendMessage(enemy.UserId, $"El enemigo te ha atacado.");
+
                         }
                         else if (res == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
                         {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 
 namespace PII_ENTREGAFINAL_G8.src.Library
 {
@@ -29,16 +30,29 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Cada partida se guarda con la fecha de comienzo
         /// </summary>
+
+
         public DateTime Date { get; private set; }
         /// <summary>
         /// El Active_Player es el jugador con el turno, comienza él siempre
         /// Es el que está primero en la lista de Lobby de espera, o sea el primero que llego
         /// </summary>
         private Player active_Player = null;
+
         /// <summary>
         /// Atributo de la partida, el oponente
         /// </summary>
         private Player inactive_Player = null;
+
+        /// <summary>
+        /// Atributo de la partida, el oponente
+        /// </summary>
+
+        public bool PegoElBarco { get; private set; }
+
+        public bool PegoElAgua { get; private set; }
+        
+
         /// <summary>
         /// Propiedad para acceder al jugador inicial de la partida
         /// </summary>
@@ -138,10 +152,13 @@ namespace PII_ENTREGAFINAL_G8.src.Library
                 if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨." || resp == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
                 {
                     Active_Player.MakeShot(coord, "❌");
+                    PegoElBarco = true;
                 }
                 else
                 {
                     Active_Player.MakeShot(coord, "⭕️");
+                    PegoElAgua = true;
+                    
                 }
             }
             catch
@@ -151,6 +168,7 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             Utils.Swap(ref this.active_Player, ref this.inactive_Player);
             return resp;
         }
+
 
         /// <summary>
         /// Este método agrega el barco en el Tablero de barcos
@@ -228,7 +246,6 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <returns>Retorna true o false para finalizar el juego</returns>
         public bool GameFinished()
         {
-
             if (this.inactive_Player.AreAllShipsSinked() || this.active_Player.AreAllShipsSinked())
             {
                 this.GameStatus = true;
@@ -237,6 +254,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             return this.GameStatus;
         }
 
+ 
 
     }
+
 }

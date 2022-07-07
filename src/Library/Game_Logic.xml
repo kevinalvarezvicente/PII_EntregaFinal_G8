@@ -283,6 +283,19 @@
             <param name="ID">Recibe por parámetro el ID del usuario de telegram</param>
             <returns>Devuelve el usuario que concuerde con el ID o lanza una excepcion</returns>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.CountShot">
+            <summary>
+            Esta clase es la que crea al jugador. 
+            Cumple patron expert ya que es la que contiene la información de:
+            - Los tableros
+            - Usuario
+            - Barcos y sus posiciones
+            - Hace tiro como jugador activo
+            - Recibe tiro como jugador inactctivo
+            La responsabilidades mencionadas e implementaciones de métodos recaen sobre Player ya que ésta conoce toda la informacion para ejecutar.
+            Se obtiene mayor cohesion y menor acoplamiento. 
+            </summary>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.ContainerException">
             <summary>
             Subclase de exception, esta axcepcion será utilizada para cuando ocurra algo inesperado al utilizar algún método de Container
@@ -396,6 +409,11 @@
             </summary>
         </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.inactive_Player">
+            <summary>
+            Atributo de la partida, el oponente
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.Game.PegoElTiro">
             <summary>
             Atributo de la partida, el oponente
             </summary>

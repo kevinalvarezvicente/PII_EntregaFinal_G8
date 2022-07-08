@@ -1,13 +1,20 @@
-# Entrega Final Programación II 
-## Batalla Naval
+# PII_Defensa_Glass
 
-Kevin Alvarez
+Los clientes (profesores) han decidido agregar una nueva funcionalidad al juego. Desean que en cualquier momento de la partida un jugador pueda ejecutar un comando en el bot para solicitar la cantidad de disparos que han tocado el agua, así como de los que han impactado en barcos.
 
-Carol Glass
+Te pedimos que programes la nueva funcionalidad implementando una o más clases que sumen la cantidad de disparos de ambos jugadores al agua, por un lado, y a barcos, por otro, utilizando los patrones y principios aprendidos en el curso. 
+Luego agrega el comando al bot para mostrar el resultado que obtienes utilizando esas clases
 
-Anthony Pereira
+También deberás programar los casos de prueba correspondientes a las nuevas clases
 
-Ingeniería en informática - Universidad Católica del Uruguay
+Se encuentra los métodos en la clase ShotCounter, WaterShotCounter, ShipShotCounter.
+
+La funcionalidad se encuentra implementada en la clase Game ya que esta es la clase Experta en la información de la partida.
+
+Los casos de prueba correspondientes a las nuevas clases se encuentran en ShotsTests. Se debe correr solos porque hace unmatch con los demas. 
+
+El comando al bot para mostrar el resultado que se obtiene utilizando esas clases: Se añade en MakeShotHandler
+ 
 
 ## Guía para correr el código
 

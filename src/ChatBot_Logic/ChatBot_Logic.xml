@@ -210,7 +210,9 @@
         </member>
         <member name="T:ChatBot_Logic.src.Handlers.MakeShotHandler">
             <summary>
-            
+            Handler para hacer el Shot
+            Handler donde si el usuario desea puede conocer la cantidad de tiros a barcos o al agua que hay.
+            Se añade esta opción ya que es dentro de este handler donde se da toda la parte de realizar los shots tantas veces como sea necesario. 
             </summary>
         </member>
         <member name="M:ChatBot_Logic.src.Handlers.MakeShotHandler.#ctor(ChatBot_Logic.src.HandlersConfiguration.BaseHandler)">

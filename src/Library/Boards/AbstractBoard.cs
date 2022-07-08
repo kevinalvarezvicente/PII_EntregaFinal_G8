@@ -4,7 +4,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
 {
     /// <summary>
     /// Se crea una clase Abstracta para el tablero AbstractBoard de la que hereda Board.
-    /// La clase AbstractBoard tiene la responsabilidad de inicializar un tablero 
+    /// La clase AbstractBoard tiene la responsabilidad de inicializar un tablero
+    /// Cumple SRP pues la única razon para cambiar la clase es si se cambia el argumento para InitializeBoard 
     /// Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
     /// Si el día de mañana, se quiere que agregar un tablero que sea con letras se puede perfectamente agregando otra clase que herede de esta y modificando el método utilizado de inicializar tablero con override
     /// </summary>

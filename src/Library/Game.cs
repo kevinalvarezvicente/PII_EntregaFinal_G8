@@ -16,6 +16,35 @@ namespace PII_ENTREGAFINAL_G8.src.Library
     /// </summary>
     public class Game
     {
+        /// <summary>
+        /// Atributo de la clase Game que cuenta los disparos al agua ya que es la clase experta en los tiros de ambos jugadores y mediante el método shotmAde() accede a saber a donde fue el tiro
+        /// </summary>
+        /// <returns></returns>
+        private ShotCounter waterShotCounter = new WaterShotCounter();
+        /// <summary>
+        /// Atributo de la clase Game que cuenta los disparos a los botes ya que es la clase Experta en los tiros de ambos jugadores y mediante el método shotmAde() accede a saber a donde fue el tiro
+        /// </summary>
+        /// <returns></returns>
+        private ShotCounter shipShotCounter = new ShipShotCounter();
+        /// <summary>
+        /// Método para poder saber desde afuera la cantidad de tiros a barcos que hubo
+        /// </summary>
+        /// <returns>Retorna un entero con la cantidad de tiros a barcos</returns>
+        public int GetShipShotCounter()
+        {
+            return shipShotCounter.Counter;
+            
+        }
+        /// <summary>
+        /// Método para saber desde afuera de la clase la cantidad de tiros al agua que hubo
+        /// </summary>
+        /// <returns>Retorna un entero con la cantidad de tiros a barcos</returns>
+        public int GetWaterShotCounter()
+        {
+
+            return waterShotCounter.Counter;
+
+        }
 
         /// <summary>
         ///El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
@@ -126,6 +155,8 @@ namespace PII_ENTREGAFINAL_G8.src.Library
         /// <summary>
         /// Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
         /// No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
+        /// 
+        /// Cada vez que hay un shot se añade al contador según a donde sea
         /// </summary>
         /// <param name="coord">coordenada string que luego se transformará en (x,y)</param>
         public string ShotMade(string coord)
@@ -133,13 +164,16 @@ namespace PII_ENTREGAFINAL_G8.src.Library
             String resp = "";
             try
             {
-                
+
                 resp = Inactive_Player.ReceiveShot(coord);
-                if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨.")
+                if (resp == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨." || resp == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
                 {
+                    shipShotCounter.AddOneShot();
                     Active_Player.MakeShot(coord, "❌");
                 }
-                else {
+                else
+                {
+                    waterShotCounter.AddOneShot();
                     Active_Player.MakeShot(coord, "⭕️");
                 }
             }

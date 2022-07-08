@@ -6,7 +6,9 @@ using System.Collections.Generic;
 namespace ChatBot_Logic.src.Handlers
 {
     /// <summary>
-    /// 
+    /// Handler para hacer el Shot
+    /// Handler donde si el usuario desea puede conocer la cantidad de tiros a barcos o al agua que hay.
+    /// Se añade esta opción ya que es dentro de este handler donde se da toda la parte de realizar los shots tantas veces como sea necesario. 
     /// </summary>
     public class MakeShotHandler : BaseHandler
     {
@@ -18,6 +20,8 @@ namespace ChatBot_Logic.src.Handlers
         {
             this.Keywords = new List<string>();
             Keywords.Add("/atacarEnemigo");
+            Keywords.Add("/TirosTotalesAlAgua");
+            Keywords.Add("/TirosTotalesAbarcos");
         }
         /// <summary>
         /// Procesa el mensaje "/atacarEnemigo"
@@ -73,17 +77,60 @@ namespace ChatBot_Logic.src.Handlers
                     }
                     if (chainData.userPostionHandler[from].Count == 1)
                     {
+                        //Para que el count de UserPositionHandler aumente a uno
                         chainData.userPostionHandler[from].Add("/tiro");
-                        string letter = message.Text.Substring(0, 1);
+                        string letter = message.Text.Substring(0, 1).ToUpper();
                         string number1 = Utils.LetterToNumber(letter);
                         string number2 = message.Text.Substring(1, message.Text.Length - 1);
                         string build = number1 + number2;
+                        bool win = false;
+
                         string res = game.ShotMade(build);
+                        if (res == "Nuestros satelites 🛰 nos indican que tu misil ha dado en el blanco, el enemigo esta en apuros.\n Es el turno de tu enemigo 😨. ")
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"El enemigo te ha atacado.");
+                        }
+                        else if (res == "Capitán, se le informa que ha hundido el barco enemigo 😎. Felicitaciones 👌, vamos por buen camino.")
+                        {
+                            ChatBot.sendMessage(enemy.UserId, "Han hundido uno de tus barcos :( .");
+                        }
+                        else if (res == "¡Hemos ganado la batalla capitán! 👏🏻. El mundo es un lugar más seguro gracias a tu valentia 🌎.")
+                        {
+                            GamesContainer.RemoveGame(game);
+                            this.Keywords.Remove(from); //Removemos el id asi sigue el handler
+                            this.Keywords.Remove(enemy.UserId.ToString()); //Removemos el id asi sigue el handler
+                            ChatBot.sendMessage(enemy.UserId, "Has perdido la batalla.");
+                            win = true;
+                        }
                         TelegramBoardPrinter classTelegramBoardPrinter = new TelegramBoardPrinter();
                         ChatBot.sendMessageBoard(message.From.Id, $"```SHIPBOARD: { classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShipBoard())}```");
                         ChatBot.sendMessageBoard(message.From.Id, $"```SHOTBOARD: { classTelegramBoardPrinter.PrintPlayerBoard(player1.GetPlayerShotBoard())}```");
-                        ChatBot.sendMessage(enemy.UserId, $"Es tu turno /atacarEnemigo. ");
+                        if (!win)
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"Es tu turno /atacarEnemigo puedes conocer /TirosTotalesAlAgua /TirosTotalesABarcos");
+                            // Si se elige la opcion /TirosTotalesAlAgua o /TirosTotalesABarcos se mostrará por pantalla la cantidad
+                            //Se pregunta si es igual a 2 ya que se añadio /tiro al comienzo de este condicional
+                            if (chainData.userPostionHandler[from].Count == 2 && message.Text == "/TirosTotalesAbarcos")
+                            {
+                                response = $"Van {game.GetShipShotCounter()} tiros a barcos en total";
+                                return true;
+                                        
+                            }
+                            else if (chainData.userPostionHandler[from].Count == 2 && message.Text == "/TirosTotalesAlAgua")
+                            {
+                                response = $"Van {game.GetWaterShotCounter()} tiros al agua en total";
+                                return true;
+                            }
+
+                            chainData.userPostionHandler[enemy.UserId.ToString()].Clear();
+                        }
+                        else
+                        {
+                            ChatBot.sendMessage(enemy.UserId, $"Desea jugar nuevamente ? /hola");
+                            ChatBot.sendMessage(message.From.Id, $"Desea jugar nuevamente ? /hola");
+                        }
                         chainData.userPostionHandler[from].Clear();
+
                         response = res;
                         return true;
                     }

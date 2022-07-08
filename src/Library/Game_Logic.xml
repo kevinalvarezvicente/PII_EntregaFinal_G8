@@ -7,7 +7,8 @@
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AbstractBoard">
             <summary>
             Se crea una clase Abstracta para el tablero AbstractBoard de la que hereda Board.
-            La clase AbstractBoard tiene la responsabilidad de inicializar un tablero 
+            La clase AbstractBoard tiene la responsabilidad de inicializar un tablero
+            Cumple SRP pues la única razon para cambiar la clase es si se cambia el argumento para InitializeBoard 
             Cumple con OCP (Open/Close Principle) pues es abierta a la extension pero cerrada a la modificacion.
             Si el día de mañana, se quiere que agregar un tablero que sea con letras se puede perfectamente agregando otra clase que herede de esta y modificando el método utilizado de inicializar tablero con override
             </summary>
@@ -373,6 +374,30 @@
             - Ship (Cualquier tipo)
             </summary>
         </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.waterShotCounter">
+            <summary>
+            Atributo de la clase Game que cuenta los disparos al agua ya que es la clase experta en los tiros de ambos jugadores y mediante el método shotmAde() accede a saber a donde fue el tiro
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.shipShotCounter">
+            <summary>
+            Atributo de la clase Game que cuenta los disparos a los botes ya que es la clase Experta en los tiros de ambos jugadores y mediante el método shotmAde() accede a saber a donde fue el tiro
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.GetShipShotCounter">
+            <summary>
+            Método para poder saber desde afuera la cantidad de tiros a barcos que hubo
+            </summary>
+            <returns>Retorna un entero con la cantidad de tiros a barcos</returns>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.Game.GetWaterShotCounter">
+            <summary>
+            Método para saber desde afuera de la clase la cantidad de tiros al agua que hubo
+            </summary>
+            <returns>Retorna un entero con la cantidad de tiros a barcos</returns>
+        </member>
         <member name="F:PII_ENTREGAFINAL_G8.src.Library.Game.currentGameID">
              <summary>
             El campo estático currentID almacena el ID de usuario de la última persona que ha sido creado.
@@ -453,6 +478,8 @@
             <summary>
             Este método permite al jugador hacer el tiro y al jugador opuesto recibirlo tal que lo que ve cada jugador será distinto en cuanto a los barcos.
             No se debe modificar un tablero, sino que se modificará el tablero respectivo a cada jugador
+            
+            Cada vez que hay un shot se añade al contador según a donde sea
             </summary>
             <param name="coord">coordenada string que luego se transformará en (x,y)</param>
         </member>
@@ -705,6 +732,20 @@
             </summary>
             <param name="board">Tablero que se desea imprimir en telegram</param>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShipShotCounter">
+            <summary>
+            Clase que implementa método AddOneShot de la clase abstracta ShotCounter
+            Expert: experta en la informacion con la cantidad de tiros.
+            SRP (Single Responsibility Principle): única responsabilidad es sumar 1 al contador de tiros a barcos. Tiene una única razon de cambio, pues tiene solo un método y no depende de otras clases que puedan llegar a afectarla.
+            ISP (Interface segregation principle): La clase abstracta que implementa la utiliza. Una clase no debe implementar interfaz o clase abstracta que no utilice.
+            LCHC: Hace lo mínimo necesario como almacenar la cantidad de tiros a barcos. Es altamente cohesiva porque lo poco que hace es utilizado por la clase Game pero tiene relaciones con otra clase que es abstracta, con lo cual va a estar muy poco acoplada.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShipShotCounter.AddOneShot">
+            <summary>
+            Método implementado de ShotCounter que suma un tiro a la cantidad de tiros a los barcos
+            </summary>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.AircraftCarrier">
             <summary>
             Es el barco mas pequeño, hereda de Ship
@@ -841,6 +882,30 @@
             <param name="direction">Direccion que desea si vertical u horizontal</param>
             <returns></returns>
         </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.ShotCounter">
+            <summary>
+            Se crea una clase Abstracta para el contador ShotCounter de la que heredan
+            La clase AbstractBoard tiene la responsabilidad de crear un contador de tiros.
+            SRP: La única razón de cambio es si se desea agregar un método. 
+            OCP (Open/Close Principle): Es abierta a la extension pero cerrada a la modificacion. Si el día de mañana, se quiere que agregar un contador que cuente cada vez que se dispara a una coordenada repetida se puede perfectamente agregando otra clase que herede de esta y modificando el método utilizado de AddShot con override.
+            </summary>
+        </member>
+        <member name="F:PII_ENTREGAFINAL_G8.src.Library.ShotCounter.counter">
+            <summary>
+            Atributo protected, pues es usado por las clases que hereden de ella
+            </summary>
+        </member>
+        <member name="P:PII_ENTREGAFINAL_G8.src.Library.ShotCounter.Counter">
+            <summary>
+            Metodo de acceso al contador de tiros
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.ShotCounter.AddOneShot">
+            <summary>
+            Método de clase abstracta que permite a cada contador de tiros sumar como desee
+            </summary>
+        </member>
         <member name="T:PII_ENTREGAFINAL_G8.src.Library.Singleton`1">
             <summary>
             Se hace para poder utilizar singleton con diferentes clases
@@ -943,6 +1008,20 @@
             <param name="param1"></param>
             <param name="param2"></param>
             <typeparam name="T">Es el tipo, tal que sea genérico</typeparam>
+        </member>
+        <member name="T:PII_ENTREGAFINAL_G8.src.Library.WaterShotCounter">
+            <summary>
+            Clase que hereda de la clase abstracta ShotCounter
+            Expert: experta en la informacion con la cantidad de tiros al agua.
+            SRP: única responsabilidad es sumar 1 al contador de tiros al agua. Tiene una única razon de cambio, pues tiene solo un método y no depende de otras clases que puedan llegar a afectarla.
+            ISP (Interface segregation principle): La clase abstracta que implementa la utiliza. Una clase no debe implementar interfaz o clase abstracta que no utilice.
+            LCHC: Hace lo mínimo necesario como almacenar la cantidad de tiros al agua. Es altamente cohesiva porque lo poco que hace es utilizado por la clase Game pero tiene relaciones con otra clase que es abstracta, con lo cual va a estar muy poco acoplada.
+            </summary>
+        </member>
+        <member name="M:PII_ENTREGAFINAL_G8.src.Library.WaterShotCounter.AddOneShot">
+            <summary>
+            Método implementado de ShotCounter que suma un tiro a la cantidad de tiros al agua
+            </summary>
         </member>
     </members>
 </doc>

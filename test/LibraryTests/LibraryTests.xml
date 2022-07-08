@@ -295,6 +295,36 @@
             Testea coordenada no fue disparada
             </summary>
         </member>
+        <member name="T:LibraryTests.ShotTests">
+            <summary>
+            Test de los métodos de la clase ShotCounter y sus subclases 
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShotTests.WaterShotsTest">
+            <summary>
+            Test con disparos al agua
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShotTests.ShipShotsTest">
+            <summary>
+            Test de ambos jugadores con disparos a barcos 
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShotTests.BothShotTest">
+            <summary>
+            Test que simula una partida entre dos jugadores
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShotTests.ShipShotDoesNotChangeTest">
+            <summary>
+            Test de que se realiza un tiro al agua y el contador de tiros a barcos es 0
+            </summary>
+        </member>
+        <member name="M:LibraryTests.ShotTests.NoShotTest">
+            <summary>
+            Test de que se crea la partida y hasta que no hay un tiro no aumenta el contador
+            </summary>
+        </member>
         <member name="T:LibraryTests.UtilsTests">
             <summary>
             Se hace test para los métodos de la clase Utilidades
